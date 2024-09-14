@@ -1,0 +1,12 @@
+.footer {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  font-size: 18px;
+  color: #fff;
+  position: absolute; /* Absolute positioning */
+  bottom: 0; /* Stick to the bottom */
+  width: 99%;
+  margin-left: -10px;
+}

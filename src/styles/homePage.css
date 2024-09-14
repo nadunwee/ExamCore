@@ -2,6 +2,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
 /* got these some of nav-bar content from w3 schools */
 .nav-bar-container {
   display: flex;
@@ -13,7 +17,7 @@ body {
 }
 
 .main-logo {
-  font-size: 50px;
+  font-size: 40px;
   margin-left: 20px;
 }
 
@@ -24,11 +28,12 @@ body {
   overflow: hidden;
   display: flex;
   gap: 40px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .navigation-bar ul li {
   float: left;
+  transition: color 0.4s ease;
 }
 
 .navigation-bar ul li a {
@@ -36,12 +41,11 @@ body {
   display: block;
   text-align: center;
   padding: 14px 16px;
-  color: black;
+  color: red;
 }
 
-/* Change the link color to #111 (black) on hover */
-.navigation-bar ul li a:hover {
-  background-color: #111;
+.navigation-bar ul li:hover {
+  color: #5d5d5d;
 }
 
 .navigation-bar ul li a:visited, /* Removes blue for visited links */
@@ -58,6 +62,11 @@ body {
   margin: 0;
   cursor: pointer;
   margin-right: 30px;
+  transition: transform 0.3s ease;
+}
+
+.try-free-login-btn:hover {
+  transform: scale(1.05);
 }
 
 .home-page-content {

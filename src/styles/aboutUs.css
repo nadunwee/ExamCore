@@ -13,6 +13,7 @@
 
 .about-us-description h1 {
   font-size: 40px;
+  color: #c7253e;
 }
 
 .abouts-us-details {
@@ -29,12 +30,7 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
-  transition: transform 0.3s ease;
   cursor: pointer;
-}
-
-.about-us-main-learn-more:hover {
-  transform: translateY(-3px) scale(1.05);
 }
 
 .about-us-features {
