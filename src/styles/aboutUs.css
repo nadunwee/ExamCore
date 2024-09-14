@@ -1,0 +1,82 @@
+.about-us-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-us-description {
+  max-width: 30%;
+  margin-left: 50px;
+}
+
+.about-us-description h1 {
+  font-size: 40px;
+}
+
+.abouts-us-details {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.about-us-main-learn-more {
+  max-width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.about-us-main-learn-more:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.about-us-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 30px; /* Space between items */
+  margin: 20px; /* Optional margin for the grid */
+  margin-right: 40px;
+}
+
+.about-us-features div {
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0.5, 0.2);
+  border: 2px solid black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.about-us-features div:hover {
+  transform: translateY(-10px) scale(1.05); /* Slight lift and zoom on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.feature-heading {
+  font-weight: bold;
+  font-size: 1.35em;
+}
+
+.feature-description {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #666;
+}
+
+.feature-learn-more-btn {
+  margin-top: 15px;
+  border: 2px solid black;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: fit-content;
+  font-size: 1.1rem;
+}
