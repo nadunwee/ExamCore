@@ -86,9 +86,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../styles/studentRegister.css" />
+    <link rel="stylesheet" href="../../styles/register.css" />
     <link rel="stylesheet" href="../../styles/login.css" />
-    <title>Registration</title>
+    <title>Log in</title>
   </head>
   <body>
     <p class="student-register-logo"><a href="../../../homePage.html">ExamCore</a></p>
@@ -119,6 +119,7 @@
                 <select name="types" id="types">
                   <option value="student" default>Student</option>
                   <option value="examiner">Examiner</option>
+                  <option value="admin">Administrator</option>
                 </select>
               </div>
 

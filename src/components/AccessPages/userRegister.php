@@ -35,6 +35,7 @@
       // Execute the statement
       if ($query->execute()) {
         $_SESSION['message'] = 'Student registration successful!';
+        header('Location: login.php');
       } else {
         $_SESSION['message'] = "Error: " . $query->error;
       }
@@ -46,11 +47,10 @@
       $query = $conn->prepare("INSERT INTO examiners (name, subject, email, password) VALUES (?, ?, ?, ?)");
       $query->bind_param("ssss", $name, $subject, $email, $passwd);
 
-      echo "$name, $subject, $email, $passwd";
-
       // Execute the statement
       if ($query->execute()) {
         $_SESSION['message'] = 'Examiner registration successful!';
+        header('Location: login.php');
       } else {
         $_SESSION['message'] = "Error: " . $query->error;
       }
@@ -63,9 +63,6 @@
     }
 
     $conn->close();
-
-    // Redirect to avoid form resubmission on refresh
-    header('Location: userRegister.php');
     exit();
   }
 ?>
@@ -75,7 +72,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../styles/studentRegister.css" />
+    <link rel="stylesheet" href="../../styles/register.css" />
     <script>
       // Function to toggle between NIC and Subject fields based on user type selection
       function toggleFields() {
@@ -154,7 +151,7 @@
               <input type="submit" value="Sign up with Email" class="register-submit-btn" />
             </form>
 
-            <section>By continuing with Google, Apple, or Email, you agree to our Terms of Service and Privacy Policy.</section>
+            <section>By continuing with Email, you agree to our Terms of Service and Privacy Policy.</section>
           </div>
 
           <hr>
