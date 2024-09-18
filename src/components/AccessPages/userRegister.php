@@ -124,7 +124,7 @@
 
           <hr>
 
-          <div class="student-register-redirect-login">Already signed up? <a href="#"><u>Go to login</u></a></div>
+          <div class="student-register-redirect-login">Already signed up? <a href="./login.php"><u>Go to login</u></a></div>
         </div>
 
         <div class="signup-convincing-imgs">
