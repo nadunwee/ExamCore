@@ -24,6 +24,7 @@ body {
     background-color:white;
     padding: 10px;
     border-right: 1px solid #761c73;
+    line-height: normal;
 }
 
 .sidebar h1 {
