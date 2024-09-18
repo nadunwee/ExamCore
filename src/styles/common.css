@@ -1,3 +1,11 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
 .footer {
   background-color: black;
   display: flex;
@@ -11,4 +19,65 @@
   margin-left: -10px;
 }
 
-/* asldfjk */
+/* got these some of nav-bar content from w3 schools */
+.nav-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.main-logo {
+  font-size: 40px;
+  margin-left: 20px;
+}
+
+.navigation-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  gap: 40px;
+  font-size: 18px;
+}
+
+.navigation-bar ul li {
+  float: left;
+  transition: color 0.4s ease;
+}
+
+.navigation-bar ul li a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  color: red;
+}
+
+.navigation-bar ul li:hover {
+  color: #5d5d5d;
+}
+
+.navigation-bar ul li a:visited, /* Removes blue for visited links */
+.navigation-bar ul li a:active {
+  /* Ensures active links are styled */
+  color: black;
+}
+
+.try-free-login-btn {
+  background-color: #761c73;
+  color: white;
+  border-radius: 10px;
+  padding: 0 20px 0 20px;
+  margin: 0;
+  cursor: pointer;
+  margin-right: 30px;
+  transition: transform 0.3s ease;
+}
+
+.try-free-login-btn:hover {
+  transform: scale(1.05);
+}
