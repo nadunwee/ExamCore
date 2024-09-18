@@ -26,11 +26,12 @@ body {
     border-right: 1px solid #761c73;
 }
 
-.sidebar h2 {
+.sidebar h1 {
     margin-bottom: 30px;
     font-size: 24px;
     text-align: center;
     color: #761c73;
+    font-family:poppins;
 }
 
 .sidebar ul {
@@ -57,8 +58,8 @@ body {
     border: none;
     cursor: pointer;
     text-align: center;
-    border: 3px solid rgb(165, 152, 77);
-    border-radius: 20px;
+    border: 3px solid rgb(165, 77, 147);
+    border-radius: 5px;
 }
 
 .profile-btn:hover {
@@ -70,9 +71,9 @@ body {
     width: 75%;
     padding: 20px;
 }
-.image-placeholder {
+.image-placeholder img {
     width: 100%;
-    height: 150px;
+    height: auto;
     background-color: #ddd;
     margin-bottom: 20px;
     display: flex;
@@ -128,10 +129,10 @@ body {
 
 .quote-section img {
     width: 100%;
-    height: auto;
+    height:auto;
     border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .quote {
