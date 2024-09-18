@@ -1,3 +1,86 @@
+<?php
+  session_start();
+
+  // Check if form data was posted
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get form data
+    $type = $_POST['types'];
+    $email = $_POST['email'];
+    $passwd = $_POST['password'];
+
+    // Database connection
+    $conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+    // Check connection
+    if ($conn->connect_error) {
+      die('Connection Failed: ' . $conn->connect_error);
+    }
+
+    // Prepare the SQL statement based on user type
+    if ($type === "student") {
+      // Prepare the SQL query to check if the email and password exist
+      $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+      $query->bind_param("ss", $email, $passwd);
+
+      // Execute the statement
+      if ($query->execute()) {
+          // Get the result set
+          $result = $query->get_result();
+
+          // Check if the user exists (i.e., at least one row was returned)
+          if ($result->num_rows > 0) {
+              $_SESSION['message'] = 'Student login successful!';
+              header('Location: userRegister.php'); // Redirect only if credentials are found
+              exit();
+          } else {
+              // No matching record found
+              $_SESSION['message'] = 'Invalid email or password.';
+          }
+      } else {
+          $_SESSION['message'] = "Error: " . $query->error;
+      }
+
+      // Close statement and connection
+      $query->close();
+
+    } else if ($type === "examiner") {
+      // Prepare the SQL query to check if the email and password exist
+      $query = $conn->prepare("SELECT * FROM examiners WHERE email = ? AND password = ?");
+      $query->bind_param("ss", $email, $passwd);
+
+      // Execute the statement
+      if ($query->execute()) {
+          // Get the result set
+          $result = $query->get_result();
+
+          // Check if the user exists (i.e., at least one row was returned)
+          if ($result->num_rows > 0) {
+              $_SESSION['message'] = 'Examiner login successful!';
+              header('Location: userRegister.php'); // Redirect only if credentials are found
+              exit();
+          } else {
+              // No matching record found
+              $_SESSION['message'] = 'Invalid email or password.';
+          }
+      } else {
+          $_SESSION['message'] = "Error: " . $query->error;
+      }
+
+      // Close statement and connection
+      $query->close();
+      
+    } else {
+      $_SESSION['message'] = "User type not handled.";
+    }
+
+    $conn->close();
+
+    // Redirect to avoid form resubmission on refresh
+    
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +113,7 @@
           </div>
 
           <div class="student-email-register">
-            <form action="http://localhost/quizcore/src/components/accesspages/userRegister.php" method="POST">
+            <form action="http://localhost/quizcore/src/components/accesspages/login.php" method="POST">
               <div class="input-container">
                 <label for="type">Log in As</label>
                 <select name="types" id="types">
