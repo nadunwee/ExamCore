@@ -1,0 +1,138 @@
+/* Basic styling for the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 25%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.profile-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #761c73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border:3px solid rgb(165, 152, 77);
+    border-radius: 20px;
+}
+
+.profile-btn:hover {
+    background-color: #b95693;
+}
+
+/* Main content area */
+.main-content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.exam-info {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.exam-info h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.exam-details p {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.exam-history {
+    width: 100%;
+}
+
+.exam-history h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.exam-history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.exam-history ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #761c73;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
