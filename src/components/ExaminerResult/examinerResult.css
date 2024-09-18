@@ -4,18 +4,32 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     background-color:white;
 }
+.wrapper {
+    flex: 1; /* This allows the wrapper to grow and fill the space */
+    display: flex;
+    flex-direction: column;
+}
 
 .container {
+    flex:1;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     max-width: 1200px;
     margin: 20px auto;
+    
 }
 
 /* Sidebar styling */
@@ -29,10 +43,10 @@ body {
 
 .sidebar h1 {
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 35px;
     text-align: center;
     color: #761c73;
-    font-family:poppins;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .sidebar ul {
@@ -49,18 +63,32 @@ body {
     text-decoration: none;
     color: #333;
     font-size: 20px;
+    position: relative;
 }
+.sidebar ul li a::after{
+    content:'';
+    width:0%;
+    height: 4px;
+    background:#761c73;
+    position: absolute;
+    left:0;
+    bottom:-6px;
+    transition: 0.6s;
 
+}
+.sidebar ul li a:hover::after{
+    width:100%;
+}
 .profile-btn {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     background-color: #761c73;
     color: white;
     border: none;
     cursor: pointer;
     text-align: center;
-    border: 3px solid rgb(165, 77, 147);
-    border-radius: 5px;
+    border: 2px solid rgb(165, 77, 147);
+    border-radius: 2px;
 }
 
 .profile-btn:hover {
@@ -72,41 +100,86 @@ body {
     width: 75%;
     padding: 20px;
 }
-.name-placeholder img {
+.name-placeholder{
     width: 100%;
-    height: auto;
-    background-color: #ddd;
+    height: 100px;
+    background-color: #761c73;
     margin-bottom: 20px;
+    margin-top: -20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     font-size: 18px;
+    border-radius: 3px;
+    box-shadow: 0 4px 4px black ;
 }
+.name-placeholder h2{
+    color:white;
+}
+
 
 
 /* Flex container for content and quote */
 .content-area {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items:flex-start;
     gap: 20px;
 }
 
 /* Exam info and history are grouped together in a section */
-.exam-results {
-    width: 65%;
+.exam-result {
+    width: 70%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap:20px;
 }
 
 .exam-res {
+    flex: 1 1 calc(50% - 10px);
+    margin-top: 20px;
     margin-bottom: 20px;
     background-color: #fff;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+.exam-res p{
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style-type: none;
 }
 
+.exam-res:hover {
+    transform: translateY(-5px); /* Moves the box slightly upwards */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker and larger shadow on hover */
+}
+
+.exam-res1 {
+    font-size: 18px; /* Styling for the text inside */
+    font-weight: bold;
+}
+
+.quote-section {
+    width: 30%;
+    text-align: center;
+}
+
+.quote-section img {
+    margin-top: 80px;
+    margin-left: 40px;
+    width: 100%;
+    height:auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    
+}
 
 /* Footer styling */
 footer {
@@ -115,6 +188,9 @@ footer {
     padding: 10px;
     background-color: #761c73;
     color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 footer a {
