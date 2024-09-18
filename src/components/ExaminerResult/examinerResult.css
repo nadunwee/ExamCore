@@ -1,3 +1,4 @@
+/* Basic styling for the page */
 * {
     margin: 0;
     padding: 0;
@@ -65,13 +66,15 @@ body {
 .profile-btn:hover {
     background-color: #9e2a72;
 }
-.dom-content{
-    width:75%;
-    padding: 10px;
+
+/* Main content area */
+.main-content {
+    width: 75%;
+    padding: 20px;
 }
-.name-placeholder{
+.name-placeholder img {
     width: 100%;
-    height: 100px;
+    height: auto;
     background-color: #ddd;
     margin-bottom: 20px;
     display: flex;
@@ -79,21 +82,43 @@ body {
     align-items: center;
     font-size: 18px;
 }
-.content{
+
+
+/* Flex container for content and quote */
+.content-area {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
 }
-.exam-result {
-    width: 80%;
+
+/* Exam info and history are grouped together in a section */
+.exam-results {
+    width: 65%;
     display: flex;
     flex-direction: column;
 }
+
 .exam-res {
     margin-bottom: 20px;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #761c73;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
 }
