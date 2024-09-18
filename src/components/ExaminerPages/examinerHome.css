@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color:white;
 }
 
 .container {
@@ -21,31 +21,32 @@ body {
 /* Sidebar styling */
 .sidebar {
     width: 25%;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-right: 1px solid #ccc;
+    background-color:white;
+    padding: 10px;
+    border-right: 1px solid #761c73;
 }
 
 .sidebar h2 {
     margin-bottom: 30px;
     font-size: 24px;
     text-align: center;
+    color: #761c73;
 }
 
 .sidebar ul {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
 .sidebar ul li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .sidebar ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .profile-btn {
@@ -56,23 +57,19 @@ body {
     border: none;
     cursor: pointer;
     text-align: center;
-    border:3px solid rgb(165, 152, 77);
+    border: 3px solid rgb(165, 152, 77);
     border-radius: 20px;
 }
 
 .profile-btn:hover {
-    background-color: #b95693;
+    background-color: #9e2a72;
 }
 
 /* Main content area */
 .main-content {
     width: 75%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     padding: 20px;
 }
-
 .image-placeholder {
     width: 100%;
     height: 150px;
@@ -84,42 +81,64 @@ body {
     font-size: 18px;
 }
 
-.exam-info {
+
+/* Flex container for content and quote */
+.content-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Exam info and history are grouped together in a section */
+.exam-section {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+.exam-info, .exam-history {
     margin-bottom: 20px;
-    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.exam-info h3 {
+.exam-info h3, .exam-history h3 {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 22px;
+    color: #761c73;
 }
 
-.exam-details p {
+.exam-details p, .exam-history ul li {
     margin: 10px 0;
     padding: 10px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-}
-
-.exam-history {
-    width: 100%;
-}
-
-.exam-history h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.exam-history ul {
+    border-radius: 5px;
     list-style-type: none;
-    padding: 0;
 }
 
-.exam-history ul li {
+/* Quote section styling */
+.quote-section {
+    width: 30%;
+    text-align: center;
+}
+
+.quote-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
     margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+    color: #555;
 }
 
 /* Footer styling */
