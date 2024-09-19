@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../styles/studentProfile.css">
+        <title>The Student's Profile</title>
+    </head>
+    <body>
+        <nav>
+            <h1>ExamCore</h1>
+            
+                <ul>
+                    <li><a href"">Exam</a></li>
+                    <li><a href"">Support</a></li>
+                    <li><a href"">Notification</a></li>
+                    <li><a href"" class="active">Student Profile</a></li>
+                </ul>
+            
+        </nav>
+        <main>
+           
+            <section class="student-profile">
+                <h2>Hello Student</h2>
+
+                <div class="student-profile-pic">
+                    <img src="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\Images\profile.png" alt="Student Profile Picture" class="student-profile-picture">
+                </div>
+
+            
+            <!--for and id should be adjusted according to login page-->
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+                <label for="DOB">DOB</label>
+                <input type="date" id="DOB" name="DOB">
+                <label for="Email">Email</label>
+                <input type="email" id="email" name="email">
+                <label for="StID">Student ID</label>
+                <input type="text" id="StID" name="StID">
+                <label for="Password">Password</label>
+                <input type="password" id="password" name="password">
+            
+            <div class="button">
+                <a href="editStudentProfile.html"><button class="editButton">Edit</button></a>
+                <a href="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\components\ProfilePages\studentPasswordReset.html"><button class="changePW">Change Password</button></a>
+                <a href="deleteStudentAccount.html"><button class="delete">Delete Profile</button></a>
+            </div>
+        </form>
+            
+        </section>
+        <section class="exam-history">
+            <h2>Exam History</h2>
+            <ul>
+                <li><a href"">Exam 1</li>
+                <li><a href"">Exam 2</li>
+                <li><a href"">Exam 3</li>
+                <li><a href"">Exam 4</li>
+                <li><a href"">Exam 5</li>
+
+            </ul>
+
+        </section>
+        
+
+
+        </main>
+        
+
+    </body>
+    </html>

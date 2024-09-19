@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examiner's Home Page</title>
+    <link rel="stylesheet" href="examinerHome.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h1>ExamCore</h1>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Exams</a></li>
+          <li><a href="">Results</a></li>
+          <li>
+            <a
+              href="http://localhost/quizcore/src/components/ExaminerPages/examinerNotification.php"
+              >Notifications</a
+            >
+          </li>
+        </ul>
+        <button class="profile-btn">Examiner Profile</button>
+      </aside>
+
+      <!-- Main content -->
+      <main class="main-content">
+        <div class="image-placeholder">
+          <img src="../../Images/examinerUp.jpg" />
+        </div>
+        <!-- Flex container for exam info, history, and quote -->
+        <div class="content-area">
+          <div class="exam-section">
+            <!-- Ongoing Exam Section -->
+            <section class="exam-info">
+              <h3>Ongoing Exam</h3>
+              <div class="exam-details">
+                <p>Total Students</p>
+                <p>Exam Duration</p>
+                <p>Subject</p>
+              </div>
+            </section>
+
+            <!-- Exam History Section -->
+            <section class="exam-history">
+              <h3>Exam History</h3>
+              <ul>
+                <li>Completed Exam</li>
+                <li>Completed Exam</li>
+              </ul>
+            </section>
+          </div>
+
+          <!-- Quote Section -->
+          <div class="quote-section">
+            <img
+              src="../../Images/teacher-ex1.png"
+              alt="Inspirational Quote Image"
+            />
+            <p class="quote">
+              "Ensuring Integrity, Fostering Growth, Empowering Success."
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Copyright © 2024 Website. All rights reserved.</p>
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Privacy Policy</a>
+    </footer>
+  </body>
+</html>
