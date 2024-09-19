@@ -1,0 +1,120 @@
+.admin-page-container .navbar ul li #admin-exam-nav-Btn01{
+    background-color: #591C76;
+    color: #ffffff;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-left: 10px;
+    padding: 8px;
+    width: 120px;
+    border-radius: 15px;
+    border-width: 1px;
+}
+.admin-page-container .navbar ul li #admin-exam-nav-Btn01:hover{
+    color: #ffbcfd;
+}
+.admin-page-container .navbar ul li #admin-exam-nav-Btn{
+    background-color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-left: 10px;
+    padding: 8px;
+    width: 120px;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: 2px 2px 0px;  
+}
+.admin-page-container .navbar ul li #admin-exam-nav-Btn:hover{
+    background-color: #fc33f5;
+}
+.admin-page-container .admin-exam-content #admin-add-an-exam-Btn {
+    background-color: #761C73;
+    color: #ffffff;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 50px;
+    margin-top: 70px;
+    margin-left: 1000px;
+    padding: 8px;
+    width: 150px;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.479);
+}
+
+.admin-page-container .admin-exam-content #admin-add-an-exam-Btn:hover {
+    background-color: #c027bb;
+}
+.admin-exam-information{
+    display: flex;
+    margin-top: 150px;
+    margin-left: 250px;
+    margin-bottom: 0px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: #761C73;
+    width: 950px;
+    height: 80px;
+    
+}
+.admin-page-container .admin-exam-content .admin-exam-information p{
+    color: #cf0bc9;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+.admin-page-container .admin-exam-content .admin-exam-information .admin-get-exam-data{
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-page-container .admin-exam-content .admin-exam-emojies{
+    display: flex;
+    margin-left: 60px;
+    position: sticky;
+}
+
+.admin-page-container .admin-exam-content .admin-exam-emojies img{ 
+    padding: 18px;
+    width: 63px;
+}
+.admin-page-container .admin-exam-content .admin-exam-emojies img:hover{
+    transform: scale(1.2);
+}
+.admin-page-container .admin-exam-content .admin-exam-information .admin-add-exam-name{
+    margin-left: 10px;
+    margin-right: 3px;
+}
+.admin-page-container .admin-exam-content .admin-exam-information .admin-assigned-examiner{
+    margin-left: 10px;
+    margin-right: 3px;
+}
+.admin-page-container .admin-exam-content .admin-exam-information .admin-exam-deadline{
+    margin-left: 10px;
+    margin-right: 3px;
+}
+.admin-page-container .admin-exam-content .admin-exam-information .admin-exam-password{
+    margin-left: 0px;
+    margin-right: 3px;
+}
+
+.admin-page-footer{
+    background-color: #761C73;
+    text-align: center;
+    width: 100%;
+    margin-top: 35%;
+    height: 35px;
+    position: fixed;
+}
