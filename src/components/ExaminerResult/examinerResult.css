@@ -73,7 +73,8 @@ body {
     position: absolute;
     left:0;
     bottom:-6px;
-    transition: 0.6s;
+    transition: 0.8s;
+    border-radius: 3px;
 
 }
 .sidebar ul li a:hover::after{
@@ -105,7 +106,7 @@ body {
     height: 100px;
     background-color: #761c73;
     margin-bottom: 20px;
-    margin-top: -20px;
+    margin-top: -5px;
     display: flex;
     justify-content: center;
     align-items:center;
