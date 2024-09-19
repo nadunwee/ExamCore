@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExamCore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .vertical-nav {
+            width: 200px;
+            background-color: #711472;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .vertical-nav.open {
+            transform: translateX(200px); /* Slide out when open */
+        }
+
+        .vertical-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vertical-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .vertical-nav ul li a {
+            text-decoration: none;
+            color: #e6eef0;
+            font-size: 16px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .vertical-nav ul li a:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .notification {
+            position: relative;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .notification:hover {
+            transform: scale(1.05); /* Enlarge slightly on hover */
+        }
+
+        .notification-popup {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .notification:hover .notification-popup {
+            display: block; /* Show popup on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="vertical-nav">
+            <h2>ExamCore</h2>
+            <ul>
+                <li><a href="#">Exams</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Notifications</a></li>
+            </ul>
+        </div>
+        <main class="content">
+            <div class="content">
+                <h2>Notifications</h2>
+                <div class="notification">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    
+                </div>
+                </div>
+        </main>
+    </div>
+    <footer>
+        Copyright © 2024 Website All rights reserved | Terms & Conditions | Privacy Policy
+    </footer>
+</body>
+</html>

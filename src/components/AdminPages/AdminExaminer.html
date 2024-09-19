@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExamCore</title>
+  <link rel="stylesheet" href="ExamCore\src\styles\adminExaminer.css">
+</head>
+<body >
+  <h1>ExamCore</h1>
+  <div class="container">
+    
+    <nav class="vertical-nav">
+      <ul>
+        <li><a href="#">Exams</a></li>
+        <li><a href="#">Examiners</a></li>
+        <li><a href="#">Notifications</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Examiner Name</th>
+            <th>Assigned Exam</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Examiner 1</td>
+            <td>Exam A</td>
+            <td><button class="delete-btn">delete</button></td>
+          </tr>
+          <tr>
+            <td>Examiner 2</td>
+            <td>Exam B</td>
+            <td><button class="delete-btn">delete</button></td>
+          </tr>
+        </tbody>
+      </table><br>
+
+      <div>
+        <button class="add-examiner-btn">Add Examiner</button>
+      </div>
+
+      <div class="modal" id="addExaminerModal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add an Examiner</h2>
+          <form>
+            <label for="examinerName">Examiner Name:</label>
+            <input type="text" id="examinerName" name="examinerName"><br><br>
+
+            <label for="assignTo">Assign to:</label>
+            <select id="assignTo" name="assignTo">
+              <option value="select">Select</option>
+              <option value="Exam A">Exam A</option>
+              <option value="Exam B">Exam B</option>
+              <option value="Exam C">Exam C</option>
+              <option value="Exam D">Exam D</option>
+              <option value="Exam E">Exam E</option>
+            </select><br><br>
+
+            <button type="button" class="edit-btn">Edit</button>
+            <button type="button" class="add-btn">Add</button>
+          </form>
+        </div>
+        <div class="modal" id="editExaminerModal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Examiner</h2>
+            <form>
+              <label for="examinerName">Examiner Name:</label>
+              <input type="text" id="editExaminerName" name="examinerName"><br><br>
+        
+              <label for="assignTo">Assign to:</label>
+              <select id="editAssignTo" name="assignTo">
+                </select><br><br>
+        
+              <button type="button" class="save-btn">Save</button>
+              <button type="button" class="cancel-btn">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    
+  </div>
+  <footer>
+    Copyright © 2024 Website All rights reserved | Terms & Conditions | Privacy Policy
+  </footer>
+  <script src="ExamCore\src\components\AdminPages\adminExaminer.js"></script>
+</body>
+</html>
