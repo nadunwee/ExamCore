@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamCore</title>
+    <link rel="stylesheet" href="studentExamWithOTP.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>ExamCore</h2>
+            <ul>
+                <li><a href="#">Exams</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Notifications</a></li>
+            </ul>
+        </div>
+        <main class="content">
+            <div class="header">
+                <h2>Available Exams</h2>
+                <div>
+                    <input type="text" placeholder="Search Exam">
+                    <button>Search</button>
+                </div>
+            </div>
+            <ul class="exam-list" id="available-exams">
+                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 1"> Exam 1</li>
+                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 2"> Exam 2</li>
+            </ul>
+            <h2>Completed Exams</h2>
+            <ul class="exam-list">
+                <li><input type="checkbox" checked> Completed Exam 1</li>
+                <li><input type="checkbox" checked> Completed Exam 2</li>
+            </ul>
+            <h2>Your Progress</h2>
+            <div class="progress-bar">
+                <div class="fill"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- OTP Popup -->
+    <div id="otp-overlay"></div>
+    <div id="otp-popup">
+        <h3 id="popup-title">Enter OTP </h3>
+        <input type="text" id="otp-input" placeholder="OTP">
+        <label><input type="checkbox" id="terms-checkbox"> I accept the terms and conditions</label>
+        <button id="submit-button">Submit</button>
+        <div id="error-message"></div>
+    </div>
+
+    <footer>
+        Copyright © 2024 Website All rights reserved | Terms & Conditions | Privacy Policy
+    </footer>
+
+    <script src="studentExamPageWithOTP.js"></script>
+</body>
+</html>
