@@ -1,0 +1,105 @@
+*{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex; /* This enables a flexbox layout, making it easy to position elements side by side */
+    justify-content: space-between; /* Adds space between the two sections */
+    align-items: flex-start;/* Aligns both sections at the top */
+    padding: 20px; /* Adds padding around the container for spacing */
+}
+
+.contact-details {
+    flex: 1; /* Allows this section to take up 1 portion of the available space */
+    padding: 5px; /* Adds some internal spacing to make it look neat */
+    
+}
+.contact-details p{
+    background-color:#c79bc7;
+    width: 70%;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.contact-form {
+    flex: 1; /* Allows this section to take up 1 portion of the available space */
+    padding: 20px; /* Adds some internal spacing */
+    box-shadow: 0 0 10px  #761c73; /* Adds a slight shadow for better distinction */
+    border-radius: 5px; /* Rounds the corners for a smoother look */
+}
+.contact-form h2{
+    color: #761c73;
+    font-size: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Stacks form elements vertically */
+    gap: 10px; /* Adds some space between form elements */
+}
+
+
+.contact-form:hover {
+    transform: translateY(-10px); /* Moves the box slightly upwards */
+    box-shadow: 0 8px 16px #761c73; /* Darker and larger shadow on hover */
+}
+
+
+input, textarea {
+    width: 80%; /* Ensures the input fields take up full width of their container */
+    padding: 10px; /* Adds padding inside the fields */
+    border: 1px solid #ccc; /* Light border around the fields */
+    border-radius: 4px; /* Rounds the edges slightly */
+    font-size: 16px; /* Ensures the text inside is readable */
+    background-color: #fffdfd;
+}
+input, text{
+    background-color: #fffdfd;
+}
+
+.button-sub{
+    background-color: #761c73;
+    color: white;
+    width: 50%;
+    border-radius: 5px;
+    align-content: center;
+}
+
+h1{
+    color: #761c73;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    
+}
+
+.contact-details h2{
+    color:#761c73;
+    font-size: 30px;
+}
+footer{
+    text-align: center;
+    position: relative;
+    background-color: #761c73;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+
+
+
