@@ -167,6 +167,9 @@ footer {
     padding: 10px;
     background-color: #761c73;
     color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 footer a {
