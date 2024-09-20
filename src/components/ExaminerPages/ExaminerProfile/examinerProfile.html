@@ -3,37 +3,40 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../../styles/studentProfile.css">
-        <title>The Student's Profile</title>
+        <link rel="stylesheet" href="./examinerProfile.css">
+        <title>The Examiner's Profile</title>
+        <script  src="examinerProfile.js" defer></script>
     </head>
     <body>
         <nav>
             <h1>ExamCore</h1>
-            
+
                 <ul>
                     <li><a href"">Exam</a></li>
-                    <li><a href"">Support</a></li>
+                    <li><a href"">Results</a></li>
                     <li><a href"">Notification</a></li>
-                    <li><a href"" class="active">Student Profile</a></li>
+                    <li><a href"" class="active">Examiner Profile</a></li>
                 </ul>
             
         </nav>
         <main>
            
-            <section class="student-profile">
-                <h2>Hello Student</h2>
+            <section class="examiner-profile">
+                <h2>Hello Examiner</h2>
 
-                <div class="student-profile-pic">
-                    <img src="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\Images\profile.png" alt="Student Profile Picture" class="student-profile-picture">
+                <div class="examiner-profile-pic">
+                    <img src="../../../Images/profile.png" alt="Examiner Profile Picture" class="examiner-profile-picture">
                 </div>
 
             
-            <!--for and id should be adjusted according to login page-->
+            <!--for and id and name should be adjusted according to login page-->
             <form>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name">
-                <label for="DOB">DOB</label>
-                <input type="date" id="DOB" name="DOB">
+                <label for="sub">Subject</label>
+                <input type="text" id="sub" name="sub">
+                <label for="no">Contact No</label>
+                <input type="number" id="no" name="no">
                 <label for="Email">Email</label>
                 <input type="email" id="email" name="email">
                 <label for="StID">Student ID</label>
@@ -41,11 +44,15 @@
                 <label for="Password">Password</label>
                 <input type="password" id="password" name="password">
             
+            
+        
+            <!--Implementation using js-->
             <div class="button">
-                <a href="editStudentProfile.html"><button class="editButton">Edit</button></a>
-                <a href="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\components\ProfilePages\studentPasswordReset.html"><button class="changePW">Change Password</button></a>
-                <a href="deleteStudentAccount.html"><button class="delete">Delete Profile</button></a>
+                <button type="button" class="edit">Edit</button>
+                <button type="button" class="changePW">Change Password</button>
+                <button type="button" class="delete">Delete Profile</button>
             </div>
+
         </form>
             
         </section>
@@ -61,6 +68,17 @@
             </ul>
 
         </section>
+
+        <!-- Footer -->
+    <footer>
+        <center>
+            <p>Copyright © 2024 Website. All rights reserved.</p>
+            <a href="#">Terms & Conditions</a> |
+            <a href="#">Privacy Policy</a>
+
+        </center>
+        
+      </footer>
         
 
 

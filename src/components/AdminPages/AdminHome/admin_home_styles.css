@@ -1,0 +1,140 @@
+.admin-page-container .navbar ul li #admin-nav-Btn {
+    background-color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-left: 10px;
+    padding: 8px;
+    width: 120px;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: 2px 2px 0px;
+}
+
+.admin-page-container .navbar ul li #admin-nav-Btn:hover {
+    background-color: #fc33f5;
+}
+
+.admin-page-container .admin-home-content {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+.admin-page-container .admin-home-content .admin-home-header {
+    text-align: center;
+    padding: 19px;
+    margin-left: 200px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    color: #761C73;
+}
+
+.admin-page-container .admin-home-content .admin-home-components {
+    text-align: center;
+    padding: 50px;
+    margin-left: 180px;
+    margin-right: 0px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    font-family: Poppins, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin-page-container .admin-home-content .admin-home-components .admin-home-component {
+    padding: 30px;
+    justify-content: space-around;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 8px;
+    border-color: #761C73;
+    width: 300px;
+    height: 200px;
+    margin-top: 0%;
+    margin-left: 25px;
+    margin-bottom: 20px;
+
+}
+
+.admin-page-container .admin-home-content .admin-home-components .admin-home-component p {
+    padding: 20px;
+    margin-bottom: 5px;
+}
+
+.admin-page-container .admin-home-content .admin-home-components .admin-home-component span {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+#selector {
+    font-family: Poppins, sans-serif;
+    color: #ffffff;
+    background-color: #591C76;
+    font-size: 20px;
+    font-weight: 500;
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 200px;
+    padding: 8px;
+}
+
+#selector:hover {
+    background-color: #8531ac;
+}
+
+#menuOption {
+    color: #ffffff;
+    background-color: #320347;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.admin-page-container .admin-home-content .subjectMenu {
+    margin-left: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    padding-left: 80px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+
+.admin-page-container .admin-home-content .rates {
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: 200px;
+
+}
+
+.admin-page-container .admin-home-content .rate {
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 8px;
+    border-color: #761C73;
+    width: 100px;
+    padding: 10px;
+
+
+}
+
+.admin-page-container .admin-home-content .passRate {
+    padding: 20px;
+}
+
+.admin-page-container .admin-home-content .failRate {
+    padding: 20px;
+    margin-bottom: 0px;
+}

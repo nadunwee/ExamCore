@@ -23,15 +23,15 @@ nav{
    
 }
 nav h1{
-    color: #761c73;
+    color:#761c73 ;
 }
 nav ul{
     list-style-type: none;
     padding:0;
 }
 li a.active{
-background-color: #761c73;
-color:white;
+background-color: white;
+color:black;
 
 }
 nav ul li{

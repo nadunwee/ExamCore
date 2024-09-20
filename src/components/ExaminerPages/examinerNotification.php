@@ -1,3 +1,41 @@
+<?php
+  session_start();
+
+  // Check if from data was posted
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get form Data 
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    // DB connection
+    $conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+    // Check the connection
+    if ($conn->connect_error) {
+      die('Connection failed : ' .$conn->connect_error);
+    }
+
+    // Prepare the sql statement
+    $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+    $query->bind_param("sss", $name, $email, $message);
+
+    // Execute the statement
+    if ($query->execute()) {
+      $_SESSION["message"] = "Notification added";
+      header('Location: examinerNotification.php');
+    } else {
+      $_SESSION['message'] = "Error: " . $query->error;
+    }
+
+    // Close statement and connection
+    $query->close();
+    $conn->close();
+    exit();
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,13 +79,13 @@
 
       <div class="notification-content">
         <h1>Send Notification</h1>
-        <form action="#" method="post">
+        <form action="http://localhost/quizcore/src/components/ExaminerPages/examinerNotification.php" method="POST">
           <label for="name">Name</label>
           <input type="text" name="name">
           <label for="email">Email</label>
           <input type="text" name="email">
           <label for="message" >Message</label>
-          <textarea placeholder="Type Your Message Here..."></textarea>
+          <textarea placeholder="Type Your Message Here..." name="message"></textarea>
           <input type="submit" value="Send" class="send-notification-btn">
         </form>
       </div>
