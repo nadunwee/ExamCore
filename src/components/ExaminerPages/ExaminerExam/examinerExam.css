@@ -86,6 +86,92 @@ body {
     width: 75%;
     padding: 20px;
 }
+.crud-form {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #761c73;
+    background-color: #f9f9f9;
+}
+
+.crud-form label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #761c73;
+}
+
+.crud-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.crud-buttons {
+    margin-top: 10px;
+}
+
+.crud-buttons button {
+    padding: 10px 15px;
+    background-color: #761c73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.crud-buttons button:hover {
+    background-color: #9e2a72;
+}
+
+.questions-list {
+    margin-top: 20px;
+}
+
+.questions-list h2 {
+    color: #761c73;
+}
+
+#question-list {
+    list-style: none;
+    padding: 0;
+}
+
+#question-list li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+/* Style for edit and delete buttons */
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px;
+}
+
+.edit-btn {
+    background-color: #761c73; 
+}
+
+.edit-btn:hover {
+    background-color: #e67300;
+    color:  #761c73;
+}
+
+.delete-btn {
+    background-color: #761c73; 
+}
+
+.delete-btn:hover {
+    background-color:#e67300;
+    color:  #761c73;
+}
+
 
 
 
@@ -95,7 +181,7 @@ footer {
     padding: 10px;
     background-color: #761c73;
     color: white;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
