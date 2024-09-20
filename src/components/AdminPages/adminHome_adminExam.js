@@ -1,3 +1,4 @@
+//admin addd exam pop up functionalities
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('admin-add-an-exam-Btn').addEventListener('click', function () {
         console.log('Add exam button clicked');
@@ -30,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
+//admin exam infomation bar
 function addExam(examName, examinerName, deadline, password) {
 
     var examName = document.getElementById('popup-exam-name').value;
@@ -64,10 +67,10 @@ function addExam(examName, examinerName, deadline, password) {
         </div>
         <span class="admin-exam-emojies">
             <div class="admin-exam-edit">
-                <a href="#"><img src="images/editIcon.png" alt="edit"></a>
+                <a href="#"><img src="../../../Images/editIcon.png" alt="edit"></a>
             </div>
             <div class="admin-exam-delete">
-                <img src="images/deleteIcon.png" alt="delete">
+                <img src="../../../Images/deleteIcon.png" alt="delete">
             </div>
         </span>
     `;

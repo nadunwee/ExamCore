@@ -28,3 +28,13 @@ CREATE TABLE `notification` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`notification_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `admin` (
+  `admin_id` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO admin (admin_id, name, password)
+VALUES ("AD236034", "john Doe", "john123");
