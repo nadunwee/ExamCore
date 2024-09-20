@@ -1,110 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-
-        .sidebar {
-            width: 200px;
-            background-color: #711472;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar.open {
-            transform: translateX(200px);
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #e6eef0;
-            font-size: 16px;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #ddd;
-        }
-
-        .content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .header input[type="text"] {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            width: 200px;
-        }
-
-        .header button {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .exam-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .exam-list li {
-            margin-bottom: 10px;
-        }
-
-        .exam-list li input[type="checkbox"] {
-            margin-right: 5px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        .progress-bar .fill {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 50%; /* Adjust the width based on progress */
-        }
-    </style>
+    <link rel="stylesheet" href="studentExamWithOTP.css">
 </head>
 <body>
     <div class="container">
@@ -124,9 +24,9 @@
                     <button>Search</button>
                 </div>
             </div>
-            <ul class="exam-list">
-                <li><input type="checkbox"> Exam 1</li>
-                <li><input type="checkbox"> Exam 2</li>
+            <ul class="exam-list" id="available-exams">
+                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 1"> Exam 1</li>
+                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 2"> Exam 2</li>
             </ul>
             <h2>Completed Exams</h2>
             <ul class="exam-list">
@@ -139,8 +39,21 @@
             </div>
         </main>
     </div>
+
+    <!-- OTP Popup -->
+    <div id="otp-overlay"></div>
+    <div id="otp-popup">
+        <h3 id="popup-title">Enter OTP </h3>
+        <input type="text" id="otp-input" placeholder="OTP">
+        <label><input type="checkbox" id="terms-checkbox"> I accept the terms and conditions</label>
+        <button id="submit-button">Submit</button>
+        <div id="error-message"></div>
+    </div>
+
     <footer>
         Copyright © 2024 Website All rights reserved | Terms & Conditions | Privacy Policy
     </footer>
+
+    <script src="studentExamPageWithOTP.js"></script>
 </body>
 </html>
