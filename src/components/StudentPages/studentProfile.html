@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../../styles/studentProfile.css">
         <title>The Student's Profile</title>
+        <script  src="studentProfile.js" defer></script>
     </head>
     <body>
         <nav>
@@ -24,7 +25,7 @@
                 <h2>Hello Student</h2>
 
                 <div class="student-profile-pic">
-                    <img src="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\Images\profile.png" alt="Student Profile Picture" class="student-profile-picture">
+                    <img src="../../Images/profile.png" alt="Student Profile Picture" class="student-profile-picture">
                 </div>
 
             
@@ -41,10 +42,11 @@
                 <label for="Password">Password</label>
                 <input type="password" id="password" name="password">
             
+            <!--Implementation using js-->
             <div class="button">
-                <a href="editStudentProfile.html"><button class="editButton">Edit</button></a>
-                <a href="C:\Users\asusb\OneDrive\Documents\Github\ExamCore\src\components\ProfilePages\studentPasswordReset.html"><button class="changePW">Change Password</button></a>
-                <a href="deleteStudentAccount.html"><button class="delete">Delete Profile</button></a>
+                <button type="button" class="edit">Edit</button>
+                <button type="button" class="changePW">Change Password</button>
+                <button type="button" class="delete">Delete Profile</button>
             </div>
         </form>
             
