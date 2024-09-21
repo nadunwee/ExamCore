@@ -13,10 +13,10 @@
         <aside class="sidebar">
           <h1>ExamCore</h1>
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="../examinerHome.html">Home</a></li>
             <li><a href="#">Exams</a></li>
-            <li><a href="#">Results</a></li>
-            <li><a href="#">Notifications</a></li>
+            <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
+            <li><a href="../examinerNotification.php">Notifications</a></li>
           </ul>
           <button class="profile-btn">Examiner Profile</button>
         </aside>
@@ -27,22 +27,28 @@
           <div class="crud-form">
             <h2>Add/Edit Question</h2>
             <label for="question">Question:</label>
-            <input type="text" id="question" placeholder="Type the question here" />
+            <input
+              type="text"
+              id="question"
+              placeholder="Type the question here"
+            />
 
             <label for="answer1">Answer 1:</label>
             <input type="text" id="answer1" placeholder="Type answer 1 here" />
-            
+
             <label for="answer2">Answer 2:</label>
             <input type="text" id="answer2" placeholder="Type answer 2 here" />
-            
+
             <label for="answer3">Answer 3:</label>
             <input type="text" id="answer3" placeholder="Type answer 3 here" />
-            
+
             <label for="answer4">Answer 4:</label>
             <input type="text" id="answer4" placeholder="Type answer 4 here" />
 
             <!-- Add button to trigger saveQuestion -->
-            <button class ="save-btn" onclick="saveQuestion()">Save Question</button>
+            <button class="save-btn" onclick="saveQuestion()">
+              Save Question
+            </button>
           </div>
 
           <!-- Questions List -->

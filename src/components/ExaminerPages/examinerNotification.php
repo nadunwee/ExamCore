@@ -49,21 +49,21 @@
   <div class="notification-container">
     <div class="app-navigation">
       <div class="app-logo">
-        <a href="./examinerHome.html">ExamCore</a>
+        <a href="../../../homePage.html">ExamCore</a>
       </div>
       <nav class="vertical-nav" class="navbar">
         <ul>
           <li class="nav-item">
             <i class='bx bxs-home'></i>
-            <a href="#">Home</a>
+            <a href="./examinerHome.html">Home</a>
           </li>
           <li class="nav-item">
             <i class='bx bxs-book' ></i>
-            <a href="#">Exams</a>
+            <a href="./ExaminerExam/examinerExam.html">Exams</a>
           </li>
           <li class="nav-item">
             <i class='bx bx-command'></i>
-            <a href="#">Results</a>
+            <a href="./ExaminerResult/examierResult.html">Results</a>
           </li>
           <li class="nav-item">
             <i class='bx bxs-bell-ring' ></i>
