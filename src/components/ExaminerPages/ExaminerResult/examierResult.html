@@ -4,41 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Examiner's result Page</title>
-    <link rel="stylesheet" href="examinerResult.css" />
+    <link rel="stylesheet" href="./examinerResult.css" />
   </head>
   <body>
-
     <div class="wrapper">
-    <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h1>ExamCore</h1>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Exams</a></li>
-          <li><a href="#">Results</a></li>
-          <li><a href="#">Notifications</a></li>
-        </ul>
-        <button class="profile-btn">Examiner Profile</button>
-      </aside>
+      <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <h1>ExamCore</h1>
+          <ul>
+            <li><a href="../examinerHome.html">Home</a></li>
+            <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
+            <li><a href="#">Results</a></li>
+            <li><a href="../examinerNotification.php">Notifications</a></li>
+          </ul>
+          <button class="profile-btn">Examiner Profile</button>
+        </aside>
 
-      <!-- Main content -->
-      <main class="main-content">
-        <div class="name-placeholder">
-          <h2>HELLO EXAMINER !</h2>
-        </div>
-        <!-- total student parts -->
-        <div class="content-area">
-          <div class="exam-result">
-            
+        <!-- Main content -->
+        <main class="main-content">
+          <div class="name-placeholder">
+            <h2>HELLO EXAMINER !</h2>
+          </div>
+          <!-- total student parts -->
+          <div class="content-area">
+            <div class="exam-result">
+              <section class="exam-res">
+                <div class="exam-res1">
+                  <p>Total Students</p>
+                </div>
+              </section>
 
-            <section class="exam-res">
-              <div class="exam-res1">
-                <p>Total Students</p>
-              </div>
-            </section>
-
-            <section class="exam-res">
+              <section class="exam-res">
                 <div class="exam-res1">
                   <p>Total Students</p>
                 </div>
@@ -55,27 +52,24 @@
                   <p>Total Students</p>
                 </div>
               </section>
+            </div>
 
+            <div class="quote-section">
+              <img
+                src="../../Images/exam-results.png"
+                alt="Inspirational Quote Image"
+              />
+            </div>
           </div>
+        </main>
+      </div>
 
-          <div class="quote-section">
-            <img
-              src="../../Images/exam-results.png"
-              alt="Inspirational Quote Image"
-            />
-            
-          </div>
-
-        </div>
-      </main>
+      <!-- Footer -->
+      <footer>
+        <p>Copyright © 2024 Website. All rights reserved.</p>
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a>
+      </footer>
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <p>Copyright © 2024 Website. All rights reserved.</p>
-      <a href="#">Terms & Conditions</a> |
-      <a href="#">Privacy Policy</a>
-    </footer>
-  </div>
   </body>
 </html>

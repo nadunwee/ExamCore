@@ -30,7 +30,7 @@
           // Check if the user exists (i.e., at least one row was returned)
           if ($result->num_rows > 0) {
               $_SESSION['message'] = 'Student login successful!';
-              header('Location: ../StudentPages/StudentHome.html'); // Redirect only if credentials are found
+              header('Location: ../StudentPages/StudentHome/StudentHome.html'); // Redirect only if credentials are found
               exit();
           } else {
               // No matching record found
