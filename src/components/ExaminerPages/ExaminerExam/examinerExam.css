@@ -89,7 +89,7 @@ body {
 .crud-form {
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #761c73;
+    border: 2px solid #761c73;
     background-color: #f9f9f9;
 }
 
@@ -108,22 +108,7 @@ body {
     border-radius: 4px;
 }
 
-.crud-buttons {
-    margin-top: 10px;
-}
 
-.crud-buttons button {
-    padding: 10px 15px;
-    background-color: #761c73;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.crud-buttons button:hover {
-    background-color: #9e2a72;
-}
 
 .questions-list {
     margin-top: 20px;
@@ -155,7 +140,7 @@ body {
 }
 
 .edit-btn {
-    background-color: #761c73; 
+    background-color: #761c73;
 }
 
 .edit-btn:hover {
@@ -164,24 +149,32 @@ body {
 }
 
 .delete-btn {
-    background-color: #761c73; 
+    background-color: #761c73;
 }
 
 .delete-btn:hover {
-    background-color:#e67300;
+    background-color: #e67300;
     color:  #761c73;
 }
 
+#editing-index {
+    display: none;
+}
 
-
-
+.save-btn{
+    background-color: #761c73;
+    color: white;
+    width: 60%;
+    padding: 4px;
+    border-radius: 5px;
+}
 footer {
     text-align: center;
     margin-top: 10px;
     padding: 10px;
     background-color: #761c73;
     color: white;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
