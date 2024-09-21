@@ -12,8 +12,8 @@
     
     <nav class="vertical-nav">
       <ul>
-        <li><a href="#">Exams</a></li>
-        <li><a href="#">Examiners</a></li>
+        <li><a href="../AdminExams/adminExam.html">Exams</a></li>
+        <li><a href="../AdminExaminers/AdminExaminer.html">Examiners</a></li>
         <li><a href="#">Notifications</a></li>
       </ul>
     </nav>
@@ -62,27 +62,31 @@
               <option value="Exam D">Exam D</option>
               <option value="Exam E">Exam E</option>
             </select><br><br>
-
-            <button type="button" class="edit-btn">Edit</button>
             <button type="button" class="add-btn">Add</button>
           </form>
         </div>
-        <div class="modal" id="editExaminerModal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Edit Examiner</h2>
-            <form>
-              <label for="examinerName">Examiner Name:</label>
-              <input type="text" id="editExaminerName" name="examinerName"><br><br>
-        
-              <label for="assignTo">Assign to:</label>
-              <select id="editAssignTo" name="assignTo">
-                </select><br><br>
-        
-              <button type="button" class="save-btn">Save</button>
-              <button type="button" class="cancel-btn">Cancel</button>
-            </form>
-          </div>
+      </div>
+      <div class="modal" id="editExaminerModal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Edit Examiner</h2>
+          <form>
+            <label for="examinerName">Examiner Name:</label>
+            <input type="text" id="editExaminerName" name="examinerName"><br><br>
+      
+            <label for="assignTo">Assign to:</label>
+            <select id="editAssignTo" name="assignTo">
+            <option value="select">Select</option>
+            <option value="Exam A">Exam A</option>
+            <option value="Exam B">Exam B</option>
+            <option value="Exam C">Exam C</option>
+            <option value="Exam D">Exam D</option>
+            <option value="Exam E">Exam E</option>
+              </select><br><br>
+      
+            <button type="button" class="save-btn">Save</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+          </form>
         </div>
       </div>
     </main>
@@ -92,6 +96,6 @@
   <footer>
     Copyright © 2024 Website All rights reserved | Terms & Conditions | Privacy Policy
   </footer>
-  <script src="ExamCore\src\components\AdminPages\adminExaminer.js"></script>
+  <script src="adminExaminer.js"></script>
 </body>
 </html>
