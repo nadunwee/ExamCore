@@ -41,13 +41,8 @@
             <label for="answer4">Answer 4:</label>
             <input type="text" id="answer4" placeholder="Type answer 4 here" />
 
-            <!-- Hidden input to store the index of the question being edited -->
-            <input type="hidden" id="question-index" />
-
-            <div class="crud-buttons">
-              <button onclick="addQuestion()">Add Question</button>
-              <button onclick="updateQuestion()">Update Question</button>
-            </div>
+            <!-- Add button to trigger saveQuestion -->
+            <button class ="save-btn" onclick="saveQuestion()">Save Question</button>
           </div>
 
           <!-- Questions List -->
