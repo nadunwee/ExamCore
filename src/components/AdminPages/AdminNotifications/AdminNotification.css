@@ -1,0 +1,189 @@
+/*got some attributes from w3 school*/
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Poppins, sans-serif;
+    background-color:white;
+    margin: 0%;
+}
+.wrapper {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.Container {
+    flex:1;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    
+    
+}
+
+.sidebar {
+    width: 250px;
+    height:100%;
+    background-color:white;
+    padding: 15px;
+    border-right: 1px solid #761c73;
+    margin: 0%;
+   position: fixed;
+}
+
+.sidebar h1 {
+    margin-bottom: 30px;
+    font-size: 35px;
+    text-align: center;
+    color: #761c73;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    position: relative;
+}
+.sidebar ul li a::after{
+    content:'';
+    width:0%;
+    height: 4px;
+    background:#761c73;
+    position: absolute;
+    left:0;
+    bottom:-6px;
+    transition: 0.8s;
+    border-radius: 3px;
+
+}
+.sidebar ul li a:hover::after{
+    width:100%;
+}
+.profile-btn {
+    padding: 10px;
+    background-color: #571054;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid rgb(165, 77, 147);
+    border-radius: 10px;
+    width: 150px;
+    text-decoration: none;
+    margin-left: 25px;
+    margin-top: 150px;
+}
+.profile-btn a{
+    text-decoration: none;
+    font-family: Poppins,sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+.profile-btn:hover {
+    background-color: #9e2a72;
+}
+
+/* Additional CSS for Admin Notification Page */
+
+/* Style for the admin notification container */
+.admin-notification-container {
+    margin-left: 270px; /* Adjusted to avoid overlap with the fixed sidebar */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form */
+#admin-notification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 500px; /* Increased height */
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+#notification-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 150px;
+}
+
+#admin-notification-form button {
+    padding: 10px;
+    background-color: #761c73;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#admin-notification-form button:hover {
+    background-color: #9e2a72;
+}
+
+/* Style for the notifications list */
+#list-notifications {
+    list-style-type: none;
+    padding: 0;
+    
+}
+
+#list-notifications li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+button{
+    width:150px;
+    display: block;
+    margin: 0 auto;
+    background-color:#9e2a72; /* Blue */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
