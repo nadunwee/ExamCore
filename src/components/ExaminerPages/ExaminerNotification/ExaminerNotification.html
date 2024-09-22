@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ExaminerNotification.css">
+    <title>Examiner Notification</title>
+</head>
+<body>
+    <div class="wrapper"></div>
+        <div class="container">
+            
+                <aside class="sidebar">
+                    <h1>ExamCore</h1>
+                    <ul>
+                      <li><a href="../examinerHome.html">Home</a></li>
+                      <li><a href="#">Exams</a></li>
+                      <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
+                      <li><a href=" ">Notifications</a></li>
+                    </ul>
+                    <button class="profile-btn">Examiner Profile</button>
+                  </aside>
+                
+            
+        </div>
+    </div>
+    <div class="examiner-notification-container">
+        <h1>Admin Notifications</h1>
+        <form id="examiner-notification-form">
+
+		Name:<input type="text" id="name-input" placeholder="Enter name" required>
+		E-mail:<input type="email" id="email-input" placeholder="Enter email" required>
+		Message:<input type="text" id="notification-input" placeholder="Enter notification" required>
+	
+            <button type="submit">Add Notification</button>
+
+        </form>
+        <ul id="list-notifications">
+
+
+        </ul>
+
+    </div>
+    <script src="ExaminerNotification.js"></script>
+
+</body>
+</html>

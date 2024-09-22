@@ -1,3 +1,4 @@
+
 /*got some attributes from w3 school*/
 body {
     height: 100%;
@@ -82,11 +83,26 @@ body {
 .sidebar ul li a:hover::after{
     width:100%;
 }
+.profile-btn {
+    width: 80%;
+    padding: 10px;
+    background-color: #761c73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid rgb(165, 77, 147);
+    border-radius: 2px;
+}
+
+.profile-btn:hover {
+    background-color: #9e2a72;
+}
 
 /* Additional CSS for Admin Notification Page */
 
 /* Style for the admin notification container */
-.admin-notification-container {
+.examiner-notification-container {
     margin-left: 270px; /* Adjusted to avoid overlap with the fixed sidebar */
     padding: 20px;
     background-color: #f9f9f9;
@@ -96,7 +112,7 @@ body {
 }
 
 /* Style for the form */
-#admin-notification-form {
+#examiner-notification-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -120,7 +136,7 @@ body {
     height: 150px;
 }
 
-#admin-notification-form button {
+#examiner-notification-form button {
     padding: 10px;
     background-color: #761c73;
     color: white;
@@ -130,7 +146,7 @@ body {
     font-size: 16px;
 }
 
-#admin-notification-form button:hover {
+#examiner-notification-form button:hover {
     background-color: #9e2a72;
 }
 
