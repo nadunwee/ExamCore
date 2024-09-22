@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="admin_exam_styles.css">
     <link rel="stylesheet" type="text/css" href="admin_add_exam_popup_styles.css">
+    <link rel="stylesheet" type="text/css" href="admin_edit_exam_popup_styles.css">
     <link rel="stylesheet" type="text/css" href="../homeExamCommonStyles.css">
     <script src="../adminHome_adminExam.js"></script>
     <title>ExamCore</title>
@@ -53,7 +54,7 @@
                         <input type="date" class="popup-inputs-box" id="popup-exam-deadline" required><br>
                         <label for="Exam Password">Exam Password:</label><br>
                         <input type="text" class="popup-inputs-box" id="popup-exam-password" required><br>
-            
+
                         <div class="admin-add-exam-popup-button">
                             <button class="admin-add-exam-button" type="button" onclick="addExam()">Add</button>
                             <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
@@ -62,10 +63,33 @@
                 </div>
             </div>
 
+            <div class="admin-edit-exam-popup-background">
+                <div class="admin-edit-exam-popup" id="admin-edit-exam-popup">
+                    <div class="admin-edit-exam-popup-header">
+                        <p>Edit this exam</p>
+                    </div>
+                    <div class="admin-edit-exam-popup-body">
+                        <label for="Exam Name">Exam Name:</label><br>
+                        <input type="text" class="popup-inputs-box" id="popup-exam-name" required><br>
+                        <label for="Assign To">Assign To:</label><br>
+                        <input type="text" class="popup-inputs-box" id="popup-examiner-name" required><br>
+                        <label for="Exam Deadline">Exam Deadline:</label><br>
+                        <input type="date" class="popup-inputs-box" id="popup-exam-deadline" required><br>
+                        <label for="Exam Password">Exam Password:</label><br>
+                        <input type="text" class="popup-inputs-box" id="popup-exam-password" required><br>
+
+                        <div class="admin-edit-exam-popup-button">
+                            <button class="admin-edit-exam-button" type="button">Edit</button>
+                            <button class="admin-edit-exam-cancel-button" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer class="admin-page-footer">
-            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions | <a href="#">PrivacyPolicy</a></p>
+            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions | <a
+                        href="#">PrivacyPolicy</a></p>
         </footer>
     </div>
 
