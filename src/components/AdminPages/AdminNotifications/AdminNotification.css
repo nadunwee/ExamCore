@@ -82,28 +82,7 @@ body {
 .sidebar ul li a:hover::after{
     width:100%;
 }
-.profile-btn {
-    padding: 10px;
-    background-color: #571054;
-    color: white;
-    cursor: pointer;
-    text-align: center;
-    border: 2px solid rgb(165, 77, 147);
-    border-radius: 10px;
-    width: 150px;
-    text-decoration: none;
-    margin-left: 25px;
-    margin-top: 150px;
-}
-.profile-btn a{
-    text-decoration: none;
-    font-family: Poppins,sans-serif;
-    color: rgb(255, 255, 255);
-}
 
-.profile-btn:hover {
-    background-color: #9e2a72;
-}
 
 /* Additional CSS for Admin Notification Page */
 
