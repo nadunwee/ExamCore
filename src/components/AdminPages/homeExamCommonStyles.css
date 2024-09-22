@@ -5,9 +5,12 @@
 }
 body{
     overflow: auto;
-    margin-bottom: 0%;
+    margin: 0%;
+    padding: 0%;
+    
+
 }
-.admin-page-container .navbar{
+/* .admin-page-container .navbar{
     background-color: #761C73;
     position: fixed;
     width: 200px;
@@ -39,20 +42,27 @@ body{
 }
 .admin-page-container .navbar ul li{
     padding: 30px;
-}
-.admin-page-footer{
+} */
+
+.admin-page-footer {
     background-color: #761C73;
     text-align: center;
-    width: 100%;
+    width: 100vw;  
+    padding: 0;
     height: 35px;
-    position: sticky;
+    position: relative; 
+    bottom: 0;  
+    left: 0;
+    margin: 0;  
 }
-.admin-page-footer p{
+
+.admin-page-footer p {
     font-family: Poppins, sans-serif;
     font-size: 15px;
     color: #ffffff;
     text-align: center;
     padding-top: 5px;
+    margin: 0; 
 }
 .admin-page-footer p a{
     font-family: Poppins, sans-serif;

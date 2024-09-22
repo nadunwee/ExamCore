@@ -1,4 +1,4 @@
-.admin-page-container .navbar ul li #admin-nav-Btn {
+/* .admin-page-container .navbar ul li #admin-nav-Btn {
     background-color: white;
     font-family: Poppins, sans-serif;
     font-size: 16px;
@@ -10,14 +10,22 @@
     border-radius: 15px;
     border-width: 1px;
     box-shadow: 2px 2px 0px;
-}
+} 
 
 .admin-page-container .navbar ul li #admin-nav-Btn:hover {
     background-color: #fc33f5;
+} */
+.container{
+    margin: 0px;
 }
-
+.admin-page-container{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
 .admin-page-container .admin-home-content {
-    width: 100%;
+    /* width: 100%; */
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -36,8 +44,7 @@
 .admin-page-container .admin-home-content .admin-home-components {
     text-align: center;
     padding: 50px;
-    margin-left: 180px;
-    margin-right: 0px;
+    margin-left: 250px;
     margin-top: 50px;
     margin-bottom: 0px;
     font-family: Poppins, sans-serif;
@@ -83,7 +90,7 @@
     width: 200px;
     height: 50px;
     margin-top: 30px;
-    margin-left: 200px;
+    margin-left: 300px;
     padding: 8px;
 }
 
