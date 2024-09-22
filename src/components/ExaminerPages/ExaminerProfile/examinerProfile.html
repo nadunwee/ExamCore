@@ -26,11 +26,13 @@
 
                 <div class="examiner-profile-pic">
                     <img src="../../../Images/profile.png" alt="Examiner Profile Picture" class="examiner-profile-picture">
+                    
+                    
                 </div>
 
             
             <!--for and id and name should be adjusted according to login page-->
-            <form>
+            <form id="examinerForm">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name">
                 <label for="sub">Subject</label>
@@ -46,12 +48,17 @@
             
             
         
-            <!--Implementation using js-->
+        
             <div class="button">
-                <button type="button" class="edit">Edit</button>
-                <button type="button" class="changePW">Change Password</button>
-                <button type="button" class="delete">Delete Profile</button>
+                
+                    <button type="button" class="edit" onclick="editProfile()">Edit</button>
+                    <button type="button" class="changePW" onclick="changePassword()">Change Password</button>
+                    <button type="button" class="delete" onclick="deleteProfile()">Delete Profile</button>
+
             </div>
+            
+                    
+
 
         </form>
             

@@ -1,17 +1,28 @@
- // Get references to buttons
- const editButton = document.querySelector('.edit');
- const changePWButton = document.querySelector('.changePW');
- const deleteButton = document.querySelector('.delete');
+ // Function to edit profile
+ function editProfile() {
+    const form = document.getElementById('studentForm');
+    const formData = new FormData(form);
+    const profileData = {};
+    formData.forEach((value, key) => {
+        profileData[key] = value;
+    });
+    console.log('Profile data to be updated:', profileData);
+    // Logic to send data to the server or update local storage
+    alert('Profile updated successfully!');
+}
 
- // Add event listeners for button clicks
- editButton.addEventListener('click', function() {
-     window.location.href = 'editStudentProfile.html'; // Redirect to the edit profile page
- });
+// Function to change password
+function changePassword() {
+    window.location.href = 'studentPasswordReset.html';
+    
+}
 
- changePWButton.addEventListener('click', function() {
-     window.location.href = 'studentPasswordReset.html'; // Redirect to the password reset page
- });
-
- deleteButton.addEventListener('click', function() {
-     window.location.href = 'deleteStudentAccount.html'; // Redirect to the delete profile page
- });
+// Function to delete profile
+function deleteProfile() {
+    const confirmation = confirm('Are you sure you want to delete your profile?');
+    if (confirmation) {
+        console.log('Profile deleted');
+        // Logic to delete profile from the server or local storage
+        alert('Profile deleted successfully!');
+    }
+}
