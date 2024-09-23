@@ -44,16 +44,17 @@ body{
     padding: 30px;
 } */
 
-.admin-page-footer {
+/* .admin-page-footer {
     background-color: #761C73;
     text-align: center;
     width: 100vw;  
     padding: 0;
     height: 35px;
-    position: relative; 
+    position: sticky; 
+    margin-top: 45%;
     bottom: 0;  
     left: 0;
-    margin: 0;  
+      
 }
 
 .admin-page-footer p {
@@ -72,4 +73,4 @@ body{
 }
 .admin-page-footer p a:hover{
     color: #fc33f5;
-}
+} */
