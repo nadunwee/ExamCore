@@ -71,12 +71,3 @@ main {
   border: 1px solid #ccc;
 }
 
-
-footer {
-  position: fixed;
-  bottom:0;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  background-color: #f2f2f2;
-}
