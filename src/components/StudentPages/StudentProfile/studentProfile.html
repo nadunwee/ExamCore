@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../styles/commonNavbarStyles.css" />
+    <link rel="stylesheet" href="./studentProfile.css" />
+    <link rel="stylesheet" href="./studentProfileModel.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script defer src="./studentProfile.js"></script>
+    <title>ExamCore</title>
+  </head>
+
+  <body>
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-heading">
+          <h2>Edit Profile Details</h2>
+          <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
+        </div>
+        <form>
+          <label for="name">Name:</label><br />
+          <input type="text" name="name" value="Your Name" /><br /><br />
+          <label for="email">NIC:</label><br />
+          <input type="email" name="email" value="nadun" /><br /><br />
+          <label for="email">Email:</label><br />
+          <input type="email" name="email" value="nadun" /><br /><br />
+          <label for="email">DOB:</label><br />
+          <input type="email" name="email" value="nadun" /><br /><br />
+          <label for="address">Address:</label><br />
+          <input
+            type="text"
+            name="address"
+            value="90/4a uswatta, mahawila"
+          /><br /><br />
+          <label for="phone">Phone:</label><br />
+          <input type="text" name="phone" value="71 7439912" /><br /><br />
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="container">
+        <aside class="sidebar">
+          <h1>ExamCore</h1>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./ExaminerExam/examinerExam.html">Exams</a></li>
+            <li><a href="./ExaminerResult/examierResult.html">Results</a></li>
+            <li>
+              <a href="#">Notifications</a>
+            </li>
+          </ul>
+          <button class="profile-btn">
+            <a href="#">Student Profile</a>
+          </button>
+        </aside>
+      </div>
+    </div>
+
+    <div class="student-profile-details">
+      <div class="student-profile-img">
+        <i class="bx bx-user"></i>
+        <p class="student-name">Student Name</p>
+        <p>user since 2022</p>
+      </div>
+      <div class="student-profile-description">
+        <div class="student-profile-contact">
+          <div class="student-contact-info" onclick="onEditBtnClick()">
+            <p>contact information</p>
+            <i class="bx bx-edit"></i>
+          </div>
+          <div class="student-personal-details">
+            <div class="student-email student-personal-detail-items">
+              <p>Email:</p>
+              nadun
+            </div>
+            <div class="student-address student-personal-detail-items">
+              <p>address</p>
+              90/4a uswatta, mahawila
+            </div>
+            <div class="student-phoneno student-personal-detail-items">
+              <p>phoneno</p>
+              71 7439912
+            </div>
+            <div class="student-gender student-personal-detail-items">
+              <p>gender</p>
+              make
+            </div>
+            <div class="student-DOB student-personal-detail-items">
+              <p>DOB</p>
+              2003-19-20
+            </div>
+            <div class="delete-account">Delete Account</div>
+          </div>
+        </div>
+        <div class="student-exam-history-info">
+          <p>Exam History</p>
+          <div class="student-exam-history-item">Exam 1</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

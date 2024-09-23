@@ -1,0 +1,67 @@
+.student-profile-details {
+  background-color: red;
+  margin-top: 50px;
+  margin-left: 350px;
+  margin-right: 30px;
+}
+
+.student-profile-img {
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.student-profile-img i {
+  font-size: 130px;
+  background-color: red;
+  border-radius: 50%;
+  padding: 10px;
+  color: #761c73;
+}
+
+.student-profile-img p {
+  margin: 5px 0 0 0;
+}
+
+.student-name {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.student-profile-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 30px;
+}
+
+.student-profile-contact {
+  background-color: blueviolet;
+}
+
+.student-contact-info {
+  background-color: brown;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.student-contact-info i {
+  color: #761c73;
+  font-size: 20px;
+}
+
+.student-personal-detail-items {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.student-exam-history-info {
+  font-size: 20px;
+  background-color: blue;
+  padding: 0 30px 10px 20px;
+}
