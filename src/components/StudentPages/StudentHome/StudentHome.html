@@ -3,24 +3,37 @@
   <head>
     <title>ExamCore</title>
     <link rel="stylesheet" href="./studentHome.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/commonNavbarStyles.css">
   </head>
   <body>
-    <header>
-      <h1>ExamCore</h1>
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search" />
+    
+    
+    <div class="wrapper">
+      <div class="container">
+          <aside class="sidebar">
+              <h1>ExamCore</h1>
+              
+        
+              <ul>
+                <li><a href="StudentHome.html">Home</a></li>
+                  <li><a href="../studentExam.html">Exam</a></li>
+                  <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
+                  <li><a href="../StudentNotification.html">Notification</a></li>
+                                  </ul>
+              <button class="profile-btn">
+                  <a href="../studentProfile.html">Student Profile</a>
+              </button>
+          </aside>
       </div>
-    </header>
-    <div class="container">
-      <nav class="vertical-nav" class="navbar">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="../studentExam.html">Exam</a></li>
-          <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
-          <li><a href="../StudentNotification.html">Notification</a></li>
-          <li><a href="../studentProfile.html">profile</a></li>
-        </ul>
-      </nav>
+  </div>
+  <header>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search" />
+    </div>
+
+  </header>
+  
+   
 
       <main class="content">
         <section class="most-recent-exams">
@@ -31,7 +44,7 @@
           <h2>Notifications</h2>
         </section>
       </main>
-    </div>
+    
     <footer>
       Copyright © 2024 Website All rights reserved | Terms & Conditions |
       Privacy Policy
