@@ -16,9 +16,13 @@ CREATE TABLE `students` (
   `nic` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `phone_no` varchar(15) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
   `registered_date` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 CREATE TABLE `notification` (
   `notification_id` int(11) NOT NULL AUTO_INCREMENT,

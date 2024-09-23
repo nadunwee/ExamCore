@@ -11,26 +11,25 @@
     $email = $_POST['email'];
     $passwd = $_POST['password'];
     $confirmPasswd = $_POST['confirm-password'];
-
+    $phone_no = NULL; 
+    $gender = NULL; 
+    $dob = NULL; 
+    $address = NULL; 
+    
     // Validate passwords match
     if ($passwd !== $confirmPasswd) {
       $_SESSION['message'] = 'Passwords do not match.';
       header('Location: userRegister.php');
       exit();
     }
-
-    // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-    // Check connection
-    if ($conn->connect_error) {
-      die('Connection Failed: ' . $conn->connect_error);
-    }
+    
+    require("../../php/config.php");
 
     // Prepare the SQL statement based on user type
     if ($type === "student") {
-      $query = $conn->prepare("INSERT INTO students (name, nic, email, password) VALUES (?, ?, ?, ?)");
-      $query->bind_param("ssss", $name, $nic, $email, $passwd);
+      $query = $conn->prepare("INSERT INTO students (name, nic, email, password, phone_no, gender, dob, address) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+      $query->bind_param("ssssssss", $name, $nic, $email, $passwd, $phone_no, $gender, $dob, $address);
 
       // Execute the statement
       if ($query->execute()) {
@@ -73,32 +72,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../styles/register.css" />
-    <script>
-      // Function to toggle between NIC and Subject fields based on user type selection
-      function toggleFields() {
-        const userType = document.getElementById('types').value;
-        const nicField = document.getElementById('nic-field');
-        const subjectField = document.getElementById('subject-field');
-        const emailReminder = document.getElementById('email-reminder');
-
-        if (userType === 'examiner') {
-          nicField.style.display = 'none';
-          subjectField.style.display = 'block'; // Show Subject field
-          nicField.removeAttribute('required'); // Remove required from NIC
-          subjectField.setAttribute('required', 'required'); // Make Subject required
-          emailReminder.style.display = 'block';
-        } else {
-          nicField.style.display = 'block'; // Show NIC field
-          subjectField.style.display = 'none'; // Hide Subject field
-          nicField.setAttribute('required', 'required');
-          subjectField.removeAttribute('required');
-          emailReminder.style.display = 'none';
-        }
-      }
-
-      // Call toggleFields on page load
-      window.onload = toggleFields;
-    </script>
+    <script src="./accessPages.js"></script>
     <title>Registration</title>
   </head>
   <body>
@@ -148,7 +122,7 @@
                 <input type="password" id="confirm-password" name="confirm-password" class="input-field" placeholder="Confirm Password" required />
               </div>
 
-              <input type="submit" value="Sign up with Email" class="register-submit-btn" />
+              <input type="submit" value="Sign up with Email" class="register-submit-btn" onclick="checkPasswords()" />
             </form>
 
             <section>By continuing with Email, you agree to our Terms of Service and Privacy Policy.</section>

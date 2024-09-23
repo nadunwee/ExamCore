@@ -1,6 +1,6 @@
 /* The Modal (hidden by default) */
 .modal {
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -26,6 +26,7 @@
 .modal-heading {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 80px;
 }
 
@@ -48,13 +49,24 @@
 }
 
 .modal-content form button {
-  margin-right: auto;
   font-size: 16px;
   padding: 10px 15px 10px 15px;
   border: none;
   background-color: #761c73;
   color: whitesmoke;
   border-radius: 10px;
+  margin-left: auto;
+  border: 2px solid #761c73;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.modal-content form button:hover {
+  background-color: #61155e;
+}
+
+h2 {
+  margin: 0;
 }
 
 /* The Close Button */
@@ -67,7 +79,7 @@
 
 .close-btn:hover,
 .close-btn:focus {
-  color: black;
+  color: #761c73;
   text-decoration: none;
   cursor: pointer;
 }

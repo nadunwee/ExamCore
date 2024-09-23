@@ -52,6 +52,7 @@
 .student-contact-info i {
   color: #761c73;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .student-personal-detail-items {

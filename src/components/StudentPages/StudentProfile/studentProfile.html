@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../../styles/commonNavbarStyles.css" />
+    <link
+      rel="stylesheet"
+      href="../../../styles/commonNavbarAndFooterStyles.css"
+    />
     <link rel="stylesheet" href="./studentProfile.css" />
     <link rel="stylesheet" href="./studentProfileModel.css" />
     <link
@@ -33,19 +36,19 @@
           <label for="nic">NIC:</label>
           <input type="text" name="nic" value="200318111412" />
           <label for="email">Email:</label>
-          <input type="date" name="dob" value="nadun" />
+          <input type="email" name="email" value="weerakkody.kn@gmail.com" />
           <label for="phone">Phone:</label>
-          <input type="email" name="email" value="nadun" />
-          <label for="dob">DOB:</label>
-          <input type="text" name="phone" value="71 7439912" />
+          <input type="text" name="phone" value="071 743 9912" />
           <label for="dob">gender:</label>
-          <input type="text" name="phone" value="71 7439912" />
+          <select name="gender">
+            <option value="none-selected" selected>select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <label for="dob">DOB:</label>
+          <input type="date" name="dob" />
           <label for="address">Address:</label>
-          <input
-            type="text"
-            name="address"
-            value="90/4a uswatta, mahawila"
-          /><br /><br />
+          <input type="text" name="address" value="90/4a uswatta, mahawila" />
           <button type="submit">Save Changes</button>
         </form>
       </div>
