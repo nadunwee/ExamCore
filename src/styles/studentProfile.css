@@ -1,72 +1,42 @@
 /*Got some attributes from w3 school*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
 
     font-family: Arial, Helvetica, sans-serif;
     background-color:(grey,white);
     margin: 0;
     padding: 0;
-    display: flex;
    
 }
-nav{
-    background-color: darkgray;
-    color:white;
-    padding: 10px;
-    width:200px;
-    height:100vh;
-    position:fixed;
-    top:0;
-    
-    
-    line-height: 5;
-    
-   
-}
-nav h1{
-    color: #761c73;
-}
-nav ul{
-    list-style-type: none;
-    padding:0;
-}
-li a.active{
-background-color: #761c73;
-color:white;
-
-}
-nav ul li{
-    margin-bottom: 20px;
-}
-
 main{
     margin-left: 220px;
     padding: 20px;
     width:calc(100%-220px);
+    
 }
+
+
 .student-profile,.exam-history{
     background: white;
-    padding:20px;
+    padding:40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    margin-bottom: 20px;
+    
+   
 }
 h2{
     border-bottom: 2px solid #761c73;
     padding-bottom: 10px;
 }
-.student-profile-picture{
-   
-    position:absolute;
-    top:0;
-    right:0;
-    margin:10px;
-    height: 300px;
-    width:300px;
 
-}
 form{
     display: flex;
     flex-direction: column;
-    width:900px;
+    width:700px;
+    
      
 }
 form label{
@@ -116,10 +86,6 @@ button:hover{
 .exam-history ul li a:hover{
     color:black;
 }
-.student-profile-pic{
-    float: right;
-    
-}
-  
+
 
 
