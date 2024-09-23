@@ -1,6 +1,6 @@
 /* The Modal (hidden by default) */
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -17,7 +17,7 @@
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: 8% auto;
+  margin: 5% auto;
   padding: 20px 50px 20px 20px;
   border: 1px solid #888;
   width: fit-content;
@@ -29,6 +29,12 @@
   gap: 80px;
 }
 
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .modal-content form input {
   border-radius: 5px;
   font-size: 15px;
@@ -38,6 +44,17 @@
   padding: 10px 15px 10px 12px;
   border: none;
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.modal-content form button {
+  margin-right: auto;
+  font-size: 16px;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  background-color: #761c73;
+  color: whitesmoke;
+  border-radius: 10px;
 }
 
 /* The Close Button */
