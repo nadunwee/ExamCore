@@ -23,12 +23,10 @@ body {
   display: flex;
   flex-wrap: nowrap;
   max-width: 1200px;
-  margin: 20px;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
 }
-
 .sidebar {
   width: 250px;
   height: 560px;
@@ -36,7 +34,9 @@ body {
   padding: 15px;
   border-right: 1px solid #761c73;
   margin: 0%;
+  margin-top: 20px;
   position: fixed;
+  height: 100vh;
 }
 
 .sidebar h1 {
@@ -78,6 +78,8 @@ body {
   width: 100%;
 }
 .profile-btn {
+  font-family: Poppins, sans-serif;
+  border-radius: 12px;
   padding: 10px;
   background-color: #571054;
   color: white;
@@ -98,4 +100,33 @@ body {
 
 .profile-btn:hover {
   background-color: #9e2a72;
+}
+.page-footer {
+  background-color: #761c73;
+  text-align: center;
+  width: 100vw;
+  padding: 0;
+  height: 35px;
+  position: relative;
+  margin-top: 35%;
+  bottom: 0;
+  left: 0;
+}
+
+.page-footer p {
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 5px;
+  margin: 0;
+}
+.page-footer p a {
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.page-footer p a:hover {
+  color: #fc33f5;
 }

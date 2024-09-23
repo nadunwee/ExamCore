@@ -1,93 +1,21 @@
-/*got some attributes from w3 school*/
-body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    font-family: Poppins, sans-serif;
-    background-color:white;
-    margin: 0%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.wrapper {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
+h1{
     padding: 0px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.Container {
-    flex:1;
-    display: flex;
-    flex-wrap: nowrap;
-    max-width: 1200px;
-    margin: 20px;
+    margin: 0px;
     margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
+    right: 0;
+    left: 0;
     
-    
-}
-
-.sidebar {
-    width: 250px;
-    height:100%;
-    background-color:white;
-    padding: 15px;
-    border-right: 1px solid #761c73;
-    margin: 0%;
-   position: fixed;
-}
-
-.sidebar h1 {
-    margin-bottom: 30px;
-    font-size: 35px;
-    text-align: center;
-    color: #761c73;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 10px;
-    margin-bottom: 20px;
-    
-}
-
-.sidebar ul li {
-    margin-bottom: 15px;
-    padding-left: 30px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 20px;
-    position: relative;
-}
-.sidebar ul li a::after{
-    content:'';
-    width:0%;
-    height: 4px;
-    background:#761c73;
-    position: absolute;
-    left:0;
-    bottom:-6px;
-    transition: 0.8s;
-    border-radius: 3px;
-
-}
-.sidebar ul li a:hover::after{
-    width:100%;
-}
-
-/* Additional CSS for Admin Notification Page */
-
-/* Style for the admin notification container */
+  }
 .admin-notification-container {
-    margin-left: 270px; /* Adjusted to avoid overlap with the fixed sidebar */
+    margin-left: 300px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -95,8 +23,9 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the form */
+
 #admin-notification-form {
+    font-family: Poppins,sans-serif;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -111,9 +40,13 @@ body {
     font-size: 16px;
     resize: none;
 }
+.admin-notification-container input{
+    font-family: Poppins,sans-serif;
+}
 
 #notification-input {
     padding: 10px;
+    font-family: Poppins,sans-serif;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
@@ -125,7 +58,7 @@ body {
     background-color: #761c73;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 14px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -150,6 +83,7 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 button{
+    font-family: Poppins,sans-serif;
     width:150px;
     display: block;
     margin: 0 auto;
@@ -163,5 +97,5 @@ button{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 17px;
 }

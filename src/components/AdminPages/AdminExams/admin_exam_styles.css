@@ -1,35 +1,13 @@
-.admin-page-container .navbar ul li #admin-exam-nav-Btn01{
-    background-color: #591C76;
-    color: #ffffff;
-    font-family: Poppins, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    margin-left: 10px;
-    padding: 8px;
-    width: 120px;
-    border-radius: 15px;
-    border-width: 1px;
+.admin-page-container{
+    margin-top: 18px;
 }
-.admin-page-container .navbar ul li #admin-exam-nav-Btn01:hover{
-    color: #ffbcfd;
+.admin-page-container{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
 }
-.admin-page-container .navbar ul li #admin-exam-nav-Btn{
-    background-color: white;
-    font-family: Poppins, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    margin-left: 10px;
-    padding: 8px;
-    width: 120px;
-    border-radius: 15px;
-    border-width: 1px;
-    box-shadow: 2px 2px 0px;  
-}
-.admin-page-container .navbar ul li #admin-exam-nav-Btn:hover{
-    background-color: #fc33f5;
-}
+
 .admin-page-container .admin-exam-content #admin-add-an-exam-Btn {
     background-color: #761C73;
     color: #ffffff;
@@ -53,7 +31,7 @@
 .admin-exam-information{
     display: flex;
     margin-top: 150px;
-    margin-left: 250px;
+    margin-left: 300px;
     margin-bottom: 0px;
     padding: 5px;
     border-style: solid;
@@ -114,7 +92,7 @@
     background-color: #761C73;
     text-align: center;
     width: 100%;
-    margin-top: 35%;
     height: 35px;
-    position: fixed;
+    
+    
 }
