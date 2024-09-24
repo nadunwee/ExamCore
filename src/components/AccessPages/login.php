@@ -1,46 +1,30 @@
 <?php
   session_start();
 
-  // Check if form data was posted
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
     $type = $_POST['types'];
     $email = $_POST['email'];
     $passwd = $_POST['password'];
 
-    // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'exam_core');
+    include("../../php/config.php");
 
-    // Check connection
-    if ($conn->connect_error) {
-      die('Connection Failed: ' . $conn->connect_error);
-    }
-
-    // Prepare the SQL statement based on user type
     if ($type === "student") {
-      // Prepare the SQL query to check if the email and password exist
       $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
       $query->bind_param("ss", $email, $passwd);
 
-      // Execute the statement
       if ($query->execute()) {
-          // Get the result set
           $result = $query->get_result();
 
-          // Check if the user exists (i.e., at least one row was returned)
           if ($result->num_rows > 0) {
-              $_SESSION['message'] = 'Student login successful!';
-              header('Location: ../StudentPages/StudentHome/StudentHome.html'); // Redirect only if credentials are found
+              header('Location: ../StudentPages/StudentHome/StudentHome.html');
               exit();
           } else {
-              // No matching record found
-              $_SESSION['message'] = 'Invalid email or password.';
+              echo "<h1>no account found</h1>"; // Implement Error Page
           }
       } else {
-          $_SESSION['message'] = "Error: " . $query->error;
+          echo "Error : $query->error";
       }
 
-      // Close statement and connection
       $query->close();
 
     } else if ($type === "examiner") {

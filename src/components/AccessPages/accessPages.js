@@ -1,15 +1,13 @@
-function checkPasswords() {
+const checkPasswords = () => {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 
   if (password !== confirmPassword) {
-    alert("Passwords Are wrong");
-  } else {
-    alert("done");
+    alert("Both passwords are not same!");
   }
-}
+};
 
-function toggleFields() {
+const toggleFields = () => {
   const userType = document.getElementById("types").value;
   const nicField = document.getElementById("nic-field");
   const subjectField = document.getElementById("subject-field");
@@ -28,4 +26,4 @@ function toggleFields() {
     subjectField.removeAttribute("required");
     emailReminder.style.display = "none";
   }
-}
+};

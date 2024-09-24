@@ -23,7 +23,7 @@
       exit();
     }
     
-    require("../../php/config.php");
+    include("../../php/config.php");
 
     // Prepare the SQL statement based on user type
     if ($type === "student") {
