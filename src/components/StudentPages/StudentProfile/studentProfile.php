@@ -1,33 +1,33 @@
 <?php
-session_start();
+  session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION['user-email'])) {
-    header('Location: ../../AccessPages/login.php');
-    exit();
-}
-
-// Retrieve the session variables
-$userEmail = $_SESSION['user-email'];
-$userPassword = $_SESSION['user-pswd'];
-
-include('../../../php/config.php');
-
-$query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
-$query->bind_param('ss', $userEmail, $userPassword);
-
-if ($query->execute()) {
-  $result = $query->get_result();
-
-  if ($result->num_rows > 0) {
-      $studentData = $result->fetch_assoc();
-  } else {
-      echo "Invalid login credentials!";
+  // Check if the user is logged in
+  if (!isset($_SESSION['user-email'])) {
+      header('Location: ../../AccessPages/login.php');
+      exit();
   }
-}
 
-$query->close();
-$conn->close();
+  // Retrieve the session variables
+  $userEmail = $_SESSION['user-email'];
+  $userPassword = $_SESSION['user-pswd'];
+
+  include('../../../php/config.php');
+
+  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+  $query->bind_param('ss', $userEmail, $userPassword);
+
+  if ($query->execute()) {
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+        $studentData = $result->fetch_assoc();
+    } else {
+        echo "Invalid login credentials!";
+    }
+  }
+
+  $query->close();
+  $conn->close();
 
 ?>
 
@@ -117,7 +117,7 @@ $conn->close();
       <div class="student-profile-description">
         <div class="student-profile-contact">
           <div class="student-contact-info" onclick="onEditBtnClick()">
-            <p>contact information</p>
+            <p>Contact Information</p>
             <i class="bx bx-edit"></i>
           </div>
           <div class="student-personal-details">
@@ -126,19 +126,19 @@ $conn->close();
               <?php echo  $studentData['email'] ?>
             </div>
             <div class="student-phoneno student-personal-detail-items">
-              <p>phoneno</p>
+              <p>Phone No:</p>
               <?php echo  $studentData['phone_no'] ?>
             </div>
             <div class="student-gender student-personal-detail-items">
-              <p>gender</p>
+              <p>Gender:</p>
               <?php echo  $studentData['gender'] ?>
             </div>
             <div class="student-DOB student-personal-detail-items">
-              <p>DOB</p>
+              <p>Date Of Birth:</p>
               <?php echo  $studentData['dob'] ?>
             </div>
             <div class="student-address student-personal-detail-items">
-              <p>address</p>
+              <p>Address:</p>
               <?php echo  $studentData['address'] ?>
             </div>
             <div class="delete-account">Delete Account</div>
