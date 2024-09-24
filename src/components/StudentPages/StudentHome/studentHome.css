@@ -77,4 +77,21 @@ main {
   padding: 20px;
   border: 1px solid #ccc;
 }
+.search-bar input{
+  font-family: poppins, sans-serif;
+  padding: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 180;
 
+}
+.search-bar button{
+  font-family: poppins, sans-serif;
+  padding: 5px;
+  width: 70px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

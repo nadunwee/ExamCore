@@ -1,4 +1,9 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
 body {
     height: 100%;
     display: flex;
@@ -15,11 +20,33 @@ body {
     padding-top: 20px;
     padding-right: 5px;
 }
-
+.search-bar input{
+    font-family: poppins, sans-serif;
+    padding: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    width: 120px;
+  
+  }
+  .search-bar button{
+    font-family: poppins, sans-serif;
+    padding: 5px;
+    width: 70px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
 .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    
+}
+h2{
+    padding: 25px;
 }
 
 .header input[type="text"] {
@@ -27,15 +54,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
     width: 200px;
-}
-
-.header button {
-    padding: 5px 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
 }
 
 .exam-list {
