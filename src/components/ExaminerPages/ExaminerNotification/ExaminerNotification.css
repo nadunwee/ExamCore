@@ -1,6 +1,16 @@
 
 /*got some attributes from w3 school*/
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: poppins, sans-serif;
+}
+/* body {
+    padding: 20px;
+    font-family: poppins, sans-serif;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -84,6 +94,7 @@ body {
     width:100%;
 }
 .profile-btn {
+    font-family: poppins, sans-serif;
     width: 80%;
     padding: 10px;
     background-color: #761c73;
@@ -97,7 +108,7 @@ body {
 
 .profile-btn:hover {
     background-color: #9e2a72;
-}
+} */
 
 /* Additional CSS for Admin Notification Page */
 
@@ -113,6 +124,7 @@ body {
 
 /* Style for the form */
 #examiner-notification-form {
+    font-family: poppins, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -129,6 +141,7 @@ body {
 }
 
 #notification-input {
+    font-family: poppins, sans-serif;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -152,6 +165,7 @@ body {
 
 /* Style for the notifications list */
 #list-notifications {
+    font-family: poppins, sans-serif;
     list-style-type: none;
     padding: 0;
     
@@ -165,19 +179,18 @@ body {
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-button{
-    width:150px;
-    display: block;
-    margin: 0 auto;
-    background-color:#9e2a72; /* Blue */
+#examiner-notification-form input{
+    font-family: poppins, sans-serif;
+}
+#examiner-notification-form button{
+    font-family: poppins, sans-serif;
+    width:180px;
+    background-color:#761c73;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
 }
