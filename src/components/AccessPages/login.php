@@ -16,6 +16,8 @@
           $result = $query->get_result();
 
           if ($result->num_rows > 0) {
+            $_SESSION['user-email'] = "$email";
+            $_SESSION['user-pswd'] = "$passwd";
               header('Location: ../StudentPages/StudentHome/StudentHome.html');
               exit();
           } else {

@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
+}
+
+// Retrieve the session variables
+$userEmail = $_SESSION['user-email'];
+$userPassword = $_SESSION['user-pswd'];
+
+include('../../../php/config.php');
+
+$query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+$query->bind_param('ss', $userEmail, $userPassword);
+
+if ($query->execute()) {
+  $result = $query->get_result();
+
+  if ($result->num_rows > 0) {
+      $studentData = $result->fetch_assoc();
+  } else {
+      echo "Invalid login credentials!";
+  }
+}
+
+$query->close();
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,8 +111,8 @@
     <div class="student-profile-details">
       <div class="student-profile-img">
         <i class="bx bx-user"></i>
-        <p class="student-name">Student Name</p>
-        <p>user since 2022</p>
+        <p class="student-name"><?php echo  $studentData['name'] ?></p>
+        <p>user since <?php echo  $studentData['registered_date'] ?></p>
       </div>
       <div class="student-profile-description">
         <div class="student-profile-contact">
@@ -90,23 +123,23 @@
           <div class="student-personal-details">
             <div class="student-email student-personal-detail-items">
               <p>Email:</p>
-              weerakkody.kn@gmail.com
+              <?php echo  $studentData['email'] ?>
             </div>
             <div class="student-phoneno student-personal-detail-items">
               <p>phoneno</p>
-              71 7439912
+              <?php echo  $studentData['phone_no'] ?>
             </div>
             <div class="student-gender student-personal-detail-items">
               <p>gender</p>
-              make
+              <?php echo  $studentData['gender'] ?>
             </div>
             <div class="student-DOB student-personal-detail-items">
               <p>DOB</p>
-              2003-19-20
+              <?php echo  $studentData['dob'] ?>
             </div>
             <div class="student-address student-personal-detail-items">
               <p>address</p>
-              90/4a uswatta, mahawila
+              <?php echo  $studentData['address'] ?>
             </div>
             <div class="delete-account">Delete Account</div>
           </div>
