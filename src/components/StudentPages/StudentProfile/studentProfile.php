@@ -65,13 +65,13 @@ $conn->close();
         </div>
         <form>
           <label for="name">Name:</label>
-          <input type="text" name="name" value="Your Name" />
+          <input type="text" name="name" value=<?php echo  $studentData['name'] ?> />
           <label for="nic">NIC:</label>
-          <input type="text" name="nic" value="200318111412" />
+          <input type="text" name="nic" value=<?php echo  $studentData['nic'] ?> />
           <label for="email">Email:</label>
-          <input type="email" name="email" value="weerakkody.kn@gmail.com" />
+          <input type="email" name="email" value=<?php echo  $studentData['email'] ?> />
           <label for="phone">Phone:</label>
-          <input type="text" name="phone" value="071 743 9912" />
+          <input type="text" name="phone" value=<?php echo  $studentData['phone_no'] ?> />
           <label for="dob">gender:</label>
           <select name="gender">
             <option value="none-selected" selected>select</option>
@@ -79,11 +79,11 @@ $conn->close();
             <option value="female">Female</option>
           </select>
           <label for="dob">DOB:</label>
-          <input type="date" name="dob" />
+          <input type="date" name="dob" value=<?php echo  $studentData['dob'] ?> />
           <label for="password">Password:</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" value=<?php echo  $studentData['password'] ?> />
           <label for="address">Address:</label>
-          <input type="text" name="address" value="90/4a uswatta, mahawila" />
+          <input type="text" name="address" value=<?php echo  $studentData['address'] ?> />
           <button type="submit">Save Changes</button>
         </form>
       </div>
