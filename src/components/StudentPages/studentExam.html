@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,49 +13,50 @@
     <link rel="stylesheet" href="studentExamWithOTP.css">
     <link rel="stylesheet" href="../../../src/styles/commonNavbarAndFooterStyles.css">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="../StudentPages/StudentHome/StudentHome.html">Home</a></li>
+                    <li><a href="StudentHome/StudentHome.html">Home</a></li>
                     <li><a href="../StudentPages/studentExam.html">Exams</a></li>
-                    <li><a href="../StudentPages/StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="StudentSupport/studentSupport.html">Support</a></li>
                     <li>
                         <a href="../StudentPages/StudentNotification.html">Notifications</a>
                     </li>
                 </ul>
                 <button class="profile-btn">
-                    <a href="../StudentPages/studentProfile.html">Examiner Profile</a>
+                    <a href="StudentProfile/studentProfile.html">Examiner Profile</a>
                 </button>
             </aside>
         </div>
     </div>
-        <main class="content">
-            <div class="header">
-                <h2>Available Exams</h2>
-                <div>
-                    <input type="text" placeholder="Search Exam">
-                    <button>Search</button>
-                </div>
+    <main class="content">
+        <div class="header">
+            <h2>Available Exams</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Exam">
+                <button>Search</button>
             </div>
-            <ul class="exam-list" id="available-exams">
-                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 1"> Exam 1</li>
-                <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 2"> Exam 2</li>
-            </ul>
-            <h2>Completed Exams</h2>
-            <ul class="exam-list">
-                <li><input type="checkbox" checked> Completed Exam 1</li>
-                <li><input type="checkbox" checked> Completed Exam 2</li>
-            </ul>
-            <h2>Your Progress</h2>
-            <div class="progress-bar">
-                <div class="fill"></div>
-            </div>
-        
-        </main>
-    
+        </div>
+        <ul class="exam-list" id="available-exams">
+            <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 1"> Exam 1</li>
+            <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 2"> Exam 2</li>
+        </ul>
+        <h2>Completed Exams</h2>
+        <ul class="exam-list">
+            <li><input type="checkbox" checked> Completed Exam 1</li>
+            <li><input type="checkbox" checked> Completed Exam 2</li>
+        </ul>
+        <h2>Your Progress</h2>
+        <div class="progress-bar">
+            <div class="fill"></div>
+        </div>
+
+    </main>
+
 
     <!-- OTP Popup -->
     <div id="otp-overlay"></div>
@@ -67,10 +69,11 @@
     </div>
 
     <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a
-                href="#">Privacy Policy</a></p>
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a href="#">Privacy
+                Policy</a></p>
     </footer>
 
     <script src="studentExamPageWithOTP.js"></script>
 </body>
+
 </html>
