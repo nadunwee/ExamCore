@@ -1,9 +1,7 @@
 <?php
   session_start();
 
-  // Check if form data was posted
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
     $type = $_POST['types'];
     $name = $_POST['real-name'];
     $nic = $_POST['nic'];
@@ -25,13 +23,11 @@
     
     include("../../php/config.php");
 
-    // Prepare the SQL statement based on user type
     if ($type === "student") {
       $query = $conn->prepare("INSERT INTO students (name, nic, email, password, phone_no, gender, dob, address) 
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
       $query->bind_param("ssssssss", $name, $nic, $email, $passwd, $phone_no, $gender, $dob, $address);
 
-      // Execute the statement
       if ($query->execute()) {
         $_SESSION['message'] = 'Student registration successful!';
         header('Location: login.php');
@@ -39,7 +35,6 @@
         $_SESSION['message'] = "Error: " . $query->error;
       }
 
-      // Close statement and connection
       $query->close();
 
     } else if ($type === "examiner") {

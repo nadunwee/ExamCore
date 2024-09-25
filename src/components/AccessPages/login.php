@@ -30,29 +30,23 @@
       $query->close();
 
     } else if ($type === "examiner") {
-      // Prepare the SQL query to check if the email and password exist
       $query = $conn->prepare("SELECT * FROM examiners WHERE email = ? AND password = ?");
       $query->bind_param("ss", $email, $passwd);
 
-      // Execute the statement
       if ($query->execute()) {
-          // Get the result set
           $result = $query->get_result();
 
-          // Check if the user exists (i.e., at least one row was returned)
           if ($result->num_rows > 0) {
               $_SESSION['message'] = 'Examiner login successful!';
-              header('Location: ../ExaminerPages/examinerHome.html'); // Redirect only if credentials are found
+              header('Location: ../ExaminerPages/examinerHome.html'); 
               exit();
           } else {
-              // No matching record found
               $_SESSION['message'] = 'Invalid email or password.';
           }
       } else {
           $_SESSION['message'] = "Error: " . $query->error;
       }
 
-      // Close statement and connection
       $query->close();
       
     } else if ($type === "admin") {
@@ -87,9 +81,6 @@
     }
 
     $conn->close();
-
-    // Redirect to avoid form resubmission on refresh
-    
     exit();
   }
 ?>
