@@ -141,7 +141,13 @@
               <p>Address:</p>
               <?php echo  $studentData['address'] ?>
             </div>
-            <div class="delete-account">Delete Account</div>
+            <div class="delete-account">
+            <form action="../../../php/deleteAccount.php" method="POST">
+              <input type="hidden" name="email" value="<?php echo $studentData['email']; ?>" />
+              <input type="hidden" name="type" value="student" />
+              <button type="submit" class="delete-account-btn">Delete Account</button>
+            </form>
+            </div>
           </div>
         </div>
         <div class="student-exam-history-info">
