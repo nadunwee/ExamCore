@@ -75,7 +75,7 @@
     <script src="./accessPages.js"></script>
     <title>Registration</title>
   </head>
-  <body>
+  <body onload="toggleFields()">
     <p class="student-register-logo"><a href="../../../homePage.html">ExamCore</a></p>
 
     <div class="student-register-main-container">
