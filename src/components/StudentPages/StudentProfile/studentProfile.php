@@ -63,7 +63,7 @@
           <h2>Edit Profile Details</h2>
           <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
         </div>
-        <form>
+        <form action="../../../php/updateAccountDetails.php" method="POST">
           <label for="name">Name:</label>
           <input type="text" name="name" value=<?php echo  $studentData['name'] ?> />
           <label for="nic">NIC:</label>
@@ -84,6 +84,8 @@
           <input type="password" name="password" value=<?php echo  $studentData['password'] ?> />
           <label for="address">Address:</label>
           <input type="text" name="address" value=<?php echo  $studentData['address'] ?> />
+          <input hidden type="text" name="type" value="student"/>
+          <input hidden type="text" name="previus-email" value=<?php echo  $studentData['email'] ?> />
           <button type="submit">Save Changes</button>
         </form>
       </div>

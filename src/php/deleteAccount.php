@@ -9,7 +9,7 @@
   include('./config.php');
 
   // Retrieve the email from the POST request
-  if (isset($_POST['email'])) {
+  if (isset($_POST['email'])) { 
       $type = $_POST['type'];
 
       if ($type == "student") {
