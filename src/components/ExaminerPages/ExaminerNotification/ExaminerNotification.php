@@ -9,7 +9,7 @@
       die('Connection Error: ' . $conn->connect_error);
   }
 
-  $message = ''; // Feedback message
+  
 
   // Handle form submission
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -19,12 +19,19 @@
       $notification = $_POST["message"];
 
       $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+        
+ // Check if the query preparation was successful
+    if ($query === false) {
+        die("SQL Error: " . $conn->error);  // Output detailed error if prepare fails
+    }
+// Bind the parameters
+
       $query->bind_param("sss", $name, $email, $notification);
 
       if ($query->execute()) {
-          $message = "Notification added successfully!";
+          
       } else {
-          $message = "Execution Error: " . $query->error;
+         
       }
 
       // Close the query object (not the connection)
@@ -32,7 +39,7 @@
   }
 
   // Fetch the notifications after insertion
-  $result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
+  //$result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
 
   // Close the connection after fetching the data
   $conn->close();
