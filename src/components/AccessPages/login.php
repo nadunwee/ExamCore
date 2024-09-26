@@ -42,42 +42,37 @@
             header('Location: ../ExaminerPages/examinerHome.html'); 
             exit();
           } else {
-              $_SESSION['message'] = 'Invalid email or password.';
+            echo "<h1>no account found</h1>"; // Implement Error Page
           }
       } else {
-          $_SESSION['message'] = "Error: " . $query->error;
+        echo "Error : $query->error";
       }
 
       $query->close();
       
     } else if ($type === "admin") {
-      // Prepare the SQL query to check if the email and password exist
       $query = $conn->prepare("SELECT * FROM admin WHERE admin_id = ? AND password = ?");
       $query->bind_param("ss", $email, $passwd);
 
-      // Execute the statement
       if ($query->execute()) {
-        // Get the result set
         $result = $query->get_result();
 
-        // Check if the user exists (i.e., at least one row was returned)
         if ($result->num_rows > 0) {
-            $_SESSION['message'] = 'admin login successful!';
-            header('Location: ../AdminPages/AdminHome/adminHome.html'); // Redirect only if credentials are found
-            exit();
+          $_SESSION['user-email'] = "$email";
+          $_SESSION['user-pswd'] = "$passwd";
+          header('Location: ../AdminPages/AdminHome/adminHome.html'); 
+          exit();
         } else {
-            // No matching record found
-            $_SESSION['message'] = 'Invalid email or password.';
+          echo "<h1>no account found</h1>"; // Implement Error Page
         }
     } else {
-        $_SESSION['message'] = "Error: " . $query->error;
+      echo "Error : $query->error";
     }
 
-    // Close statement and connection
     $query->close();
 
     } else {
-      $_SESSION['message'] = "User type not handled.";
+      echo "Invalid User type";
 
     }
 
