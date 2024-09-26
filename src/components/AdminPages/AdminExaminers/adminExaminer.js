@@ -1,135 +1,152 @@
-// Modal functionality
+// Modal functionality for "Assign Examiner"
 const assignExaminerButton = document.querySelector('.assign-examiner-btn');
 const assignExaminerModal = document.getElementById('assignExaminerModal');
+const addExaminerModal = document.getElementById('addExaminerModal');
 const editExaminerModal = document.getElementById('editExaminerModal');
-const closeButton = document.querySelector('.close');
+const closeButtons = document.querySelectorAll('.close');
 
 // Variable to store the row being edited
 let rowToEdit = null;
 
-// Open and close the "assign Examiner" modal
+// Open and close the "Assign Examiner" modal
 assignExaminerButton.addEventListener('click', () => {
-  assignExaminerModal.style.display = 'block';
+    assignExaminerModal.style.display = 'block';
 });
 
-closeButton.addEventListener('click', () => {
-  assignExaminerModal.style.display = 'none';
+// Close modals
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        assignExaminerModal.style.display = 'none';
+        addExaminerModal.style.display = 'none';
+        editExaminerModal.style.display = 'none';
+    });
 });
 
-// Save button functionality
+// Add Examiner modal functionality
+const addExaminerButton = document.querySelector('.add-examiner-btn');
+addExaminerButton.addEventListener('click', () => {
+    addExaminerModal.style.display = 'block';
+});
+
+// Close the Add Examiner modal when clicking outside
+window.onclick = function(event) {
+    if (event.target === addExaminerModal) {
+        addExaminerModal.style.display = 'none';
+    } else if (event.target === assignExaminerModal) {
+        assignExaminerModal.style.display = 'none';
+    } else if (event.target === editExaminerModal) {
+        editExaminerModal.style.display = 'none';
+    }
+};
+
+// Password validation function for Add Examiner form
+function checkPasswords(event) {
+    event.preventDefault();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return false;
+    } else {
+        // Submit the form via AJAX or regular form submission
+        document.querySelector('#addExaminerForm').submit();
+    }
+}
+
+// Attach submit functionality to the 'Sign up with Email' button
+const registerSubmitButton = document.querySelector('.register-submit-btn');
+registerSubmitButton.addEventListener('click', checkPasswords);
+
+// Save and Cancel button functionality for editing
 const saveButton = document.querySelector('.save-btn');
 saveButton.addEventListener('click', () => {
-  const updatedName = document.getElementById('editExaminerName').value;
-  const updatedExam = document.getElementById('editAssignTo').value;
+    const updatedName = document.getElementById('editExaminerName').value;
+    const updatedExam = document.getElementById('editAssignTo').value;
 
-  if (updatedName && updatedExam !== 'select') {
-    // Check if rowToEdit is not null
-    if (rowToEdit) {
-      rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
-      rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
-
-      editExaminerModal.style.display = 'none'; // Close the modal after saving
+    if (updatedName && updatedExam !== 'select') {
+        if (rowToEdit) {
+            rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
+            rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
+            editExaminerModal.style.display = 'none'; // Close the modal after saving
+        } else {
+            console.error('No row selected for editing.');
+        }
     } else {
-      console.error('No row selected for editing.');
+        alert('Please fill in both Examiner Name and Assigned Exam fields.');
     }
-  } else {
-    alert('Please fill in both Examiner Name and Assigned Exam fields.');
-  }
 });
 
-// Cancel button functionality
 const cancelButton = document.querySelector('.cancel-btn');
 cancelButton.addEventListener('click', () => {
-  editExaminerModal.style.display = 'none'; // Close the modal without saving
+    editExaminerModal.style.display = 'none'; // Close the modal without saving
 });
 
-// assign button functionality to assign a new examiner
+// Assign button functionality
 const assignButton = document.querySelector('.assign-btn');
 assignButton.addEventListener('click', () => {
-  const examinerName = document.getElementById('examinerName').value;
-  const assignedExam = document.getElementById('assignTo').value;
+    const examinerName = document.getElementById('examinerSelect').value; // Ensure the selector matches your HTML
+    const assignedExam = document.getElementById('assignTo').value;
 
-  if (examinerName && assignedExam !== 'select') {
-    if (rowToEdit) {
-      // Update the existing examiner row
-      const indexToUpdate = examiners.findIndex(examiner => examiner.name === rowToEdit.querySelector('td:nth-child(1)').textContent);
-      if (indexToUpdate !== -1) {
-        examiners[indexToUpdate].name = examinerName;
-        examiners[indexToUpdate].exam = assignedExam;
+    if (examinerName && assignedExam !== 'select') {
+        examiners.push({ name: examinerName, exam: assignedExam });
         updateTable();
         assignExaminerModal.style.display = 'none';
-        rowToEdit = null; // Reset the rowToEdit variable
-      } else {
-        console.error('Could not find examiner to update.');
-      }
     } else {
-      // assign a new examiner if no row is being edited
-      examiners.push({ name: examinerName, exam: assignedExam });
-      updateTable();
-      assignExaminerModal.style.display = 'none';
+        alert('Please fill in both Examiner Name and Assigned Exam fields.');
     }
-  } else {
-    alert('Please fill in both Examiner Name and Assigned Exam fields.');
-  }
 });
 
 // Function to update the examiner table
 const examinerTable = document.querySelector('table tbody');
 let examiners = [
-  { name: "Examiner 1", exam: "Exam A" },
-  { name: "Examiner 2", exam: "Exam B" }
+    { name: "Examiner 1", exam: "Exam A" },
+    { name: "Examiner 2", exam: "Exam B" }
 ];
 
 function updateTable() {
-  examinerTable.innerHTML = ''; // Clear existing rows
-  examiners.forEach((examiner, index) => {
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
-      <td>${examiner.name}</td>
-      <td>${examiner.exam}</td>
-      <td>
-        <button type="button" class="edit-btn" data-index="${index}">Edit</button>
-        <button type="button" class="delete-btn" data-index="${index}">Delete</button>
-      </td>
-    `;
-    examinerTable.appendChild(newRow);
-  });
-  attachDeleteHandlers(); // Attach delete functionality after updating the table
-  attachEditHandlers();   // Re-attach the edit functionality after table update
+    examinerTable.innerHTML = ''; // Clear the table
+    examiners.forEach((examiner, index) => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${examiner.name}</td>
+            <td>${examiner.exam}</td>
+            <td>
+                <button type="button" class="edit-btn" data-index="${index}">Edit</button>
+                <button type="button" class="delete-btn" data-index="${index}">Delete</button>
+            </td>
+        `;
+        examinerTable.appendChild(newRow);
+    });
+    attachDeleteHandlers();
+    attachEditHandlers();
 }
 
-// Attach event handlers to delete buttons
+// Attach event handlers for delete and edit buttons
 function attachDeleteHandlers() {
-  document.querySelectorAll('.delete-btn').forEach(button => {
-    button.addEventListener('click', (event) => {
-      const index = event.target.getAttribute('data-index');
-      examiners.splice(index, 1); // Remove the examiner
-      updateTable(); // Refresh the table
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const index = button.getAttribute('data-index');
+            examiners.splice(index, 1); // Remove the examiner from the list
+            updateTable(); // Refresh the table
+        });
     });
-  });
 }
 
-// Re-attach event listeners for edit buttons after the table is updated
 function attachEditHandlers() {
-  document.querySelectorAll('.edit-btn').forEach(button => {
-    button.addEventListener('click', event => {
-      rowToEdit = event.target.closest('tr'); // Get the row to edit
-      if (rowToEdit) {
-        const examinerName = rowToEdit.querySelector('td:nth-child(1)').textContent;
-        const assignedExam = rowToEdit.querySelector('td:nth-child(2)').textContent;
-
-        // Pre-fill the modal form with existing data
-        document.getElementById('editExaminerName').value = examinerName;
-        document.getElementById('editAssignTo').value = assignedExam;
-
-        // Show the edit modal
-        editExaminerModal.style.display = 'block';
-      } else {
-        console.error('Row to edit not found.');
-      }
+    const editButtons = document.querySelectorAll('.edit-btn');
+    editButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const index = button.getAttribute('data-index');
+            const examinerToEdit = examiners[index];
+            rowToEdit = button.closest('tr'); // Store the row to edit
+            document.getElementById('editExaminerName').value = examinerToEdit.name;
+            document.getElementById('editAssignTo').value = examinerToEdit.exam; // Assuming you have an input/select for the exam
+            editExaminerModal.style.display = 'block'; // Show the edit modal
+        });
     });
-  });
 }
 
 // Initial table update
-updateTable(); // Call this at the beginning to load the data
+updateTable();

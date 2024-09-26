@@ -1,3 +1,50 @@
+<?php
+
+  //Establish a connection to database
+  $conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+  // Check if the connection was successful
+
+  if ($conn->connect_error) {
+    die('Connection Error: ' . $conn->connect_error);
+} else {
+    echo "Connected successfully.<br>"; // This line can be removed later
+}
+?>
+<?php
+    require_once 'bagyaconnection.php';
+
+  // Handle form submission
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $notification = $_POST["message"];
+
+    $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+    $query->bind_param("sss", $name, $email, $notification);
+
+    if ($query->execute()) {
+        $message = "Notification added successfully!";
+        echo "<script>alert('okay');</script>";
+    } else {
+        $message = "Execution Error: " . $query->error;
+    }
+
+    // Close the query object (not the connection)
+    $query->close();
+}
+
+// Fetch the notifications after insertion
+
+//$result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
+
+// Close the connection after fetching the data
+$conn->close();
+?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +62,7 @@
 </head>
 
 <body>
-    <div class="wrapper"></div>
+    <div class="wrapper">
     <div class="container">
 
         <aside class="sidebar">
@@ -29,27 +76,21 @@
             <a href="../ExaminerProfile/examinerProfile.html"><button class="profile-btn">Examiner Profile</button></a>
             
         </aside>
-
-
     </div>
-    </div>
+    
     <div class="examiner-notification-container">
         <h1>Examiner Notifications</h1>
-        <form id="examiner-notification-form">
+        <form method="post" id="examiner-notification-form" action="bagyacreate.php">
 
-            Name:<input type="text" id="name-input" placeholder="Enter name" required>
-            E-mail:<input type="email" id="email-input" placeholder="Enter email" required>
-            Message:<input type="text" id="notification-input" placeholder="Enter notification" required>
+            Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
+            E-mail:<input type="text" id="email-input" name="email" placeholder="Enter email" required>
+            Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
 
-            <button type="submit">Add Notification</button>
+            <input type="submit" value="Add Notification">
 
         </form>
         <!--Added notification list should be displayed here-->
-        <ul id="list-notifications">
-
-
-
-        </ul>
+        
 
     </div>
 
