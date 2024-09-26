@@ -78,7 +78,7 @@
           <span>Sign Up</span>
 
           <div class="student-email-register">
-            <form action="http://localhost/quizcore/src/components/accesspages/userRegister.php" method="POST">
+            <form action="./userRegister.php" method="POST">
               <div class="input-container">
                 <label for="type">Sign up As</label>
                 <select name="types" id="types" onchange="toggleFields()">

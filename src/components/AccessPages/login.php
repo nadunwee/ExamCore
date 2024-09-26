@@ -117,7 +117,7 @@
           </div>
 
           <div class="student-email-register">
-            <form action="http://localhost/quizcore/src/components/accesspages/login.php" method="POST">
+            <form action="login.php" method="POST">
               <div class="input-container">
                 <label for="type">Log in As</label>
                 <select name="types" id="types">
