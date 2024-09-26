@@ -2,28 +2,37 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['real-name'];
-    $subject = $_POST['subject'];
-    $email = $_POST['email'];
-    $passwd = $_POST['password'];
-    $confirmPasswd = $_POST['confirm-password'];
+    // Retrieve form data
+    $name = $_POST['real-name'] ?? '';
+    $subject = $_POST['subject'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $passwd = $_POST['password'] ?? '';
+    $confirmPasswd = $_POST['confirm-password'] ?? '';
 
     // Validate passwords match
     if ($passwd !== $confirmPasswd) {
+        $_SESSION['error'] = "Passwords do not match.";
         header('Location: userRegister.php');
         exit();
     }
 
     include("../../php/config.php");
 
-    $query = $conn->prepare("INSERT INTO examiners (name, subject, email, password) VALUES (?, ?, ?, ?)");
-    $query->bind_param("ssss", $name, $subject, $email, $passwd);
+    // Hash the password
+    $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
 
-    // Execute the statement
+    // Prepare the SQL statement
+    $query = $conn->prepare("INSERT INTO examiners (name, subject, email, password) VALUES (?, ?, ?, ?)");
+    $query->bind_param("ssss", $name, $subject, $email, $hashedPassword);
+
+    // Execute the statement and check for errors
     if ($query->execute()) {
         header('Location: login.php');
     } else {
-        // Handle error
+        // Log the error for debugging (consider a logging mechanism)
+        error_log("Database error: " . $query->error);
+        $_SESSION['error'] = "Failed to register. Please try again.";
+        header('Location: userRegister.php');
     }
 
     // Close statement and connection
@@ -32,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
