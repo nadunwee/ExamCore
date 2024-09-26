@@ -45,7 +45,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.edit-btn, .delete-btn, .assign-examiner-btn {
+.edit-btn, .delete-btn, .assign-examiner-btn, .add-examiner-btn {
   background-color: #a3239f;
   color: white;
   font-family: poppins, sans-serif;
@@ -55,18 +55,116 @@ th {
   border-radius: 8px;
 }
 
-.edit-btn:hover, .delete-btn:hover, .assign-examiner-btn:hover {
+.edit-btn:hover, .delete-btn:hover, .assign-examiner-btn:hover, .add-examiner-btn:hover {
   background-color: #234466;
 }
 
 .modal {
-  display: none;
+  display: none; /* Hidden by default */
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -45%);
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+.modal-content {
   background-color: white;
+  margin: 10% auto;
   padding: 20px;
+  border-radius: 8px;
+  width: 50%; /* Width of modal */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 90%;
+  padding: 10px 15px;
+  font-size: 16px;
   border: 1px solid #ccc;
-  z-index: 999;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.input-container label {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.register-submit-btn {
+  background-color: #761c73;
+  color: whitesmoke;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px;
+  width: 97%;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.register-submit-btn:hover {
+  background-color: #8d2289;
+}
+
+.examiner-name {
+  position: relative;
+  cursor: pointer;
+}
+
+.examiner-name:hover::after {
+  content: attr(data-subject);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.examiner-name {
+  position: relative;
+  cursor: pointer;
+}
+
+.examiner-name:hover::after {
+  content: attr(data-subject);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1;
 }
