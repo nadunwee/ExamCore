@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($query->execute()) {
         // Redirect to the admin exam page after successful insertion
-        header('Location: adminExam.php');
+        header('Location: ./adminExam.php');
         exit();
     } else {
         echo "Error: " . $query->error;
