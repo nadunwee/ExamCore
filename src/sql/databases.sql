@@ -61,6 +61,7 @@ CREATE TABLE `paper`(
   `answer_2` varchar(255) NOT NULL,
   `answer_3` varchar(255) NOT NULL,
   `answer_4` varchar(255) NOT NULL,
-  `correst_answer` varchar(255) NOT NULL
+  `correst_answer` varchar(255) NOT NULL,
+  `email` varchar (200) NOT NULL,
   PRIMARY KEY (`question_ID`)
 );
