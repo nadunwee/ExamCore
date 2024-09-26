@@ -108,7 +108,7 @@ $conn->close();
           <label for="correct_ans">Correct answer:</label>
           <input type="text" name="correct_ans" placeholder="Type the correct answer here" />
 
-          <input type="submit">  <input type="reset">
+          <input  ype="submit">  <input type="reset">
 
           <!-- Add button to trigger saveQuestion -->
           <button class="save-btn" onclick="saveQuestion()">
