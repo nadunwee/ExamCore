@@ -1,5 +1,8 @@
 <?php
-    // Connection details (you can replace this with your actual connection code)
+    // If using sessions, initialize it here
+    session_start();
+
+    // Connection details
     $servername = "localhost"; // Update with your server name
     $username = "root"; // Update with your database username
     $password = ""; // Update with your database password
@@ -23,6 +26,10 @@
         if ($name && $email && $message) {
             // Prepare and execute the query
             $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+            if ($query === false) {
+                die("SQL Error: " . $conn->error);
+            }
+
             $query->bind_param("sss", $name, $email, $message);
 
             // Check if the query executes successfully
@@ -41,8 +48,6 @@
     // Close the connection
     $conn->close();
 ?>
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,38 +64,34 @@
 
 <body>
     <div class="wrapper">
-    <div class="container">
+        <div class="container">
+            <aside class="sidebar">
+                <h1>ExamCore</h1>
+                <ul>
+                    <li><a href="../examinerHome.html">Home</a></li>
+                    <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
+                    <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
+                    <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
+                </ul>
+                <a href="../ExaminerProfile/examinerProfile.html"><button class="profile-btn">Examiner Profile</button></a>
+            </aside>
+        </div>
 
-        <aside class="sidebar">
-            <h1>ExamCore</h1>
-            <ul>
-                <li><a href="../examinerHome.html">Home</a></li>
-                <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
-                <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
-                <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
-            </ul>
-            <a href="../ExaminerProfile/examinerProfile.html"><button class="profile-btn">Examiner Profile</button></a>
-            
-        </aside>
-    </div>
-    
-    <div class="examiner-notification-container">
-        <h1>Examiner Notifications</h1>
-        <form method="post" id="examiner-notification-form" action="bagyacreate.php">
-
-            Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
-            E-mail:<input type="text" id="email-input" name="email" placeholder="Enter email" required>
-            Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
-
+        <div class="examiner-notification-container">
+            <h1>Examiner Notifications</h1>
+            <form method="post" id="examiner-notification-form" action="ExaminerNotification.php">
+                Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
+                E-mail:<input type="email" id="email-input" name="email" placeholder="Enter email" required>
+                Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
                 <input type="submit" value="Add Notification">
             </form>
 
             <!-- Added notification list should be displayed here -->
-            <ul id="list-notifications"></ul>
         </div>
 
         <footer class="page-footer">
-            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | 
+            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | 
+            <a href="#">Terms & Conditions</a> | 
             <a href="#">Privacy Policy</a></p>
         </footer>
         <script src="ExaminerNotification.js"></script>
