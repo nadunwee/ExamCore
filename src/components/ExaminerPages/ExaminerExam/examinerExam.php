@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ans3 = $_POST["answer3"];
     $ans4 = $_POST["answer4"];
     $c_ans = $_POST["correct_ans"];
+    $mail = $_POST["email"];
 
     // Prepare the SQL statement
-    $query = $conn->prepare("INSERT INTO paper (Question, answer_1, answer_2, answer_3, answer_4, correst_answer) VALUES (?, ?, ?, ?, ?, ?)");
+    $query = $conn->prepare("INSERT INTO paper (Question, answer_1, answer_2, answer_3, answer_4, correst_answer,email) VALUES (?, ?, ?, ?, ?, ?,?)");
 
     // Check if the query preparation was successful
     if ($query === false) {
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Bind the parameters
-    $query->bind_param("ssssss", $ques, $ans1, $ans2, $ans3, $ans4, $c_ans);
+    $query->bind_param("sssssss", $ques, $ans1, $ans2, $ans3, $ans4, $c_ans,$mail);
 
     // Execute the query and check if successful
     if ($query->execute()) {
@@ -59,7 +60,7 @@ $conn->close();
     rel="stylesheet">
   <title>Examiner's Question Page</title>
 
-  <link rel="stylesheet" href="examinerExam.css">
+  <link rel="stylesheet" href="./examinerExam.css">
   <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
   <script src="exam.js"></script>
 </head>
@@ -109,6 +110,10 @@ $conn->close();
           <input type="text" name="correct_ans" placeholder="Type the correct answer here" />
 
           <input  class="submit-btn" type="submit">  <input type="reset">
+          
+          <input type="text" hidden name="email" value=<?php echo $_SESSION['user-email'] ?> />
+
+          
 
           <!-- Add button to trigger saveQuestion -->
           <button class="save-btn" onclick="saveQuestion()">
@@ -117,12 +122,50 @@ $conn->close();
         </form>
 
         <!-- Questions List -->
-        <div class="questions-list">
-          <h2>Questions List</h2>
-          <ul id="question-list">
-            <!-- Questions will appear here -->
+       
+ 
+  
+  <div class="questions-list">
+  <h2>Questions List</h2>
+  
+  <ul id="question-list">
+    <!-- Question Template -->
+    <li>
+      <form>
+        <div class="question-item">
+          <h3>Question 1</h3><br>
+          <ul class="answers-list">
+            <li>
+              <label>
+                <input type="radio" name="answer" value="Paris"> Answer1
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="answer" value="London"> Answer2
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="answer" value="Berlin"> Answer3
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="answer" value="Madrid"> Answer4
+              </label>
+            </li>
           </ul>
+          <button type="submit">Submit</button>
         </div>
+      </form>
+    </li>
+    <!-- Add more questions here -->
+  </ul>
+</div>
+
+
+        
       </main>
 
       <footer class="page-footer">
