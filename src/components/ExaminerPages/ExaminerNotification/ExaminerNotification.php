@@ -12,7 +12,7 @@
 }
 ?>
 <?php
-    require_once 'bagyaconnection.php';
+    require_once 'ExaminerNotification.php';
 
   // Handle form submission
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -80,7 +80,7 @@ $conn->close();
     
     <div class="examiner-notification-container">
         <h1>Examiner Notifications</h1>
-        <form method="post" id="examiner-notification-form" action="bagyacreate.php">
+        <form method="post" id="examiner-notification-form" action="ExaminerNotification.php">
 
             Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
             E-mail:<input type="text" id="email-input" name="email" placeholder="Enter email" required>
