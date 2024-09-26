@@ -1,49 +1,37 @@
 <?php
+    // Include the connection (ensure the path is correct)
+    require_once 'bagyaconnection.php'; // Assuming this contains the connection
 
-  //Establish a connection to database
-  $conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-  // Check if the connection was successful
-
-  if ($conn->connect_error) {
-    die('Connection Error: ' . $conn->connect_error);
-} else {
-    echo "Connected successfully.<br>"; // This line can be removed later
-}
-?>
-<?php
-    require_once 'bagyaconnection.php';
-
-  // Handle form submission
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
-
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $notification = $_POST["message"];
-
-    $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
-    $query->bind_param("sss", $name, $email, $notification);
-
-    if ($query->execute()) {
-        $message = "Notification added successfully!";
-        echo "<script>alert('okay');</script>";
-    } else {
-        $message = "Execution Error: " . $query->error;
+    // Check if the connection was successful
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Close the query object (not the connection)
-    $query->close();
-}
+    // Handle form submission
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = isset($_POST["name"]) ? $_POST["name"] : null;
+        $email = isset($_POST["email"]) ? $_POST["email"] : null;
+        $notification = isset($_POST["message"]) ? $_POST["message"] : null;
 
-// Fetch the notifications after insertion
+        if ($name && $email && $notification) {
+            // Prepare and execute the query
+            $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+            $query->bind_param("sss", $name, $email, $notification);
 
-//$result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
+            if ($query->execute()) {
+                echo "<script>alert('Notification added successfully');</script>";
+            } else {
+                echo "Execution Error: " . $query->error;
+            }
 
-// Close the connection after fetching the data
-$conn->close();
-?>
+            $query->close();
+        } else {
+            echo "<script>alert('Please fill in all fields');</script>";
+        }
+    }
 
+    // Close the connection
+    $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +41,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ExaminerNotification.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <title>Examiner Notification</title>
@@ -63,43 +49,41 @@ $conn->close();
 
 <body>
     <div class="wrapper">
-    <div class="container">
+        <div class="container">
+            <aside class="sidebar">
+                <h1>ExamCore</h1>
+                <ul>
+                    <li><a href="../examinerHome.html">Home</a></li>
+                    <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
+                    <li><a href="../ExaminerResult/examinerResult.html">Results</a></li>
+                    <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
+                </ul>
+                <a href="../ExaminerProfile/examinerProfile.html">
+                    <button class="profile-btn">Examiner Profile</button>
+                </a>
+            </aside>
+        </div>
 
-        <aside class="sidebar">
-            <h1>ExamCore</h1>
-            <ul>
-                <li><a href="../examinerHome.html">Home</a></li>
-                <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
-                <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
-                <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
-            </ul>
-            <a href="../ExaminerProfile/examinerProfile.html"><button class="profile-btn">Examiner Profile</button></a>
-            
-        </aside>
+        <div class="examiner-notification-container">
+            <h1>Examiner Notifications</h1>
+            <form method="post" id="examiner-notification-form" action="bagyacreate.php">
+                Name: <input type="text" id="name-input" name="name" placeholder="Enter name" required>
+                E-mail: <input type="email" id="email-input" name="email" placeholder="Enter email" required>
+                Message: <input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
+
+                <input type="submit" value="Add Notification">
+            </form>
+
+            <!-- Added notification list should be displayed here -->
+            <ul id="list-notifications"></ul>
+        </div>
+
+        <footer class="page-footer">
+            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | 
+            <a href="#">Privacy Policy</a></p>
+        </footer>
+        <script src="ExaminerNotification.js"></script>
     </div>
-    
-    <div class="examiner-notification-container">
-        <h1>Examiner Notifications</h1>
-        <form method="post" id="examiner-notification-form" action="bagyacreate.php">
-
-            Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
-            E-mail:<input type="text" id="email-input" name="email" placeholder="Enter email" required>
-            Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
-
-            <input type="submit" value="Add Notification">
-
-        </form>
-        <!--Added notification list should be displayed here-->
-        
-
-    </div>
-
-    <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a
-                href="#">Privacy Policy</a></p>
-    </footer>
-    <script src="ExaminerNotification.js"></script>
-
 </body>
 
 </html>
