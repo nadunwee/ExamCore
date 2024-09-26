@@ -44,7 +44,6 @@ CREATE TABLE `admin` (
 INSERT INTO admin (admin_id, name, password)
 VALUES ("AD236034", "john Doe", "john123");
 
-<<<<<<< HEAD
 CREATE TABLE `Exams` (
     `exam_id` INT AUTO_INCREMENT,
     `exam_name` VARCHAR(255) NOT NULL,
@@ -54,12 +53,3 @@ CREATE TABLE `Exams` (
     `examiner_email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`exam_id`)
 );
-=======
-CREATE TABLE `feedback` (
-    `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
-    `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `rate` varchar(10) NOT NULL,
-    `comment` varchar(255) NOT NULL,
-    PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> 475fab4e67fcf6bf89de6ac5d3e39b6744f65a6e
