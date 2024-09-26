@@ -44,6 +44,16 @@ CREATE TABLE `admin` (
 INSERT INTO admin (admin_id, name, password)
 VALUES ("AD236034", "john Doe", "john123");
 
+CREATE TABLE `Exams` (
+    `exam_id` INT AUTO_INCREMENT,
+    `exam_name` VARCHAR(255) NOT NULL,
+    `assigned_examiner` VARCHAR(255) NOT NULL,
+    `exam_deadline` DATE NOT NULL,
+    `exam_password` VARCHAR(255) NOT NULL,
+    `examiner_email` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`exam_id`)
+);
+
 CREATE TABLE `paper`(
   `question_ID` int(10) NOT NULL AUTO_INCREMENT,
   `question` varchar(255) NOT NULL,

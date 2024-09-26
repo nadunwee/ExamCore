@@ -1,19 +1,19 @@
 // Modal functionality
-const addExaminerButton = document.querySelector('.add-examiner-btn');
-const addExaminerModal = document.getElementById('addExaminerModal');
+const assignExaminerButton = document.querySelector('.assign-examiner-btn');
+const assignExaminerModal = document.getElementById('assignExaminerModal');
 const editExaminerModal = document.getElementById('editExaminerModal');
 const closeButton = document.querySelector('.close');
 
 // Variable to store the row being edited
 let rowToEdit = null;
 
-// Open and close the "Add Examiner" modal
-addExaminerButton.addEventListener('click', () => {
-  addExaminerModal.style.display = 'block';
+// Open and close the "assign Examiner" modal
+assignExaminerButton.addEventListener('click', () => {
+  assignExaminerModal.style.display = 'block';
 });
 
 closeButton.addEventListener('click', () => {
-  addExaminerModal.style.display = 'none';
+  assignExaminerModal.style.display = 'none';
 });
 
 // Save button functionality
@@ -43,9 +43,9 @@ cancelButton.addEventListener('click', () => {
   editExaminerModal.style.display = 'none'; // Close the modal without saving
 });
 
-// Add button functionality to add a new examiner
-const addButton = document.querySelector('.add-btn');
-addButton.addEventListener('click', () => {
+// assign button functionality to assign a new examiner
+const assignButton = document.querySelector('.assign-btn');
+assignButton.addEventListener('click', () => {
   const examinerName = document.getElementById('examinerName').value;
   const assignedExam = document.getElementById('assignTo').value;
 
@@ -57,16 +57,16 @@ addButton.addEventListener('click', () => {
         examiners[indexToUpdate].name = examinerName;
         examiners[indexToUpdate].exam = assignedExam;
         updateTable();
-        addExaminerModal.style.display = 'none';
+        assignExaminerModal.style.display = 'none';
         rowToEdit = null; // Reset the rowToEdit variable
       } else {
         console.error('Could not find examiner to update.');
       }
     } else {
-      // Add a new examiner if no row is being edited
+      // assign a new examiner if no row is being edited
       examiners.push({ name: examinerName, exam: assignedExam });
       updateTable();
-      addExaminerModal.style.display = 'none';
+      assignExaminerModal.style.display = 'none';
     }
   } else {
     alert('Please fill in both Examiner Name and Assigned Exam fields.');

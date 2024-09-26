@@ -1,3 +1,37 @@
+<?php
+session_start();
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $examName = $_POST["examName"];
+    $assignedExaminer = $_POST["assignedExaminer"];
+    $deadline = $_POST["deadline"];
+    $password = $_POST["password"];
+    $email = $_SESSION['user-email'];  // Fetch user email from session
+
+    include("../../php/config.php");
+
+    // Prepare and bind parameters for SQL query
+    $query = $conn->prepare("INSERT INTO Exams (exam_name, assigned_examiner, exam_deadline, exam_password, examiner_email) 
+      VALUES (?, ?, ?, ?, ?)");
+    $query->bind_param("sssss", $examName, $assignedExaminer, $deadline, $password, $email);
+
+    if ($query->execute()) {
+        // Redirect to the admin exam page after successful insertion
+        header('Location: adminExam.php');
+        exit();
+    } else {
+        echo "Error: " . $query->error;
+    }
+
+    // Close the query and the connection
+    $query->close();
+    $conn->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,33 +60,45 @@
                 <h1>ExamCore</h1>
                 <ul>
                     <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                    <li><a href="../AdminExams/adminExam.html">Exams</a></li>
+                    <li><a href="http://localhost/your-project-directory/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
                 </ul>
-                
+
             </aside>
 
             <div class="admin-page-container">
-        
+
                 <div class="admin-exam-content">
                     <button id="admin-add-an-exam-Btn" type="button">Add an exam</button>
-        
+
                     <div class="admin-exam-popup-background">
                         <div class="admin-add-exam-popup" id="admin-add-exam-popup">
                             <div class="admin-add-exam-popup-header">
                                 <p>Add an exam</p>
                             </div>
                             <div class="admin-add-exam-popup-body">
+                            <form method="POST" action="adminExam.php">
                                 <label for="Exam Name">Exam Name:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-name" required><br>
+                                <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
+
                                 <label for="Assign To">Assign To:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-examiner-name" required><br>
+                                <input type="text" class="popup-inputs-box" id="popup-examiner-name" name="assignedExaminer" required><br>
+
                                 <label for="Exam Deadline">Exam Deadline:</label><br>
-                                <input type="date" class="popup-inputs-box" id="popup-exam-deadline" required><br>
+                                <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
+
                                 <label for="Exam Password">Exam Password:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-password" required><br>
-        
+                                <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
+
+                                <input type="hidden" name="email" value="<?php echo $_SESSION['user-email']; ?>">
+
+                                <div class="admin-add-exam-popup-button">
+                                    <button class="admin-add-exam-button" type="submit">Add</button>
+                                    <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
+                                </div>
+                            </form>
+
                                 <div class="admin-add-exam-popup-button">
                                     <button class="admin-add-exam-button" type="button" onclick="addExam()">Add</button>
                                     <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
@@ -60,22 +106,25 @@
                             </div>
                         </div>
                     </div>
-        
+
                     <div class="admin-edit-exam-popup-background">
                         <div class="admin-edit-exam-popup" id="admin-edit-exam-popup">
                             <div class="admin-edit-exam-popup-header">
                                 <p>Edit this exam</p>
                             </div>
                             <div class="admin-edit-exam-popup-body">
-                                <label for="Exam Name">Exam Name:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-name" required><br>
-                                <label for="Assign To">Assign To:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-examiner-name" required><br>
-                                <label for="Exam Deadline">Exam Deadline:</label><br>
-                                <input type="date" class="popup-inputs-box" id="popup-exam-deadline" required><br>
-                                <label for="Exam Password">Exam Password:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-password" required><br>
-        
+                                <form>
+                                    <label for="Exam Name">Exam Name:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-name" name="editExamName" required><br>
+                                    <label for="Assign To">Assign To:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-examiner-name" name="editAssignedExaminer" required><br>
+                                    <label for="Exam Deadline">Exam Deadline:</label><br>
+                                    <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="editDeadline" required><br>
+                                    <label for="Exam Password">Exam Password:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-password" name="editPassword" required><br>
+                                    <input hidden type="text" name="email" value=<?php echo  $_SESSION['user-email'] ?>>
+                                </form>
+                                
                                 <div class="admin-edit-exam-popup-button">
                                     <button class="admin-edit-exam-button" type="button">Edit</button>
                                     <button class="admin-edit-exam-cancel-button" type="button">Cancel</button>
@@ -84,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <footer class="page-footer">
                     <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions | <a
                                 href="#">PrivacyPolicy</a></p>
@@ -94,7 +143,7 @@
 
         </div>
     </div>
-    
+
 </body>
 
 

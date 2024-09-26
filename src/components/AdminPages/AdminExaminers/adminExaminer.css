@@ -45,7 +45,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.edit-btn, .delete-btn, .add-examiner-btn {
+.edit-btn, .delete-btn, .assign-examiner-btn {
   background-color: #a3239f;
   color: white;
   font-family: poppins, sans-serif;
@@ -55,7 +55,7 @@ th {
   border-radius: 8px;
 }
 
-.edit-btn:hover, .delete-btn:hover, .add-examiner-btn:hover {
+.edit-btn:hover, .delete-btn:hover, .assign-examiner-btn:hover {
   background-color: #234466;
 }
 
