@@ -1,112 +1,112 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
 .container {
-    flex: 1;
+  flex: 1;
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #f8f8f8;
-    padding: 15px;
-    position: fixed;
-    height: 100%;
-    border-right: 1px solid #761c73;
+  width: 250px;
+  background-color: #f8f8f8;
+  padding: 15px;
+  position: fixed;
+  height: 100%;
+  border-right: 1px solid #761c73;
 }
 
 .sidebar h1 {
-    text-align: center;
-    color: #761c73;
-    margin-bottom: 30px;
+  text-align: center;
+  color: #761c73;
+  margin-bottom: 30px;
 }
 
 .sidebar ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .sidebar ul li {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
 }
 
 .profile-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #761c73;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #761c73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
 }
 
 .examiner-notification-container {
-    margin-left: 270px;
-    padding: 20px;
+  margin-left: 270px;
+  padding: 20px;
 }
 
 #examiner-notification-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-#notification-input, 
-#name-input, 
+#notification-input,
+#name-input,
 #email-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
-#examiner-notification-form input[type="submit"] {
+/* #examiner-notification-form input[type="submit"] {
     background-color: #761c73;
     color: white;
     border: none;
     padding: 12px;
     cursor: pointer;
     font-size: 16px;
-}
+} */
 
 #list-notifications {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
 }
 
 #list-notifications li {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #list-notifications button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
 }
 
 footer.page-footer {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }

@@ -18,10 +18,10 @@
           if ($result->num_rows > 0) {
             $_SESSION['user-email'] = "$email";
             $_SESSION['user-pswd'] = "$passwd";
-              header('Location: ../StudentPages/StudentHome/StudentHome.html');
-              exit();
+            header('Location: ../StudentPages/StudentHome/StudentHome.html');
+            exit();
           } else {
-              echo "<h1>no account found</h1>"; // Implement Error Page
+            echo "<h1>no account found</h1>"; // Implement Error Page
           }
       } else {
           echo "Error : $query->error";
@@ -37,9 +37,10 @@
           $result = $query->get_result();
 
           if ($result->num_rows > 0) {
-              $_SESSION['message'] = 'Examiner login successful!';
-              header('Location: ../ExaminerPages/examinerHome.html'); 
-              exit();
+            $_SESSION['user-email'] = "$email";
+            $_SESSION['user-pswd'] = "$passwd";
+            header('Location: ../ExaminerPages/examinerHome.html'); 
+            exit();
           } else {
               $_SESSION['message'] = 'Invalid email or password.';
           }

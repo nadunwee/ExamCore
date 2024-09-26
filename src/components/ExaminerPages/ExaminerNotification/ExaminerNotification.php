@@ -1,47 +1,33 @@
 <?php
   session_start();
 
-  //Establish a connection to database
-  $conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-  // Check if the connection was successful
-  if ($conn->connect_error) {
-      die('Connection Error: ' . $conn->connect_error);
+  // Redirect if session email is not set
+  if (!isset($_SESSION['user-email'])) {
+    header("Location: ../../AccessPages/login.php");
+    exit;
   }
 
-  // Handle form submission
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-      $name = $_POST["name"];
-      $email = $_POST["email"];
-      $notification = $_POST["message"];
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $notification = $_POST["message"];
 
-      $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
-        
- // Check if the query preparation was successful
-    if ($query === false) {
-        die("SQL Error: " . $conn->error);  // Output detailed error if prepare fails
+    include('../../../php/config.php');
+
+    $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+    $query->bind_param("sss", $name, $email, $notification);
+
+    if ($query->execute()) {
+    } else {
     }
-// Bind the parameters
 
-      $query->bind_param("sss", $name, $email, $notification);
-
-      if ($query->execute()) {
-          
-      } else {
-         
-      }
-
-      // Close the query object (not the connection)
-      $query->close();
+    $query->close();
+    $conn->close();
   }
 
-  // Fetch the notifications after insertion
-  //$result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
-
-  // Close the connection after fetching the data
-  $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,11 +58,18 @@
         </div>
         <div class="examiner-notification-container">
             <h1>Examiner Notifications</h1>
-            <form method="post" id="examiner-notification-form" action="ExaminerNotification.php">
-                Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
-                E-mail:<input type="email" id="email-input" name="email" placeholder="Enter email" required>
-                Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
-                <input type="submit" value="Add Notification">
+            <form method="get" id="examiner-notification-form">
+                Name:<input type="text" id="name-input" name="name"/>
+                <input type="hidden" id="email-input" name="email" value>
+                Message:<input type="text" id="notification-input" name="message" />
+                <input type="submit" value="Add Notification" />
+            </form>
+
+            <form action="./ExaminerNotification.php" method="POST" id="examiner-notification-form">
+                <input type="text" name="name" id="name-input">
+                <input type="text" hidden name="email" id="email-input" value="<?php echo $_SESSION['user-email']; ?>">
+                <input type="text" name="message" id="notification-input">
+                <input type="submit" >
             </form>
             <!--Added notification list should be displayed here-->
         </div>
