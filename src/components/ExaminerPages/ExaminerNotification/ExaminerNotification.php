@@ -1,23 +1,31 @@
 <?php
-    // Include the connection (ensure the path is correct)
-    require_once 'bagyaconnection.php'; // Assuming this contains the connection
+    // Connection details (you can replace this with your actual connection code)
+    $servername = "localhost"; // Update with your server name
+    $username = "root"; // Update with your database username
+    $password = ""; // Update with your database password
+    $dbname = "your_database"; // Update with your database name
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Check if the connection was successful
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    if ($conn->connect_error) {
+        die('Connection Error: ' . $conn->connect_error);
     }
 
     // Handle form submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = isset($_POST["name"]) ? $_POST["name"] : null;
         $email = isset($_POST["email"]) ? $_POST["email"] : null;
-        $notification = isset($_POST["message"]) ? $_POST["message"] : null;
+        $message = isset($_POST["message"]) ? $_POST["message"] : null;
 
-        if ($name && $email && $notification) {
+        // Ensure all fields are filled out
+        if ($name && $email && $message) {
             // Prepare and execute the query
             $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
-            $query->bind_param("sss", $name, $email, $notification);
+            $query->bind_param("sss", $name, $email, $message);
 
+            // Check if the query executes successfully
             if ($query->execute()) {
                 echo "<script>alert('Notification added successfully');</script>";
             } else {
@@ -32,6 +40,8 @@
 
     // Close the connection
     $conn->close();
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,27 +59,28 @@
 
 <body>
     <div class="wrapper">
-        <div class="container">
-            <aside class="sidebar">
-                <h1>ExamCore</h1>
-                <ul>
-                    <li><a href="../examinerHome.html">Home</a></li>
-                    <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
-                    <li><a href="../ExaminerResult/examinerResult.html">Results</a></li>
-                    <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
-                </ul>
-                <a href="../ExaminerProfile/examinerProfile.html">
-                    <button class="profile-btn">Examiner Profile</button>
-                </a>
-            </aside>
-        </div>
+    <div class="container">
 
-        <div class="examiner-notification-container">
-            <h1>Examiner Notifications</h1>
-            <form method="post" id="examiner-notification-form" action="bagyacreate.php">
-                Name: <input type="text" id="name-input" name="name" placeholder="Enter name" required>
-                E-mail: <input type="email" id="email-input" name="email" placeholder="Enter email" required>
-                Message: <input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
+        <aside class="sidebar">
+            <h1>ExamCore</h1>
+            <ul>
+                <li><a href="../examinerHome.html">Home</a></li>
+                <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
+                <li><a href="../ExaminerResult/examierResult.html">Results</a></li>
+                <li><a href="../ExaminerNotification/ExaminerNotification.html">Notifications</a></li>
+            </ul>
+            <a href="../ExaminerProfile/examinerProfile.html"><button class="profile-btn">Examiner Profile</button></a>
+            
+        </aside>
+    </div>
+    
+    <div class="examiner-notification-container">
+        <h1>Examiner Notifications</h1>
+        <form method="post" id="examiner-notification-form" action="bagyacreate.php">
+
+            Name:<input type="text" id="name-input" name="name" placeholder="Enter name" required>
+            E-mail:<input type="text" id="email-input" name="email" placeholder="Enter email" required>
+            Message:<input type="text" id="notification-input" name="message" placeholder="Enter notification" required>
 
                 <input type="submit" value="Add Notification">
             </form>
