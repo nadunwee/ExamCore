@@ -1,31 +1,40 @@
 <?php
 session_start();
 
-// Check if the form is submitted
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if (!isset($_SESSION['user-email'])) {
+    echo "Session email is not set.";
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $examName = $_POST["examName"];
     $assignedExaminer = $_POST["assignedExaminer"];
     $deadline = $_POST["deadline"];
     $password = $_POST["password"];
-    $email = $_SESSION['user-email'];  // Fetch user email from session
+    $email = $_SESSION['user-email'];  
 
-    include("../../php/config.php");
+    $conn = new mysqli('localhost', 'root', '', 'exam_core');
 
-    // Prepare and bind parameters for SQL query
+    if ($conn->connect_error) {
+        die('Connection Error : ' . $conn->connect_error);
+    }
+
     $query = $conn->prepare("INSERT INTO Exams (exam_name, assigned_examiner, exam_deadline, exam_password, examiner_email) 
       VALUES (?, ?, ?, ?, ?)");
     $query->bind_param("sssss", $examName, $assignedExaminer, $deadline, $password, $email);
 
     if ($query->execute()) {
-        // Redirect to the admin exam page after successful insertion
         header('Location: adminExam.php');
         exit();
     } else {
         echo "Error: " . $query->error;
     }
 
-    // Close the query and the connection
     $query->close();
     $conn->close();
 }
@@ -78,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>Add an exam</p>
                             </div>
                             <div class="admin-add-exam-popup-body">
-                            <form method="POST" action="adminExam.php">
+                            <form>
                                 <label for="Exam Name">Exam Name:</label><br>
                                 <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
@@ -91,12 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label for="Exam Password">Exam Password:</label><br>
                                 <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
 
-                                <input type="hidden" name="email" value="<?php echo $_SESSION['user-email']; ?>">
+                                <input type="hidden" name="email" value="<?php $_SESSION['user-email'] ?>">
 
-                                <div class="admin-add-exam-popup-button">
-                                    <button class="admin-add-exam-button" type="submit">Add</button>
-                                    <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
-                                </div>
+                                
                             </form>
 
                                 <div class="admin-add-exam-popup-button">
@@ -145,6 +151,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 </body>
-
-
-</html>
