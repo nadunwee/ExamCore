@@ -29,7 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query->bind_param("sssss", $examName, $assignedExaminer, $deadline, $password, $email);
 
     if ($query->execute()) {
+<<<<<<< HEAD
         header('Location: adminExam.php');
+=======
+        // Redirect to the admin exam page after successful insertion
+        header('Location: ./adminExam.php');
+>>>>>>> fcd12f11f557b26145b1412c5505fa1abfe490f2
         exit();
     } else {
         echo "Error: " . $query->error;
