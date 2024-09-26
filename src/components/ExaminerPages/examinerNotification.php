@@ -1,39 +1,41 @@
 <?php
   session_start();
 
-  // Check if from data was posted
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form Data 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+  //Establish a connection to database
+  $conn = new mysqli('localhost', 'root', '', 'exam_core');
 
-    // DB connection
-    $conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-    // Check the connection
-    if ($conn->connect_error) {
-      die('Connection failed : ' .$conn->connect_error);
-    }
-
-    // Prepare the sql statement
-    $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
-    $query->bind_param("sss", $name, $email, $message);
-
-    // Execute the statement
-    if ($query->execute()) {
-      $_SESSION["message"] = "Notification added";
-      header('Location: examinerNotification.php');
-    } else {
-      $_SESSION['message'] = "Error: " . $query->error;
-    }
-
-    // Close statement and connection
-    $query->close();
-    $conn->close();
-    exit();
+  // Check if the connection was successful
+  if ($conn->connect_error) {
+      die('Connection Error: ' . $conn->connect_error);
   }
 
+  $message = ''; // Feedback message
+
+  // Handle form submission
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+      $name = $_POST["name"];
+      $email = $_POST["email"];
+      $notification = $_POST["message"];
+
+      $query = $conn->prepare("INSERT INTO notification (name, email, message) VALUES (?, ?, ?)");
+      $query->bind_param("sss", $name, $email, $notification);
+
+      if ($query->execute()) {
+          $message = "Notification added successfully!";
+      } else {
+          $message = "Execution Error: " . $query->error;
+      }
+
+      // Close the query object (not the connection)
+      $query->close();
+  }
+
+  // Fetch the notifications after insertion
+  $result = $conn->query("SELECT name, email, message, date FROM notification ORDER BY date DESC");
+
+  // Close the connection after fetching the data
+  $conn->close();
 ?>
 
 <!DOCTYPE html>
