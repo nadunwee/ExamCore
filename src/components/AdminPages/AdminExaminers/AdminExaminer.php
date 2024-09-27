@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +50,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>ExamCore</title>
     <link rel="stylesheet" href="adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
+    <style>
+        /* Basic styling for modals */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -80,14 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <!-- Dynamic Content Goes Here -->
                     </tbody>
                 </table><br>
-
+                
                 <div>
                     <button class="assign-examiner-btn">Assign Examiner</button>
+                    <button class="add-examiner-btn">Add Examiner</button>
                 </div>
 
+                <!-- Assign Examiner Modal -->
                 <div class="modal" id="assignExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="assignClose">&times;</span>
                         <h2>Assign an Examiner</h2>
                         <form id="assignExaminerForm">
                             <label for="examinerSelect">Select Examiner:</label>
@@ -111,9 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
+                <!-- Edit Examiner Modal -->
                 <div class="modal" id="editExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="editClose">&times;</span>
                         <h2>Edit Examiner</h2>
                         <form>
                             <label for="editExaminerName">Examiner Name:</label>
@@ -137,13 +176,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <br>
-                <button class="add-examiner-btn">Add Examiner</button>
 
+                <!-- Add Examiner Modal -->
                 <div class="modal" id="addExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="addClose">&times;</span>
                         <h2>Add Examiner</h2>
-                        <form>
+                        <form method="POST" action="userRegister.php">
                             <div class="input-container">
                                 <label for="real-name">Name</label>
                                 <input type="text" id="real-name" name="real-name" class="input-field" placeholder="Enter Your Name..." required />
@@ -169,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="password" id="confirm-password" name="confirm-password" class="input-field" placeholder="Confirm Password" required />
                             </div>
 
-                            <input type="submit" value="Sign up with Email" class="register-submit-btn" onclick="checkPasswords(event)" />
+                            <input type="submit" value="Sign up with Email" class="register-submit-btn" />
                         </form>
                     </div>
                 </div>
