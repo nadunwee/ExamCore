@@ -42,15 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <link rel="stylesheet" href="adminExaminer.css">
+    <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
+    
 </head>
 <body>
 
@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>ExamCore</h1>
             <ul>
                 <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                <li><a href="../AdminExams/adminExam.html">Exams</a></li>
-                <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExams/adminExam.phpl">Exams</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/AdminExaminer.php">Examiner</a></li>
                 <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
             </ul>
         </aside>
@@ -80,14 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <!-- Dynamic Content Goes Here -->
                     </tbody>
                 </table><br>
-
+                
                 <div>
                     <button class="assign-examiner-btn">Assign Examiner</button>
+                    <button class="add-examiner-btn">Add Examiner</button>
                 </div>
 
+                <!-- Assign Examiner Modal -->
                 <div class="modal" id="assignExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="assignClose">&times;</span>
                         <h2>Assign an Examiner</h2>
                         <form id="assignExaminerForm">
                             <label for="examinerSelect">Select Examiner:</label>
@@ -111,9 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
+                <!-- Edit Examiner Modal -->
                 <div class="modal" id="editExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="editClose">&times;</span>
                         <h2>Edit Examiner</h2>
                         <form>
                             <label for="editExaminerName">Examiner Name:</label>
@@ -137,13 +140,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <br>
-                <button class="add-examiner-btn">Add Examiner</button>
 
+                <!-- Add Examiner Modal -->
                 <div class="modal" id="addExaminerModal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close" id="addClose">&times;</span>
                         <h2>Add Examiner</h2>
-                        <form>
+                        <form method="POST" action="userRegister.php">
                             <div class="input-container">
                                 <label for="real-name">Name</label>
                                 <input type="text" id="real-name" name="real-name" class="input-field" placeholder="Enter Your Name..." required />
@@ -169,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="password" id="confirm-password" name="confirm-password" class="input-field" placeholder="Confirm Password" required />
                             </div>
 
-                            <input type="submit" value="Sign up with Email" class="register-submit-btn" onclick="checkPasswords(event)" />
+                            <input type="submit" value="Sign up with Email" class="register-submit-btn" />
                         </form>
                     </div>
                 </div>
@@ -181,6 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-<script src="adminExaminer.js"></script>
+<script src="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.js"></script>
 </body>
 </html>

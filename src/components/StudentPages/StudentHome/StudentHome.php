@@ -32,7 +32,7 @@ include('../../../php/config.php');
                 <h1>ExamCore</h1>
                 <ul>
                     <li><a href="./studentHome.php">Home</a></li>
-                    <li><a href="../studentExam.html">Exams</a></li>
+                    <li><a href="../StudentExamPaper/studentExamPaper.html">Exams Paper</a></li>
                     <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="../StudentNotification.html">Notifications</a></li>
                 </ul>

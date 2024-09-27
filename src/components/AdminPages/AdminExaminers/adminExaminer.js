@@ -5,39 +5,37 @@ const addExaminerModal = document.getElementById('addExaminerModal');
 const editExaminerModal = document.getElementById('editExaminerModal');
 const closeButtons = document.querySelectorAll('.close');
 
-// Variable to store the row being edited
-let rowToEdit = null;
-
 // Open and close the "Assign Examiner" modal
 assignExaminerButton.addEventListener('click', () => {
+    closeAllModals(); // Close all modals before opening a new one
     assignExaminerModal.style.display = 'block';
-});
-
-// Close modals
-closeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        assignExaminerModal.style.display = 'none';
-        addExaminerModal.style.display = 'none';
-        editExaminerModal.style.display = 'none';
-    });
 });
 
 // Add Examiner modal functionality
 const addExaminerButton = document.querySelector('.add-examiner-btn');
 addExaminerButton.addEventListener('click', () => {
+    closeAllModals(); // Close all modals before opening a new one
     addExaminerModal.style.display = 'block';
 });
 
-// Close the Add Examiner modal when clicking outside
+// Close modals function
+function closeAllModals() {
+    assignExaminerModal.style.display = 'none';
+    addExaminerModal.style.display = 'none';
+    editExaminerModal.style.display = 'none';
+}
+
+// Close modals when clicking outside
 window.onclick = function(event) {
-    if (event.target === addExaminerModal) {
-        addExaminerModal.style.display = 'none';
-    } else if (event.target === assignExaminerModal) {
-        assignExaminerModal.style.display = 'none';
-    } else if (event.target === editExaminerModal) {
-        editExaminerModal.style.display = 'none';
+    if (event.target === assignExaminerModal || event.target === addExaminerModal || event.target === editExaminerModal) {
+        closeAllModals();
     }
 };
+
+// Close buttons for modals
+closeButtons.forEach(button => {
+    button.addEventListener('click', closeAllModals);
+});
 
 // Password validation function for Add Examiner form
 function checkPasswords(event) {
@@ -47,55 +45,63 @@ function checkPasswords(event) {
 
     if (password !== confirmPassword) {
         alert("Passwords do not match. Please try again.");
-        return false;
     } else {
         // Submit the form via AJAX or regular form submission
-        document.querySelector('#addExaminerForm').submit();
+        document.querySelector('#addExaminerModal form').submit();
     }
 }
 
 // Attach submit functionality to the 'Sign up with Email' button
 const registerSubmitButton = document.querySelector('.register-submit-btn');
-registerSubmitButton.addEventListener('click', checkPasswords);
+if (registerSubmitButton) {
+    registerSubmitButton.addEventListener('click', checkPasswords);
+}
 
 // Save and Cancel button functionality for editing
 const saveButton = document.querySelector('.save-btn');
-saveButton.addEventListener('click', () => {
-    const updatedName = document.getElementById('editExaminerName').value;
-    const updatedExam = document.getElementById('editAssignTo').value;
+if (saveButton) {
+    saveButton.addEventListener('click', () => {
+        const updatedName = document.getElementById('editExaminerName').value;
+        const updatedExam = document.getElementById('editAssignTo').value;
 
-    if (updatedName && updatedExam !== 'select') {
-        if (rowToEdit) {
-            rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
-            rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
-            editExaminerModal.style.display = 'none'; // Close the modal after saving
+        if (updatedName && updatedExam !== 'select') {
+            if (rowToEdit) {
+                rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
+                rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
+                editExaminerModal.style.display = 'none'; // Close the modal after saving
+            } else {
+                console.error('No row selected for editing.');
+            }
         } else {
-            console.error('No row selected for editing.');
+            alert('Please fill in both Examiner Name and Assigned Exam fields.');
         }
-    } else {
-        alert('Please fill in both Examiner Name and Assigned Exam fields.');
-    }
-});
+    });
+}
 
+// Cancel button functionality
 const cancelButton = document.querySelector('.cancel-btn');
-cancelButton.addEventListener('click', () => {
-    editExaminerModal.style.display = 'none'; // Close the modal without saving
-});
+if (cancelButton) {
+    cancelButton.addEventListener('click', () => {
+        editExaminerModal.style.display = 'none'; // Close the modal without saving
+    });
+};
 
 // Assign button functionality
 const assignButton = document.querySelector('.assign-btn');
-assignButton.addEventListener('click', () => {
-    const examinerName = document.getElementById('examinerSelect').value; // Ensure the selector matches your HTML
-    const assignedExam = document.getElementById('assignTo').value;
+if (assignButton) {
+    assignButton.addEventListener('click', () => {
+        const examinerName = document.getElementById('examinerSelect').value;
+        const assignedExam = document.getElementById('assignTo').value;
 
-    if (examinerName && assignedExam !== 'select') {
-        examiners.push({ name: examinerName, exam: assignedExam });
-        updateTable();
-        assignExaminerModal.style.display = 'none';
-    } else {
-        alert('Please fill in both Examiner Name and Assigned Exam fields.');
-    }
-});
+        if (examinerName && assignedExam !== 'select') {
+            examiners.push({ name: examinerName, exam: assignedExam });
+            updateTable();
+            assignExaminerModal.style.display = 'none'; // Close the modal after assigning
+        } else {
+            alert('Please fill in both Examiner Name and Assigned Exam fields.');
+        }
+    });
+}
 
 // Function to update the examiner table
 const examinerTable = document.querySelector('table tbody');
