@@ -108,6 +108,8 @@ $conn->close();
                 echo '<li>' . $row['answer_2'] . '</li>';
                 echo '<li>' . $row['answer_3'] . '</li>';
                 echo '<li>' . $row['answer_4'] . '</li>';
+               
+
                 echo '</ul>';
 
                 echo '<input type="hidden" name="question_ID" value="' . $row['question_ID'] . '">';
