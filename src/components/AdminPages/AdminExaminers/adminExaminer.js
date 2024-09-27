@@ -1,5 +1,6 @@
-// Modal functionality for "Assign Examiner"
+// Modal functionality for "Assign Examiner" 
 const assignExaminerButton = document.querySelector('.assign-examiner-btn');
+const addExaminerButton = document.querySelector('.add-examiner-btn');
 const assignExaminerModal = document.getElementById('assignExaminerModal');
 const addExaminerModal = document.getElementById('addExaminerModal');
 const editExaminerModal = document.getElementById('editExaminerModal');
@@ -12,7 +13,6 @@ assignExaminerButton.addEventListener('click', () => {
 });
 
 // Add Examiner modal functionality
-const addExaminerButton = document.querySelector('.add-examiner-btn');
 addExaminerButton.addEventListener('click', () => {
     closeAllModals(); // Close all modals before opening a new one
     addExaminerModal.style.display = 'block';
@@ -59,6 +59,7 @@ if (registerSubmitButton) {
 
 // Save and Cancel button functionality for editing
 const saveButton = document.querySelector('.save-btn');
+let rowToEdit = null; // Track the row being edited
 if (saveButton) {
     saveButton.addEventListener('click', () => {
         const updatedName = document.getElementById('editExaminerName').value;
@@ -84,7 +85,7 @@ if (cancelButton) {
     cancelButton.addEventListener('click', () => {
         editExaminerModal.style.display = 'none'; // Close the modal without saving
     });
-};
+}
 
 // Assign button functionality
 const assignButton = document.querySelector('.assign-btn');
@@ -134,8 +135,8 @@ function attachDeleteHandlers() {
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
             const index = button.getAttribute('data-index');
-            examiners.splice(index, 1); // Remove the examiner from the list
-            updateTable(); // Refresh the table
+            examiners.splice(index, 1); 
+            updateTable(); 
         });
     });
 }
@@ -146,10 +147,10 @@ function attachEditHandlers() {
         button.addEventListener('click', () => {
             const index = button.getAttribute('data-index');
             const examinerToEdit = examiners[index];
-            rowToEdit = button.closest('tr'); // Store the row to edit
+            rowToEdit = button.closest('tr'); 
             document.getElementById('editExaminerName').value = examinerToEdit.name;
-            document.getElementById('editAssignTo').value = examinerToEdit.exam; // Assuming you have an input/select for the exam
-            editExaminerModal.style.display = 'block'; // Show the edit modal
+            document.getElementById('editAssignTo').value = examinerToEdit.exam; 
+            editExaminerModal.style.display = 'block'; 
         });
     });
 }
