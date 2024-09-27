@@ -56,31 +56,37 @@ function checkPasswords(event) {
 
 // Attach submit functionality to the 'Sign up with Email' button
 const registerSubmitButton = document.querySelector('.register-submit-btn');
-registerSubmitButton.addEventListener('click', checkPasswords);
+if (registerSubmitButton) {
+    registerSubmitButton.addEventListener('click', checkPasswords);
+}
 
 // Save and Cancel button functionality for editing
 const saveButton = document.querySelector('.save-btn');
-saveButton.addEventListener('click', () => {
-    const updatedName = document.getElementById('editExaminerName').value;
-    const updatedExam = document.getElementById('editAssignTo').value;
+if (saveButton) {
+    saveButton.addEventListener('click', () => {
+        const updatedName = document.getElementById('editExaminerName').value;
+        const updatedExam = document.getElementById('editAssignTo').value;
 
-    if (updatedName && updatedExam !== 'select') {
-        if (rowToEdit) {
-            rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
-            rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
-            editExaminerModal.style.display = 'none'; // Close the modal after saving
+        if (updatedName && updatedExam !== 'select') {
+            if (rowToEdit) {
+                rowToEdit.querySelector('td:nth-child(1)').textContent = updatedName;
+                rowToEdit.querySelector('td:nth-child(2)').textContent = updatedExam;
+                editExaminerModal.style.display = 'none'; // Close the modal after saving
+            } else {
+                console.error('No row selected for editing.');
+            }
         } else {
-            console.error('No row selected for editing.');
+            alert('Please fill in both Examiner Name and Assigned Exam fields.');
         }
-    } else {
-        alert('Please fill in both Examiner Name and Assigned Exam fields.');
-    }
-});
+    });
+}
 
 const cancelButton = document.querySelector('.cancel-btn');
-cancelButton.addEventListener('click', () => {
-    editExaminerModal.style.display = 'none'; // Close the modal without saving
-});
+if (cancelButton) {
+    cancelButton.addEventListener('click', () => {
+        editExaminerModal.style.display = 'none'; // Close the modal without saving
+    });
+}
 
 // Assign button functionality
 const assignButton = document.querySelector('.assign-btn');

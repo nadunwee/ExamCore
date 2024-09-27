@@ -11,6 +11,7 @@
   $type = $_POST['type'];
   $name = $_POST['name'];
   $nic = $_POST['nic'];
+  $subject = $_POST['subject'];
   $email = $_POST['email'];
   $phone = $_POST['phone'];
   $gender = $_POST['gender'];
@@ -27,7 +28,7 @@
 
 
     if ($query->execute()) {
-      header('Location: ../components/StudentPages/StudentHome/StudentHome.html');
+      header('Location: ../components/StudentPages/StudentHome/StudentHome.php');
       session_destroy();
       exit();
     } else {
@@ -36,5 +37,17 @@
 
     $query->close();
     $conn->close();
+  } else if ($type == 'examiner') {
+    $query = $conn->prepare("UPDATE examiners SET name = ?, subject = ?, email = ?, password = ? WHERE email = ?");
+    $query->bind_param("sssss", $name, $subject, $email, $password, $previus_email);
+
+
+    if ($query->execute()) {
+      header('Location: ../components/ExaminerPages/ExaminerProfile/examinerProfile.php');
+      session_destroy();
+      exit();
+    } else {
+      echo "Error Updating the record - " .$conn->error;
+    }
   }
 ?>
