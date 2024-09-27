@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+$conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+if ($conn->connect_error) {
+    die('Connection Error : ' . $conn->connect_error);
+}
+
+
 if (!isset($_SESSION['user-email'])) {
     header('Location: ../../AccessPages/login.php');
     exit();
@@ -8,7 +15,6 @@ if (!isset($_SESSION['user-email'])) {
 
 $adminID = $_SESSION['user-email'];
 
-include('../../../php/config.php');
 
 $query = $conn->prepare("SELECT * FROM exams WHERE admin_id = ?");
 $query->bind_param('s', $adminID);
@@ -21,7 +27,6 @@ $query->close();
 $conn->close();
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,22 +56,19 @@ $conn->close();
                 <h1>ExamCore</h1>
                 <ul>
                     <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                    <li><a href="http://localhost/IWT_FINAL_PROJECT_CLONE/ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
+                    <li><a href="http://localhost/../ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
                 </ul>
-
             </aside>
 
             <div class="admin-page-container">
-
                 <div class="admin-exam-content">
                     <button id="admin-add-an-exam-Btn" type="button">Add an exam</button>
 
-
                     <?php if ($result && $result->num_rows > 0): ?>
                         <?php while ($row = $result->fetch_assoc()): ?>
-                            <div class="admin-exam-information">
+                            <div class="admin-exam-information" data-exam-id="<?php echo $row['exam_id']; ?>">
                                 <div class="admin-add-exam-name">
                                     <p>Exam Name:</p>
                                     <span><?php echo htmlspecialchars($row['exam_name']); ?></span>
@@ -84,21 +86,25 @@ $conn->close();
                                     <span><?php echo htmlspecialchars($row['exam_password']); ?></span>
                                 </div>
                                 <span class="admin-exam-emojies">
-                                    <div class="admin-exam-edit">
+                                    <div class="admin-exam-edit" onclick="openEditPopup(<?php echo $row['exam_id']; ?>)">
                                         <img src="../../../Images/editIcon.png" alt="edit">
                                     </div>
                                     <div class="admin-exam-delete">
-                                        <img src="../../../Images/deleteIcon.png" alt="delete">
+                                        <form method="POST" action="adminDeleteExams.php" onsubmit="return confirm('Are you sure you want to delete this exam?');">
+                                            <input type="hidden" name="exam_id" value="<?php echo $row['exam_id']; ?>">
+                                            <button type="submit">
+                                                <img src="../../../Images/deleteIcon.png" alt="delete">
+                                            </button>
+                                        </form>
                                     </div>
                                 </span>
                             </div>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <p>No exams found.</p>
+                        <p class="noExamsFound">No exams found.</p>
                     <?php endif; ?>
 
-
-
+                    <!-- Add Exam Popup -->
                     <div class="admin-exam-popup-background">
                         <div class="admin-add-exam-popup" id="admin-add-exam-popup">
                             <div class="admin-add-exam-popup-header">
@@ -125,43 +131,35 @@ $conn->close();
                                         <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
                                     </div>
                                 </form>
-
-
-
                             </div>
                         </div>
-
-
                     </div>
 
-
-
+                    <!-- Edit Exam Popup -->
                     <div class="admin-edit-exam-popup-background">
                         <div class="admin-edit-exam-popup" id="admin-edit-exam-popup">
                             <div class="admin-edit-exam-popup-header">
                                 <p>Edit this exam</p>
                             </div>
                             <div class="admin-edit-exam-popup-body">
-                                <form method="POST" action="adminExam.php">
-                                    <label for="Exam Name">Exam Name:</label><br>
+                                <form method="POST" action="./adminEditExams.php">
+                                    <label for="Exam Name">New Exam Name:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
-                                    <label for="Assign To">Assigned Examiner ID:</label><br>
+                                    <label for="Assign To">New Examiner ID:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-examiner-id" name="examinerID" required><br>
 
-                                    <label for="Exam Deadline">Exam Deadline:</label><br>
+                                    <label for="Exam Deadline">New Exam Deadline:</label><br>
                                     <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
 
-                                    <label for="Exam Password">Exam Password:</label><br>
+                                    <label for="Exam Password">New Exam Password:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
 
-                                    <div class="admin-add-exam-popup-button">
-                                        <button class="admin-add-exam-button" type="submit">Add</button>
-                                        <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
+                                    <div class="admin-edit-exam-popup-button">
+                                        <button class="admin-edit-exam-button" type="submit">Edit</button>
+                                        <button class="admin-edit-exam-cancel-button" type="button">Cancel</button>
                                     </div>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
@@ -172,10 +170,5 @@ $conn->close();
                                 href="#">PrivacyPolicy</a></p>
                 </footer>
             </div>
-
-
         </div>
-
     </div>
-
-</body>
