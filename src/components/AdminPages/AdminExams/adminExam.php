@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $examiner = $examinerResult->fetch_assoc();
             $assignedExaminer = $examiner['name'];
             // echo "Examiner found: " . $assignedExaminer . "<br>";
-        
+
         } else {
             echo "Error: Examiner with ID " . $examinerID . " not found.<br>";
             exit(); // Stop execution if examiner doesn't exist
@@ -56,6 +56,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // echo "Exam inserted successfully!<br>";
         } else {
             echo "Error inserting exam: " . $query->error . "<br>";
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            $sql = "SELECT exams.exam_name, examiners.name AS examiner_name, exams.exam_deadline, exams.exam_password 
+            FROM exams
+            JOIN examiners ON exams.examiner = examiners.examiner_id";
+            $result = $conn->query($sql);
+
+            $exams = [];
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $exams[] = [
+                        'exam_name' => $row['exam_name'],
+                        'assigned_examiner' => $row['examiner_name'],
+                        'exam_deadline' => $row['exam_deadline'],
+                        'exam_password' => $row['exam_password']
+                    ];
+                }
+            }
         }
     } else {
         echo "Form not submitting data correctly.<br>";
@@ -91,11 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>ExamCore</h1>
                 <ul>
                     <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                    <li><a href="http://localhost/your-project-directory/adminExam.php">Exams</a></li>
+                    <li><a href="http://localhost/IWT_FINAL_PROJECT_CLONE/ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
                 </ul>
-
+                
             </aside>
 
             <div class="admin-page-container">
@@ -109,24 +130,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>Add an exam</p>
                             </div>
                             <div class="admin-add-exam-popup-body">
-                            <form method="POST" action="adminExam.php">
-                                <label for="Exam Name">Exam Name:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
+                                <form method="POST" action="adminExam.php">
+                                    <label for="Exam Name">Exam Name:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
-                                <label for="Assign To">Assigned Examiner ID:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-examiner-name" name="examinerID" required><br>
+                                    <label for="Assign To">Assigned Examiner ID:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-examiner-name" name="examinerID" required><br>
 
-                                <label for="Exam Deadline">Exam Deadline:</label><br>
-                                <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
+                                    <label for="Exam Deadline">Exam Deadline:</label><br>
+                                    <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
 
-                                <label for="Exam Password">Exam Password:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
+                                    <label for="Exam Password">Exam Password:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
 
-                                <div class="admin-add-exam-popup-button">
-                                    <button class="admin-add-exam-button" type="submit" onclick="addExam()">Add</button>
-                                    <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
-                                </div>
-                            </form>
+                                    <div class="admin-add-exam-popup-button">
+                                        <button class="admin-add-exam-button" type="submit">Add</button>
+                                        
+                                        <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
+                                    </div>
+                                </form>
 
                             </div>
                         </div>
@@ -138,26 +160,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>Edit this exam</p>
                             </div>
                             <div class="admin-edit-exam-popup-body">
-                            <form method="POST" action="adminExam.php">
-                                <label for="Exam Name">Exam Name:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
+                                <form method="POST" action="adminExam.php">
+                                    <label for="Exam Name">Exam Name:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
-                                <label for="Assign To">Assigned Examiner ID:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-examiner-name" name="examinerID" required><br>
+                                    <label for="Assign To">Assigned Examiner ID:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-examiner-id" name="examinerID" required><br>
 
-                                <label for="Exam Deadline">Exam Deadline:</label><br>
-                                <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
+                                    <label for="Exam Deadline">Exam Deadline:</label><br>
+                                    <input type="date" class="popup-inputs-box" id="popup-exam-deadline" name="deadline" required><br>
 
-                                <label for="Exam Password">Exam Password:</label><br>
-                                <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
+                                    <label for="Exam Password">Exam Password:</label><br>
+                                    <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
 
-                                <div class="admin-add-exam-popup-button">
-                                    <button class="admin-add-exam-button" type="submit">Add</button>
-                                    <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
-                                </div>
-                            </form>
-                                
-                                
+                                    <div class="admin-add-exam-popup-button">
+                                        <button class="admin-add-exam-button" type="submit">Add</button>
+                                        <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
+                                    </div>
+                                </form>
+
+
                             </div>
                         </div>
                     </div>
