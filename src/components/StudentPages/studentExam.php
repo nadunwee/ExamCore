@@ -7,7 +7,12 @@ if (!isset($_SESSION['user-email'])) {
     exit;
 }
 
-include('../../../php/config.php');
+// Check for the config.php file
+$configPath = '../../../php/config.php';
+if (!file_exists($configPath)) {
+    die('Error: config.php not found.');
+}
+include($configPath);
 
 // Fetch available exams (exam_deadline > CURDATE())
 $availableExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline > CURDATE()");
@@ -18,6 +23,7 @@ $availableExamsResult = $availableExamsQuery->get_result();
 $completedExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline <= CURDATE()");
 $completedExamsQuery->execute();
 $completedExamsResult = $completedExamsQuery->get_result();
+
 ?>
 
 <!DOCTYPE html>
