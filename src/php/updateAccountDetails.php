@@ -28,7 +28,7 @@
 
 
     if ($query->execute()) {
-      header('Location: ../components/StudentPages/StudentHome/StudentHome.html');
+      header('Location: ../components/StudentPages/StudentHome/StudentHome.php');
       session_destroy();
       exit();
     } else {
@@ -39,11 +39,11 @@
     $conn->close();
   } else if ($type == 'examiner') {
     $query = $conn->prepare("UPDATE examiners SET name = ?, subject = ?, email = ?, password = ? WHERE email = ?");
-    $query->bind_param("ssss", $name, $subject, $email, $password, $previus_email);
+    $query->bind_param("sssss", $name, $subject, $email, $password, $previus_email);
 
 
     if ($query->execute()) {
-      header('Location: ../components/StudentPages/StudentHome/StudentHome.html');
+      header('Location: ../components/ExaminerPages/ExaminerProfile/examinerProfile.php');
       session_destroy();
       exit();
     } else {
