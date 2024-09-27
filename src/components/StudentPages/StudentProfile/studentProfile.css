@@ -68,7 +68,7 @@
   padding: 0 30px 10px 20px;
 }
 
-.delete-account {
+.delete-account-btn {
   background-color: #761c73;
   width: fit-content;
   color: whitesmoke;
@@ -77,8 +77,9 @@
   margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 15px;
 }
 
-.delete-account:hover {
-  background-color: #5c1159;
+.delete-account-btn :hover {
+  background-color: #5d0e5a;
 }
