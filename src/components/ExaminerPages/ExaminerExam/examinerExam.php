@@ -111,7 +111,7 @@ $conn->close();
 
           <input  class="submit-btn" type="submit">  <input type="reset">
           
-          <input type="text" hidden name="email" value=<?php echo $_SESSION['user-email'] ?> />
+          <input type="text" hidden name="email" value=<?php echo $_SESSION['email'] ?> />
 
           
 
