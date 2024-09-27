@@ -100,12 +100,27 @@ body {
     padding: 20px;
     margin-left: 280px;
 }
+
+.image-placeholder img {
+    width: 100%;
+    height: auto;
+    background-color: #ddd;
+    margin-top: 200px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 18px;
+    margin-top: -55px;
+} 
+
+
 .name-placeholder{
     width: 100%;
     height: 100px;
     background-color: #761c73;
     margin-bottom: 20px;
-    margin-top: -5px;
+    margin-top: -10px;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -116,6 +131,8 @@ body {
 .name-placeholder h2{
     color:white;
 }
+
+
 
 
 

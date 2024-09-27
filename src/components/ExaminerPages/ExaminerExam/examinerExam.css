@@ -175,24 +175,17 @@ body {
 }
 
 /* Submit button styling */
-button[type="submit"] {
+/* button[type="submit"] {
     display: inline-block;
     padding: 10px 20px;
     background-color: #761c73;
-    color: #fff;
+    color: white;
     font-size: 1.1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color:#761c73;
-}
-
-
-
+} */
 
 /* Style for edit and delete buttons */
 .edit-btn,
@@ -223,9 +216,6 @@ button[type="submit"]:hover {
     color: #761c73;
 }
 
-#editing-index {
-    display: none;
-}
 
 .submit-btn
 {

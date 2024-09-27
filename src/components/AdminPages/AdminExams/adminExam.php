@@ -1,88 +1,27 @@
 <?php
 session_start();
 
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-if ($conn->connect_error) {
-    die('Connection Error : ' . $conn->connect_error);
-} else {
-    // echo "Database connected successfully!<br>";
+if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
 }
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Check if form data is being sent
-    if (isset($_POST["examName"], $_POST["examinerID"], $_POST["deadline"], $_POST["password"])) {
-        // echo "Form submitted with data:<br>";
-        // echo "Exam Name: " . $_POST["examName"] . "<br>";
-        // echo "Examiner ID: " . $_POST["examinerID"] . "<br>";
-        // echo "Deadline: " . $_POST["deadline"] . "<br>";
-        // echo "Password: " . $_POST["password"] . "<br>";
+$adminID = $_SESSION['user-email'];
 
-        // Get form data
-        $examName = $_POST["examName"];
-        $examinerID = $_POST["examinerID"];
-        $deadline = $_POST["deadline"];
-        $password = $_POST["password"];
+include('../../../php/config.php');
 
-        // Check if examiner exists
-        $examinerQuery = $conn->prepare("SELECT name, email FROM examiners WHERE examiner_id = ?");
-        $examinerQuery->bind_param("i", $examinerID);
-        $examinerQuery->execute();
-        $examinerResult = $examinerQuery->get_result();
+$query = $conn->prepare("SELECT * FROM exams WHERE admin_id = ?");
+$query->bind_param('s', $adminID);
 
-        if ($examinerResult->num_rows > 0) {
-            $examiner = $examinerResult->fetch_assoc();
-            $assignedExaminer = $examiner['name'];
-            // echo "Examiner found: " . $assignedExaminer . "<br>";
-
-        } else {
-            echo "Error: Examiner with ID " . $examinerID . " not found.<br>";
-            exit(); // Stop execution if examiner doesn't exist
-        }
-
-        $query = $conn->prepare("INSERT INTO exams (exam_name, examiner_id, exam_deadline, exam_password) VALUES (?, ?, ?, ?)");
-
-        // Debugging: Check if the query preparation was successful
-        if (!$query) {
-            die("Error preparing query: " . $conn->error . "<br>");
-        }
-
-        $query->bind_param("siss", $examName, $examinerID, $deadline, $password);
-
-        // Debugging: Check if the query executes
-        if ($query->execute()) {
-            // echo "Exam inserted successfully!<br>";
-        } else {
-            echo "Error inserting exam: " . $query->error . "<br>";
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-            $sql = "SELECT exams.exam_name, examiners.name AS examiner_name, exams.exam_deadline, exams.exam_password 
-            FROM exams
-            JOIN examiners ON exams.examiner = examiners.examiner_id";
-            $result = $conn->query($sql);
-
-            $exams = [];
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $exams[] = [
-                        'exam_name' => $row['exam_name'],
-                        'assigned_examiner' => $row['examiner_name'],
-                        'exam_deadline' => $row['exam_deadline'],
-                        'exam_password' => $row['exam_password']
-                    ];
-                }
-            }
-        }
-    } else {
-        echo "Form not submitting data correctly.<br>";
-    }
+if ($query->execute()) {
+    $result = $query->get_result();
 }
+
+$query->close();
+$conn->close();
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
                 </ul>
-                
+
             </aside>
 
             <div class="admin-page-container">
@@ -124,13 +63,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="admin-exam-content">
                     <button id="admin-add-an-exam-Btn" type="button">Add an exam</button>
 
+
+                    <?php if ($result && $result->num_rows > 0): ?>
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <div class="admin-exam-information">
+                                <div class="admin-add-exam-name">
+                                    <p>Exam Name:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_name']); ?></span>
+                                </div>
+                                <div class="admin-assigned-examiner">
+                                    <p>Assigned Examiner ID:</p>
+                                    <span><?php echo htmlspecialchars($row['examiner_id']); ?></span>
+                                </div>
+                                <div class="admin-exam-deadline">
+                                    <p>Exam Deadline:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_deadline']); ?></span>
+                                </div>
+                                <div class="admin-exam-password">
+                                    <p>Exam Password:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_password']); ?></span>
+                                </div>
+                                <span class="admin-exam-emojies">
+                                    <div class="admin-exam-edit">
+                                        <img src="../../../Images/editIcon.png" alt="edit">
+                                    </div>
+                                    <div class="admin-exam-delete">
+                                        <img src="../../../Images/deleteIcon.png" alt="delete">
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>No exams found.</p>
+                    <?php endif; ?>
+
+
+
                     <div class="admin-exam-popup-background">
                         <div class="admin-add-exam-popup" id="admin-add-exam-popup">
                             <div class="admin-add-exam-popup-header">
                                 <p>Add an exam</p>
                             </div>
                             <div class="admin-add-exam-popup-body">
-                                <form method="POST" action="adminExam.php">
+                                <form method="POST" action="./adminCreateExams.php">
                                     <label for="Exam Name">Exam Name:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
@@ -143,16 +118,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <label for="Exam Password">Exam Password:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
 
+                                    <input type="text" hidden name="admin_id" value="<?php echo $_SESSION['user-email'] ?>"><br>
+
                                     <div class="admin-add-exam-popup-button">
                                         <button class="admin-add-exam-button" type="submit">Add</button>
-                                        
                                         <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
                                     </div>
                                 </form>
 
+
+
                             </div>
                         </div>
+
+
                     </div>
+
+
 
                     <div class="admin-edit-exam-popup-background">
                         <div class="admin-edit-exam-popup" id="admin-edit-exam-popup">
@@ -193,6 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         </div>
+
     </div>
 
 </body>

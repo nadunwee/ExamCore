@@ -39,7 +39,7 @@
     border-radius: 20px;
     border-color: #761C73;
     width: 950px;
-    height: 80px;
+    height: 100px;
     
 }
 .admin-page-container .admin-exam-content .admin-exam-information p{
@@ -60,7 +60,7 @@
 
 .admin-page-container .admin-exam-content .admin-exam-emojies{
     display: flex;
-    margin-left: 60px;
+    margin-left: 20px;
     position: sticky;
 }
 
