@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Redirect if session email is not set
 if (!isset($_SESSION['user-email'])) {
     header("Location: ../../AccessPages/login.php");
@@ -16,14 +20,19 @@ include($configPath);
 
 // Fetch available exams (exam_deadline > CURDATE())
 $availableExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline > CURDATE()");
-$availableExamsQuery->execute();
-$availableExamsResult = $availableExamsQuery->get_result();
+if ($availableExamsQuery->execute()) {
+    $availableExamsResult = $availableExamsQuery->get_result();
+} else {
+    die("Error fetching available exams: " . $availableExamsQuery->error);
+}
 
 // Fetch completed exams (exam_deadline <= CURDATE())
 $completedExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline <= CURDATE()");
-$completedExamsQuery->execute();
-$completedExamsResult = $completedExamsQuery->get_result();
-
+if ($completedExamsQuery->execute()) {
+    $completedExamsResult = $completedExamsQuery->get_result();
+} else {
+    die("Error fetching completed exams: " . $completedExamsQuery->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +59,8 @@ $completedExamsResult = $completedExamsQuery->get_result();
                 <ul>
                     <li><a href="../StudentPages/StudentHome/StudentHome.php">Home</a></li>
                     <li><a href="../StudentPages/studentExam.html">Exams</a></li>
-                    <li><a href="StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="../StudentPages/StudentNotification.html">Notifications</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification.php">Notifications</a></li>
                 </ul>
                 <button class="profile-btn">
                     <a href="StudentProfile/studentProfile.html">Examiner Profile</a>
@@ -120,7 +129,7 @@ $completedExamsResult = $completedExamsQuery->get_result();
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
     </footer>
 
-    <script src="studentExamPageWithOTP.js"></script>
+    <script src="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExamPageWithOTP.js"></script>
 </body>
 
 </html>
