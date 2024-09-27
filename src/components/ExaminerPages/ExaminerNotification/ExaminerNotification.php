@@ -59,8 +59,8 @@
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" class="email-input" required><br>
+                <!-- <label for="email">Email:</lab el> -->
+                <input type="email" hidden name="email" value="<?php echo  $_SESSION['user-email'] ?>"><br>
 
                 <label for="message">Message:</label>
                 <textarea name="message" id="message" class="message-input" required></textarea><br>
@@ -92,8 +92,14 @@
                         <?php echo htmlspecialchars($row['message']); ?>
                     </div>
 
-                    <button class="button" onclick="location.href='editNotification.php?id=<?php echo $row['id']; ?>'">Edit</button>
-                    <button class="button" onclick="if(confirm('Are you sure you want to delete this notification?')) location.href='deleteNotification.php?id=<?php echo $row['id']; ?>'">Delete</button>
+                    <form action="./deleteExaminerNotification.php" method="POST">
+                        <input hidden type="text" name="notification_id" value=<?php echo htmlspecialchars($row['notification_id']); ?>>
+                        <input type="submit" class="button" value="delete">
+                    </form>
+                    <form action="./editExaminerNotification.php" method="POST">
+                        <input hidden type="text" name="notification_id" value=<?php echo htmlspecialchars($row['notification_id']); ?>>
+                        <input type="submit" class="button" value="edit">
+            </form>
                 </li>
             <?php endwhile; ?>
         <?php else: ?>
