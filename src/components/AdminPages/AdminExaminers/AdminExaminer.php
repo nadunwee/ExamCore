@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <link rel="stylesheet" href="adminExaminer.css">
+    <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <style>
         /* Basic styling for modals */
@@ -220,6 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-<script src="adminExaminer.js"></script>
+<script src="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.js"></script>
 </body>
 </html>
