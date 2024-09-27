@@ -25,6 +25,22 @@ body {
     font-size: 18px;
     margin-top: -55px;
 }
+.name-placeholder{
+    width: 80%;
+    height: 100px;
+    background-color: #761c73;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 18px;
+    border-radius: 3px;
+    box-shadow: 0 4px 4px black ;
+}
+.name-placeholder h1{
+    color:white;
+}
 
 
 /* Flex container for content and quote */
