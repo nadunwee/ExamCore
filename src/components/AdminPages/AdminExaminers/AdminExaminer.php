@@ -48,45 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <link rel="stylesheet" href="adminExaminer.css">
+    <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
-    <style>
-        /* Basic styling for modals */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -96,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>ExamCore</h1>
             <ul>
                 <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                <li><a href="../AdminExams/adminExam.html">Exams</a></li>
-                <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExams/adminExam.phpl">Exams</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/AdminExaminer.php">Examiner</a></li>
                 <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
             </ul>
         </aside>
@@ -220,6 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-<script src="adminExaminer.js"></script>
+<script src="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.js"></script>
 </body>
 </html>

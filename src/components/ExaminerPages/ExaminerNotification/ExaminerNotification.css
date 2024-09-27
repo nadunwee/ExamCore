@@ -60,29 +60,22 @@ body {
   padding: 20px;
 }
 
-#examiner-notification-form {
+.examiner-notification-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-#notification-input,
-#name-input,
-#email-input {
+.notification-input,
+.name-input,
+.email-input {
   padding: 10px;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
 
-/* #examiner-notification-form input[type="submit"] {
-    background-color: #761c73;
-    color: white;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 16px;
-} */
+
 
 #list-notifications {
   list-style-type: none;
