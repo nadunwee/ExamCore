@@ -75,12 +75,24 @@ body {
   border: 1px solid #ddd;
 }
 
+.button{
+  width: 150px;
+  padding: 10px;
+  background-color: #761c73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  
 
+}
 
 #list-notifications {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
+  margin-left: 280px;
 }
 
 #list-notifications li {
@@ -89,7 +101,7 @@ body {
   border: 1px solid #ddd;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
 }
 
 #list-notifications button {
@@ -102,4 +114,9 @@ body {
 footer.page-footer {
   text-align: center;
   margin-top: 50px;
+}
+
+.added-notification-list {
+  margin-left: 300px;
+
 }
