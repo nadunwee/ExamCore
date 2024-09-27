@@ -122,7 +122,6 @@ $conn->close();
 
                                     <div class="admin-add-exam-popup-button">
                                         <button class="admin-add-exam-button" type="submit">Add</button>
-
                                         <button class="admin-add-exam-cancel-button" type="button">Cancel</button>
                                     </div>
                                 </form>
