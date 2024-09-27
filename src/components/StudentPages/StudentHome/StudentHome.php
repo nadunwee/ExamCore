@@ -1,3 +1,12 @@
+<?php
+// Database connection
+$conn = new mysqli('localhost', 'username', 'password', 'database_name');
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,14 +52,6 @@
       <section class="most-recent-exams">
         <h2>Most Recent Exams</h2>
         <?php
-          // Database connection
-          $conn = new mysqli('localhost', 'username', 'password', 'database_name');
-          
-          // Check the connection
-          if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-          }
-
           // Fetch most recent exams
           $sql = "SELECT exam_name, assigned_examiner, exam_deadline FROM Exams ORDER BY exam_deadline DESC LIMIT 5";
           $result = $conn->query($sql);
