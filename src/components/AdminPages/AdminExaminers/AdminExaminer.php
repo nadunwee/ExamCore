@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <ul>
                 <li><a href="../AdminHome/adminHome.html">Home</a></li>
                 <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExams/adminExam.phpl">Exams</a></li>
-                <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/AdminExaminer.php">Examiner</a></li>
                 <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
             </ul>
         </aside>
