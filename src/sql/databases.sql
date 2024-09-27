@@ -47,11 +47,13 @@ VALUES ("AD236034", "john Doe", "john123");
 CREATE TABLE `Exams` (
     `exam_id` INT AUTO_INCREMENT,
     `exam_name` VARCHAR(255) NOT NULL,
-    `assigned_examiner` VARCHAR(255) NOT NULL,
+    `examiner_id` INT NOT NULL,
     `exam_deadline` DATE NOT NULL,
     `exam_password` VARCHAR(255) NOT NULL,
-    `examiner_email` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`exam_id`)
+    PRIMARY KEY (`exam_id`),
+    CONSTRAINT `fk_examiner`
+        FOREIGN KEY (`examiner_id`) REFERENCES `Examiners`(`examiner_id`)
+     
 );
 
 CREATE TABLE `paper`(

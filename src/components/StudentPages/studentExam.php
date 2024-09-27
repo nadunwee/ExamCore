@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+// Redirect if session email is not set
+if (!isset($_SESSION['user-email'])) {
+    header("Location: ../../AccessPages/login.php");
+    exit;
+}
+
+// Check for the config.php file
+$configPath = '../../../php/config.php';
+if (!file_exists($configPath)) {
+    die('Error: config.php not found.');
+}
+include($configPath);
+
+// Fetch available exams (exam_deadline > CURDATE())
+$availableExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline > CURDATE()");
+$availableExamsQuery->execute();
+$availableExamsResult = $availableExamsQuery->get_result();
+
+// Fetch completed exams (exam_deadline <= CURDATE())
+$completedExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline <= CURDATE()");
+$completedExamsQuery->execute();
+$completedExamsResult = $completedExamsQuery->get_result();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +51,7 @@
                     <li><a href="../StudentPages/StudentHome/StudentHome.php">Home</a></li>
                     <li><a href="../StudentPages/studentExam.html">Exams</a></li>
                     <li><a href="StudentSupport/studentSupport.html">Support</a></li>
-                    <li>
-                        <a href="../StudentPages/StudentNotification.html">Notifications</a>
-                    </li>
+                    <li><a href="../StudentPages/StudentNotification.html">Notifications</a></li>
                 </ul>
                 <button class="profile-btn">
                     <a href="StudentProfile/studentProfile.html">Examiner Profile</a>
@@ -41,22 +67,44 @@
                 <button>Search</button>
             </div>
         </div>
+
+        <!-- Display available exams -->
         <ul class="exam-list" id="available-exams">
-            <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 1"> Exam 1</li>
-            <li><input type="checkbox" class="exam-checkbox" data-exam="Exam 2"> Exam 2</li>
+            <?php
+            if ($availableExamsResult->num_rows > 0) {
+                while ($row = $availableExamsResult->fetch_assoc()) {
+                    echo '<li><input type="checkbox" class="exam-checkbox" data-exam="'.$row['exam_name'].'"> ' . htmlspecialchars($row['exam_name']) . '</li>';
+                }
+            } else {
+                echo '<li>No available exams at the moment.</li>';
+            }
+            ?>
         </ul>
+
         <h2>Completed Exams</h2>
+        <!-- Display completed exams -->
         <ul class="exam-list">
-            <li><input type="checkbox" checked> Completed Exam 1</li>
-            <li><input type="checkbox" checked> Completed Exam 2</li>
+            <?php
+            if ($completedExamsResult->num_rows > 0) {
+                while ($row = $completedExamsResult->fetch_assoc()) {
+                    echo '<li><input type="checkbox" checked> ' . htmlspecialchars($row['exam_name']) . '</li>';
+                }
+            } else {
+                echo '<li>No completed exams found.</li>';
+            }
+
+            // Close the prepared statements and connection
+            $availableExamsQuery->close();
+            $completedExamsQuery->close();
+            $conn->close();
+            ?>
         </ul>
+
         <h2>Your Progress</h2>
         <div class="progress-bar">
             <div class="fill"></div>
         </div>
-
     </main>
-
 
     <!-- OTP Popup -->
     <div id="otp-overlay"></div>
@@ -69,8 +117,7 @@
     </div>
 
     <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a href="#">Privacy
-                Policy</a></p>
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
     </footer>
 
     <script src="studentExamPageWithOTP.js"></script>
