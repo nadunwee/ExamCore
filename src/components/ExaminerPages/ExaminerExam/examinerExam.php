@@ -119,6 +119,9 @@
         echo '<input type="hidden" name="question_ID" value="' . $row['question_ID'] . '">';
 
         echo '<button class ="delete-btn" type="submit">Delete</button>';
+        echo '<button class ="edit-btn" type="submit">Edit</button>';
+        
+       
         echo '</div>';
         echo '</form>';
         echo '</li>';
