@@ -1,119 +1,74 @@
-//admin add exam pop up functionalities
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('admin-add-an-exam-Btn').addEventListener('click', function () {
-        console.log('Add exam button clicked');
-
-        document.getElementById('popup-exam-name').value = "";
-        document.getElementById('popup-examiner-name').value = "";
-        document.getElementById('popup-exam-deadline').value = "";
-        document.getElementById('popup-exam-password').value = "";
-
+        // Show the popup when "Add an exam" is clicked
         document.querySelector('.admin-exam-popup-background').style.display = 'flex';
     });
 
-    document.querySelector('.admin-add-exam-popup-button').addEventListener('click', function () {
+    // Close popup on cancel
+    document.querySelector('.admin-add-exam-cancel-button').addEventListener('click', function () {
         document.querySelector('.admin-exam-popup-background').style.display = 'none';
     });
 
-    //admin edit exam popup opening after clicking "edit" icon in the information bar
-    //edit exam popup functionalities
-    document.querySelector('.admin-exam-content').addEventListener('click', function (e) {
-        if (e.target.closest('.admin-exam-edit')) {
-            console.log('edit icon clicked');
+    // Add exam when "Add" button is clicked
+    document.getElementById('submit-exam').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent form from submitting the normal way
 
-            const examEdit = e.target.closest('.admin-exam-information');
+        // Collect form data
+        var examName = document.getElementById('popup-exam-name').value;
+        var examinerID = document.getElementById('popup-examiner-name').value;
+        var examDeadline = document.getElementById('popup-exam-deadline').value;
+        var examPassword = document.getElementById('popup-exam-password').value;
 
-            if(examEdit){
-                var examName = examEdit.querySelector('.admin-add-exam-name .admin-get-exam-data').textContent;
-                var assignedExaminer = examEdit.querySelector('.admin-assigned-examiner .admin-get-exam-data').textContent;
-                var examDeadline = examEdit.querySelector('.admin-exam-deadline .admin-get-exam-data').textContent;
-                var examPassword = examEdit.querySelector('.admin-exam-password .admin-get-exam-data').textContent;
-            }   
-            console.log(examName); 
-            //this have to access DB, get data to these variables and update       
-
-            document.querySelector('.admin-edit-exam-popup-background').style.display = 'flex';
-
-            document.getElementById('popup-exam-name').value = examName;
-            document.getElementById('popup-examiner-name').value = assignedExaminer;
-            document.getElementById('popup-exam-deadline').value = examDeadline;
-            document.getElementById('popup-exam-password').value = examPassword;
-
-            document.querySelector('.admin-edit-exam-button').addEventListener('click', function (e) {
-                console.log("Edit Exam button clicked");
-                console.log("Exam Name:", examName);
-                console.log("Assign To:", assignedExaminer);
-                console.log("Exam Deadline:", examDeadline);
-                console.log("Exam Password:", examPassword);
-
-                examEdit.querySelector('.admin-add-exam-name .admin-get-exam-data').textContent = document.getElementById('popup-exam-name').value;
-                examEdit.querySelector('.admin-assigned-examiner .admin-get-exam-data').textContent = document.getElementById('popup-examiner-name').value;
-                examEdit.querySelector('.admin-exam-deadline .admin-get-exam-data').textContent = document.getElementById('popup-exam-deadline').value;
-                examEdit.querySelector('.admin-exam-password .admin-get-exam-data').textContent = document.getElementById('popup-exam-password').value;
+        // Check if all fields are filled
+        if (examName && examinerID && examDeadline && examPassword) {
+            // Send data to the PHP backend using Fetch
+            fetch('adminExam.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `examName=${examName}&examinerID=${examinerID}&deadline=${examDeadline}&password=${examPassword}`,
             })
-
-            document.querySelector('.admin-edit-exam-popup-button').addEventListener('click', function () {
-                document.querySelector('.admin-edit-exam-popup-background').style.display = 'none';
-            });
-
-            //Delete exam button on the information bar
-            document.querySelector('.admin-exam-content').addEventListener('click', function (e) {
-                if (e.target.closest('.admin-exam-delete')) {
-                    console.log('Delete button clicked');
-
-                    const examDiv = e.target.closest('.admin-exam-information');
-                    if (examDiv) {
-                        examDiv.remove();
-                        console.log('Exam deleted');
-                    }
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Add the new exam data to the UI dynamically
+                    appendNewExamToUI(examName, examinerID, examDeadline, examPassword);
+                    document.querySelector('.admin-exam-popup-background').style.display = 'none';
+                } else {
+                    alert('Error adding exam. Please try again.');
                 }
-
-                //**Reminder: Also need to remove data from SQL database
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
-
+        } else {
+            alert('Please fill in all fields.');
         }
     });
 });
 
-
-//admin exam infomation bar after clicking "Add" button in the popup
-function addExam(examName, examinerName, deadline, password) {
-
-    var examName = document.getElementById('popup-exam-name').value;
-    var assignedExaminer = document.getElementById('popup-examiner-name').value;
-    var examDeadline = document.getElementById('popup-exam-deadline').value;
-    var examPassword = document.getElementById('popup-exam-password').value;
-
-    console.log("Exam Name:", examName);
-    console.log("Assign To:", assignedExaminer);
-    console.log("Exam Deadline:", examDeadline);
-    console.log("Exam Password:", examPassword);
-
-    // const examInfoArray = [10];
-    // examInfoArray[0] = examName;
-    // examInfoArray[1] = assignedExaminer;
-    // examInfoArray[2] = examDeadline;
-    // examInfoArray[3] = examPassword;
-
+// Function to dynamically add the new exam to the page
+function appendNewExamToUI(examName, examinerID, examDeadline, examPassword) {
     var newExamDiv = document.createElement('div');
     newExamDiv.classList.add('admin-exam-information');
 
     newExamDiv.innerHTML = `
         <div class="admin-add-exam-name">
-            <p>Exam_Name</p>
-            <span class="admin-get-exam-data">${examName}</span>
+            <p>Exam Name:</p>
+            <span>${examName}</span>
         </div>
         <div class="admin-assigned-examiner">
-            <p>Assigned_Examiner</p>
-            <span class="admin-get-exam-data">${assignedExaminer}</span>
+            <p>Assigned Examiner ID:</p>
+            <span>${examinerID}</span>
         </div>
         <div class="admin-exam-deadline">
-            <p>Exam_Deadline</p>
-            <span class="admin-get-exam-data">${examDeadline}</span>
+            <p>Exam Deadline:</p>
+            <span>${examDeadline}</span>
         </div>
         <div class="admin-exam-password">
-            <p>Exam_Password</p>
-            <span class="admin-get-exam-data">${examPassword}</span>
+            <p>Exam Password:</p>
+            <span>${examPassword}</span>
         </div>
         <span class="admin-exam-emojies">
             <div class="admin-exam-edit">
@@ -122,11 +77,7 @@ function addExam(examName, examinerName, deadline, password) {
             <div class="admin-exam-delete">
                 <img src="../../../Images/deleteIcon.png" alt="delete">
             </div>
-        </span>
-    `;
+        </span>`;
 
     document.querySelector('.admin-exam-content').appendChild(newExamDiv);
-}
-function editExam(){
-
 }

@@ -27,6 +27,22 @@
         } else {
             echo "Error deleting record: " . $conn->error;
         }
+      } else if ($type == "examiner") {
+        $email = $_POST['email'];
+
+        // Prepare the SQL statement to delete the student
+        $query = $conn->prepare("DELETE FROM examiners WHERE email = ?");
+        $query->bind_param('s', $email);
+  
+        if ($query->execute()) {
+            // If delete is successful, destroy the session and redirect to the login page
+            session_destroy();
+            header('Location:  ../components/AccessPages/login.php');
+            exit();
+        } else {
+            echo "Error deleting record: " . $conn->error;
+        }
+
       }
 
       $query->close();

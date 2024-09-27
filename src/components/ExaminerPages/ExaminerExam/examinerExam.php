@@ -1,49 +1,25 @@
 <?php
-session_start();
+  session_start();
 
-// Establish a connection to the database
-$conn = new mysqli('localhost', 'root', '', 'exam_core');
+  if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
+  }
 
-// Check if the connection was successful
-if ($conn->connect_error) {
-    die('Connection Error: ' . $conn->connect_error);
-}
+  $userEmail = $_SESSION['user-email'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  include('../../../php/config.php');
 
-    // Retrieve form data
-    $ques_ID = $_POST["question_ID"];
-    $ques = $_POST["question"];
-    $ans1 = $_POST["answer1"];
-    $ans2 = $_POST["answer2"];
-    $ans3 = $_POST["answer3"];
-    $ans4 = $_POST["answer4"];
-    $c_ans = $_POST["correct_ans"];
-    $mail = $_POST["email"];
+  $query = $conn->prepare("SELECT * FROM paper WHERE email = ?");
+  $query->bind_param('s', $userEmail);
 
-    // Prepare the SQL statement
-    $query = $conn->prepare("INSERT INTO paper (Question, answer_1, answer_2, answer_3, answer_4, correst_answer,email) VALUES (?, ?, ?, ?, ?, ?,?)");
+  if ($query->execute()) {
+    $result = $query->get_result();
+  }
 
-    // Check if the query preparation was successful
-    if ($query === false) {
-        die("SQL Error: " . $conn->error);  // Output detailed error if prepare fails
-    }
+  $query->close();
+  $conn->close();
 
-    // Bind the parameters
-    $query->bind_param("sssssss", $ques, $ans1, $ans2, $ans3, $ans4, $c_ans,$mail);
-
-    // Execute the query and check if successful
-    if ($query->execute()) {
-        
-    } else {
-        echo "Execution Error: " . $query->error;
-    }
-
-    // Close the query and connection
-    $query->close();
-}
-
-$conn->close();
 ?>
 
 
@@ -85,7 +61,7 @@ $conn->close();
       <main class="main-content">
         <!-- Question Form -->
 
-        <form method="post" action="./examinerExam.php" class="crud-form">
+        <form method="post" action="./addExamQuestions.php" class="crud-form">
           <h2>Add/Edit Question</h2>
 
           <label for="question_ID">Question ID:</label>
@@ -109,59 +85,50 @@ $conn->close();
           <label for="correct_ans">Correct answer:</label>
           <input type="text" name="correct_ans" placeholder="Type the correct answer here" />
 
-          <input  class="submit-btn" type="submit">  <input type="reset">
+          <input  class="submit-btn" type="submit">  
           
           <input type="text" hidden name="email" value=<?php echo $_SESSION['user-email'] ?> />
 
           
 
           <!-- Add button to trigger saveQuestion -->
-          <button class="save-btn" onclick="saveQuestion()">
-            Save Question
-          </button>
+          
         </form>
 
         <!-- Questions List -->
-       
- 
-  
+
   <div class="questions-list">
   <h2>Questions List</h2>
-  
   <ul id="question-list">
-    <!-- Question Template -->
-    <li>
-      <form>
-        <div class="question-item">
-          <h3>Question 1</h3><br>
-          <ul class="answers-list">
-            <li>
-              <label>
-                <input type="radio" name="answer" value="Paris"> Answer1
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="answer" value="London"> Answer2
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="answer" value="Berlin"> Answer3
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="answer" value="Madrid"> Answer4
-              </label>
-            </li>
-          </ul>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </li>
-    <!-- Add more questions here -->
+    <?php
+    if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        // Assuming columns: 'question', 'answer1', 'answer2', 'answer3', 'answer4'
+        echo '<li>';
+        echo '<form action="./delete_question.php" method="POST">';
+        echo '<div class="question-item">';
+        echo '<h3>' . $row['question'] . '</h3><br>'; // Display the question
+
+        echo '<ul class="answers-list">';
+        echo '<li><label><input type="radio" name="answer" value="' . $row['answer_1'] . '"> ' . $row['answer_1'] . '</label></li>';
+        echo '<li><label><input type="radio" name="answer" value="' . $row['answer_2'] . '"> ' . $row['answer_2'] . '</label></li>';
+        echo '<li><label><input type="radio" name="answer" value="' . $row['answer_3'] . '"> ' . $row['answer_3'] . '</label></li>';
+        echo '<li><label><input type="radio" name="answer" value="' . $row['answer_4'] . '"> ' . $row['answer_4'] . '</label></li>';
+        echo '</ul>';
+
+        echo '<input type="hidden" name="question_ID" value="' . $row['question_ID'] . '">';
+
+        echo '<button class ="delete-btn" type="submit">Delete</button>';
+        echo '</div>';
+        echo '</form>';
+        echo '</li>';
+      }
+    } else {
+      echo '<p>No questions available.</p>';
+    }
+    ?>
   </ul>
+</div>
 </div>
 
 

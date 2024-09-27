@@ -8,7 +8,7 @@ if (!isset($_SESSION['user-email'])) {
 }
 
 // Include the configuration file to establish a database connection
-include('./config.php');
+include('../../../php/config.php');
 
 // Check if the request method is POST and 'question_ID' is provided
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['question_ID'])) {
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['question_ID'])) {
 
     // Execute the query and check for errors
     if ($query->execute()) {
-        echo "Question successfully deleted!";
+        header('Location: ./examinerExam.php');
     } else {
         echo "Error deleting question: " . $conn->error;
     }
