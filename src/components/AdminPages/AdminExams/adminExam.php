@@ -1,24 +1,24 @@
 <?php
-  session_start();
+session_start();
 
-  if (!isset($_SESSION['user-email'])) {
+if (!isset($_SESSION['user-email'])) {
     header('Location: ../../AccessPages/login.php');
     exit();
-  }
+}
 
-  $adminID = $_SESSION['user-email'];
+$adminID = $_SESSION['user-email'];
 
-  include('../../../php/config.php');
+include('../../../php/config.php');
 
-  $query = $conn->prepare("SELECT * FROM exams WHERE admin_id = ?");
-  $query->bind_param('s', $adminID);
+$query = $conn->prepare("SELECT * FROM exams WHERE admin_id = ?");
+$query->bind_param('s', $adminID);
 
-  if ($query->execute()) {
+if ($query->execute()) {
     $result = $query->get_result();
-  }
+}
 
-  $query->close();
-  $conn->close();
+$query->close();
+$conn->close();
 
 ?>
 
@@ -63,7 +63,7 @@
                 <div class="admin-exam-content">
                     <button id="admin-add-an-exam-Btn" type="button">Add an exam</button>
 
-                    
+
                     <?php if ($result && $result->num_rows > 0): ?>
                         <?php while ($row = $result->fetch_assoc()): ?>
                             <div class="admin-exam-information">
@@ -88,7 +88,7 @@
                     <?php else: ?>
                         <p>No exams found.</p>
                     <?php endif; ?>
-                   
+
 
 
                     <div class="admin-exam-popup-background">
@@ -109,8 +109,8 @@
 
                                     <label for="Exam Password">Exam Password:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
-                                    
-                                    <input type="text" hidden name="admin_id"       value="<?php echo $_SESSION['user-email'] ?>"><br>
+
+                                    <input type="text" hidden name="admin_id" value="<?php echo $_SESSION['user-email'] ?>"><br>
 
                                     <div class="admin-add-exam-popup-button">
                                         <button class="admin-add-exam-button" type="submit">Add</button>

@@ -48,36 +48,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Function to dynamically add the new exam to the page
-// function appendNewExamToUI(examName, examinerID, examDeadline, examPassword) {
-//     var newExamDiv = document.createElement('div');
-//     newExamDiv.classList.add('admin-exam-information');
-
-//     newExamDiv.innerHTML = `
-//         <div class="admin-add-exam-name">
-//             <p>Exam Name:</p>
-//             <span>${examName}</span>
-//         </div>
-//         <div class="admin-assigned-examiner">
-//             <p>Assigned Examiner ID:</p>
-//             <span>${examinerID}</span>
-//         </div>
-//         <div class="admin-exam-deadline">
-//             <p>Exam Deadline:</p>
-//             <span>${examDeadline}</span>
-//         </div>
-//         <div class="admin-exam-password">
-//             <p>Exam Password:</p>
-//             <span>${examPassword}</span>
-//         </div>
-//         <span class="admin-exam-emojies">
-//             <div class="admin-exam-edit">
-//                 <img src="../../../Images/editIcon.png" alt="edit">
-//             </div>
-//             <div class="admin-exam-delete">
-//                 <img src="../../../Images/deleteIcon.png" alt="delete">
-//             </div>
-//         </span>`;
-
-//     document.querySelector('.admin-exam-content').appendChild(newExamDiv);
-// }
