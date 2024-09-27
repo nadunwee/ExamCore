@@ -83,6 +83,14 @@ $conn->close();
                                     <p>Exam Password:</p>
                                     <span><?php echo htmlspecialchars($row['exam_password']); ?></span>
                                 </div>
+                                <span class="admin-exam-emojies">
+                                    <div class="admin-exam-edit">
+                                        <img src="../../../Images/editIcon.png" alt="edit">
+                                    </div>
+                                    <div class="admin-exam-delete">
+                                        <img src="../../../Images/deleteIcon.png" alt="delete">
+                                    </div>
+                                </span>
                             </div>
                         <?php endwhile; ?>
                     <?php else: ?>
