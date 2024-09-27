@@ -1,44 +1,25 @@
 <?php
-session_start();
+  session_start();
 
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'exam_core');
+  if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
+  }
 
-if ($conn->connect_error) {
-    die('Connection Error : ' . $conn->connect_error);
-}
+  $adminID = $_SESSION['user-email'];
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["examName"], $_POST["examinerID"], $_POST["deadline"], $_POST["password"])) {
+  include('../../../php/config.php');
 
-        // Get form data
-        $examName = $_POST["examName"];
-        $examinerID = $_POST["examinerID"];
-        $deadline = $_POST["deadline"];
-        $password = $_POST["password"];
+  $query = $conn->prepare("SELECT * FROM exams WHERE admin_id = ?");
+  $query->bind_param('s', $adminID);
 
+  if ($query->execute()) {
+    $result = $query->get_result();
+  }
 
-        $query = $conn->prepare("INSERT INTO exams (exam_name, examiner_id, exam_deadline, exam_password) VALUES (?, ?, ?, ?)");
+  $query->close();
+  $conn->close();
 
-        // Debugging: Check if the query preparation was successful
-        if (!$query) {
-            die("Error preparing query: " . $conn->error . "<br>");
-        }
-
-        $query->bind_param("siss", $examName, $examinerID, $deadline, $password);
-
-        if ($query->execute()) {
-            // After successful insertion, redirect to the same page to prevent resubmission
-            header("Location: adminExam.php");
-            exit();
-        } else {
-            echo "Error inserting exam: " . $query->error . "<br>";
-        }
-    } else {
-        echo "Form not submitting data correctly.<br>";
-    }
-}
 ?>
 
 
@@ -82,13 +63,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="admin-exam-content">
                     <button id="admin-add-an-exam-Btn" type="button">Add an exam</button>
 
+                    
+                    <?php if ($result && $result->num_rows > 0): ?>
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <div class="admin-exam-information">
+                                <div class="admin-add-exam-name">
+                                    <p>Exam Name:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_name']); ?></span>
+                                </div>
+                                <div class="admin-assigned-examiner">
+                                    <p>Assigned Examiner ID:</p>
+                                    <span><?php echo htmlspecialchars($row['examiner_id']); ?></span>
+                                </div>
+                                <div class="admin-exam-deadline">
+                                    <p>Exam Deadline:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_deadline']); ?></span>
+                                </div>
+                                <div class="admin-exam-password">
+                                    <p>Exam Password:</p>
+                                    <span><?php echo htmlspecialchars($row['exam_password']); ?></span>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>No exams found.</p>
+                    <?php endif; ?>
+                   
+
+
                     <div class="admin-exam-popup-background">
                         <div class="admin-add-exam-popup" id="admin-add-exam-popup">
                             <div class="admin-add-exam-popup-header">
                                 <p>Add an exam</p>
                             </div>
                             <div class="admin-add-exam-popup-body">
-                                <form method="POST" action="adminExam.php">
+                                <form method="POST" action="./adminCreateExams.php">
                                     <label for="Exam Name">Exam Name:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-name" name="examName" required><br>
 
@@ -100,6 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                     <label for="Exam Password">Exam Password:</label><br>
                                     <input type="text" class="popup-inputs-box" id="popup-exam-password" name="password" required><br>
+                                    
+                                    <input type="text" hidden name="admin_id"       value="<?php echo $_SESSION['user-email'] ?>"><br>
 
                                     <div class="admin-add-exam-popup-button">
                                         <button class="admin-add-exam-button" type="submit">Add</button>
@@ -116,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     </div>
 
-                    
+
 
                     <div class="admin-edit-exam-popup-background">
                         <div class="admin-edit-exam-popup" id="admin-edit-exam-popup">
@@ -157,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         </div>
-        
+
     </div>
 
 </body>
