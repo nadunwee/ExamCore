@@ -1,10 +1,16 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Database connection
 $conn = new mysqli('localhost', 'username', 'password', 'database_name');
 
 // Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Database connected successfully.<br>"; // Debugging message to ensure the connection works
 }
 ?>
 <!DOCTYPE html>
@@ -56,7 +62,12 @@ if ($conn->connect_error) {
           $sql = "SELECT exam_name, assigned_examiner, exam_deadline FROM Exams ORDER BY exam_deadline DESC LIMIT 5";
           $result = $conn->query($sql);
 
+          if (!$result) {
+              die("Error fetching exams: " . $conn->error); // Debugging error if the query fails
+          }
+
           if ($result->num_rows > 0) {
+              echo "Exams found: " . $result->num_rows . "<br>"; // Debugging message to check if results are found
               // Output data of each row
               while ($row = $result->fetch_assoc()) {
                   echo "<p><strong>Exam Name:</strong> " . $row["exam_name"] . "<br>";
@@ -76,7 +87,12 @@ if ($conn->connect_error) {
           $sql = "SELECT name, message, date FROM notification ORDER BY date DESC LIMIT 5";
           $result = $conn->query($sql);
 
+          if (!$result) {
+              die("Error fetching notifications: " . $conn->error); // Debugging error if the query fails
+          }
+
           if ($result->num_rows > 0) {
+              echo "Notifications found: " . $result->num_rows . "<br>"; // Debugging message to check if results are found
               // Output data of each row
               while ($row = $result->fetch_assoc()) {
                   echo "<p><strong>From:</strong> " . $row["name"] . "<br>";
@@ -87,7 +103,7 @@ if ($conn->connect_error) {
               echo "<p>No notifications available.</p>";
           }
 
-          // Close the connection
+          // Close the connection after both queries are complete
           $conn->close();
         ?>
       </section>
