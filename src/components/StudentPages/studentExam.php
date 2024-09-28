@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Redirect if session email is not set
 if (!isset($_SESSION['user-email'])) {
     header("Location: ../../AccessPages/login.php");
@@ -12,11 +8,7 @@ if (!isset($_SESSION['user-email'])) {
 }
 
 // Check for the config.php file
-$configPath = '../../../php/config.php';
-if (!file_exists($configPath)) {
-    die('Error: config.php not found.');
-}
-include($configPath);
+include("../../php/config.php");
 
 // Fetch available exams (exam_deadline > CURDATE())
 $availableExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline > CURDATE()");
@@ -47,7 +39,7 @@ if ($completedExamsQuery->execute()) {
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="studentExamWithOTP.css">
+    <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExamWithOTP.css">
     <link rel="stylesheet" href="../../../src/styles/commonNavbarAndFooterStyles.css">
 </head>
 
@@ -57,13 +49,13 @@ if ($completedExamsQuery->execute()) {
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="../StudentPages/StudentHome/StudentHome.php">Home</a></li>
-                    <li><a href="../StudentPages/studentExam.html">Exams</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentHome/StudentHome.php">Home</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExam.php">Exams</a></li>
                     <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification.php">Notifications</a></li>
                 </ul>
                 <button class="profile-btn">
-                    <a href="StudentProfile/studentProfile.html">Examiner Profile</a>
+                    <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php">Examiner Profile</a>
                 </button>
             </aside>
         </div>
@@ -109,10 +101,7 @@ if ($completedExamsQuery->execute()) {
             ?>
         </ul>
 
-        <h2>Your Progress</h2>
-        <div class="progress-bar">
-            <div class="fill"></div>
-        </div>
+        
     </main>
 
     <!-- OTP Popup -->

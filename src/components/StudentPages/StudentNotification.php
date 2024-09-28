@@ -52,7 +52,7 @@ $conn->close();
                 <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification.php">Notifications</a></li>
             </ul>
             <button class="profile-btn">
-                <a href="StudentProfile/studentProfile.html">Student Profile</a>
+                <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php">Student Profile</a>
             </button>
         </aside>
 
