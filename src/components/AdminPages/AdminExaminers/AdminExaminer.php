@@ -1,9 +1,12 @@
 <?php
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Retrieve form data
+    $type = $_POST['types'];
     $name = $_POST['real-name'];
+    $nic = $_POST['nic'];
     $subject = $_POST['subject'];
     $email = $_POST['email'];
     $passwd = $_POST['password'];
@@ -64,34 +67,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div class="wrapper">
     <div class="container">
+        <!-- Sidebar -->
         <aside class="sidebar">
             <h1>ExamCore</h1>
             <ul>
-                <li><a href="../AdminHome/adminHome.html">Home</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminHome/adminHome.html">Home</a></li>
                 <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
                 <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/AdminExaminer.php">Examiner</a></li>
-                <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
+                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminNotifications/AdminNotification.html">Notifications</a></li>
             </ul>
         </aside>
 
+        <!-- Main Content -->
         <div class="admin-examiner-container">
             <main class="admin-examiner-content">
-    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Examiner Name</th>
+                            <th>Assigned Exam</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="examinerTableBody">
+                        <!-- Dynamic Content Goes Here -->
+                    </tbody>
+                </table>
+                <br>
+                
                 <div>
-                <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
-
+                    <button class="assign-examiner-btn" id="assignExaminerAdmin">Assign Examiner</button>
+                    <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                 </div>
 
-                
-
-                
 
                 <!-- Add Examiner Modal -->
                 <div class="modal" id="addExaminerModal">
                     <div class="modal-content">
-                        <span class="close" id="addClose" >&times;</span>
+                        <span class="close" id="addClose">&times;</span>
                         <h2>Add Examiner</h2>
-                        <form method="POST" action="userRegister.php">
+                        <form method="POST" action="../../AccessPages/userRegister.php">
                             <div class="input-container">
                                 <label for="real-name">Name</label>
                                 <input type="text" id="real-name" name="real-name" class="input-field" placeholder="Enter Your Name..." required />
@@ -103,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
 
                             <div class="input-container">
-                                <label for="email">Email <div class="email-reminder" id="email-reminder">Enter Your Institute email</div></label>
+                                <label for="email">Email</label>
                                 <input type="email" id="email" name="email" class="input-field" placeholder="Enter Your Email..." required />
                             </div>
 
@@ -117,19 +132,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="password" id="confirm-password" name="confirm-password" class="input-field" placeholder="Confirm Password" required />
                             </div>
 
-                            <input type="submit" value="Register" class="register-submit-btn" />
+                            <input type="submit" value="Register" class="register-submit-btn" onclick="checkPasswords()" />
                         </form>
                     </div>
                 </div>
             </main>
         </div>
 
+                <!-- Assign Examiner Modal -->
+                    <div class="modal" id="assignExaminerModal">
+                        <div class="modal-content">
+                        <span class="close" id="assignClose">&times;</span>
+                        <h2>Assign an Examiner</h2>
+                        <form method="POST" action="./assignExaminer.php">
+                            <label for="examinerSelect">Select Examiner:</label>
+                            <select id="examinerSelect" name="examinerSelect">
+                                <?php
+                                 $examinerQuery = $conn->query("SELECT examiner_id, name FROM examiners");
+                                 while ($examiner = $examinerQuery->fetch_assoc()) {
+                                      echo "<option value='{$examiner['examiner_id']}'>{$examiner['name']}</option>";
+                                  }
+                                ?>
+
+                            </select>
+                            <br><br>
+
+                            <label for="assignTo">Assign to:</label>
+                            <select id="assignTo" name="assignTo">
+                                <?php
+                                    $examQuery = $conn->query("SELECT exam_name FROM Exams");
+                                    while ($exam = $examQuery->fetch_assoc()) {
+                                        echo "<option value='{$exam['exam_name']}'>{$exam['exam_name']}</option>";
+                                    }
+                                ?>
+                            </select>
+                            <br><br>
+                            <input type="submit" value="Assign" class="assign-add" />
+                        </form>
+                    </div>
+                </div>
+
+        <!-- Footer -->
         <footer class="page-footer">
-            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | 
+                <a href="#">Terms & Conditions</a> | 
+                <a href="#">Privacy Policy</a>
+            </p>
         </footer>
     </div>
 </div>
-
 
 </body>
 </html>
