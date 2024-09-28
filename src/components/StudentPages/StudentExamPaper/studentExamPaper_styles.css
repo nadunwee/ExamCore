@@ -100,3 +100,13 @@
 .studentExamPaper_container .studentExam-buttons .studentExam-submit-button{
     margin-right: 440px;
 }
+.noQuestionsAvailable{
+    display: flex;
+    /* justify-content: center;
+    align-items: center;     */
+    font-family: Poppins, sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: #cf0bc9;          
+    margin: 0;
+}
