@@ -9,51 +9,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailField = document.getElementById("email");
     const passwordField = document.getElementById("password");
     const confirmPasswordField = document.getElementById("confirm-password");
+    
+    const examinerSelect = document.getElementById("examinerSelect");
+    const assignTo = document.getElementById("assignTo");
 
+    // Fetch examiners and populate the examiner dropdown
+    fetch('assignExaminers.php')
+        .then(response => response.json())
+        .then(examiners => {
+            examiners.forEach(examiner => {
+                const option = document.createElement("option");
+                option.value = examiner.examiner_id;
+                option.textContent = examiner.name;
+                examinerSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching examiners:', error));
 
-    // Fetch examiners from the server
-fetch('getExaminers.php')
-.then(response => response.json())
-.then(examiners => {
-    // Create examinerSelect (a select dropdown)
-    const examinerSelect = document.createElement("select");
-    examinerSelect.id = "examinerSelect";
+    // Fetch exams and populate the exam dropdown
+    fetch('getExams.php')
+        .then(response => response.json())
+        .then(exams => {
+            exams.forEach(exam => {
+                const option = document.createElement("option");
+                option.value = exam.exam_id;
+                option.textContent = exam.exam_name;
+                assignTo.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching exams:', error));
 
-    // Add options to the select dropdown from fetched data
-    examiners.forEach(examiner => {
-        const option = document.createElement("option");
-        option.value = examiner.examiner_id; // Assuming you're using examiner_id as the value
-        option.textContent = examiner.name; // Display the examiner's name
-        examinerSelect.appendChild(option);
-    });
-
-    // Append the examinerSelect to the modal
-    const assignExaminerModal = document.getElementById("assignExaminerModal");
-    assignExaminerModal.appendChild(examinerSelect);
-});
-
-// Fetch exams from the server
-fetch('getExams.php')
-.then(response => response.json())
-.then(exams => {
-    // Create assignTo (a select dropdown)
-    const assignTo = document.createElement("select");
-    assignTo.id = "assignTo";
-
-    // Add options to the select dropdown from fetched data
-    exams.forEach(exam => {
-        const option = document.createElement("option");
-        option.value = exam.exam_id; // Assuming you're using exam_id as the value
-        option.textContent = exam.exam_name; // Display the exam name
-        assignTo.appendChild(option);
-    });
-
-    // Append the assignTo to the modal
-    const assignExaminerModal = document.getElementById("assignExaminerModal");
-    assignExaminerModal.appendChild(assignTo);
-});
-
-    // Open modal when the "Add Examiner" button is clicked
+    // Open modal when the "Assign Examiner" button is clicked
     assignExaminerBtn.addEventListener("click", function () {
         assignExaminerModal.style.display = "block";
     });
@@ -63,31 +49,18 @@ fetch('getExams.php')
         addExaminerModal.style.display = "block";
     });
 
-    // Add event listener for closing the modal
-    addcloseModalBtn.addEventListener("click", function () {
-        addExaminerModal.style.display = "none"; // Hide the modal
-        clearForm(); // Clear the form when closing the modal
+    // Close modals
+    [addcloseModalBtn, assigncloseModalBtn].forEach(btn => {
+        btn.addEventListener("click", function () {
+            btn.closest(".modal").style.display = "none"; // Hide the modal
+            clearForm(); // Clear the form when closing the modal
+        });
     });
 
-    // Function to clear the form
-    function clearForm() {
-   form.reset(); // Reset the form fields
-    }
-
-    // Add event listener for closing the modal
-    assigncloseModalBtn.addEventListener("click", function () {
-        assignExaminerModal.style.display = "none"; // Hide the modal
-        clearForm(); // Clear the form when closing the modal
-    });
-
-    // Function to clear the form
-    function clearForm() {
-   form.reset(); // Reset the form fields
-    }
-    // Close modal when clicking outside of the modal
+    // Close modal when clicking outside of it
     window.addEventListener("click", function (event) {
-        if (event.target === addExaminerModal) {
-            addExaminerModal.style.display = "none";
+        if (event.target === addExaminerModal || event.target === assignExaminerModal) {
+            event.target.style.display = "none"; // Hide the modal
             clearForm(); // Clear the form when closing the modal
         }
     });
@@ -95,9 +68,7 @@ fetch('getExams.php')
     // Form submission handling with validation
     registrationForm.addEventListener("submit", function (event) {
         let valid = true;
-
-        // Clear any previous error messages
-        clearErrors();
+        clearErrors(); // Clear any previous error messages
 
         // Validate email format
         if (!validateEmail(emailField.value)) {
