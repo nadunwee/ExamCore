@@ -155,34 +155,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <span class="close" id="assignClose">&times;</span>
                         <h2>Assign an Examiner</h2>
                         <form method="GET" action="./assignExaminer.php">
-    <div class="input-container">
-        <label for="examinerSelect">Select Examiner:</label>
-        <select id="examinerSelect" name="examinerSelect" class="input-field" required>
-            <?php
-                include("../../php/config.php");
-                $examinerQuery = "SELECT examiner_id, name FROM examiners";
-                $result = $conn->query($examinerQuery);
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='{$row['examiner_id']}'>{$row['name']}</option>";
-                }
-            ?>
-        </select>
-    </div>
+                            <div class="input-container">
+                                <label for="examinerSelect">Select Examiner:</label>
+                                <select id="examinerSelect" name="examinerSelect" class="input-field" required>
+                                </select>
+                            </div>
 
-    <div class="input-container">
-        <label for="assignTo">Assign to Exam:</label>
-        <select id="assignTo" name="assignTo" class="input-field" required>
-            <?php
-                $examQuery = $conn->query("SELECT exam_id, exam_name FROM Exams");
-                while ($exam = $examQuery->fetch_assoc()) {
-                    echo "<option value='{$exam['exam_id']}'>{$exam['exam_name']}</option>";
-                }
-            ?>
-        </select>
-    </div>
+                            <div class="input-container">
+                                <label for="assignTo">Assign to Exam:</label>
+                                <select id="assignTo" name="assignTo" class="input-field" required></select>
+                            </div>
 
-    <input type="submit" value="Assign" class="assign-add" />
-</form>
+                            <input type="submit" value="Assign" class="assign-add" />
+                        </form>
 
                     </div>
                 </div>
