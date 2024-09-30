@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="examinerTableBody">
+                    <tbody id="examinerTable">
                         <!-- Dynamic Content Goes Here -->
                     </tbody>
                 </table>

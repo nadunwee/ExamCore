@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordField = document.getElementById("password");
     const confirmPasswordField = document.getElementById("confirm-password");
     
+    
     const examinerSelect = document.getElementById("examinerSelect");
     const assignTo = document.getElementById("assignTo");
 
@@ -120,3 +121,35 @@ document.addEventListener("DOMContentLoaded", function () {
         clearErrors();
     }
 });
+
+// Find the table element directly
+const examinerTable = document.getElementById("examinerTable");
+
+// Create a new row (tr) and cells (td)
+const row = document.createElement("tr");
+const cell1 = document.createElement("td");
+const cell2 = document.createElement("td");
+const cell3 = document.createElement("td");
+
+// Add data to the cells
+cell1.textContent = "Examiner Name";
+cell2.textContent = "Exam ID";
+
+// Create a delete button
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "Delete";
+
+// Add event listener to handle delete action
+deleteButton.addEventListener("click", function() {
+    row.remove();
+});
+
+// Append the delete button to the third cell
+cell3.appendChild(deleteButton);
+
+// Append cells to the row
+row.appendChild(cell1);
+row.appendChild(cell2);
+row.appendChild(cell3);
+// Append the row to the table (without tbody)
+examinerTable.appendChild(row);
