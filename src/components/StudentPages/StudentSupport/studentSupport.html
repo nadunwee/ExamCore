@@ -12,17 +12,14 @@
     <link rel="stylesheet" href="./studentSupport.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <title>The Student's Support Page</title>
-
 </head>
 
 <body>
-
 
     <div class="wrapper">
         <div class="container">
             <aside class="sidebar">
                 <h1>ExamCore</h1>
-
 
                 <ul>
                     <li><a href="../StudentPages/StudentHome/StudentHome.php">Home</a></li>
@@ -37,30 +34,40 @@
         </div>
     </div>
 
-
     <main>
-
-        <section class="ask-questions">
+        <section class="ask-questions" id="question-form">
             <h2>Ask Questions</h2>
 
-
-            <!--for and id should be adjusted according to login page-->
-            <form>
+            <!-- Form for submitting questions -->
+            <form id="questionForm">
                 <label for="subject">Subject</label>
-                <input type="text" id="subj" name="subj">
+                <input type="text" id="subj" name="subj" required>
+                
                 <label for="question">Question</label>
-                <input type="text" id="ques" name="ques">
-
+                <textarea id="ques" name="ques" required></textarea>
+                
+                <center><button type="submit">Submit</button></center>
             </form>
-            <center><button>Submit</button></center>
-
         </section>
-
     </main>
+
     <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a href="#">Privacy
-                Policy</a></p>
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Privacy Policy</a>
+        </p>
     </footer>
+
+    <script>
+        // Add event listener to the form submission
+        document.getElementById('questionForm').addEventListener('submit', function(event) {
+            
+            // Display the alert popup
+            alert('We received your question. Please check your email for the response');
+
+            
+        });
+    </script>
 
 </body>
 
