@@ -49,13 +49,13 @@ if ($completedExamsQuery->execute()) {
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentHome/StudentHome.php">Home</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExam.php">Exams</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification.php">Notifications</a></li>
+                    <li><a href="./StudentHome/StudentHome.php">Home</a></li>
+                    <li><a href="#">Exams</a></li>
+                    <li><a href="./StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="./StudentNotification.php">Notifications</a></li>
                 </ul>
                 <button class="profile-btn">
-                    <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php">Examiner Profile</a>
+                    <a href="./StudentProfile/studentProfile.php">Student Profile</a>
                 </button>
             </aside>
         </div>
