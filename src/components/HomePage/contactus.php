@@ -15,11 +15,11 @@
         <div class="navigation-bar">
           <ul>
             <a href="../../../homePage.html"><li>Home</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="./src/components/HomePage/SupportPage.html"
+            <a href="./aboutUs.html"><li>About</li></a>
+            <a href="./SupportPage.html"
               ><li>Support</li></a
             >
-            <a href="./src/components/HomePage/contactus.html"
+            <a href="#"
               ><li>Contact Us</li></a
             >
           </ul>
