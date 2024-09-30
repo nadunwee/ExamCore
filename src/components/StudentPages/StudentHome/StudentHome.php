@@ -54,7 +54,7 @@ if ($conn->connect_error) {
             <h2>Most Recent Exams</h2>
             <?php
             // Fetch most recent exams
-            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM Exams ORDER BY exam_deadline DESC LIMIT 5";
+            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM exams ORDER BY exam_deadline DESC LIMIT 5";
             $examResult = $conn->query($examQuery);
 
             if (!$examResult) {
