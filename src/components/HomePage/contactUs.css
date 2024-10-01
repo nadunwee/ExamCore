@@ -74,7 +74,10 @@ body{
     color: black;
   } 
   
-
+.contact-details img{
+  margin-left: 50px;
+  align-items: center;
+}
 .contact-details {
     flex: 1; /* Allows this section to take up 1 portion of the available space */
     padding: 5px; /* Adds some internal spacing to make it look neat */
@@ -136,9 +139,9 @@ input, text{
 }
 
 h1{
-    color: rgb(147, 3, 3);
+    color:#962b93;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 55px;
+    font-size: 45px;
     margin-left: 30px;
     margin-top: 25px;
 }
