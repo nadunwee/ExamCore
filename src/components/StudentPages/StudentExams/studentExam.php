@@ -1,22 +1,22 @@
 <?php
-  session_start();
+session_start();
 
-  // Check if the user is logged in
-  if (!isset($_SESSION['user-email'])) {
-      header('Location: ../../AccessPages/login.php');
-      exit();
-  }
+// Check if the user is logged in
+if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
+}
 
-  // Retrieve the session variables
-  $userEmail = $_SESSION['user-email'];
-  $userPassword = $_SESSION['user-pswd'];
+// Retrieve the session variables
+$userEmail = $_SESSION['user-email'];
+$userPassword = $_SESSION['user-pswd'];
 
-  include('../../../php/config.php');
+include('../../../php/config.php');
 
-  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
-  $query->bind_param('ss', $userEmail, $userPassword);
+$query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+$query->bind_param('ss', $userEmail, $userPassword);
 
-  if ($query->execute()) {
+if ($query->execute()) {
     $result = $query->get_result();
 
     if ($result->num_rows > 0) {
@@ -24,21 +24,21 @@
     } else {
         echo "Invalid login credentials!";
     }
-  }
+}
 
-  $query->close();
+$query->close();
 
-  $examQuery = $conn->prepare("SELECT * FROM Exams");
+$examQuery = $conn->prepare("SELECT * FROM Exams");
 
-  if ($examQuery->execute()) {
+if ($examQuery->execute()) {
     $availableExamsResult = $examQuery->get_result();
-  } else {
+} else {
     echo "Failed to retrieve exams.";
-  }
+}
 
-  $examQuery->close();
+$examQuery->close();
 
-  $conn->close();
+$conn->close();
 
 ?>
 
@@ -78,48 +78,62 @@
     <main class="content">
         <div class="header">
             <h1>Welcome Back, <?php echo $studentData['name'] ?></h1>
-            
+
             <div class="search-bar">
                 <input type="text" placeholder="Search Exam">
                 <button>Search</button>
             </div>
         </div>
 
-        
-        <h2>Available Exams</h2>
-        <!-- Display available exams -->
-        <ul class="exam-list" id="available-exams">
-        <?php
-            if ($availableExamsResult->num_rows > 0) {
-                while ($row = $availableExamsResult->fetch_assoc()) {
-                    echo '<li><input type="checkbox" class="exam-checkbox" data-exam="'.htmlspecialchars($row['exam_name']).'"> ' . htmlspecialchars($row['exam_name']) . '</li>';
-                }
-            } else {
-                echo '<li>No available exams at the moment.</li>';
-            }
-            ?>
-        </ul>
 
-        <h2>Completed Exams</h2>
-        <!-- Display completed exams -->
-        <ul class="exam-list">
-            <?php
-            if ($completedExamsResult->num_rows > 0) {
-                while ($row = $completedExamsResult->fetch_assoc()) {
-                    echo '<li><input type="checkbox" checked> ' . htmlspecialchars($row['exam_name']) . '</li>';
-                }
-            } else {
-                echo '<li>No completed exams found.</li>';
-            }
+        <div class="student-exams-list">
+            <div class="student-exmas-available">
+                <h1>Available Exams</h1>
+                <div class="student-exams-content">
+                    <div class="student-exams-content">
+                        <?php
+                        if ($availableExamsResult->num_rows > 0) {
+                            echo '<div class="exam-row">';
+                            echo '<div class="exam-header">Exam ID</div>';
+                            echo '<div class="exam-header">Exam Name</div>';
+                            echo '<div class="exam-header">Exam Deadline</div>';
+                            echo '</div>';
+                            while ($row = $availableExamsResult->fetch_assoc()) {
+                                // Start the form and set the action to studentExamPassword.php
+                                echo '<form class="exam-form" action="./studentExamPassword.php" method="POST" style="display: inline;">';
 
-            // Close the prepared statements and connection
-            $availableExamsQuery->close();
-            $completedExamsQuery->close();
-            $conn->close();
-            ?>
-        </ul>
+                                // Add hidden inputs for exam_id and exam_password
+                                echo '<input type="hidden" name="exam_id" value="' . htmlspecialchars($row['exam_id']) . '">';
+                                echo '<input type="hidden" name="exam_password" value="' . htmlspecialchars($row['exam_password']) . '">';
 
-        
+                                // Create the clickable exam row
+                                echo '<div class="exam-row" onclick="this.closest(\'form\').submit();">';
+                                echo '<div class="exam-data">' . htmlspecialchars($row['exam_id']) . '</div>';
+                                echo '<div class="exam-data">' . htmlspecialchars($row['exam_name']) . '</div>';
+                                echo '<div class="exam-data">' . htmlspecialchars($row['exam_deadline']) . '</div>';
+                                echo '</div>';
+
+                                // Close the form
+                                echo '</form>';
+                            }
+                        } else {
+                            echo '<li>No available exams at the moment.</li>';
+                        }
+                        ?>
+                    </div>
+
+                </div>
+            </div>
+            <div class="student-exams-completed">
+                <h1>Completed Exams</h1>
+                <div>examn name</div>
+                <div>due date</div>
+            </div>
+        </div>
+
+
+
+
     </main>
 
     <!-- OTP Popup -->
