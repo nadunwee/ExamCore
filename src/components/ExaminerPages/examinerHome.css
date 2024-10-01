@@ -25,9 +25,10 @@ body {
     font-size: 18px;
     margin-top: -55px;
 }
+
 .name-placeholder{
     width: 80%;
-    height: 100px;
+    height: 80px;
     background-color: #761c73;
     margin-bottom: 20px;
     margin-top: -10px;
@@ -37,6 +38,7 @@ body {
     font-size: 18px;
     border-radius: 3px;
     box-shadow: 0 4px 4px black ;
+    padding-bottom: 20px;
 }
 .name-placeholder h1{
     color:white;
@@ -61,7 +63,7 @@ body {
 .exam-info, .exam-history {
     margin-bottom: 20px;
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -81,20 +83,24 @@ body {
     list-style-type: none;
 }
 
-/* Quote section styling */
-.quote-section {
-    width: 30%;
-    text-align: center;
-}
 
-.quote-section img {
-    width: 100%;
-    height:auto;
+/*quote section*/
+.quote-section {
+    position: relative;
+    text-align: center;
+    width:30%
+  }
+  
+  .quote-image {
+    max-width: 100%;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
     border-radius: 10px;
     margin-bottom: 10px;
-    
-}
-
+    transition-duration: 1s;
+  }
+  
 .quote {
     font-size: 18px;
     font-style: italic;
