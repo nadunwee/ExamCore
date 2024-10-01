@@ -5,7 +5,10 @@
   align-items: center;
   gap: 40px;
 }
-
+.about-us-features img{
+  width: 80px;
+  height: auto;
+}
 .about-us-description {
   max-width: 30%;
   margin-left: 50px;
@@ -13,7 +16,8 @@
 
 .about-us-description h1 {
   font-size: 40px;
-  color: #c7253e;
+  color: #962b93;
+  font-size: 50px;
 }
 
 .abouts-us-details {
@@ -45,8 +49,8 @@
   padding: 20px;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0.5, 0.2);
-  border: 2px solid black;
+  box-shadow: 0 4px 6px #761c73;
+  border: 2px solid #784777;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -59,6 +63,7 @@
 .feature-heading {
   font-weight: bold;
   font-size: 1.35em;
+  color: #784777;
 }
 
 .feature-description {
