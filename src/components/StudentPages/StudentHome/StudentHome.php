@@ -1,17 +1,33 @@
 <?php
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 session_start();
 
-// Include the database configuration
-include('../../../php/config.php');
+  // Check if the user is logged in
+  if (!isset($_SESSION['user-email'])) {
+      header('Location: ../../AccessPages/login.php');
+      exit();
+  }
 
+  // Retrieve the session variables
+  $userEmail = $_SESSION['user-email'];
+  $userPassword = $_SESSION['user-pswd'];
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  include('../../../php/config.php');
+
+  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+  $query->bind_param('ss', $userEmail, $userPassword);
+
+  if ($query->execute()) {
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+        $studentData = $result->fetch_assoc();
+    } else {
+        echo "Invalid login credentials!";
+    }
+  }
+
+  $query->close();
+  $conn->close();
 
 ?>
 <!DOCTYPE html>
@@ -32,12 +48,12 @@ if ($conn->connect_error) {
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentHome/StudentHome.php">Home</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExam.php">Exams</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification.php">Notifications</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="../StudentExams/studentExam.php">Exams</a></li>
+                    <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="../StudentNotification.php">Notifications</a></li>
                 </ul>
-                <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
+                <a href="../StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
             </aside>
         </div>
     </div>
@@ -50,11 +66,12 @@ if ($conn->connect_error) {
     </header>
 
     <main class="content">
+        <h1>hello</h1>
         <section class="most-recent-exams">
             <h2>Most Recent Exams</h2>
             <?php
             // Fetch most recent exams
-            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM Exams ORDER BY exam_deadline DESC LIMIT 5";
+            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM exams ORDER BY exam_deadline DESC LIMIT 5";
             $examResult = $conn->query($examQuery);
 
             if (!$examResult) {

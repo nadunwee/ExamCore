@@ -29,6 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Correct file path to include the database configuration
     include("../../php/config.php");
 
+    $query = "SELECT exam_id, exam_name FROM exams";
+    $result = $conn->query($query);
+    $exams = [];
+
+    while ($row = $result->fetch_assoc()) {
+       $exams[] = $row;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($exams);
+
     // Prepare the SQL statement
     $query = $conn->prepare("INSERT INTO examiners (name, subject, email, password) VALUES (?, ?, ?, ?)");
     $query->bind_param("ssss", $name, $subject, $email, $passwd);
@@ -89,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="examinerTableBody">
+                    <tbody id="examinerTable">
                         <!-- Dynamic Content Goes Here -->
                     </tbody>
                 </table>
@@ -99,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button class="assign-examiner-btn" id="assignExaminerAdmin">Assign Examiner</button>
                     <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                 </div>
-
 
                 <!-- Add Examiner Modal -->
                 <div class="modal" id="addExaminerModal">
@@ -144,31 +154,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="modal-content">
                         <span class="close" id="assignClose">&times;</span>
                         <h2>Assign an Examiner</h2>
-                        <form method="POST" action="./assignExaminer.php">
-                            <label for="examinerSelect">Select Examiner:</label>
-                            <select id="examinerSelect" name="examinerSelect">
-                                <?php
-                                 $examinerQuery = $conn->query("SELECT examiner_id, name FROM examiners");
-                                 while ($examiner = $examinerQuery->fetch_assoc()) {
-                                      echo "<option value='{$examiner['examiner_id']}'>{$examiner['name']}</option>";
-                                  }
-                                ?>
+                        <form method="GET" action="./assignExaminer.php">
+                            <div class="input-container">
+                                <label for="examinerSelect">Select Examiner:</label>
+                                <select id="examinerSelect" name="examinerSelect" class="input-field" required>
+                                </select>
+                            </div>
 
-                            </select>
-                            <br><br>
+                            <div class="input-container">
+                                <label for="assignTo">Assign to Exam:</label>
+                                <select id="assignTo" name="assignTo" class="input-field" required></select>
+                            </div>
 
-                            <label for="assignTo">Assign to:</label>
-                            <select id="assignTo" name="assignTo">
-                                <?php
-                                    $examQuery = $conn->query("SELECT exam_name FROM Exams");
-                                    while ($exam = $examQuery->fetch_assoc()) {
-                                        echo "<option value='{$exam['exam_name']}'>{$exam['exam_name']}</option>";
-                                    }
-                                ?>
-                            </select>
-                            <br><br>
                             <input type="submit" value="Assign" class="assign-add" />
                         </form>
+
                     </div>
                 </div>
 

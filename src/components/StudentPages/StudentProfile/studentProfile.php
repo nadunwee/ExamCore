@@ -96,15 +96,15 @@
         <aside class="sidebar">
           <h1>ExamCore</h1>
           <ul>
-            <li><a href="../StudentHome/StudentHome.html">Home</a></li>
-            <li><a href="../studentExam.html">Exams</a></li>
-            <li><a href="#">Results</a></li>
+            <li><a href="../StudentHome/StudentHome.php">Home</a></li>
+            <li><a href="../studentExam.php">Exams</a></li>
+            <li><a href="../StudentSupport/student">Support</a></li>
             <li>
-              <a href="../StudentNotification.html">Notifications</a>
+              <a href="../StudentNotification.php">Notifications</a>
             </li>
           </ul>
           <button class="profile-btn">
-            <a href="../StudentProfile/studentProfile.html">Student Profile</a>
+            <a href="#">Student Profile</a>
           </button>
         </aside>
       </div>
