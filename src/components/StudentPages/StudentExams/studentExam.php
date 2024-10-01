@@ -1,30 +1,45 @@
 <?php
-session_start();
+  session_start();
 
-// Redirect if session email is not set
-if (!isset($_SESSION['user-email'])) {
-    header("Location: ../../AccessPages/login.php");
-    exit;
-}
+  // Check if the user is logged in
+  if (!isset($_SESSION['user-email'])) {
+      header('Location: ../../AccessPages/login.php');
+      exit();
+  }
 
-// Check for the config.php file
-include("../../php/config.php");
+  // Retrieve the session variables
+  $userEmail = $_SESSION['user-email'];
+  $userPassword = $_SESSION['user-pswd'];
 
-// Fetch available exams (exam_deadline > CURDATE())
-$availableExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline > CURDATE()");
-if ($availableExamsQuery->execute()) {
-    $availableExamsResult = $availableExamsQuery->get_result();
-} else {
-    die("Error fetching available exams: " . $availableExamsQuery->error);
-}
+  include('../../../php/config.php');
 
-// Fetch completed exams (exam_deadline <= CURDATE())
-$completedExamsQuery = $conn->prepare("SELECT * FROM Exams WHERE exam_deadline <= CURDATE()");
-if ($completedExamsQuery->execute()) {
-    $completedExamsResult = $completedExamsQuery->get_result();
-} else {
-    die("Error fetching completed exams: " . $completedExamsQuery->error);
-}
+  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+  $query->bind_param('ss', $userEmail, $userPassword);
+
+  if ($query->execute()) {
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+        $studentData = $result->fetch_assoc();
+    } else {
+        echo "Invalid login credentials!";
+    }
+  }
+
+  $query->close();
+
+  $examQuery = $conn->prepare("SELECT * FROM Exams");
+
+  if ($examQuery->execute()) {
+    $availableExamsResult = $examQuery->get_result();
+  } else {
+    echo "Failed to retrieve exams.";
+  }
+
+  $examQuery->close();
+
+  $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +55,8 @@ if ($completedExamsQuery->execute()) {
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="studentExamWithOTP.css">
-    <link rel="stylesheet" href="../../../src/styles/commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="./studentExam.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -49,9 +65,8 @@ if ($completedExamsQuery->execute()) {
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="./StudentHome/StudentHome.php">Home</a></li>
                     <li><a href="#">Exams</a></li>
-                    <li><a href="./StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="./StudentNotification.php">Notifications</a></li>
                 </ul>
                 <button class="profile-btn">
@@ -62,19 +77,22 @@ if ($completedExamsQuery->execute()) {
     </div>
     <main class="content">
         <div class="header">
-            <h2>Available Exams</h2>
+            <h1>Welcome Back, <?php echo $studentData['name'] ?></h1>
+            
             <div class="search-bar">
                 <input type="text" placeholder="Search Exam">
                 <button>Search</button>
             </div>
         </div>
 
+        
+        <h2>Available Exams</h2>
         <!-- Display available exams -->
         <ul class="exam-list" id="available-exams">
-            <?php
+        <?php
             if ($availableExamsResult->num_rows > 0) {
                 while ($row = $availableExamsResult->fetch_assoc()) {
-                    echo '<li><input type="checkbox" class="exam-checkbox" data-exam="'.$row['exam_name'].'"> ' . htmlspecialchars($row['exam_name']) . '</li>';
+                    echo '<li><input type="checkbox" class="exam-checkbox" data-exam="'.htmlspecialchars($row['exam_name']).'"> ' . htmlspecialchars($row['exam_name']) . '</li>';
                 }
             } else {
                 echo '<li>No available exams at the moment.</li>';

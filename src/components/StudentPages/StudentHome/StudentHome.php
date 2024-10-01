@@ -1,17 +1,33 @@
 <?php
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 session_start();
 
-// Include the database configuration
-include('../../../php/config.php');
+  // Check if the user is logged in
+  if (!isset($_SESSION['user-email'])) {
+      header('Location: ../../AccessPages/login.php');
+      exit();
+  }
 
+  // Retrieve the session variables
+  $userEmail = $_SESSION['user-email'];
+  $userPassword = $_SESSION['user-pswd'];
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  include('../../../php/config.php');
+
+  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+  $query->bind_param('ss', $userEmail, $userPassword);
+
+  if ($query->execute()) {
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+        $studentData = $result->fetch_assoc();
+    } else {
+        echo "Invalid login credentials!";
+    }
+  }
+
+  $query->close();
+  $conn->close();
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +49,7 @@ if ($conn->connect_error) {
                 <h1>ExamCore</h1>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="../studentExam.php">Exams</a></li>
+                    <li><a href="../StudentExams/studentExam.php">Exams</a></li>
                     <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="../StudentNotification.php">Notifications</a></li>
                 </ul>
@@ -50,6 +66,7 @@ if ($conn->connect_error) {
     </header>
 
     <main class="content">
+        <h1>hello</h1>
         <section class="most-recent-exams">
             <h2>Most Recent Exams</h2>
             <?php
