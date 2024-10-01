@@ -14,6 +14,7 @@ $rs1 = $conn->query($q1);
 $n1 = $rs1->num_rows;
 // $d1 = $rs1->fetch_assoc();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +56,7 @@ $n1 = $rs1->num_rows;
                 <?php
 
                 foreach ($rs1 as $data) {
-                    ?>
+                ?>
                     <tr>
                         <form action="notificationProcess.php" method="post">
                             <td><?php echo $data['name']; ?></td>
@@ -67,7 +68,7 @@ $n1 = $rs1->num_rows;
                             </td>
                         </form>
                     </tr>
-                    <?php
+                <?php
                 }
 
                 ?>
