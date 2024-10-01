@@ -52,9 +52,9 @@
         </div>
         
         <div class="examiner-notification-container">
-            <h1>Examiner Notifications</h1>
-
-            <!-- Notification Form -->
+            <h1></h1>
+<!-- <!-- 
+            Notification Form
             <form method="POST" class="examiner-notification-form" action="./addExaminerNotification.php">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
@@ -65,10 +65,10 @@
                 <label for="message">Message:</label>
                 <textarea name="message" id="message" class="message-input" required></textarea><br>
                 <center>
-                <input type="submit" class="button" value="Add Notification">
+                <!-- <input type="submit" class="button" value="Add Notification"> -->
                 </center>
             </form>
-        </div>    
+        </div>     -->
 
         <!--Added notifications should be displayed here-->
 
@@ -123,4 +123,4 @@
         <script src="ExaminerNotification.js"></script>
     </div>
 </body>
-</html>
+</html> -->
