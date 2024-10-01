@@ -57,10 +57,10 @@
 
 .about-us-features div:hover {
   transform: translateY(-10px) scale(1.05); /* Slight lift and zoom on hover */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  box-shadow: 0 8px 12px #c57ac2; /* Enhanced shadow on hover */
 }
 
-.feature-heading {
+.feature-heading p {
   font-weight: bold;
   font-size: 1.35em;
   color: #784777;
