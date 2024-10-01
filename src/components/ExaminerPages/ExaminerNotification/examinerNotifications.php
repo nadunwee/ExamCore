@@ -34,7 +34,7 @@ $n1 = $rs1->num_rows;
                     <li><a href="../examinerHome.html">Home</a></li>
                     <li><a href="../ExaminerExam/examinerExam.html">Exams</a></li>
                     <li><a href="../ExaminerResult/examinerResult.html">Results</a></li>
-                    <li><a href="../ExaminerNotification/ExaminerNotification.php">Notifications</a></li>
+                    <li><a href="ExaminerNotifications.php">Notifications</a></li>
                 </ul>
                 <a href="../ExaminerProfile/examinerProfile.html">
                     <button class="profile-btn">Examiner Profile</button>
@@ -46,7 +46,7 @@ $n1 = $rs1->num_rows;
             <h1 style="margin-bottom: 30px;">Examiner Notifications</h1>
 
             <!-- Notification Form -->
-            <form method="post" class="examiner-notification-form" action="backend/notificationProcess.php">
+            <form method="post" class="examiner-notification-form" action="notificationProcess.php">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
 
