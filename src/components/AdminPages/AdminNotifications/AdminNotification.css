@@ -71,7 +71,7 @@ body {
   color: white;
 }
 
-.admin-notification-container {
+.examiner-notification-container {
   margin-top: 30px;
   margin-left: 270px;
   margin-right: 50px;
@@ -82,7 +82,7 @@ body {
   border-radius: 10px;
 }
 
-.admin-notification-form {
+.examiner-notification-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
