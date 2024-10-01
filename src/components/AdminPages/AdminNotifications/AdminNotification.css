@@ -1,101 +1,170 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-h1{
-    padding: 0px;
-    margin: 0px;
-    margin-left: 0px;
-    right: 0;
-    left: 0;
-    
-  }
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.container {
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f8f8;
+  padding: 15px;
+  position: fixed;
+  height: 100%;
+  border-right: 2px solid #761c73;
+}
+
+.sidebar h1 {
+  text-align: center;
+  color: #761c73;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.profile-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #761c73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #761c73;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #8b1688;
+  color: white;
+}
+
 .admin-notification-container {
-    margin-left: 300px; 
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  margin-left: 270px;
+  margin-right: 50px;
+  padding: 20px;
+  border: #761C73;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
 }
 
-
-#admin-notification-form {
-    font-family: Poppins,sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 500px; /* Increased height */
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 16px;
-    resize: none;
-}
-.admin-notification-container input{
-    font-family: Poppins,sans-serif;
+.admin-notification-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-#notification-input {
-    padding: 10px;
-    font-family: Poppins,sans-serif;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    height: 150px;
+.notification-input,
+.name-input,
+.email-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
-#admin-notification-form button {
-    padding: 10px;
-    background-color: #761c73;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    font-size: 16px;
+.button {
+  width: 150px;
+  padding: 10px;
+  background-color: #761c73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+
+
 }
 
-#admin-notification-form button:hover {
-    background-color: #9e2a72;
-}
-
-/* Style for the notifications list */
 #list-notifications {
-    list-style-type: none;
-    padding: 0;
-    
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  margin-left: 280px;
 }
 
 #list-notifications li {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
 }
-button{
-    font-family: Poppins,sans-serif;
-    width:150px;
-    display: block;
-    margin: 0 auto;
-    background-color:#9e2a72; /* Blue */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 17px;
+
+#list-notifications button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+footer.page-footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.added-notification-list {
+  margin-left: 300px;
+
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  max-width: 1000px;
+  background-color: white;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+table th {
+  background-color: #761C73;
+  color: white;
+}
+
+table td input[type="radio"] {
+  margin-left: 20px;
 }
