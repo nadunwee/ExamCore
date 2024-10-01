@@ -51,6 +51,7 @@
 
         <div class="name-placeholder">
           <h1>HELLO EXAMINER !</h1>
+          <br><br>
         </div>
 
         <!-- Flex container for exam info, history, and quote -->
@@ -69,8 +70,9 @@
             <section class="exam-history">
               <h3>Student performance</h3>
               <ul>
-                <li> Exam 1</li>
-                <li> Exam 2</li>
+                <li> Exam 1 pass ,fail rates</li>
+                <li> Exam 2 pass ,fail rates</li>
+                <li> Exam 3 pass ,fail rates</li>
               </ul>
             </section>
           </div>
@@ -78,13 +80,27 @@
           <!-- Quote Section -->
           <div class="quote-section">
             <img
+              class="quote-image"
               src="../../Images/teacher-ex1.png"
               alt="Inspirational Quote Image"
+            />
+            <img
+              class="quote-image"
+              src="../../Images/teacher3.png"
+              alt="Inspirational Quote Image"
+              style="display: none;"  <!-- Hide the other images initially -->
+            />
+            <img
+              class="quote-image"
+              src="../../Images/online-teacher.png"
+              alt="Inspirational Quote Image"
+              style="display: none;"
             />
             <p class="quote">
               "Ensuring Integrity, Fostering Growth, Empowering Success."
             </p>
           </div>
+          
         </div>
       </main>
 
@@ -95,5 +111,32 @@
         </p>
       </footer>
     </div>
+
+    <script>
+      let currentImageIndex = 0;
+      const images = document.querySelectorAll('.quote-image');
+      //selects all elements in the document that have the same class
+      //return  like an array
+    
+      function showNextImage() {
+        // Hide the current image and shows the next one
+        images[currentImageIndex].style.display = 'none';
+    
+        // Calculate the next image index
+        //currentImageIndex = (0 + 1) % 3 = 1
+        //currentImageIndex = (1 + 1) % 3 = 2
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    
+        // Show the next image
+        images[currentImageIndex].style.display = 'block';
+      }
+    
+      // Automatically switch images every 3 seconds
+      setInterval(showNextImage, 3000);
+
+      //setInterval is a built-in JavaScript function that  
+      //repeatedly calls a specified function at a given interval
+    </script>
+    
   </body>
 </html>
