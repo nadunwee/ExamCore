@@ -81,14 +81,14 @@
        
       </form>
 
-      <h2>Delete a Message</h2>
+      <h2>Delete the Message</h2>
     <form id="delete-form" action="message_delete.php" method="POST">
         <label for="deleteID">Enter ID to Delete:</label>
         <input type="text" name="ID" placeholder="Enter the ID of the message">
         <button class="button-sub" type="submit">Delete</button>
     </form>
 
-    <h2>Edit a Message</h2>
+    <h2>Edit the Message</h2>
       <form id="edit-form" action="message_edit.php" method="POST">
         <label for="dID">Enter ID to Edit:</label>
         <input type="text" name="ID" placeholder="Enter the ID of the message" required>
