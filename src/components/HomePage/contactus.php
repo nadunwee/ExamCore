@@ -45,42 +45,6 @@
     <!-- Left Section: Contact Details -->
     <div class="contact-details">
 
-<<<<<<< HEAD
-        <!-- Right Section: Contact Form -->
-        <div class="contact-form">
-            <h2>Send Us a Message</h2>
-
-            <form id="contact-form" action="contactUs_insert.php" method="POST">
-
-               <label for="ID">Conatcting ID:</label>
-               <input type="text"  name="ID" >
-
-                <label for="name">Name:</label>
-                <input type="text"  name="name" placeholder="Mr/Mrs/miss" required>
-                 <br>
-                <label for="phone">Phone Number:</label>
-                <input type="tel" name="phone" placeholder="0xx xxxxxxx" required>
-                 <br>
-                <label for="message">Your Message:</label>
-                <textarea  name="message" rows="5" required placeholder="Type your message here"></textarea>
-
-                <button class="button-sub" type="submit">Submit</button>
-                
-            </form>
-        </div>
-    </div>
-
-    <!--<script>
-      const form = document.getElementById('contact-form');
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        alert('You have submitted your message successfully!');
-        form.submit();
-      });
-    </script> -->
-   
-=======
       <img src="../../Images/client.png" width="300px" height="300px" />
       <p><strong>Email:</strong><i>ExamCore@gmail.com</i></p>
       <p><strong>Phone:</strong> +94 71 1111 122/123</p>
@@ -107,7 +71,7 @@
     </div>
   </div>
 
-  <script>
+  <!--<script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function(event) {
@@ -115,9 +79,8 @@
       alert('You have submitted your message successfully!');
       form.submit();
     });
-  </script>
+  </script>-->
 
->>>>>>> cf7aa9e0946e3fe378bd504dc6b5649363f7d1da
 </body>
 
 </html>
