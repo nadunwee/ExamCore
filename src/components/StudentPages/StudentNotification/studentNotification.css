@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.container {
+  flex: 1;
+}
+
+.examiner-notification-container {
+  margin-top: 30px;
+  margin-left: 270px;
+  margin-right: 50px;
+  padding: 20px;
+  border: #761C73;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.examiner-notification-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification-input,
+.name-input,
+.email-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.button {
+  width: 150px;
+  padding: 10px;
+  background-color: #761c73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+
+
+}
+
+#list-notifications {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  margin-left: 280px;
+}
+
+#list-notifications li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-notifications button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.added-notification-list {
+  margin-left: 300px;
+
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  max-width: 1000px;
+  background-color: white;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+table th {
+  background-color: #761C73;
+  color: white;
+}
+
+table td input[type="radio"] {
+  margin-left: 20px;
+}
