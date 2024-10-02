@@ -68,12 +68,13 @@ $conn->close();
     </header>
 
     <main class="content">
-        <h1>hello</h1>
+        <h1>Welcome</h1>
         <section class="most-recent-exams">
             <h2>Most Recent Exams</h2>
             <?php
+            include('../../../php/config.php');
             // Fetch most recent exams
-            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM exams ORDER BY exam_deadline DESC LIMIT 5";
+            $examQuery = "SELECT * FROM exams ORDER BY exam_deadline DESC LIMIT 5";
             $examResult = $conn->query($examQuery);
 
             if (!$examResult) {
