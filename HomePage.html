@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/styles/homePage.css" />
-    <link rel="stylesheet" href="./src/styles/common.css" />
+    <link rel="stylesheet" href="src/styles/homePage.css" />
+    
     <title>Exam Core</title>
   </head>
   <body>
@@ -28,18 +28,45 @@
       </div>
     </div>
 
-    <div class="home-page-content">
-      <h1>Streamline Your Exams with ExamCore</h1>
-      <div class="home-page-description">
-        Welcome to Quiz Core, the all-in-one platform for efficient online exam
-        management. <br />Designed for organizations and educational
-        institutions
+    <div class="home-page-container"> <!-- New container for content and image -->
+      <div class="home-page-content">
+        <h1 style="color:#70186e;font-size: 50px;">Streamline Your Exams</h1>
+        <h1>with ExamCore</h1>
+        <div class="home-page-description">
+          <i>
+            Welcome to Quiz Core, the all-in-one platform for efficient online exam management. <br />
+            Designed for organizations and educational institutions. Our platform empowers educators to create, administer, and analyze exams with ease, ensuring a seamless experience from start to finish.
+          </i>
+        </div>
+        <div class="home-page-btns">
+          <p class="get-started"><a href="./src/components/AccessPages/userRegister.php">Get Started</a></p>
+          <p class="learn-more"><a href="./src/components/HomePage/aboutUs.html">Learn More</a></p>
+        </div>
       </div>
-      <div class="home-page-btns">
-        <p class="get-started"><a href="./src/components/AccessPages/userRegister.php">Get Started</a></p>
-        <p class="learn-more"><a href="./src/components/HomePage/aboutUs.html">Learn More</a></p>
+      <div class="hp_image">
+        <img class="active" src="src/Images/hp.1.jpg" alt="Image 1">
+        <img class="hidden" src="src/Images/hp2.jpg" alt="Image 2">
+        <img class="hidden" src="src/Images/hp4.jpg" alt="Image 3">
+        <img class="hidden" src="src/Images/hp3.jpg" alt="Image 4">
       </div>
-      <div>Image</div>
     </div>
+
+    <script>
+        let currentIndex = 0; // Current image index
+        const images = document.querySelectorAll('.hp_image img'); // Select all images
+  
+        function showNextImage() {
+          images[currentIndex].classList.remove('active'); // Remove active class from current image
+          images[currentIndex].classList.add('hidden'); // Add hidden class to current image
+  
+          currentIndex = (currentIndex + 1) % images.length; // Move to the next index
+  
+          images[currentIndex].classList.remove('hidden'); // Show next image
+          images[currentIndex].classList.add('active'); // Add active class to next image
+        }
+  
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+      </script>
+      
   </body>
 </html>
