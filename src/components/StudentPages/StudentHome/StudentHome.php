@@ -1,22 +1,22 @@
 <?php
 session_start();
 
-  // Check if the user is logged in
-  if (!isset($_SESSION['user-email'])) {
-      header('Location: ../../AccessPages/login.php');
-      exit();
-  }
+// Check if the user is logged in
+if (!isset($_SESSION['user-email'])) {
+    header('Location: ../../AccessPages/login.php');
+    exit();
+}
 
-  // Retrieve the session variables
-  $userEmail = $_SESSION['user-email'];
-  $userPassword = $_SESSION['user-pswd'];
+// Retrieve the session variables
+$userEmail = $_SESSION['user-email'];
+$userPassword = $_SESSION['user-pswd'];
 
-  include('../../../php/config.php');
+include('../../../php/config.php');
 
-  $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
-  $query->bind_param('ss', $userEmail, $userPassword);
+$query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+$query->bind_param('ss', $userEmail, $userPassword);
 
-  if ($query->execute()) {
+if ($query->execute()) {
     $result = $query->get_result();
 
     if ($result->num_rows > 0) {
@@ -24,14 +24,15 @@ session_start();
     } else {
         echo "Invalid login credentials!";
     }
-  }
+}
 
-  $query->close();
-  $conn->close();
+$query->close();
+$conn->close();
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,7 @@ session_start();
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <title>ExamCore</title>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
@@ -51,7 +53,7 @@ session_start();
                     <li><a href="#">Home</a></li>
                     <li><a href="../StudentExams/studentExam.php">Exams</a></li>
                     <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="../StudentNotification.php">Notifications</a></li>
+                    <li><a href="../StudentNotification/StudentNotification.php">Notifications</a></li>
                 </ul>
                 <a href="../StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
             </aside>
@@ -123,4 +125,5 @@ session_start();
         </p>
     </footer>
 </body>
+
 </html>

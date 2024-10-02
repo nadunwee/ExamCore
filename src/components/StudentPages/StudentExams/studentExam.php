@@ -65,6 +65,7 @@ $conn->close();
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
+                    <li><a href="../StudentHome/StudentHome.php">Home</a></li>
                     <li><a href="#">Exams</a></li>
                     <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="../StudentNotification/StudentNotification.php">Notifications</a></li>

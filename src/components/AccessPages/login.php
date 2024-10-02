@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
           </div>
 
-          <input type="submit" value="Sign up with Email" class="register-submit-btn" />
+          <input type="submit" value="Sign In with Email" class="register-submit-btn" />
         </form>
 
         <section>By continuing with Google, Apple, or Email, you agree to our Terms of Service and Privacy Policy.</section>
