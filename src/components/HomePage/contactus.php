@@ -46,6 +46,9 @@
 
             <form id="contact-form" action="contactUs_insert.php" method="POST">
 
+               <label for="ID">Conatcting ID:</label>
+               <input type="text"  name="ID" >
+
                 <label for="name">Name:</label>
                 <input type="text"  name="name" placeholder="Mr/Mrs/miss" required>
                  <br>
@@ -56,11 +59,12 @@
                 <textarea  name="message" rows="5" required placeholder="Type your message here"></textarea>
 
                 <button class="button-sub" type="submit">Submit</button>
+                
             </form>
         </div>
     </div>
 
-    <script>
+    <!--<script>
       const form = document.getElementById('contact-form');
 
       form.addEventListener('submit', function (event) {
@@ -68,7 +72,7 @@
         alert('You have submitted your message successfully!');
         form.submit();
       });
-    </script>
-    
+    </script> -->
+   
 </body>
 </html>
