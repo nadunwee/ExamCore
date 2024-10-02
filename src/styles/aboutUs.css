@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins, sans-serif;
+}
 .about-us-container {
   display: flex;
   justify-content: space-around;
@@ -5,7 +11,7 @@
   align-items: center;
   gap: 40px;
 }
-.about-us-features img{
+.about-us-features img {
   width: 80px;
   height: auto;
 }
@@ -15,17 +21,21 @@
 }
 
 .about-us-description h1 {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
   color: #962b93;
   font-size: 50px;
+  margin-bottom: 20px;
 }
 
-.abouts-us-details {
+.about-us-details {
   font-size: 20px;
-  margin-bottom: 50px;
+  font-family: poppins, sans-serif;
+  margin-bottom: 60px;
 }
 
 .about-us-main-learn-more {
+  font-family: poppins, sans-serif;
   max-width: fit-content;
   display: flex;
   justify-content: center;
@@ -35,10 +45,12 @@
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .about-us-features {
   display: grid;
+  font-family: poppins, sans-serif;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   gap: 30px; /* Space between items */
   margin: 20px; /* Optional margin for the grid */
@@ -61,13 +73,15 @@
 }
 
 .feature-heading p {
-  font-weight: bold;
-  font-size: 1.35em;
+  font-family: poppins, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
   color: #784777;
 }
 
 .feature-description {
-  font-size: 1.1rem;
+  font-family: poppins, sans-serif;
+  font-size: 15px;
   margin-top: 10px;
   color: #666;
 }

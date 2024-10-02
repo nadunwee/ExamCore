@@ -1,3 +1,6 @@
+*{
+  font-family: poppins, sans-serif;
+}
 .support-container {
     display: flex;
     justify-content: space-around;
@@ -10,6 +13,9 @@
     max-width: 30%;
     margin-left: 0;
     
+  }
+  .support-description p{
+    font-size: 18px;
   }
   
   .support-description h1 {
@@ -47,6 +53,15 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0.5, 0.2);
     border: 2px solid black;
     cursor: pointer;
+  }
+  .try-free-login-btn{
+    height: 25px;
+    text-align: center;
+  }
+  .try-free-login-btn p{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0%;
   }
   
   
