@@ -56,12 +56,12 @@
   }
   .try-free-login-btn{
     height: 25px;
-    text-align: center;
   }
   .try-free-login-btn p{
-    text-align: center;
     margin-bottom: 20px;
     margin-top: 0%;
+    padding: 2px;
+    padding-bottom: 5px;
   }
   
   
