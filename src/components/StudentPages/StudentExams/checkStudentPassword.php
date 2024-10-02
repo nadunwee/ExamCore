@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $typedPassword = $_POST['typed-passwd'];
 
   if ($typedPassword === $examPassword) {
-    header("Location: ./studentExam.php");
+    header("Location: ../StudentExamPaper/studentExamPaper.php");
   } else {
     header("Location: ./studentExamPassword.php");
   }
   // Continue with the logic to display the exam or further processing
 } else {
-  echo "No exam data received.";
+  echo "<script>alert('No exam data received.'); window.location.href='./studentExamPassword.php';</script>";
 }
