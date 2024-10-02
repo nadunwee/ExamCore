@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+main{
+  margin-top: 0px;
+}
 
 body {
   font-family: poppins, sans-serif;
@@ -61,8 +63,11 @@ header {
 .content {
   flex: 1;
   align-items: center;
-  padding-left: 300px;
+  margin-left: 300px;
+ }
 
+ .content h1{
+  color: #aa08a5;
  }
 
 
@@ -95,3 +100,4 @@ main {
   border-radius: 5px;
   cursor: pointer;
 }
+

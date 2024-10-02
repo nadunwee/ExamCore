@@ -78,7 +78,7 @@ $conn->close();
     </div>
     <main class="content">
         <div class="header">
-            <h1>Welcome Back, <?php echo $studentData['name'] ?></h1>
+            
 
             <div class="search-bar">
                 <input type="text" placeholder="Search Exam">
@@ -110,7 +110,7 @@ $conn->close();
                                 // Create the clickable exam row
                                 echo '<div class="exam-row" onclick="this.closest(\'form\').submit();">';
                                 echo '<div class="exam-data">' . htmlspecialchars($row['exam_id']) . '</div>';
-                                echo '<div class="exam-data">' . htmlspecialchars($row['exam_name']) . '</div>';
+                                echo '<div class="exam-data" style="color: #761c73;cursor: pointer">' . htmlspecialchars($row['exam_name']) . '</div>';
                                 echo '<div class="exam-data">' . htmlspecialchars($row['exam_deadline']) . '</div>';
                                 echo '</div>';
 
@@ -127,8 +127,8 @@ $conn->close();
             </div>
             <div class="student-exams-completed">
                 <h1>Completed Exams</h1>
-                <div>examn name</div>
-                <div>due date</div>
+                <div>Exam name</div>
+                <div>Due date</div>
             </div>
         </div>
 

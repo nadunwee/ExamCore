@@ -27,6 +27,28 @@ if ($query->execute()) {
 }
 
 $query->close();
+
+$examQuery = $conn->prepare("SELECT * FROM Exams");
+
+if ($examQuery->execute()) {
+    $availableExamsResult = $examQuery->get_result();
+} else {
+    echo "Failed to retrieve exams.";
+}
+
+$examQuery->close();
+
+$examCountQuery = $conn->prepare("SELECT COUNT(exam_id) FROM Exams");
+
+if ($examCountQuery->execute()) {
+    $examCountQuery->bind_result($examsCount);
+    $examCountQuery->fetch();
+} else {
+    echo "Failed to retrieve exam count.";
+}
+
+$examCountQuery->close();
+
 $conn->close();
 
 ?>
@@ -39,7 +61,7 @@ $conn->close();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./studentHome.css">
+    <link rel="stylesheet" href="studentHome.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <title>ExamCore</title>
 </head>
@@ -68,58 +90,25 @@ $conn->close();
     </header>
 
     <main class="content">
-        <h1>hello</h1>
-        <section class="most-recent-exams">
-            <h2>Most Recent Exams</h2>
+        <h1 style="color:#aa08a5; margin-top: 0px;">Welcome Back, <?php echo $studentData['name'] ?></h1><br>
+        <div class="student-exams-content">
             <?php
-            // Fetch most recent exams
-            $examQuery = "SELECT exam_name, assigned_examiner, exam_deadline FROM exams ORDER BY exam_deadline DESC LIMIT 5";
-            $examResult = $conn->query($examQuery);
+            if ($availableExamsResult->num_rows > 0) {
+                echo '<h2 style="color: #e7006c; margin-left: 0px; margin-top: 100px;">You have <span style="color: #000000; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
 
-            if (!$examResult) {
-                die("Error fetching exams: " . $conn->error); // Debugging error if the query fails
-            }
-
-            if ($examResult->num_rows > 0) {
-                while ($row = $examResult->fetch_assoc()) {
-                    echo "<p><strong>Exam Name:</strong> " . $row["exam_name"] . "<br>";
-                    echo "<strong>Assigned Examiner:</strong> " . $row["assigned_examiner"] . "<br>";
-                    echo "<strong>Deadline:</strong> " . $row["exam_deadline"] . "</p><hr>";
-                }
             } else {
-                echo "<p>No recent exams available.</p>";
+                echo '<h2 style="color: #761c73; margin-left: 0px; margin-top: 100px;">No available exams at the moment.</h2>';
             }
             ?>
-        </section>
-
-        <section class="notifications">
-            <h2>Notifications</h2>
-            <?php
-            // Fetch most recent notifications
-            $notifQuery = "SELECT name, message, date FROM notification ORDER BY date DESC LIMIT 5";
-            $notifResult = $conn->query($notifQuery);
-
-            if (!$notifResult) {
-                die("Error fetching notifications: " . $conn->error); // Debugging error if the query fails
-            }
-
-            if ($notifResult->num_rows > 0) {
-                while ($row = $notifResult->fetch_assoc()) {
-                    echo "<p><strong>From:</strong> " . $row["name"] . "<br>";
-                    echo "<strong>Message:</strong> " . $row["message"] . "<br>";
-                    echo "<strong>Date:</strong> " . $row["date"] . "</p><hr>";
-                }
-            } else {
-                echo "<p>No notifications available.</p>";
-            }
-
-            // Close the connection after both queries are complete
-            $conn->close();
-            ?>
-        </section>
+        </div>
+        <div class="footer-img">
+            <img style="width: 100%; height: 300px; margin-top:10%; margin-bottom:0% "
+                src="../../../Images/studentHome_footer_img.jpg" alt="footerImg">
+        </div>
     </main>
 
-    <footer class="page-footer">
+
+    <footer style="margin-top:0%" class="page-footer">
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
             <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a>
         </p>
