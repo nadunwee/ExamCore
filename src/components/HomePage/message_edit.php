@@ -21,7 +21,6 @@ else{
 
     if($conn->query($sql))
     {
-        echo "Updated";
     }
     else{
         echo "Not Updated";
