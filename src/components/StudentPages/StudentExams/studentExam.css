@@ -5,6 +5,12 @@
   margin: 0;
   padding: 0;
 }
+.student-exmas-available h1{
+  color: #aa08a5;
+}
+.student-exams-completed h1{
+  color: #aa08a5;
+}
 
 .student-exams-list {
   margin-top: 4%;
@@ -43,4 +49,7 @@
 
 a {
   text-decoration: none;
+}
+.content .header .search-bar input{
+  margin-left: 620px;
 }

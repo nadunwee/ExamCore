@@ -1,69 +1,66 @@
-*{
+* {
+  margin: 0;
+  padding: 0;
   font-family: poppins, sans-serif;
 }
 .support-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
-    align-items: center;
-    gap: 40px;
-  }
-  
-  .support-description {
-    max-width: 30%;
-    margin-left: 0;
-    
-  }
-  .support-description p{
-    font-size: 18px;
-  }
-  
-  .support-description h1 {
-    font-size: 40px;
-    color: #901f8d;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  align-items: center;
+  gap: 40px;
+}
 
-   
-  }
-  
-  .support-details {
-    font-size: 20px;
-    margin-bottom: 50px;
-    margin-left: 0;
-    text-align: justify;
+.support-description {
+  max-width: 30%;
+  margin-left: 0;
+}
+.support-description p {
+  font-size: 18px;
+}
 
-  }
+.support-description h1 {
+  font-size: 40px;
+  color: #901f8d;
+}
+
+.support-details {
+  font-size: 20px;
+  margin-bottom: 50px;
+  margin-left: 0;
+  text-align: justify;
+}
+
+.support-features {
+  display: grid;
+  gap: 30px; /* Space between items */
+  margin: 20px; /* Optional margin for the grid */
+  margin-right: 40px;
+  border: #901f8d;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px #761c73;
+  border: 2px solid #784777;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.support-features div {
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0.5, 0.2);
+  border: 2px solid black;
+  cursor: pointer;
+}
+.try-free-login-btn {
+  height: 25px;
+}
+.try-free-login-btn p {
+  margin-bottom: 20px;
+  margin-top: 0%;
+  padding: 2px;
+  padding-bottom: 5px;
+}
+.navigation-bar ul{
   
-  .support-features {
-    display: grid;
-    gap: 30px; /* Space between items */
-    margin: 20px; /* Optional margin for the grid */
-    margin-right: 40px;
-    border: #901f8d;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px #761c73;
-    border: 2px solid #784777;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .support-features div {
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0.5, 0.2);
-    border: 2px solid black;
-    cursor: pointer;
-  }
-  .try-free-login-btn{
-    height: 25px;
-  }
-  .try-free-login-btn p{
-    margin-bottom: 20px;
-    margin-top: 0%;
-    padding: 2px;
-    padding-bottom: 5px;
-  }
-  
-  
-  
-  
+}

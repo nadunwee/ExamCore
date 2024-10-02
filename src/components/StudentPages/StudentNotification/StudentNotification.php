@@ -35,8 +35,8 @@ $conn->close();
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="ExaminerNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="studentNotification.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -57,7 +57,7 @@ $conn->close();
         </div>
 
         <div class="examiner-notification-container">
-            <h1 style="margin-bottom: 30px; color: #761C73;">Student Notifications</h1>
+            <h1 style="margin-bottom: 30px; color: #aa08a5;">Student Notifications</h1>
 
             <table>
                 <tr>
@@ -67,8 +67,8 @@ $conn->close();
                     <th>Date</th>
                 </tr>
 
-                <?php if (!empty($notifications)) : ?>
-                    <?php foreach ($notifications as $notification) : ?>
+                <?php if (!empty($notifications)): ?>
+                    <?php foreach ($notifications as $notification): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($notification['name']); ?></td>
                             <td><?php echo htmlspecialchars($notification['email']); ?></td>
@@ -76,7 +76,7 @@ $conn->close();
                             <td><?php echo htmlspecialchars($notification['date']); ?></td>
                         </tr>
                     <?php endforeach; ?>
-                <?php else : ?>
+                <?php else: ?>
                     <tr>
                         <td colspan="4">No notifications available</td>
                     </tr>
@@ -84,6 +84,10 @@ $conn->close();
             </table>
         </div>
 
+        <footer class="page-footer">
+            <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a
+                    href="#">Privacy Policy</a></p>
+        </footer>
         <script src="ExaminerNotification.js"></script>
     </div>
 </body>
