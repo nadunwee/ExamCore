@@ -210,7 +210,7 @@ a {
 .hp_image {
   padding-top: 100px;
   margin-left: 70px;
-  width: 50%; /* Set width to 50% for image */
+  width: 60%; /* Set width to 50% for image */
   display: flex; /* Center image inside this div */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
