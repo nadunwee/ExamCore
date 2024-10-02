@@ -14,7 +14,7 @@
   
   .support-description h1 {
     font-size: 40px;
-    color: #c7253e;
+    color: #901f8d;
 
    
   }
@@ -29,10 +29,15 @@
   
   .support-features {
     display: grid;
-    
     gap: 30px; /* Space between items */
     margin: 20px; /* Optional margin for the grid */
     margin-right: 40px;
+    border: #901f8d;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px #761c73;
+    border: 2px solid #784777;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
   }
   
   .support-features div {
