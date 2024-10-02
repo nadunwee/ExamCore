@@ -83,7 +83,7 @@ body{
     padding: 5px; /* Adds some internal spacing to make it look neat */
 }
 .contact-details p{
-    background-color:#c79bc7;
+    background: linear-gradient(to right, rgb(234, 174, 234),white);
     width: 70%;
     align-items: center;
     border-radius: 10px;
