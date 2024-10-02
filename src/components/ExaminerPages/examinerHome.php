@@ -22,7 +22,7 @@
       <aside class="sidebar">
         <h1>ExamCore</h1>
         <ul>
-          <li><a href="examinerHome.html">Home</a></li>
+          <li><a href="examinerHome.php">Home</a></li>
           <li>
             <a href="../ExaminerPages/ExaminerExam/examinerExam.php">Exams</a>
           </li>
@@ -90,11 +90,11 @@
 
             <!-- Exam History Section -->
             <section class="exam-history">
-              <h3>Student performance</h3>
+              <h3>Ongoing Exams</h3>
               <ul>
-                <li> Exam 1 pass ,fail rates</li>
-                <li> Exam 2 pass ,fail rates</li>
-                <li> Exam 3 pass ,fail rates</li>
+                <li> Exam 1 </li>
+                <li> Exam 2 </li>
+                <li> Exam 3 </li>
               </ul>
             </section>
           </div>
