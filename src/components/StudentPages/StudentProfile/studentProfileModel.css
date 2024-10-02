@@ -1,4 +1,7 @@
 /* The Modal (hidden by default) */
+*{
+  font-family: poppins, sans-serif;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

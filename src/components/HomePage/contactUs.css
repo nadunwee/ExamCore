@@ -1,158 +1,148 @@
-*{
-    /* margin-top: 10px;
-    margin-left: 5px;
-    margin-bottom: 10px; */
-    margin: 0px;
-    padding: 0px;
+* {
+  font-family: poppins, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    font-family: sans-serif;
-    margin-left: 5px;
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
 }
 
 .container {
-    display: flex; /* This enables a flexbox layout, making it easy to position elements side by side */
-    justify-content: space-between; /* Adds space between the two sections */
-    align-items: flex-start;/* Aligns both sections at the top */
-    padding: 20px; /* Adds padding around the container for spacing */
+  display: flex; /* This enables a flexbox layout, making it easy to position elements side by side */
+  justify-content: space-between; /* Adds space between the two sections */
+  align-items: flex-start; /* Aligns both sections at the top */
+  padding: 20px; /* Adds padding around the container for spacing */
 }
 
 /* got these some of nav-bar content from w3 schools */
 .nav-bar-container {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 15px;
-    padding: 5px;
-  }
-.navigation-bar{
-    margin-left: 350px;
-    
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 5px;
 }
-  
-  .main-logo {
-    font-size: 40px;
-    margin-left: 20px;
-  }
-  
-  .navigation-bar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    gap: 40px;
-    font-size: 18px;
-    text-decoration: none;
-  }
-  
-  .navigation-bar ul li {
-    float: left;
-    transition: color 0.4s ease;
-    color: black;
-    
-  }
-  
-  .navigation-bar ul li a {
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    padding: 14px 16px;
-    color: #942190;
-  }
-  
-  .navigation-bar ul li:hover {
-    color: #5d5d5d;
-  }
-  
-  .navigation-bar ul li a:visited, /* Removes blue for visited links */
+.navigation-bar {
+  margin-left: 210px;
+}
+
+.main-logo {
+  font-size: 40px;
+  margin-left: 20px;
+}
+
+.navigation-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  gap: 40px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.navigation-bar ul li {
+  float: left;
+  transition: color 0.4s ease;
+  color: black;
+}
+
+.navigation-bar ul li a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  color: #942190;
+}
+
+.navigation-bar ul li:hover {
+  color: #5d5d5d;
+}
+
+.navigation-bar ul li a:visited, /* Removes blue for visited links */
   .navigation-bar ul li a:active {
-    /* Ensures active links are styled */
-    color: black;
-  } 
-  
-.contact-details img{
+  /* Ensures active links are styled */
+  color: black;
+}
+
+.contact-details img {
   margin-left: 50px;
   align-items: center;
 }
 .contact-details {
-    flex: 1; /* Allows this section to take up 1 portion of the available space */
-    padding: 5px; /* Adds some internal spacing to make it look neat */
+  flex: 1; /* Allows this section to take up 1 portion of the available space */
+  padding: 5px; /* Adds some internal spacing to make it look neat */
 }
-.contact-details p{
-    background: linear-gradient(to right, rgb(234, 174, 234),white);
-    width: 70%;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 5px;
+.contact-details p {
+  background: linear-gradient(to right, rgb(234, 174, 234), white);
+  width: 70%;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .contact-form {
-    flex: 1; /* Allows this section to take up 1 portion of the available space */
-    padding: 20px; /* Adds some internal spacing */
-    box-shadow: 0 0 10px  #761c73; /* Adds a slight shadow for better distinction */
-    border-radius: 5px; /* Rounds the corners for a smoother look */
-    margin-right: 50px;
+  flex: 1; /* Allows this section to take up 1 portion of the available space */
+  padding: 20px; /* Adds some internal spacing */
+  box-shadow: 0 0 10px #761c73; /* Adds a slight shadow for better distinction */
+  border-radius: 5px; /* Rounds the corners for a smoother look */
+  margin-right: 50px;
 }
 
-.contact-form h2{
-    color: #761c73;
-    font-size: 30px;
-    margin-bottom: 15px;
+.contact-form h2 {
+  color: #761c73;
+  font-size: 30px;
+  margin-bottom: 15px;
 }
 
 form {
-    display: flex;
-    flex-direction: column; /* Stacks form elements vertically */
-    gap: 10px; /* Adds some space between form elements */
+  display: flex;
+  flex-direction: column; /* Stacks form elements vertically */
+  gap: 10px; /* Adds some space between form elements */
 }
-
 
 .contact-form:hover {
-    transform: translateY(-10px); /* Moves the box slightly upwards */
-    box-shadow: 0 8px 16px #761c73; /* Darker and larger shadow on hover */
+  transform: translateY(-10px); /* Moves the box slightly upwards */
+  box-shadow: 0 8px 16px #761c73; /* Darker and larger shadow on hover */
 }
 
-
-input, textarea {
-    width: 80%; /* Ensures the input fields take up full width of their container */
-    padding: 10px; /* Adds padding inside the fields */
-    border: 1px solid #ccc; /* Light border around the fields */
-    border-radius: 4px; /* Rounds the edges slightly */
-    font-size: 16px; /* Ensures the text inside is readable */
-    background-color: #fffdfd;
+input,
+textarea {
+  width: 80%; /* Ensures the input fields take up full width of their container */
+  padding: 10px; /* Adds padding inside the fields */
+  border: 1px solid #ccc; /* Light border around the fields */
+  border-radius: 4px; /* Rounds the edges slightly */
+  font-size: 16px; /* Ensures the text inside is readable */
+  background-color: #fffdfd;
 }
-input, text{
-    background-color: #fffdfd;
-}
-
-.button-sub{
-    background-color: #761c73;
-    color: white;
-    width: 50%;
-    border-radius: 5px;
-    align-content: center;
+input,
+text {
+  background-color: #fffdfd;
 }
 
-h1{
-    color:#962b93;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 45px;
-    margin-left: 30px;
-    margin-top: 25px;
+.button-sub {
+  background-color: #761c73;
+  color: white;
+  width: 50%;
+  border-radius: 5px;
+  align-content: center;
 }
 
-
-
-.container .contact-details img{
-    padding: 5px;
-    padding-bottom: 30px;
+h1 {
+  color: #962b93;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 45px;
+  margin-left: 30px;
+  margin-top: 25px;
 }
 
-
-
-
+.container .contact-details img {
+  padding: 5px;
+  padding-bottom: 30px;
+}

@@ -1,95 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../styles/aboutUs.css" />
-    <link rel="stylesheet" href="../../styles/common.css" />
-    <title>About Us</title>
-  </head>
-  <body>
-    <div class="nav-bar-container">
-      <div class="main-logo">ExamCore</div>
-      <div class="navigation-bar">
-        <ul>
-          <a href="../../../homePage.html"><li>Home</li></a>
-          <a href="#"><li>About</li></a>
-          <a href="./src/components/HomePage/SupportPage.html"
-            ><li>Support</li></a
-          >
-          <a href="contactus.php"
-            ><li>Contact Us</li></a
-          >
-        </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="../../styles/aboutUs.css" /> -->
+  <link rel="stylesheet" href="../../styles/aboutUs.css" />
+  <link rel="stylesheet" href="../../styles/common.css" />
+  <title>About Us</title>
+</head>
+
+<body>
+  <div class="nav-bar-container">
+    <div class="main-logo">ExamCore</div>
+    <div class="navigation-bar">
+      <ul>
+        <a href="../../../homePage.html">
+          <li>Home</li>
+        </a>
+        <a href="#">
+          <li>About</li>
+        </a>
+        <a href="../HomePage/SupportPage.html">
+          <li>Support</li>
+        </a>
+        <a href="contactus.php">
+          <li>Contact Us</li>
+        </a>
+      </ul>
+    </div>
+    <div class="access-btns-navbar">
+      <div class="try-free-login-btn">
+        <a href="../AccessPages/userRegister.php">Try For Free</a>
       </div>
-      <div class="access-btns-navbar">
-        <div class="try-free-login-btn">
-          <a href="../AccessPages/userRegister.php">Try For Free</a>
-        </div>
-        <div class="navbar-login">
-          <a href="../AccessPages/login.php">Log in</a>
-        </div>
+      <div class="navbar-login">
+        <a href="../AccessPages/login.php">Log in</a>
       </div>
     </div>
+  </div>
 
-    <div class="about-us-container">
-      <div class="about-us-description">
-        <h1 style= "color: #962b93">About Us</h1>
-        <p class="abouts-us-details">
-          <i>ExamCore streamlines exam administration with features for
-            registering examiners, students, and organizing exams. Admins can
-            manage everything from exam creation to participant oversight.
-            Examiners control exam content and results, while students enjoy a
-            seamless registration process.</i>
+  <div class="about-us-container">
+    <div class="about-us-description">
+      <h1 style="color: #962b93">About Us</h1>
+      <p class="abouts-us-details">
+        <i>ExamCore streamlines exam administration with features for
+          registering examiners, students, and organizing exams. Admins can
+          manage everything from exam creation to participant oversight.
+          Examiners control exam content and results, while students enjoy a
+          seamless registration process.</i>
+      </p>
+      <p class="about-us-main-learn-more">
+        Learn More
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAPxJREFUaEPtmEESwjAMA9Wf8bPCy+BnlBxyYXpQE8kmjHPqwUm1kmecdsPia1tcPwogO8FKoBKYdKBaaNLA6e2VAGnhDcCLrL1UFpHAHcAO4PFR1p6lyw3QxXfRcggnQGub54ndUggnQNP+nYA8CTeAHSICwAoRBWCDiASwQEQDyCEyAKQQWQAyiBGAt/QucH4YPex+FaBhURAFYGonyv327pEEVJol96QsAIn4rARk4jMApOKjAeTiIwEs4qMAbOIjAKzi3QB/+VFPT1h2WkYMsqV/bHUjl/61yHbDUF1ECw0JYzcVAOuUq64ScDnLnlsJsE656ioBl7PsuQer2DYx4RoThQAAAABJRU5ErkJggg==" />
+      </p>
+    </div>
+    <div class="about-us-features">
+      <div>
+        <img src=../../Images/clock-hands.png style="width: 80px; height:
+          auto;" />
+        <p style="color: #784777" class="feature-heading">
+          Real-Time Results and Analytics
         </p>
-        <p class="about-us-main-learn-more">
-          Learn More
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAPxJREFUaEPtmEESwjAMA9Wf8bPCy+BnlBxyYXpQE8kmjHPqwUm1kmecdsPia1tcPwogO8FKoBKYdKBaaNLA6e2VAGnhDcCLrL1UFpHAHcAO4PFR1p6lyw3QxXfRcggnQGub54ndUggnQNP+nYA8CTeAHSICwAoRBWCDiASwQEQDyCEyAKQQWQAyiBGAt/QucH4YPex+FaBhURAFYGonyv327pEEVJol96QsAIn4rARk4jMApOKjAeTiIwEs4qMAbOIjAKzi3QB/+VFPT1h2WkYMsqV/bHUjl/61yHbDUF1ECw0JYzcVAOuUq64ScDnLnlsJsE656ioBl7PsuQer2DYx4RoThQAAAABJRU5ErkJggg=="
-          />
+        <p class="feature-description">
+          Get instant exam results with detailed performance analytics to help
+          examiners and students track progress and improve outcomes.
         </p>
       </div>
-      <div class="about-us-features">
-        <div>
-          <img 
-            src= ../../Images/clock-hands.png style="width: 80px; height: auto;"/>
-          <p style="color: #784777" class="feature-heading">Real-Time Results and Analytics</p>
-          <p class="feature-description">
-            Get instant exam results with detailed performance analytics to help
-            examiners and students track progress and improve outcomes.
-          </p>
-        </div>
 
-        <div>
-          <img
-            src= ../../Images/sketchbook.png style="width: 80px; height: auto;"/>
-          <p style="color: #784777" class="feature-heading">Customizable Exam Creation</p>
-          <p class="feature-description">
-            Easily design exams with flexible question formats, timers, and
-            grading settings, tailored to suit your institution's needs.
-          </p>
-        </div>
-        <div>
-          <img
-            src= ../../Images/automated-process.png style="width: 80px; height: auto; "/>
-            
-          <p style="color: #784777" class="feature-heading">Automated Exam Creation and Management</p>
-          <p class="feature-description">
-            Admins can create, schedule, and manage exams easily with automated
-            tools, reducing the workload and eliminating manual errors.
-          </p>
-        </div>
-        <div>
-          <img
-            src= ../../Images/change-management.png style="width: 80px; height: auto;"" />
-          <p style="color: #784777" class="feature-heading">Multi-User Role Management</p>
-          <p class="feature-description">
-            Admins have full control to assign roles such as examiner, student,
-            and administrator, with distinct access levels for efficient
-            management of the platform.
-          </p>
-        </div>
+      <div>
+        <img src=../../Images/sketchbook.png style="width: 80px; height:
+          auto;" />
+        <p style="color: #784777" class="feature-heading">
+          Customizable Exam Creation
+        </p>
+        <p class="feature-description">
+          Easily design exams with flexible question formats, timers, and
+          grading settings, tailored to suit your institution's needs.
+        </p>
+      </div>
+      <div>
+        <img src=../../Images/automated-process.png style="width: 80px;
+          height: auto; " />
+
+        <p style="color: #784777" class="feature-heading">
+          Automated Exam Creation and Management
+        </p>
+        <p class="feature-description">
+          Admins can create, schedule, and manage exams easily with automated
+          tools, reducing the workload and eliminating manual errors.
+        </p>
+      </div>
+      <div>
+        <img src=../../Images/change-management.png style="width: 80px;
+          height: auto;"" />
+          <p style=" color: #784777" class="feature-heading">
+        Multi-User Role Management
+        </p>
+        <p class="feature-description">
+          Admins have full control to assign roles such as examiner, student,
+          and administrator, with distinct access levels for efficient
+          management of the platform.
+        </p>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
