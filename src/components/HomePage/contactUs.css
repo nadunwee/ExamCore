@@ -79,20 +79,38 @@ body {
   padding: 5px; /* Adds some internal spacing to make it look neat */
 }
 .contact-details p {
-  background: linear-gradient(to right, rgb(234, 174, 234), white);
-  width: 70%;
+  background-color: rgb(224, 221, 221);
+  width: 90%;
   align-items: center;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 5px;
 }
-
+.contactUs_page_description{
+  text-transform:capitalize;
+  background-color: #460346cc;
+  color: white;
+  box-sizing: content-box;
+  width: 530px;
+  height: 175px;
+  border-radius: 10px;
+  text-align:center;
+  padding-top: 25px;
+  padding-bottom: 55px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  /*background: linear-gradient(to right, white,white);*/
+}
 .contact-form {
+  margin-top: -55px;
   flex: 1; /* Allows this section to take up 1 portion of the available space */
   padding: 20px; /* Adds some internal spacing */
   box-shadow: 0 0 10px #761c73; /* Adds a slight shadow for better distinction */
   border-radius: 5px; /* Rounds the corners for a smoother look */
   margin-right: 50px;
+  padding-top: 20px;
 }
 
 .contact-form h2 {
@@ -104,7 +122,7 @@ body {
 form {
   display: flex;
   flex-direction: column; /* Stacks form elements vertically */
-  gap: 10px; /* Adds some space between form elements */
+  gap: 1px; /* Adds some space between form elements */
 }
 
 .contact-form:hover {
@@ -116,7 +134,7 @@ input,
 textarea {
   width: 80%; /* Ensures the input fields take up full width of their container */
   padding: 10px; /* Adds padding inside the fields */
-  border: 1px solid #ccc; /* Light border around the fields */
+  border: 1px solid #942190; /* Light border around the fields */
   border-radius: 4px; /* Rounds the edges slightly */
   font-size: 16px; /* Ensures the text inside is readable */
   background-color: #fffdfd;
@@ -129,9 +147,16 @@ text {
 .button-sub {
   background-color: #761c73;
   color: white;
-  width: 50%;
+  width: 80px;
   border-radius: 5px;
   align-content: center;
+  border: #962b93;
+  margin: 10px;
+  padding: 5px;
+}
+
+.button-sub:hover{
+  background-color: rgb(48, 167, 167);
 }
 
 h1 {
