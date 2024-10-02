@@ -59,18 +59,21 @@ a {
 }
 
 .navigation-bar ul li:hover {
-  color: #5d5d5d;
+  color: #761c73;
+  
 }
 .navigation-bar ul li a::after {
   content: "";
   width: 0%;
   height: 4px;
   background: #761c73;
-  position: absolute;
+  position:relative;
   left: 0;
   bottom: -6px;
   transition: 0.8s;
   border-radius: 3px;
+  display: inline-block; 
+  z-index: 1;
 }
 .navigation-bar ul li a:hover::after {
   width: 100%;
