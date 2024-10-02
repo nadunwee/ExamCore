@@ -1,3 +1,6 @@
+*{
+  font-family: poppins, sans-serif;
+}
 html {
   margin: 0;
   padding: 0;
@@ -70,6 +73,9 @@ a {
   color: #999;
   margin-bottom: 5px;
 }
+.input-container input{
+  font-family: poppins, sans-serif;
+}
 
 .register-submit-btn {
   background-color: #761c73;
@@ -119,4 +125,13 @@ a {
 
 .student-register-redirect-login {
   text-align: center;
+}
+.input-container option{
+  font-family: poppins, sans-serif;
+  padding: 20px;
+}
+select{
+  font-family: poppins, sans-serif;
+  font-size: 16px;
+  padding: 10px;
 }
