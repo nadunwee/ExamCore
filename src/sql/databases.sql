@@ -69,7 +69,7 @@ CREATE TABLE `paper`(
 );
 
 CREATE TABLE `message`(
-  `m_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `m_ID` int(10) NOT NULL ,
   `m_name` varchar(100) NOT NULL,
   `m_con_num` varchar(15) NOT NULL,
   `m_message` varchar(255) NOT NULL,
