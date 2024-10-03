@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if ($result->num_rows > 0) {
         $_SESSION['user-email'] = "$email";
         $_SESSION['user-pswd'] = "$passwd";
-        header('Location: ../ExaminerPages/examinerHome.html');
+        header('Location: ../ExaminerPages/examinerHome.php');
         exit();
       } else {
         echo "<h1>no account found</h1>"; // Implement Error Page
