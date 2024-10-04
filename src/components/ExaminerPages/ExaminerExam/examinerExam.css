@@ -174,20 +174,7 @@ body {
     transform: scale(1.2); /* Make radio button larger */
 }
 
-/* Submit button styling */
-/* button[type="submit"] {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #761c73;
-    color: white;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-} */
 
-/* Style for edit and delete buttons */
 .edit-btn,
 .delete-btn {
     padding: 5px 10px;
