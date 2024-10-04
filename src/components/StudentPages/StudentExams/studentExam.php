@@ -80,7 +80,7 @@ $conn->close();
         <div class="header">
             
 
-            <div class="search-bar">
+            <div style="margin-left: 120px;" class="search-bar">
                 <input type="text" placeholder="Search Exam">
                 <button>Search</button>
             </div>
