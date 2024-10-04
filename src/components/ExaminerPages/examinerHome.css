@@ -83,6 +83,24 @@ body {
     list-style-type: none;
 }
 
+.exam-history p {
+    background-color: #f7f9fc;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+
+  .exam-history p span {
+    display: inline-block;
+    min-width: 120px;
+    font-weight: 500;
+  }
 
 /*quote section*/
 .quote-section {
