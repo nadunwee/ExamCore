@@ -27,6 +27,8 @@ else{
     }
 }
 
+header("Location: contactus.php");
+exit();
 $conn->close();
 
 ?>

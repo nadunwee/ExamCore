@@ -66,7 +66,7 @@
       <form id="contact-form" action="contactUs_insert.php" method="POST">
 
         <label for="ID">Contacting ID:</label>
-        <input type="text" name="ID" placeholder="This will be auto incremented" >
+        <input type="text" name="ID" placeholder="Type any number You prefer" >
         <br>
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="Mr/Mrs/miss._ _ _ _ _ _ _ _" required>
@@ -81,6 +81,7 @@
        
       </form>
 
+<!--delete form-->
       <h2>Delete the Message</h2>
     <form id="delete-form" action="message_delete.php" method="POST">
         <label for="deleteID">Enter ID to Delete:</label>
@@ -88,6 +89,7 @@
         <button class="button-sub" type="submit">Delete</button>
     </form>
 
+<!--Edit form-->
     <h2>Edit the Message</h2>
       <form id="edit-form" action="message_edit.php" method="POST">
         <label for="dID">Enter ID to Edit:</label>
@@ -107,7 +109,7 @@
     </div>
   </div>
 
-  <!--<script>
+  <script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function(event) {
@@ -115,7 +117,38 @@
       alert('You have submitted your message successfully!');
       form.submit();
     });
-  </script>-->
+  </script>
+
+<script>
+  
+  // Delete confirmation
+  const deleteForm = document.getElementById('delete-form');
+
+  deleteForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (confirm('Are you sure you want to delete this message?')) {
+      alert('The message has been deleted successfully!');
+      deleteForm.submit();
+    } else {
+      alert('Message deletion canceled.');
+    }
+  });
+
+  // Edit confirmation
+  const editForm = document.getElementById('edit-form');
+
+  editForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (confirm('Are you sure you want to edit this message?')) {
+      alert('The message has been edited successfully!');
+      editForm.submit();
+    } else {
+      alert('Message editing canceled.');
+    }
+  });
+</script>
+
+
 
 </body>
 

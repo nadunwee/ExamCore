@@ -67,9 +67,37 @@
 
 .student-exam-history-info {
   font-size: 20px;
-  background-color: blue;
+  background-color: #761c73;
   padding: 0 30px 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  color: white;
 }
+
+.student-personal-detail-items {
+  display: flex;
+  width: 700px;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgb(228, 221, 228), white);
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+}
+
+.student-personal-detail-items p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.student-personal-detail-items:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 
 .delete-account-btn {
   background-color: #761c73;
@@ -84,5 +112,6 @@
 }
 
 .delete-account-btn :hover {
-  background-color: #5d0e5a;
+  background-color: #30a7a7;
+  transition: transform 0.2s ease-in-out;
 }

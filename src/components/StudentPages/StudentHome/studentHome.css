@@ -13,6 +13,17 @@ body {
   padding: 0;
 }
 
+
+.notifications {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 header {
   display: flex;
   justify-content: flex-end;
@@ -62,14 +73,16 @@ header {
 
 .content {
   flex: 1;
+  display: flex;
+  flex-direction: column; /* Change from row to column */
   align-items: center;
+  padding-left: 300px;
   margin-left: 300px;
- }
+}
 
  .content h1{
   color: #aa08a5;
  }
-
 
 main {
   display: flex;

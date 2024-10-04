@@ -50,6 +50,7 @@ CREATE TABLE `Exams` (
     `exam_deadline` DATE NOT NULL,
     `exam_password` VARCHAR(255) NOT NULL,
     `admin_id` VARCHAR(100) NOT NULL,
+    `participated` VARCHAR(10) NULL,
     PRIMARY KEY (`exam_id`),
     CONSTRAINT `fk_examiner`
         FOREIGN KEY (`examiner_id`) REFERENCES `Examiners`(`examiner_id`)

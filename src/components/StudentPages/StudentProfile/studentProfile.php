@@ -151,10 +151,7 @@ $conn->close();
           </div>
         </div>
       </div>
-      <div class="student-exam-history-info">
-        <p>Exam History</p>
-        <div class="student-exam-history-item">Exam 1</div>
-      </div>
+      
     </div>
   </div>
 </body>
