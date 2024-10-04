@@ -148,10 +148,11 @@ $conn->close();
               <input type="hidden" name="type" value="student" />
               <button type="submit" class="delete-account-btn">Delete Account</button>
             </form>
+            <button id="logout-btn" class="delete-account-btn" type="button">Log Out</button>
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </body>

@@ -79,7 +79,7 @@ $conn->close();
                     <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification/StudentNotification.php">Notifications</a></li>
                 </ul>
-                <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
+                <a href="../StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
             </aside>
         </div>
     </div>
