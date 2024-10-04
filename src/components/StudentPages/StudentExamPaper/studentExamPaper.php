@@ -1,35 +1,32 @@
 <?php
+
 session_start();
 
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'exam_core');
-
-// Check connection
-if ($conn->connect_error) {
-    die('Connection Error : ' . $conn->connect_error);
-}
-
-// Redirect to login page if the session is not set
+// Check if the user is logged in
 if (!isset($_SESSION['user-email'])) {
     header('Location: ../../AccessPages/login.php');
     exit();
 }
 
-$studentID = $_SESSION['user-email'];
+// Retrieve the session variables
+$userEmail = $_SESSION['user-email'];
+$userPassword = $_SESSION['user-pswd'];
 
-// Prepare the query to select student data
-$query = $conn->prepare("SELECT * FROM students WHERE student_id = ?");
-$query->bind_param('i', $studentID);
+include('../../../php/config.php');
 
-// Execute the query
+$query = $conn->prepare("SELECT * FROM paper");
+
 if ($query->execute()) {
     $result = $query->get_result();
-    
-    // Fetch the data into an associative array
-    $row = $result->fetch_assoc();
+
+    if ($result->num_rows > 0) {
+        $examData = $result->fetch_all(MYSQLI_ASSOC); // Fetch all rows as an associative array
+    } else {
+        echo "No questions found!";
+        exit();
+    }
 }
 
-// Close the query and connection
 $query->close();
 $conn->close();
 
@@ -37,6 +34,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +44,7 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="studentExamPaper_styles.css">
     <title>ExamCore</title>
 </head>
+
 <body>
     <div class="studentExamPaper_container">
         <div class="details_block">
@@ -53,7 +52,7 @@ $conn->close();
                 <p>Total questions answered</p>
                 <span class="remainingQuestions_num">00/00</span>
             </div>
-    
+
             <div class="remainingTime_block">
                 <p>Time remaining</p>
                 <span class="remainingTime_num">00:00</span>
@@ -61,24 +60,30 @@ $conn->close();
         </div>
 
         <div class="studentExamPaper_content">
-            <!-- Check if $row is not null before trying to access its values -->
-            <?php if (isset($row)): ?>
-                <div class="examPaper_questionNumber">Question <?php echo htmlspecialchars($row['question_id']); ?></div>
-                <div class="examPaper_question"><?php echo htmlspecialchars($row['question']); ?></div>
-                <div class="examPaper_answerSet">
-                    <div class="exam_answer">
-                        <input type="radio" name="answerSet" value="1"><span class="answerSet"><?php echo htmlspecialchars($row['answer_1']); ?></span><br>
+            <!-- Loop through examData to display each question -->
+            <?php if (isset($examData) && count($examData) > 0): ?>
+                <?php foreach ($examData as $row): ?>
+                    <div class="examPaper_questionNumber">Question <?php echo htmlspecialchars($row['question_id']); ?></div>
+                    <div class="examPaper_question"><?php echo htmlspecialchars($row['question']); ?></div>
+                    <div class="examPaper_answerSet">
+                        <div class="exam_answer">
+                            <input type="radio" name="answerSet_<?php echo htmlspecialchars($row['question_id']); ?>" value="1">
+                            <span class="answerSet"><?php echo htmlspecialchars($row['answer_1']); ?></span><br>
+                        </div>
+                        <div class="exam_answer">
+                            <input type="radio" name="answerSet_<?php echo htmlspecialchars($row['question_id']); ?>" value="2">
+                            <span class="answerSet"><?php echo htmlspecialchars($row['answer_2']); ?></span><br>
+                        </div>
+                        <div class="exam_answer">
+                            <input type="radio" name="answerSet_<?php echo htmlspecialchars($row['question_id']); ?>" value="3">
+                            <span class="answerSet"><?php echo htmlspecialchars($row['answer_3']); ?></span><br>
+                        </div>
+                        <div class="exam_answer">
+                            <input type="radio" name="answerSet_<?php echo htmlspecialchars($row['question_id']); ?>" value="4">
+                            <span class="answerSet"><?php echo htmlspecialchars($row['answer_4']); ?></span><br>
+                        </div>
                     </div>
-                    <div class="exam_answer">
-                        <input type="radio" name="answerSet" value="2"><span class="answerSet"><?php echo htmlspecialchars($row['answer_2']); ?></span><br>
-                    </div>
-                    <div class="exam_answer">
-                        <input type="radio" name="answerSet" value="3"><span class="answerSet"><?php echo htmlspecialchars($row['answer_3']); ?></span><br>
-                    </div>
-                    <div class="exam_answer">
-                        <input type="radio" name="answerSet" value="4"><span class="answerSet"><?php echo htmlspecialchars($row['answer_4']); ?></span><br>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             <?php else: ?>
                 <p class="noQuestionsAvailable">No question data available.</p>
             <?php endif; ?>
@@ -86,8 +91,8 @@ $conn->close();
 
         <div class="studentExam-buttons">
             <button class="studentExam-submit-button" type="button">Submit</button>
-            <button class="studentExam-nextQ-button" type="button">Next Question</button>
         </div>
     </div>
 </body>
+
 </html>

@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="input-container">
             <label for="email">Email <div class="email-reminder" id="email-reminder"></div></label>
-            <input type="text" id="email" name="email" class="input-field" placeholder="Enter Your Email..." required />
+            <input type="email" id="email" name="email" class="input-field" placeholder="Enter Your Email..." required />
           </div>
 
           <div class="input-container">
