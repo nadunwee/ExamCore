@@ -1,5 +1,3 @@
-<!-- test msg -->
-
 <?php
 session_start();
 
@@ -15,12 +13,12 @@ $userPassword = $_SESSION['user-pswd'];
 
 include('../../../php/config.php');
 
+// Prepare and execute the query to get student data
 $query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
 $query->bind_param('ss', $userEmail, $userPassword);
 
 if ($query->execute()) {
     $result = $query->get_result();
-
     if ($result->num_rows > 0) {
         $studentData = $result->fetch_assoc();
     } else {
@@ -29,6 +27,30 @@ if ($query->execute()) {
 }
 
 $query->close();
+
+// Query to get available exams
+$examQuery = $conn->prepare("SELECT * FROM Exams");
+
+if ($examQuery->execute()) {
+    $availableExamsResult = $examQuery->get_result();
+} else {
+    echo "Failed to retrieve exams.";
+}
+
+$examQuery->close();
+
+// Query to count the number of exams
+$examCountQuery = $conn->prepare("SELECT COUNT(exam_id) FROM Exams");
+
+if ($examCountQuery->execute()) {
+    $examCountQuery->bind_result($examsCount);
+    $examCountQuery->fetch();
+} else {
+    echo "Failed to retrieve exam count.";
+}
+
+$examCountQuery->close();
+
 $conn->close();
 
 ?>
@@ -41,7 +63,7 @@ $conn->close();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./studentHome.css">
+    <link rel="stylesheet" href="studentHome.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
     <title>ExamCore</title>
 </head>
@@ -52,12 +74,12 @@ $conn->close();
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="../StudentExams/studentExam.php">Exams</a></li>
-                    <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="../StudentNotification/StudentNotification.php">Notifications</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentHome/StudentHome.php">Home</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentExams/studentExam.php">Exams</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification/StudentNotification.php">Notifications</a></li>
                 </ul>
-                <a href="../StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
+                <a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
             </aside>
         </div>
     </div>
@@ -69,60 +91,24 @@ $conn->close();
         </div>
     </header>
 
-    <main class="content">
-        <h1>Welcome</h1>
-        <section class="most-recent-exams">
-            <h2>Most Recent Exams</h2>
+    <main style="margin-left: 0px;" class="content">
+        <h1 style="color:#aa08a5; margin-top: 0px;">Welcome Back, <?php echo htmlspecialchars($studentData['name']); ?></h1><br>
+        <div class="student-exams-content">
             <?php
-            include('../../../php/config.php');
-            // Fetch most recent exams
-            $examQuery = "SELECT * FROM exams ORDER BY exam_deadline DESC LIMIT 5";
-            $examResult = $conn->query($examQuery);
-
-            if (!$examResult) {
-                die("Error fetching exams: " . $conn->error); // Debugging error if the query fails
-            }
-
-            if ($examResult->num_rows > 0) {
-                while ($row = $examResult->fetch_assoc()) {
-                    echo "<p><strong>Exam Name:</strong> " . $row["exam_name"] . "<br>";
-                    echo "<strong>Assigned Examiner:</strong> " . $row["assigned_examiner"] . "<br>";
-                    echo "<strong>Deadline:</strong> " . $row["exam_deadline"] . "</p><hr>";
-                }
+            if ($availableExamsResult->num_rows > 0) {
+                echo '<br><br><h2 style="font-size:40px; color: #e7006c; margin-left: 0px; margin-top: 10px;">You have <span style="color: #ff4500; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
             } else {
-                echo "<p>No recent exams available.</p>";
+                echo '<h2 style="color: #761c73; margin-left: 0px; margin-top: 100px;">No available exams at the moment.</h2>';
             }
             ?>
-        </section>
+        </div>
 
-        <section class="notifications">
-            <h2>Notifications</h2>
-            <?php
-            // Fetch most recent notifications
-            $notifQuery = "SELECT name, message, date FROM notification ORDER BY date DESC LIMIT 5";
-            $notifResult = $conn->query($notifQuery);
-
-            if (!$notifResult) {
-                die("Error fetching notifications: " . $conn->error); // Debugging error if the query fails
-            }
-
-            if ($notifResult->num_rows > 0) {
-                while ($row = $notifResult->fetch_assoc()) {
-                    echo "<p><strong>From:</strong> " . $row["name"] . "<br>";
-                    echo "<strong>Message:</strong> " . $row["message"] . "<br>";
-                    echo "<strong>Date:</strong> " . $row["date"] . "</p><hr>";
-                }
-            } else {
-                echo "<p>No notifications available.</p>";
-            }
-
-            // Close the connection after both queries are complete
-            $conn->close();
-            ?>
-        </section>
     </main>
+    <div class="footer-img">
+        <img style="width: 100%; height: 400px; margin-bottom:0%" src="../../../Images/studentHome_footer_img.jpg" alt="footerImg">
+    </div>
 
-    <footer class="page-footer">
+    <footer style="margin-top: 0%;" class="page-footer">
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
             <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a>
         </p>

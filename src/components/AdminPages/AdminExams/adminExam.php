@@ -55,8 +55,8 @@ $conn->close();
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="../AdminHome/adminHome.html">Home</a></li>
-                    <li><a href="http://localhost/../ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
+                    <li><a href="../AdminHome/adminHome.php">Home</a></li>
+                    <li><a href="#">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
                 </ul>

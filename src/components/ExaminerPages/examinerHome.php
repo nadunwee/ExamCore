@@ -26,9 +26,7 @@
         <li>
           <a href="../ExaminerPages/ExaminerExam/examinerExam.php">Exams</a>
         </li>
-        <li>
-          <a href="../ExaminerPages/ExaminerResult/examierResult.html">Results</a>
-        </li>
+       
         <li>
           <a
             href="../ExaminerPages/ExaminerNotification/examinerNotifications.php">Notifications</a>

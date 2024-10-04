@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <h1>Enter Exam OTP</h1>
-  <form action="./checkStudentPassword.php" method="POST">
+  <form action="checkStudentPassword.php" method="POST">
     <input type="text" name="typed-passwd" placeholder="Enter OTP" required />
     <input type="hidden" name="passwd" value="<?php echo htmlspecialchars($examPassword); ?>" />
     <input type="hidden" name="exam_id" value="<?php echo htmlspecialchars($examId); ?>" />

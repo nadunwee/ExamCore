@@ -9,7 +9,7 @@ if (isset($_GET["status"])) {
     }, 1000); </script>';
 }
 
-$q1 = "SELECT * FROM `notifications`";
+$q1 = "SELECT * FROM `notification`";
 $rs1 = $conn->query($q1);
 $n1 = $rs1->num_rows;
 // $d1 = $rs1->fetch_assoc();
@@ -20,9 +20,14 @@ $n1 = $rs1->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Examiner Notification</title>
     <link rel="stylesheet" href="ExaminerNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -33,10 +38,10 @@ $n1 = $rs1->num_rows;
                 <ul>
                     <li><a href="../examinerHome.php">Home</a></li>
                     <li><a href="../ExaminerExam/examinerExam.php">Exams</a></li>
-                    <li><a href="../ExaminerResult/examierResult.php">Results</a></li>
-                    <li><a href="examinerNotifications.php">Notifications</a></li>
+                    <li><a href="#">Notifications</a></li>
+
                 </ul>
-                <a href="../ExaminerProfile/examinerProfile.html">
+                <a href="../ExaminerProfile/examinerProfile.php">
                     <button class="profile-btn">Examiner Profile</button>
                 </a>
             </aside>
@@ -76,7 +81,8 @@ $n1 = $rs1->num_rows;
                         <form action="notificationProcess.php" method="post">
                             <td><input class="name-input" value="<?php echo $data['name']; ?>" name="name" type="text"></td>
                             <td>
-                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id" type="hidden">
+                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id"
+                                    type="hidden">
                                 fdl@gmail.com
                             </td>
                             <td>
