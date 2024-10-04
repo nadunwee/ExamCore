@@ -14,7 +14,7 @@ $userPassword = $_SESSION['user-pswd'];
 
 include('../../../php/config.php');
 
-$query = $conn->prepare("SELECT * FROM paper");
+$query = $conn->prepare("SELECT question_id, question, answer_1, answer_2, answer_3, answer_4 FROM paper");
 
 if ($query->execute()) {
     $result = $query->get_result();
