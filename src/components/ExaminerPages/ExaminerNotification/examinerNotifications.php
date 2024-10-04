@@ -33,7 +33,12 @@ $n1 = $rs1->num_rows;
                 <ul>
                     <li><a href="../examinerHome.php">Home</a></li>
                     <li><a href="../ExaminerExam/examinerExam.php">Exams</a></li>
+<<<<<<< HEAD
                     <li><a href="ExaminerNotifications.php">Notifications</a></li>
+=======
+                    <li><a href="../ExaminerResult/examierResult.php">Results</a></li>
+                    <li><a href="examinerNotifications.php">Notifications</a></li>
+>>>>>>> 3d7d1ef9b4dae8c88972bab01dd0179dd2a21bb5
                 </ul>
                 <a href="../ExaminerProfile/examinerProfile.php">
                     <button class="profile-btn">Examiner Profile</button>
