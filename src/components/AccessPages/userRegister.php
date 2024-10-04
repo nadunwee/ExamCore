@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="./userRegister.php" method="POST">
           <div class="input-container">
             <label for="type">Sign up As</label>
-            <select name="types" id="c" onchange="toggleFields()">
+            <select name="types" id="types" onchange="toggleFields()">
               <option value="student" default>Student</option>
               <option value="examiner">Examiner</option>
             </select>
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </div>
 
           <div class="input-container">
-            <label for="email">Email <div class="email-reminder" id="email-reminder"></div></label>
+            <label for="email">Email <div class="email-reminder" id="email-reminder">*your institute email</div></label>
             <input type="email" id="email" name="email" class="input-field" placeholder="Enter Your Email..." required />
           </div>
 

@@ -98,7 +98,7 @@
     background-color: #be02b8;
 }
 .studentExamPaper_container .studentExam-buttons .studentExam-submit-button{
-    margin-right: 440px;
+    margin-left: 440px;
 }
 .noQuestionsAvailable{
     display: flex;
