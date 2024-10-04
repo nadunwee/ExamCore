@@ -9,7 +9,7 @@ if (isset($_GET["status"])) {
     }, 1000); </script>';
 }
 
-$q1 = "SELECT * FROM `notification`";
+$q1 = "SELECT * FROM `notifications`";
 $rs1 = $conn->query($q1);
 $n1 = $rs1->num_rows;
 // $d1 = $rs1->fetch_assoc();
