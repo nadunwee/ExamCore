@@ -50,12 +50,8 @@ $conn->close();
         <ul>
           <li><a href="../examinerHome.php">Home</a></li>
           <li><a href="../ExaminerExam/examinerExam.php">Exams</a></li>
-<<<<<<< HEAD
-          <li><a href="../ExaminerNotification/examinerNotification.php">Notifications</a></li>
-=======
-          <li><a href="../ExaminerResult/examierResult.php">Results</a></li>
           <li><a href="../ExaminerNotification/examinerNotifications.php">Notifications</a></li>
->>>>>>> 921d3365280e9167b5a395df3549b2b30b26ff1f
+
         </ul>
         <a href="../ExaminerProfile/examinerProfile.php"><button class="profile-btn">Examiner Profile</button></a>
 
