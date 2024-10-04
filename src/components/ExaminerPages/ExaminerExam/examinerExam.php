@@ -143,7 +143,38 @@ $conn->close();
 
           // Set edit_mode to "1" indicating this is an edit operation
           document.getElementById('edit_mode').value = "1";
+
+          // Alert for edit
+         alert('You are editing the selected question.');
         }
+
+        // Alert box for submit
+  const questionForm = document.getElementById('question-form');
+  questionForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (confirm('Are you sure you want to submit this question?')) {
+      alert('Question submitted successfully!');
+      questionForm.submit();
+    } else {
+      alert('Question submission canceled.');
+    }
+  });
+
+  // Attach alert box for delete button
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+
+  deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      if (confirm('Are you sure you want to delete this question?')) {
+        alert('The question has been deleted successfully!');
+        button.closest('form').submit();
+      } else {
+        alert('Question deletion canceled.');
+      }
+    });
+  });
+  
       </script>
 
 
