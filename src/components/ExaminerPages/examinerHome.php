@@ -54,6 +54,7 @@
             <h3>Total number of students </h3>
             <div class="exam-details">
               <p>Total Students:
+                
                 <?php
                 $conn = new mysqli('localhost', 'root', '', 'exam_core');
 
