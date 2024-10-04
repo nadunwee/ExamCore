@@ -74,7 +74,9 @@
   color: white;
 }
 
-
+.student-phoneno student-personal-detail-items{
+  border: 1px solid black;
+}
 
 .delete-account-btn {
   background-color: #761c73;
