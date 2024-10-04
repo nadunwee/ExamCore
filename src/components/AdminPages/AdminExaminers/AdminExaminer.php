@@ -81,10 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <aside class="sidebar">
             <h1>ExamCore</h1>
             <ul>
-                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminHome/adminHome.html">Home</a></li>
-                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExams/adminExam.php">Exams</a></li>
-                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/AdminExaminer.php">Examiner</a></li>
-                <li><a href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminNotifications/AdminNotification.html">Notifications</a></li>
+                <li><a href="../AdminHome/adminHome.php">Home</a></li>
+                <li><a href="../AdminExams/adminExam.php">Exams</a></li>
+                <li><a href="#">Examiner</a></li>
+                <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
             </ul>
         </aside>
 

@@ -14,7 +14,7 @@ $userPassword = $_SESSION['user-pswd'];
 include('../../../php/config.php');
 
 // Prepare and execute the query to get student data
-$query = $conn->prepare("SELECT * FROM students WHERE email = ? AND password = ?");
+$query = $conn->prepare("SELECT * FROM admin WHERE admin_id = ? AND password = ?");
 $query->bind_param('ss', $userEmail, $userPassword);
 
 if ($query->execute()) {
@@ -28,16 +28,29 @@ if ($query->execute()) {
 
 $query->close();
 
-// Query to get available exams
-$examQuery = $conn->prepare("SELECT * FROM Exams");
+// Query to count the number of registered students
+$studentCountQuery = $conn->prepare("SELECT COUNT(student_id) FROM students");
 
-if ($examQuery->execute()) {
-    $availableExamsResult = $examQuery->get_result();
+if ($studentCountQuery->execute()) {
+    $studentCountQuery->bind_result($studentCount);
+    $studentCountQuery->fetch();
 } else {
-    echo "Failed to retrieve exams.";
+    echo "Failed to retrieve student count.";
 }
 
-$examQuery->close();
+$studentCountQuery->close();
+
+// Query to count the number of registered students
+$examinerCountQuery = $conn->prepare("SELECT COUNT(examiner_id) FROM examiners");
+
+if ($examinerCountQuery->execute()) {
+    $examinerCountQuery->bind_result($examinerCount);
+    $examinerCountQuery->fetch();
+} else {
+    echo "Failed to retrieve examiner count.";
+}
+
+$examinerCountQuery->close();
 
 // Query to count the number of exams
 $examCountQuery = $conn->prepare("SELECT COUNT(exam_id) FROM Exams");
@@ -97,20 +110,21 @@ $conn->close();
                     <div class="admin-home-components">
                         <div class="admin-home-component">
                             <p id="admin-home-p">Total Students</p>
-                            <span>00</span>
+                            <?php echo "<span>".htmlspecialchars($studentCount)."</span>"?>
+                            
                         </div>
                         <div class="admin-home-component">
                             <p id="admin-home-p">Total Examiners</p>
-                            <span>00</span>
+                            <?php echo "<span>".htmlspecialchars($examinerCount)."</span>"?>
                         </div>
                         <div class="admin-home-component">
                             <p id="admin-home-p">Number of exams</p>
-                            <span>00</span>
+                            <?php echo "<span>".htmlspecialchars($examsCount)."</span>"?>
                         </div>
                     </div>
 
                 </div>
-                <footer style="margin-top: 9%;" class="page-footer">
+                <footer style="margin-top: 13%;" class="page-footer">
                     <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions </a>| <a
                             href="#">Privacy Policy</a></p>
                 </footer>

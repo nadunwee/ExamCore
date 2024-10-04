@@ -91,12 +91,12 @@ $conn->close();
         </div>
     </header>
 
-    <main class="content">
+    <main style="margin-left: 0px;" class="content">
         <h1 style="color:#aa08a5; margin-top: 0px;">Welcome Back, <?php echo htmlspecialchars($studentData['name']); ?></h1><br>
         <div class="student-exams-content">
             <?php
             if ($availableExamsResult->num_rows > 0) {
-                echo '<br><br><h2 style="color: #e7006c; margin-left: 0px; margin-top: 100px;">You have <span style="color: #ff4500; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
+                echo '<br><br><h2 style="font-size:40px; color: #e7006c; margin-left: 0px; margin-top: 10px;">You have <span style="color: #ff4500; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
             } else {
                 echo '<h2 style="color: #761c73; margin-left: 0px; margin-top: 100px;">No available exams at the moment.</h2>';
             }
