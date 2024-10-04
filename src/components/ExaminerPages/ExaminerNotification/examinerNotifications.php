@@ -105,7 +105,7 @@ $n1 = $rs1->num_rows;
                 <a href="#">Privacy Policy</a>
             </p>
         </footer>
-        <script src="ExaminerNotification.js"></script>
+        
     </div>
 </body>
 

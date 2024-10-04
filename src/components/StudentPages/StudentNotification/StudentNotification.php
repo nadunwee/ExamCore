@@ -31,7 +31,7 @@ $n1 = $rs1->num_rows;
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../StudentHome/">Home</a></li>
                     <li><a href="../StudentExams/studentExam.php">Exams</a></li>
                     <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
                     <li><a href="../StudentNotification.php">Notifications</a></li>
