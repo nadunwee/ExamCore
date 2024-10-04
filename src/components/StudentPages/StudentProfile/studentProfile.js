@@ -10,6 +10,7 @@ function onCloseBtnClick() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const logoutButton = document.getElementById("logout-btn");
+  const deleteBtn = document.getElementById("delete-btn");
 
   if (logoutButton) {
     logoutButton.addEventListener("click", function () {
@@ -20,5 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   } else {
     console.error("Logout button not found");
+  }
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", function (event) {
+      const confirmation = confirm("Are You Sure");
+      if (!confirmation) {
+        event.preventDefault();
+      }
+    });
   }
 });
