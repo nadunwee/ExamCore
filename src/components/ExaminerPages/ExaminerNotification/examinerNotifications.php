@@ -46,7 +46,7 @@ $n1 = $rs1->num_rows;
             <h1 style="margin-bottom: 30px;">Examiner Notifications</h1>
 
             <!-- Notification Form -->
-            <form method="post" class="examiner-notification-form" action="backend/notificationProcess.php">
+            <form method="post" class="examiner-notification-form" action="notificationProcess.php">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
 
