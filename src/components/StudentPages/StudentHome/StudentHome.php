@@ -91,7 +91,7 @@ $conn->close();
         </div>
     </header>
 
-    <main class="content">
+    <main style="margin-left: 0px;" class="content">
         <h1 style="color:#aa08a5; margin-top: 0px;">Welcome Back, <?php echo htmlspecialchars($studentData['name']); ?></h1><br>
         <div class="student-exams-content">
             <?php
