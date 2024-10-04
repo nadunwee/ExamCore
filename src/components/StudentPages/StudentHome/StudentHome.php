@@ -96,7 +96,7 @@ $conn->close();
         <div class="student-exams-content">
             <?php
             if ($availableExamsResult->num_rows > 0) {
-                echo '<br><br><h2 style="color: #e7006c; margin-left: 0px; margin-top: 40px;">You have <span style="color: #ff4500; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
+                echo '<br><br><h2 style="font-size:40px; color: #e7006c; margin-left: 0px; margin-top: 10px;">You have <span style="color: #ff4500; font-weight: bold;">' . htmlspecialchars($examsCount) . '</span> exams! Go to the Exams page.</h2>';
             } else {
                 echo '<h2 style="color: #761c73; margin-left: 0px; margin-top: 100px;">No available exams at the moment.</h2>';
             }
