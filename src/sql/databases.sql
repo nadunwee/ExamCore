@@ -28,7 +28,6 @@ CREATE TABLE `notifications` (
   `notificationId` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `user_type` varchar(100) DEFAULT NULL,
   `message` text,
   PRIMARY KEY (`notificationId`)
 ) 
