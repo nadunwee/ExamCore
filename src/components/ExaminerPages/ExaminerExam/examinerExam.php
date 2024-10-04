@@ -51,7 +51,7 @@ $conn->close();
           <li><a href="../examinerHome.php">Home</a></li>
           <li><a href="../ExaminerExam/examinerExam.php">Exams</a></li>
           <li><a href="../ExaminerResult/examierResult.php">Results</a></li>
-          <li><a href="../ExaminerNotification/examinerNotification.php">Notifications</a></li>
+          <li><a href="../ExaminerNotification/examinerNotifications.php">Notifications</a></li>
         </ul>
         <a href="../ExaminerProfile/examinerProfile.php"><button class="profile-btn">Examiner Profile</button></a>
 
