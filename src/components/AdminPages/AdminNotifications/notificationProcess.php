@@ -5,7 +5,7 @@ require "admindb.php";
 if (isset($_POST["create"])) {
 
     $name = $_POST["name"];
-    $email = "fdl@gmail.com";
+    $email = "admin@gmail.com";
     $message = $_POST["message"];
 
     if (
@@ -41,7 +41,7 @@ if (isset($_POST["create"])) {
 
     $id = $_POST["id"];
     $name = $_POST["name"];
-    $email = "fdl@gmail.com";
+    $email = "admin@gmail.com";
     $message = $_POST["message"];
 
     if (

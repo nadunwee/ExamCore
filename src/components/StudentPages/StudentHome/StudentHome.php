@@ -1,3 +1,5 @@
+<!-- test msg -->
+
 <?php
 session_start();
 

@@ -20,7 +20,7 @@ $n1 = $rs1->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examiner Notification</title>
+    <title>Admin Notification</title>
     <link rel="stylesheet" href="AdminNotification.css">
     <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
 </head>
@@ -34,7 +34,7 @@ $n1 = $rs1->num_rows;
                     <li><a href="../AdminHome/adminHome.html">Home</a></li>
                     <li><a href="../AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
-                    <li><a href="AdminNotification.html">Notifications</a></li>
+                    <li><a href="AdminNotifications.php">Notifications</a></li>
                 </ul>
                 <a href="../AdminProfile/adminProfile.html">
                     <button class="profile-btn">Admin Profile</button>
@@ -105,7 +105,7 @@ $n1 = $rs1->num_rows;
                 <a href="#">Privacy Policy</a>
             </p>
         </footer>
-        <script src="ExaminerNotification.js"></script>
+       
     </div>
 </body>
 
