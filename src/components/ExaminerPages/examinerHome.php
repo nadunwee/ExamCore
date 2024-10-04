@@ -83,12 +83,33 @@
           <!-- Exam History Section -->
           <section class="exam-history">
             <h3>Ongoing Exams</h3>
-            <ul>
-              <li> Exam 1 </li>
-              <li> Exam 2 </li>
-              <li> Exam 3 </li>
-            </ul>
+            <?php
+                     $conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+                        if ($conn->connect_error) {
+                          die('Connection Error : ' . $conn->connect_error);
+                        }
+
+                        // Query to fetch the exam details
+                        $sql = "SELECT exam_id, exam_name, exam_deadline FROM exams"; // Replace 1 with dynamic examiner ID if needed
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<p><span>Exam ID:</span> " . $row["exam_id"] . " | <span>Exam Name:</span> " . $row["exam_name"] . " | <span>Deadline:</span> " . $row["exam_deadline"] . "</p>";
+                          }
+                        } else {
+                          echo "<p>No ongoing exams.</p>";
+                        }
+
+                        // Close the database connection
+                        $conn->close();
+                        ?>
           </section>
+
+         
+
+
         </div>
 
         <!-- Quote Section -->
