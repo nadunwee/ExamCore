@@ -40,7 +40,9 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="studentExamPaper_styles.css">
     <title>ExamCore</title>
 </head>
@@ -59,10 +61,11 @@ $conn->close();
             </div>
         </div>
 
-        <div class="studentExamPaper_content">
-            <!-- Loop through examData to display each question -->
-            <?php if (isset($examData) && count($examData) > 0): ?>
-                <?php foreach ($examData as $row): ?>
+
+        <!-- Loop through examData to display each question -->
+        <?php if (isset($examData) && count($examData) > 0): ?>
+            <?php foreach ($examData as $row): ?>
+                <div class="studentExamPaper_content">
                     <div class="examPaper_questionNumber">Question <?php echo htmlspecialchars($row['question_id']); ?></div>
                     <div class="examPaper_question"><?php echo htmlspecialchars($row['question']); ?></div>
                     <div class="examPaper_answerSet">
@@ -83,14 +86,15 @@ $conn->close();
                             <span class="answerSet"><?php echo htmlspecialchars($row['answer_4']); ?></span><br>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="noQuestionsAvailable">No question data available.</p>
-            <?php endif; ?>
-        </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="noQuestionsAvailable">No question data available.</p>
+        <?php endif; ?>
 
-        <div class="studentExam-buttons">
-            <button class="studentExam-submit-button" type="button">Submit</button>
+
+        <div style="margin-bottom: 40px;" class="studentExam-buttons">
+            <button class="studentExam-submit-button" type="submit">Submit</button>
         </div>
     </div>
 </body>
