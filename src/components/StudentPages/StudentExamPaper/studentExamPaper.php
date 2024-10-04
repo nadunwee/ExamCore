@@ -91,7 +91,6 @@ $conn->close();
 
         <div class="studentExam-buttons">
             <button class="studentExam-submit-button" type="button">Submit</button>
-            <button class="studentExam-nextQ-button" type="button">Next Question</button>
         </div>
     </div>
 </body>
