@@ -1,24 +1,27 @@
 <?php
 include('config.php'); // Database connection
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['exam_id'], $_POST['examiner_id'])) {
-    $exam_id = $_POST['exam_id'];
-    $examiner_id = $_POST['examiner_id'];
-
-    // Prepare statement to update examiner assignment
-    $stmt = $conn->prepare("UPDATE Exams SET examiner_id = ? WHERE exam_id = ?");
-    $stmt->bind_param("ii", $examiner_id, $exam_id);
-    foreach ($examiners as $examiner){
-        echo "<option value='{$examiner['examiner_id']}'>{$examiner['examiner_id']}</option>";
+// Fetch examiners from the database
+$examinerQuery = "SELECT examiner_id, name FROM Examiners";
+$examinerResult = $conn->query($examinerQuery);
+$examiners = [];
+if ($examinerResult->num_rows > 0) {
+    while ($row = $examinerResult->fetch_assoc()) {
+        $examiners[] = $row;
     }
-    
-
-    if ($stmt->execute()) {
-        echo "Examiner assigned successfully.";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-    $stmt->close();
 }
 
+// Fetch exams from the database
+$examQuery = "SELECT exam_id, exam_name FROM Exams";
+$examResult = $conn->query($examQuery);
+$exams = [];
+if ($examResult->num_rows > 0) {
+    while ($row = $examResult->fetch_assoc()) {
+        $exams[] = $row;
+    }
+}
+
+// Return both examiners and exams as a JSON object
+header('Content-Type: application/json');
+echo json_encode(['examiners' => $examiners, 'exams' => $exams]);
+?>

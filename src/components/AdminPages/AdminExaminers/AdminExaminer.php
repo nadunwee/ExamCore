@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Validate email format
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = 'Invalid email format.';
         header('Location: userRegister.php');
         exit();
     }
 
-    // Correct file path to include the database configuration
+   
     include("../../php/config.php");
 
     $query = "SELECT exam_id, exam_name FROM exams";
@@ -40,24 +40,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Content-Type: application/json');
     echo json_encode($exams);
 
-    // Prepare the SQL statement
-    $query = $conn->prepare("INSERT INTO examiners (name, subject, email, password) VALUES (?, ?, ?, ?)");
+    
+    $query = $conn->prepare("INSERT INTO examiners ( types, name, nic , subject, email, password) VALUES (?, ?, ?, ?)");
     $query->bind_param("ssss", $name, $subject, $email, $passwd);
 
-    // Execute the statement and check for errors
     if ($query->execute()) {
         $_SESSION['success'] = 'Examiner registration successful!';
         header('Location: login.php');
         exit();
     } else {
-        // Log the error for debugging
+        
         error_log("Database error: " . $query->error);
         $_SESSION['error'] = "Failed to register. Please try again.";
         header('Location: userRegister.php');
         exit();
     }
 
-    // Close statement and connection
+    
     $query->close();
     $conn->close();
     exit();
@@ -78,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div class="wrapper">
     <div class="container">
-        <!-- Sidebar -->
+        
         <aside class="sidebar">
             <h1>ExamCore</h1>
             <ul>
@@ -89,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </ul>
         </aside>
 
-        <!-- Main Content -->
+      
         <div class="admin-examiner-container">
             <main class="admin-examiner-content">
                 <table>
@@ -101,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </tr>
                     </thead>
                     <tbody id="examinerTable">
-                        <!-- Dynamic Content Goes Here -->
+
                     </tbody>
                 </table>
                 <br>
@@ -111,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                 </div>
 
-                <!-- Add Examiner Modal -->
+                
                 <div class="modal" id="addExaminerModal">
                     <div class="modal-content">
                         <span class="close" id="addClose">&times;</span>
@@ -149,21 +148,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </main>
         </div>
 
-                <!-- Assign Examiner Modal -->
+                
                     <div class="modal" id="assignExaminerModal">
                         <div class="modal-content">
                         <span class="close" id="assignClose">&times;</span>
                         <h2>Assign an Examiner</h2>
-                        <form method="GET" action="./assignExaminer.php">
-                            <div class="input-container">
-                                <label for="examinerSelect">Select Examiner:</label>
-                                <select id="examinerSelect" name="examinerSelect" class="input-field" required>
+                        <form method="POST" >
+                            <div class="input-container" action="./assignExaminer.php">
+                                <label for="examinerSelect" >Select Examiner:</label>
+                                <select id="examinerSelect" name="examinerSelect" class="input-field" onchange="toggleFields()" required>
                                 </select>
                             </div>
 
                             <div class="input-container">
                                 <label for="assignTo">Assign to Exam:</label>
-                                <select id="assignTo" name="assignTo" class="input-field" required></select>
+                                <select id="assignTo" name="assignTo" class="input-field" onchange="toggleFields()" required></select>
                             </div>
 
                             <input type="submit" value="Assign" class="assign-add" />
@@ -172,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-        <!-- Footer -->
+        
         <footer class="page-footer">
             <p>Copyright ©️ 2024 ExamCore. All rights reserved. | 
                 <a href="#">Terms & Conditions</a> | 
