@@ -111,47 +111,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-const examinerTable = document.getElementById("examinerTable");
+// const examinerTable = document.getElementById("examinerTable");
 
-function deleteExaminer(examinerId, row) {
-    fetch('deleteExaminer.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `examiner_id=${examinerId}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            row.remove();
-        } else {
-            console.error('Failed to delete examiner:', data.error);
-        }
-    })
-    .catch(error => console.error('Error deleting examiner:', error));
-}
+// function deleteExaminer(examinerId, row) {
+//     fetch('deleteExaminer.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//         },
+//         body: `examiner_id=${examinerId}`
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         if (data.success) {
+//             row.remove();
+//         } else {
+//             console.error('Failed to delete examiner:', data.error);
+//         }
+//     })
+//     .catch(error => console.error('Error deleting examiner:', error));
+// }
 
-function populateTable(examiners) {
-    examiners.forEach(examiner => {
-        const row = document.createElement("tr");
+// function populateTable(examiners) {
+//     examiners.forEach(examiner => {
+//         const row = document.createElement("tr");
 
-        const cell1 = document.createElement("td");
-        cell1.textContent = examiner.name;
+//         const cell1 = document.createElement("td");
+//         cell1.textContent = examiner.name;
 
-        const cell2 = document.createElement("td");
-        cell2.textContent = examiner.exam_name;
+//         const cell2 = document.createElement("td");
+//         cell2.textContent = examiner.exam_name;
 
-        const cell3 = document.createElement("td");
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.addEventListener("click", () => deleteExaminer(examiner.examiner_id, row));
+//         const cell3 = document.createElement("td");
+//         const deleteButton = document.createElement("button");
+//         deleteButton.textContent = "Delete";
+//         deleteButton.addEventListener("click", () => deleteExaminer(examiner.examiner_id, row));
 
-        cell3.appendChild(deleteButton);
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
+//         cell3.appendChild(deleteButton);
+//         row.appendChild(cell1);
+//         row.appendChild(cell2);
+//         row.appendChild(cell3);
 
-        examinerTable.appendChild(row);
-    });
-}
+//         examinerTable.appendChild(row);
+//     });
+// }

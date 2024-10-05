@@ -3,6 +3,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $type = $_POST['types'];
+  $admin = $_POST['is-admin'];
   $name = $_POST['real-name'];
   $nic = $_POST['nic'];
   $subject = $_POST['subject'];
@@ -42,7 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the statement
     if ($query->execute()) {
-      $_SESSION['message'] = 'Examiner registration successful!';
+      if ($admin == "admin") {
+        header('Location: ../AdminPages/AdminExaminers/AdminExaminer.php');
+        exit();
+      }
       header('Location: login.php');
     } else {
       $_SESSION['message'] = "Error: " . $query->error;

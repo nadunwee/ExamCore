@@ -29,6 +29,7 @@ if (isset($_POST['email'])) {
         }
     } else if ($type == "examiner") {
         $email = $_POST['email'];
+        $admin = $_POST['is-admin'];
 
         // Prepare the SQL statement to delete the student
         $query = $conn->prepare("DELETE FROM examiners WHERE email = ?");
@@ -37,6 +38,10 @@ if (isset($_POST['email'])) {
         if ($query->execute()) {
             // If delete is successful, destroy the session and redirect to the login page
             session_destroy();
+            if ($admin == "admin") {
+                header('Location:  ../components/AdminPages/AdminExaminers/AdminExaminer.php');
+                exit();
+            }
             header('Location:  ../components/AccessPages/login.php');
             exit();
         } else {
