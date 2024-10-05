@@ -108,11 +108,12 @@ $conn->close();
                 echo '<li>' . $row['answer_2'] . '</li>';
                 echo '<li>' . $row['answer_3'] . '</li>';
                 echo '<li>' . $row['answer_4'] . '</li>';
-               
+
 
                 echo '</ul>';
 
                 echo '<input type="hidden" name="question_ID" value="' . $row['question_ID'] . '">';
+                echo '<input type="hidden" name="correct_ans" value="' . $row['correst_answer'] . '">';
                 echo '<button class="delete-btn" type="submit">Delete</button>';
                 echo '<button class="edit-btn" type="button" onclick="editQuestion(' . htmlspecialchars(json_encode($row)) . ')">Edit</button>';
                 echo '</div>';
@@ -136,7 +137,7 @@ $conn->close();
           document.getElementById('answer2').value = question.answer_2;
           document.getElementById('answer3').value = question.answer_3;
           document.getElementById('answer4').value = question.answer_4;
-          document.getElementById('correct_ans').value = question.correct_ans;
+          document.getElementById('correct_ans').value = question.correst_answer;
 
           // Set the form action to "update_questions.php" for editing
           document.getElementById('question-form').action = './update_questions.php';
@@ -145,36 +146,35 @@ $conn->close();
           document.getElementById('edit_mode').value = "1";
 
           // Alert for edit
-         alert('You are editing the selected question.');
+          alert('You are editing the selected question.');
         }
 
         // Alert box for submit
-  const questionForm = document.getElementById('question-form');
-  questionForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    if (confirm('Are you sure you want to submit this question?')) {
-      alert('Question submitted successfully!');
-      questionForm.submit();
-    } else {
-      alert('Question submission canceled.');
-    }
-  });
+        const questionForm = document.getElementById('question-form');
+        questionForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          if (confirm('Are you sure you want to submit this question?')) {
+            alert('Question submitted successfully!');
+            questionForm.submit();
+          } else {
+            alert('Question submission canceled.');
+          }
+        });
 
-  // Attach alert box for delete button
-  const deleteButtons = document.querySelectorAll('.delete-btn');
+        // Attach alert box for delete button
+        const deleteButtons = document.querySelectorAll('.delete-btn');
 
-  deleteButtons.forEach(function(button) {
-    button.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (confirm('Are you sure you want to delete this question?')) {
-        alert('The question has been deleted successfully!');
-        button.closest('form').submit();
-      } else {
-        alert('Question deletion canceled.');
-      }
-    });
-  });
-
+        deleteButtons.forEach(function(button) {
+          button.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to delete this question?')) {
+              alert('The question has been deleted successfully!');
+              button.closest('form').submit();
+            } else {
+              alert('Question deletion canceled.');
+            }
+          });
+        });
       </script>
 
 
