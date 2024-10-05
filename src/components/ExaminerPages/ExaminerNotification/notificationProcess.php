@@ -12,18 +12,18 @@ if (isset($_POST["create"])) {
         empty($_POST["name"])
         || empty($_POST["message"])
     ) {
-        header("location: examinerNotifications.php?status=Empty Input !");
+        header("location: examinerNotifications.php");
         exit();
     } else {
 
         if (strlen($name) < 2 || strlen($name) > 20) {
-            header("location: examinerNotifications.php?status=Invalid Name !");
+            header("location: examinerNotifications.php");
             exit();
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("location: examinerNotifications.php?status=Invalid Email !");
+            header("location: examinerNotifications.php");
             exit();
         } elseif (strlen($message) < 3 || strlen($message) > 500) {
-            header("location: examinerNotifications.php?status=Invalid Message Length !");
+            header("location: examinerNotifications.php");
             exit();
         } else {
 
@@ -33,7 +33,7 @@ if (isset($_POST["create"])) {
             $rs1 = $conn->query($q1);
             $conn->close();
 
-            header("location: examinerNotifications.php?status=Notification Created Successfully !");
+            header("location: examinerNotifications.php");
             exit();
         }
     }
@@ -49,15 +49,15 @@ if (isset($_POST["create"])) {
         || empty($_POST["message"])
         || empty($_POST["id"])
     ) {
-        header("location: examinerNotifications.php?status=Empty Input !");
+        header("location: examinerNotifications.php");
         exit();
     } else {
 
         if (strlen($name) < 2 || strlen($name) > 20) {
-            header("location: examinerNotifications.php?status=Invalid Name !");
+            header("location: examinerNotifications.php");
             exit();
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("location: examinerNotifications.php?status=Invalid Email !");
+            header("location: examinerNotifications.php");
             exit();
         } elseif (strlen($message) < 3 || strlen($message) > 500) {
             header("location: examinerNotifications.php?status=Invalid Message Length !");
