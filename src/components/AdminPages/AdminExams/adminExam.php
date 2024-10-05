@@ -57,8 +57,8 @@ $conn->close();
                 <ul>
                     <li><a href="../AdminHome/adminHome.php">Home</a></li>
                     <li><a href="#">Exams</a></li>
-                    <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
-                    <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
+                    <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
+                    <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
                 </ul>
             </aside>
 
