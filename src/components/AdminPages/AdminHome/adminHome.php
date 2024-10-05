@@ -84,6 +84,7 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="../homeExamCommonStyles.css">
     <link rel="stylesheet" type="text/css" href="../../../styles/commonNavbarAndFooterStyles.css">
     <script src="../adminHome_adminExam.js"></script>
+    <script defer src="./adminHome.js"></script>
     <title>ExamCore</title>
 </head>
 
@@ -98,8 +99,9 @@ $conn->close();
                     <li><a href="../AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
+                    <li><button id="logout-btn" class="delete-account-btn" type="button">Log Out</button></li>
                 </ul>
-                
+
             </aside>
 
             <div class="admin-page-container">
@@ -110,16 +112,16 @@ $conn->close();
                     <div class="admin-home-components">
                         <div class="admin-home-component">
                             <p id="admin-home-p">Total Students</p>
-                            <?php echo "<span>".htmlspecialchars($studentCount)."</span>"?>
-                            
+                            <?php echo "<span>" . htmlspecialchars($studentCount) . "</span>" ?>
+
                         </div>
                         <div class="admin-home-component">
                             <p id="admin-home-p">Total Examiners</p>
-                            <?php echo "<span>".htmlspecialchars($examinerCount)."</span>"?>
+                            <?php echo "<span>" . htmlspecialchars($examinerCount) . "</span>" ?>
                         </div>
                         <div class="admin-home-component">
                             <p id="admin-home-p">Number of exams</p>
-                            <?php echo "<span>".htmlspecialchars($examsCount)."</span>"?>
+                            <?php echo "<span>" . htmlspecialchars($examsCount) . "</span>" ?>
                         </div>
                     </div>
 
