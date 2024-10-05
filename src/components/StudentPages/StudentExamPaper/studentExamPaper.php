@@ -45,6 +45,7 @@ $conn->close();
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="studentExamPaper_styles.css">
     <title>ExamCore</title>
+    <script defer src="./submitExam.js"></script>
 </head>
 
 <body>
