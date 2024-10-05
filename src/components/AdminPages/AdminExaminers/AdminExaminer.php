@@ -41,7 +41,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <script src="./adminExaminer.js" defer></script>
+    <script src="./adminExaminers.js" defer></script>
     <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
@@ -85,8 +85,10 @@ $conn->close();
                                     echo "<input type='hidden' name='type' value='examiner'>";
                                     echo "<input hidden type='text' name='is-admin' value='admin' />";
                                     echo "<input type='hidden' name='email' value='" . htmlspecialchars($examiner['email']) . "'>";
+                                    echo "<input type='hidden' name='id' value='" . htmlspecialchars($examiner['examiner_id']) . "'>"; 
                                     echo "<button type='submit' class='delete-btn'>Delete</button>";
                                     echo "</form>";
+                                    echo "<a href='editExaminer.php?id=" . htmlspecialchars($examiner['examiner_id']) . "' class='edit-btn'>Edit</a>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
@@ -100,7 +102,6 @@ $conn->close();
                     <br>
 
                     <div>
-                        <button class="assign-examiner-btn" id="assignExaminerAdmin">Assign Examiner</button>
                         <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                     </div>
 
