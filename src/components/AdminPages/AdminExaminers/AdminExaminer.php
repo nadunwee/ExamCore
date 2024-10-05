@@ -85,7 +85,7 @@ $conn->close();
                                     echo "<input type='hidden' name='type' value='examiner'>";
                                     echo "<input hidden type='text' name='is-admin' value='admin' />";
                                     echo "<input type='hidden' name='email' value='" . htmlspecialchars($examiner['email']) . "'>";
-                                    echo "<input type='hidden' name='id' value='" . htmlspecialchars($examiner['examiner_id']) . "'>"; 
+                                    echo "<input type='hidden' name='id' value='" . htmlspecialchars($examiner['examiner_id']) . "'>";
                                     echo "<button type='submit' class='delete-btn'>Delete</button>";
                                     echo "</form>";
                                     echo "<a href='editExaminer.php?id=" . htmlspecialchars($examiner['examiner_id']) . "' class='edit-btn'>Edit</a>";
@@ -104,6 +104,29 @@ $conn->close();
                     <div>
                         <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                     </div>
+
+                    <div id="editModal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-heading">
+                                <h2>Edit Profile Details</h2>
+                                <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
+                            </div>
+                            <form action="../../../php/updateAccountDetails.php" method="POST">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" value=<?php echo  $studentData['name'] ?> />
+                                <label for="nic">Subject:</label>
+                                <input type="text" name="subject" value=<?php echo  $studentData['subject'] ?> />
+                                <label for="email">Email:</label>
+                                <input type="email" name="email" value=<?php echo  $studentData['email'] ?> />
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" value=<?php echo  $studentData['password'] ?> />
+                                <input hidden type="text" name="type" value="examiner" />
+                                <input hidden type="text" name="previus-email" value=<?php echo  $studentData['email'] ?> />
+                                <button type="submit">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+
 
 
                     <div class="modal" id="addExaminerModal">
