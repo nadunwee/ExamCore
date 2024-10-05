@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION['user-email'])) {
   header('Location: ../../AccessPages/login.php');
   exit();
@@ -20,15 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Example: Fetch exam details from the database or validate the exam password
 
   // Redirect to the exam or process as needed
-  echo "Exam ID: " . htmlspecialchars($examId) . "<br>";
-  echo "Exam Password: " . htmlspecialchars($examPassword) . "<br>";
+  // echo "Exam ID: " . htmlspecialchars($examId) . "<br>";
+  // echo "Exam Password: " . htmlspecialchars($examPassword) . "<br>";
 
-  if ($typedPassword === $examPassword) {
-    header("Location: ./studentExam.php");
-  }
+  // if ($typedPassword === $examPassword) {
+  //   header("Location: ./studentExam.php");
+  // }
   // Continue with the logic to display the exam or further processing
 } else {
-  echo "No exam data received.";
+  header("Location: studentExam.php?error=wrongpassword");
+  exit();
 }
 ?>
 

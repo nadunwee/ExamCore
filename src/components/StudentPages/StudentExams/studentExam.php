@@ -57,6 +57,15 @@ $conn->close();
     <link rel="stylesheet" href="studentExamWithOTP.css">
     <link rel="stylesheet" href="./studentExam.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
+    <script>
+        // Check if there's an error in the URL and display an alert box
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error') && urlParams.get('error') === 'wrongpassword') {
+                alert('Password is wrong!');
+            }
+        };
+    </script>
 </head>
 
 <body>
