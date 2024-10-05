@@ -78,7 +78,7 @@ $conn->close();
     </div>
     <main class="content">
         <div class="header">
-            
+
 
             <div style="margin-left: 120px;" class="search-bar">
                 <input type="text" placeholder="Search Exam">
@@ -125,11 +125,11 @@ $conn->close();
 
                 </div>
             </div>
-            <div class="student-exams-completed">
+            <!-- <div class="student-exams-completed">
                 <h1>Completed Exams</h1>
                 <div>Exam name</div>
                 <div>Due date</div>
-            </div>
+            </div> -->
         </div>
 
 

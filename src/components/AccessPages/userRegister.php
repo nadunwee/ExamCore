@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="input-container" id="nic-field">
             <label for="NIC">NIC</label>
-            <input type="text" id="nic" name="nic" class="input-field" placeholder="Enter Your NIC..." />
+            <input type="text" id="nic" name="nic" class="input-field" placeholder="Enter Your NIC..." onchange="validateNICOnChange()" />
           </div>
 
           <div class="input-container" id="subject-field" style="display: none;">
@@ -118,7 +118,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="input-container">
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
+            <input type="text" id="password" name="password" class="input-field" placeholder="Enter Your Password..." onchange="validatePasswordSize()" required />
+            <label id="password-notification" class="danger-notifications" style="display: none;">*Should Have 8 characters</label>
           </div>
 
           <div class="input-container">

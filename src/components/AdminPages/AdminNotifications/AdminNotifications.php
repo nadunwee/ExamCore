@@ -36,9 +36,6 @@ $n1 = $rs1->num_rows;
                     <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
                     <li><a href="AdminNotifications.php">Notifications</a></li>
                 </ul>
-                <a href="../AdminProfile/adminProfile.html">
-                    <button class="profile-btn">Admin Profile</button>
-                </a>
             </aside>
         </div>
 
@@ -71,7 +68,7 @@ $n1 = $rs1->num_rows;
                 <?php
 
                 foreach ($rs1 as $data) {
-                    ?>
+                ?>
                     <tr>
                         <form action="notificationProcess.php" method="post">
                             <td><input class="name-input" value="<?php echo $data['name']; ?>" name="name" type="text"></td>
@@ -89,7 +86,7 @@ $n1 = $rs1->num_rows;
                             </td>
                         </form>
                     </tr>
-                    <?php
+                <?php
                 }
 
                 ?>
@@ -105,7 +102,7 @@ $n1 = $rs1->num_rows;
                 <a href="#">Privacy Policy</a>
             </p>
         </footer>
-       
+
     </div>
 </body>
 
