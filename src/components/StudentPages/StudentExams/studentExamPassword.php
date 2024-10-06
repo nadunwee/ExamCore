@@ -13,7 +13,7 @@ include('../../../php/config.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $examId = $_POST['exam_id'];
   $examPassword = $_POST['exam_password'];
-  $typedPassword = $_POST['typed-passwd'];
+  // $typedPassword = $_POST['typed-passwd'];
 
   // Use the retrieved data for validation or other processing
   // Example: Fetch exam details from the database or validate the exam password
