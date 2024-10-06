@@ -43,6 +43,7 @@ $n1 = $rs1->num_rows;
             return false;
         }
         return true; 
+    }
     // JavaScript for delete confirmation
     function confirmDelete() {
             return confirm("Are you sure you want to delete this notification?");
@@ -68,7 +69,7 @@ $n1 = $rs1->num_rows;
             <h1 style="margin-bottom: 30px;">Admin Notifications</h1>
 
             <!-- Notification Form -->
-            <form method="post" class="examiner-notification-form" action="notificationProcess.php">
+            <form method="post" class="examiner-notification-form" action="notificationProcess.php" onsubmit="return validateForm()">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
 
@@ -86,7 +87,7 @@ $n1 = $rs1->num_rows;
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Notification ID</th>
                     <th>Notification</th>
                     <th>Manage</th>
                 </tr>
@@ -98,8 +99,7 @@ $n1 = $rs1->num_rows;
                         <form action="notificationProcess.php" method="post">
                             <td><input class="name-input" value="<?php echo $data['name']; ?>" name="name" type="text"></td>
                             <td>
-                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id" type="hidden">
-                                admin@gmail.com
+                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id" type="text" readonly>     
                             </td>
                             <td>
                                 <textarea class="name-input" name="message"><?php echo $data['message']; ?></textarea>
@@ -107,7 +107,7 @@ $n1 = $rs1->num_rows;
                             <td>
                                 <button style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="update" type="submit" class="btn">Edit</button>
                                 <br><br>
-                                <button style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="delete" type="submit" class="btn">Delete</button>
+                                <button style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="delete" type="submit" class="btn" onclick="return confirmDelete()">Delete</button>
                             </td>
                         </form>
                     </tr>
