@@ -166,8 +166,8 @@ $conn->close();
                 </div>
 
                 <footer class="page-footer">
-                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions | <a
-                                href="#">PrivacyPolicy</a></p>
+                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="http://localhost/Group%20project/ExamCore/terms&conditions.html">Terms & Conditions | <a
+                                href="http://localhost/Group%20project/ExamCore/privacyPolicy.html">PrivacyPolicy</a></p>
                 </footer>
             </div>
         </div>
