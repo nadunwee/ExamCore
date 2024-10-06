@@ -27,3 +27,29 @@ const toggleFields = () => {
     emailReminder.style.display = "none";
   }
 };
+
+function validateNIC(nic) {
+  // Regex for NIC: 10 or 12 digits followed optionally by 'V' or 'X'
+  const nicPattern = /^(?:\d{9}[VX]|\d{12})$/;
+  return nicPattern.test(nic);
+}
+
+function validateNICOnChange() {
+  const nic = document.getElementById("nic").value;
+  if (!validateNIC(nic)) {
+    alert("Please enter a valid NIC number.");
+    document.getElementById("nic").value = ""; // Clear the invalid input
+    document.getElementById("nic").focus(); // Focus back to NIC field
+  }
+}
+
+function validatePasswordSize() {
+  const password = document.getElementById("password").value;
+  const notificationLabel = document.getElementById("password-notification");
+
+  if (password.length < 8) {
+    notificationLabel.style.display = "block"; // Show notification
+  } else {
+    notificationLabel.style.display = "none"; // Hide notification
+  }
+}

@@ -21,8 +21,8 @@ $n1 = $rs1->num_rows;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Notifications</title>
-    <link rel="stylesheet" href="ExaminerNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="./ExaminerNotification.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -55,7 +55,7 @@ $n1 = $rs1->num_rows;
                 <?php
 
                 foreach ($rs1 as $data) {
-                    ?>
+                ?>
                     <tr>
                         <form action="notificationProcess.php" method="post">
                             <td><?php echo $data['name']; ?></td>
@@ -67,14 +67,14 @@ $n1 = $rs1->num_rows;
                             </td>
                         </form>
                     </tr>
-                    <?php
+                <?php
                 }
 
                 ?>
             </table>
 
-            </div>
-        
+        </div>
+
     </div>
 </body>
 
