@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add exam when "Add" button is clicked
     document.getElementById('submit-exam').addEventListener('click', function (event) {
         event.preventDefault(); // Prevent form from submitting the normal way
-
+        
     });
 
     document.querySelectorAll('.admin-exam-delete form').forEach(function (form) {
