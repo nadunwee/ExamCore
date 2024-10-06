@@ -29,12 +29,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-let modal = document.getElementById("editModal");
+let modal = document.getElementById("editAdminModal");
+let modalNameInput = document.querySelector('input[name="name"]');
+let modalSubjectInput = document.querySelector('input[name="subject"]');
+let modalEmailInput = document.querySelector('input[name="email"]');
+let modalPasswordInput = document.querySelector('input[name="password"]');
 
-function onEditBtnClick() {
-  modal.classList.add("show-modal");
+function onEditBtnClick(name, subject, email, password) {
+    // Set the input values with the examiner's data
+    modalNameInput.value = name;
+    modalSubjectInput.value = subject;
+    modalEmailInput.value = email;
+    modalPasswordInput.value = password;
+
+    // Show the modal
+    modal.style.display = "block";
 }
 
 function onCloseBtnClick() {
-  modal.classList.remove("show-modal");
+    // Hide the modal
+    modal.style.display = "none";
 }
