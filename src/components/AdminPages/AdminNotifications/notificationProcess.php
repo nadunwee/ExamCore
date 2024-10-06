@@ -23,7 +23,7 @@ if (isset($_POST["create"])) {
             header("location: AdminNotifications.php");
             exit();
         } elseif (strlen($message) < 3 || strlen($message) > 500) {
-            header("location: AdminrNotifications.php");
+            header("location: AdminNotifications.php");
             exit();
         } else {
 

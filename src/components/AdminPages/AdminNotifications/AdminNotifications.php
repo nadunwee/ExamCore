@@ -42,8 +42,7 @@ $n1 = $rs1->num_rows;
             alert("Message must be between 3 and 500 characters");
             return false;
         }
-        return true; // Submit the form if everything is correct
-    }
+        return true; 
     // JavaScript for delete confirmation
     function confirmDelete() {
             return confirm("Are you sure you want to delete this notification?");
@@ -100,7 +99,7 @@ $n1 = $rs1->num_rows;
                             <td><input class="name-input" value="<?php echo $data['name']; ?>" name="name" type="text"></td>
                             <td>
                                 <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id" type="hidden">
-                                fdl@gmail.com
+                                admin@gmail.com
                             </td>
                             <td>
                                 <textarea class="name-input" name="message"><?php echo $data['message']; ?></textarea>
