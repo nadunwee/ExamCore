@@ -74,10 +74,10 @@ $conn->close();
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentHome/StudentHome.php">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li><a href="../StudentExams/studentExam.php">Exams</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentSupport/studentSupport.html">Support</a></li>
-                    <li><a href="http://localhost/Group%20project/ExamCore/src/components/StudentPages/StudentNotification/StudentNotification.php">Notifications</a></li>
+                    <li><a href="../StudentSupport/studentSupport.html">Support</a></li>
+                    <li><a href="../StudentNotification/StudentNotification.php">Notifications</a></li>
                 </ul>
                 <a href="../StudentProfile/studentProfile.php"><button class="profile-btn">Student Profile</button></a>
             </aside>
@@ -110,7 +110,7 @@ $conn->close();
 
     <footer style="margin-top: 0%;" class="page-footer">
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
-            <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a>
+            <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a>
         </p>
     </footer>
 </body>

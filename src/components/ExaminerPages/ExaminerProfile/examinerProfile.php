@@ -61,21 +61,35 @@ $conn->close();
         <h2>Edit Profile Details</h2>
         <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
       </div>
-      <form action="../../../php/updateAccountDetails.php" method="POST">
+      <form id="examinerEditForm" action="../../../php/updateAccountDetails.php" method="POST">
         <label for="name">Name:</label>
-        <input type="text" name="name" value=<?php echo  $studentData['name'] ?> />
-        <label for="nic">Subject:</label>
-        <input type="text" name="subject" value=<?php echo  $studentData['subject'] ?> />
+        <input type="text" name="name" value="<?php echo $studentData['name'] ?>" />
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" value="<?php echo $studentData['subject'] ?>" />
         <label for="email">Email:</label>
-        <input type="email" name="email" value=<?php echo  $studentData['email'] ?> />
+        <input type="email" name="email" value="<?php echo $studentData['email'] ?>" />
         <label for="password">Password:</label>
-        <input type="password" name="password" value=<?php echo  $studentData['password'] ?> />
+        <input type="password" name="password" value="<?php echo $studentData['password'] ?>" />
         <input hidden type="text" name="type" value="examiner" />
-        <input hidden type="text" name="previus-email" value=<?php echo  $studentData['email'] ?> />
+        <input hidden type="text" name="previous-email" value="<?php echo $studentData['email'] ?>" />
         <button type="submit">Save Changes</button>
       </form>
     </div>
   </div>
+
+  <script>
+    document.getElementById('examinerEditForm').addEventListener('submit', function(e) {
+      const name = document.querySelector('input[name="name"]').value;
+      const subject = document.querySelector('input[name="subject"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      if (!name || !subject || !email || !password) {
+        e.preventDefault(); // Prevent form submission if any field is empty
+        alert('Please fill in all fields before submitting.');
+      }
+    });
+  </script>
 
   <div class="wrapper">
     <div class="container">
@@ -128,6 +142,12 @@ $conn->close();
       </div>
     </div>
   </div>
+
+  <footer style="margin-top: 0%;" class="page-footer">
+    <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
+      <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a>
+    </p>
+  </footer>
 </body>
 
 </html>

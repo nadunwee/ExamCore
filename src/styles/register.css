@@ -1,4 +1,4 @@
-*{
+* {
   font-family: poppins, sans-serif;
 }
 html {
@@ -73,7 +73,7 @@ a {
   color: #999;
   margin-bottom: 5px;
 }
-.input-container input{
+.input-container input {
   font-family: poppins, sans-serif;
 }
 
@@ -126,12 +126,17 @@ a {
 .student-register-redirect-login {
   text-align: center;
 }
-.input-container option{
+.input-container option {
   font-family: poppins, sans-serif;
   padding: 20px;
 }
-select{
+select {
   font-family: poppins, sans-serif;
   font-size: 16px;
   padding: 10px;
+}
+
+.danger-notifications {
+  color: red !important;
+  font-size: large;
 }

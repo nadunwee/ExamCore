@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ../StudentPages/StudentHome/studentHome.php');
         exit();
       } else {
-        echo "<h1>no account found</h1>"; // Implement Error Page
+        header('Location: login.php?error=invalid');
+        exit();
       }
     } else {
       echo "Error : $query->error";
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ../ExaminerPages/examinerHome.php');
         exit();
       } else {
-        echo "<h1>no account found</h1>"; // Implement Error Page
+        header('Location: login.php?error=invalid');
       }
     } else {
       echo "Error : $query->error";
@@ -61,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ../AdminPages/AdminHome/adminHome.php');
         exit();
       } else {
-        echo "<h1>no account found</h1>"; // Implement Error Page
+        exit();
       }
     } else {
       echo "Error : $query->error";
@@ -90,6 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     rel="stylesheet">
   <link rel="stylesheet" href="../../styles/register.css" />
   <link rel="stylesheet" href="../../styles/login.css" />
+  <script>
+    // Function to display the error message if the URL contains an error flag
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('error') && urlParams.get('error') === 'invalid') {
+        // Display the error message
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    };
+  </script>
   <title>Log in</title>
 </head>
 
@@ -134,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="input-container">
             <label for="password">Password</label>
             <input type="text" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
+            <label style="display: none; color: red;" id="error-msg">*wrong username or password</label>
           </div>
 
           <input type="submit" value="Sign In with Email" class="register-submit-btn" />

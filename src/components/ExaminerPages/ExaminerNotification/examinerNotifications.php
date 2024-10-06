@@ -92,7 +92,7 @@ $n1 = $rs1->num_rows;
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Notification ID</th>
                     <th>Notification</th>
                     <th>Manage</th>
                 </tr>
@@ -104,9 +104,7 @@ $n1 = $rs1->num_rows;
                         <form action="notificationProcess.php" method="post">
                             <td><input class="name-input" value="<?php echo $data['name']; ?>" name="name" type="text"></td>
                             <td>
-                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id"
-                                    type="hidden">
-                                fdl@gmail.com
+                                <input class="name-input" value="<?php echo $data['notificationId']; ?>" name="id" type="text" readonly>     
                             </td>
                             <td>
                                 <textarea class="name-input" name="message"><?php echo $data['message']; ?></textarea>
@@ -114,7 +112,7 @@ $n1 = $rs1->num_rows;
                             <td>
                                 <button name="update" type="submit" class="btn">Edit</button>
                                 <br><br>
-                                <button name="delete" type="submit" class="btn"  onclick="return confirmDelete();">Delete</button>
+                                <button name="delete" type="submit" class="btn"  onclick="return confirmDelete()">Delete</button>
                             </td>
                         </form>
                     </tr>
@@ -130,8 +128,8 @@ $n1 = $rs1->num_rows;
             <p>
                 Copyright ©️ 2024 ExamCore.
                 All rights reserved. |
-                <a href="#">Terms & Conditions</a> |
-                <a href="#">Privacy Policy</a>
+                <a href="../../../../terms&conditions.html">Terms & Conditions</a> |
+                <a href="../../../../privacyPolicy.html">Privacy Policy</a>
             </p>
         </footer>
         

@@ -57,6 +57,15 @@ $conn->close();
     <link rel="stylesheet" href="studentExamWithOTP.css">
     <link rel="stylesheet" href="./studentExam.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
+    <script>
+        // Check if there's an error in the URL and display an alert box
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error') && urlParams.get('error') === 'wrongpassword') {
+                alert('Password is wrong!');
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -78,7 +87,7 @@ $conn->close();
     </div>
     <main class="content">
         <div class="header">
-            
+
 
             <div style="margin-left: 120px;" class="search-bar">
                 <input type="text" placeholder="Search Exam">
@@ -125,11 +134,11 @@ $conn->close();
 
                 </div>
             </div>
-            <div class="student-exams-completed">
+            <!-- <div class="student-exams-completed">
                 <h1>Completed Exams</h1>
                 <div>Exam name</div>
                 <div>Due date</div>
-            </div>
+            </div> -->
         </div>
 
 

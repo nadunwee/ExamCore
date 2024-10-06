@@ -8,42 +8,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.wrapper {
-  display: flex;
-}
+
 
 .container {
   flex: 1;
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #f8f8f8;
-  padding: 15px;
-  position: fixed;
-  height: 100%;
-  border-right: 2px solid #761c73;
-}
 
-.sidebar h1 {
-  text-align: center;
-  color: #761c73;
-  margin-bottom: 30px;
-}
-
-.sidebar ul {
-  list-style-type: none;
-}
-
-.sidebar ul li {
-  margin-bottom: 15px;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 18px;
-}
 
 .profile-btn {
   width: 100%;
@@ -76,7 +47,7 @@ body {
   margin-left: 270px;
   margin-right: 50px;
   padding: 20px;
-  border: #761C73;
+  border: #761c73;
   border-style: solid;
   border-width: 2px;
   border-radius: 10px;
@@ -106,8 +77,6 @@ body {
   cursor: pointer;
   text-align: center;
   margin-top: 10px;
-
-
 }
 
 #list-notifications {
@@ -140,7 +109,6 @@ footer.page-footer {
 
 .added-notification-list {
   margin-left: 300px;
-
 }
 
 /* Table Styles */
@@ -161,7 +129,7 @@ table td {
 }
 
 table th {
-  background-color: #761C73;
+  background-color: #761c73;
   color: white;
 }
 

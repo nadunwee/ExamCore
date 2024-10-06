@@ -171,3 +171,43 @@ h1 {
   padding: 5px;
   padding-bottom: 30px;
 }
+
+
+/* Table styling */
+.message-display table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.message-display th, .message-display td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #121111;
+}
+
+.message-display th {
+  background-color: #761c73;
+  color: white;
+}
+
+.message-display tr:hover {
+  background-color: #f2f2f2;
+}
+
+.message-display td {
+  background-color: #fafafa;
+}
+
+.message-display table, .message-display th, .message-display td {
+  border: 1px solid #ddd;
+}
+
+.message-display th {
+  text-transform: uppercase;
+}
+
+.message-display tr {
+  transition: background-color 0.3s;
+}

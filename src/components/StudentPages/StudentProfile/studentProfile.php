@@ -62,33 +62,51 @@ $conn->close();
         <h2>Edit Profile Details</h2>
         <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
       </div>
-      <form action="../../../php/updateAccountDetails.php" method="POST">
+      <form id="editForm" action="../../../php/updateAccountDetails.php" method="POST">
         <label for="name">Name:</label>
-        <input type="text" name="name" value=<?php echo  $studentData['name'] ?> />
+        <input type="text" name="name" value="<?php echo  $studentData['name'] ?>" />
         <label for="nic">NIC:</label>
-        <input type="text" name="nic" value=<?php echo  $studentData['nic'] ?> />
+        <input type="text" name="nic" value="<?php echo  $studentData['nic'] ?>" />
         <label for="email">Email:</label>
-        <input type="email" name="email" value=<?php echo  $studentData['email'] ?> />
+        <input type="email" name="email" value="<?php echo  $studentData['email'] ?>" />
         <label for="phone">Phone:</label>
-        <input type="text" name="phone" value=<?php echo  $studentData['phone_no'] ?> />
-        <label for="dob">gender:</label>
+        <input type="text" name="phone" value="<?php echo  $studentData['phone_no'] ?>" />
+        <label for="gender">Gender:</label>
         <select name="gender">
           <option value="none-selected" selected>select</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
         <label for="dob">DOB:</label>
-        <input type="date" name="dob" value=<?php echo  $studentData['dob'] ?> />
+        <input type="date" name="dob" value="<?php echo  $studentData['dob'] ?>" />
         <label for="password">Password:</label>
-        <input type="password" name="password" value=<?php echo  $studentData['password'] ?> />
+        <input type="password" name="password" value="<?php echo  $studentData['password'] ?>" />
         <label for="address">Address:</label>
-        <input type="text" name="address" value=<?php echo  $studentData['address'] ?> />
+        <input type="text" name="address" value="<?php echo  $studentData['address'] ?>" />
         <input hidden type="text" name="type" value="student" />
-        <input hidden type="text" name="previus-email" value=<?php echo  $studentData['email'] ?> />
+        <input hidden type="text" name="previous-email" value="<?php echo  $studentData['email'] ?>" />
         <button type="submit">Save Changes</button>
       </form>
     </div>
   </div>
+
+  <script>
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+      const name = document.querySelector('input[name="name"]').value;
+      const nic = document.querySelector('input[name="nic"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const phone = document.querySelector('input[name="phone"]').value;
+      const gender = document.querySelector('select[name="gender"]').value;
+      const dob = document.querySelector('input[name="dob"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+      const address = document.querySelector('input[name="address"]').value;
+
+      if (!name || !nic || !email || !phone || gender === "none-selected" || !dob || !password || !address) {
+        e.preventDefault();
+        alert('Please fill in all fields before submitting.');
+      }
+    });
+  </script>
 
   <div class="wrapper">
     <div class="container">
@@ -155,6 +173,12 @@ $conn->close();
 
     </div>
   </div>
+
+  <footer style="margin-top: 0%;" class="page-footer">
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
+            <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a>
+        </p>
+    </footer>
 </body>
 
 </html>

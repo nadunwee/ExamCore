@@ -57,8 +57,8 @@ $conn->close();
                 <ul>
                     <li><a href="../AdminHome/adminHome.php">Home</a></li>
                     <li><a href="#">Exams</a></li>
-                    <li><a href="../AdminExaminers/AdminExaminer.html">Examiner</a></li>
-                    <li><a href="../AdminNotifications/AdminNotification.html">Notifications</a></li>
+                    <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
+                    <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
                 </ul>
             </aside>
 
@@ -166,8 +166,8 @@ $conn->close();
                 </div>
 
                 <footer class="page-footer">
-                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions | <a
-                                href="#">PrivacyPolicy</a></p>
+                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions | <a
+                                href="../../../../privacyPolicy.html">PrivacyPolicy</a></p>
                 </footer>
             </div>
         </div>

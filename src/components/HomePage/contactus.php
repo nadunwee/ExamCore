@@ -109,6 +109,53 @@
     </div>
   </div>
 
+  <div class="message-display">
+  <h2>Messages Received</h2>
+
+  <?php
+  // Database connection
+  $conn = new mysqli('localhost', 'root', '', 'exam_core');
+
+  // Check connection
+  if ($conn->connect_error) {
+    die('Connection Error: ' . $conn->connect_error);
+  }
+
+  // SQL query to select messages
+  $sql = "SELECT m_ID, m_name, m_con_num, m_message FROM message";
+  $result = $conn->query($sql);
+
+ 
+  if ($result === false) {
+   
+    echo "Error: " . $conn->error;
+  } else {
+    if ($result->num_rows > 0) {
+      
+      echo "<table border='1'>";
+      echo "<tr><th>ID</th><th>Name</th><th>Contact Number</th><th>Message</th></tr>";
+
+      while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["m_ID"] . "</td>";
+        echo "<td>" . $row["m_name"] . "</td>";
+        echo "<td>" . $row["m_con_num"] . "</td>";
+        echo "<td>" . $row["m_message"] . "</td>";
+        echo "</tr>";
+      }
+
+      echo "</table>";
+    } else {
+      
+      echo "No messages found.";
+    }
+  }
+  $conn->close();
+  ?>
+</div>
+
+
+
   <script>
     const form = document.getElementById('contact-form');
 

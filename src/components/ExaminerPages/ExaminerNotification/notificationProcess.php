@@ -5,7 +5,7 @@ require "db.php";
 if (isset($_POST["create"])) {
 
     $name = $_POST["name"];
-    $email = "fdl@gmail.com";
+    $email = "fsdl@gmail.com";
     $message = $_POST["message"];
 
     if (
@@ -41,7 +41,7 @@ if (isset($_POST["create"])) {
 
     $id = $_POST["id"];
     $name = $_POST["name"];
-    $email = "fdl@gmail.com";
+    $email = "fsdl@gmail.com";
     $message = $_POST["message"];
 
     if (
@@ -54,9 +54,6 @@ if (isset($_POST["create"])) {
     } else {
 
         if (strlen($name) < 2 || strlen($name) > 20) {
-            header("location: examinerNotifications.php");
-            exit();
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             header("location: examinerNotifications.php");
             exit();
         } elseif (strlen($message) < 3 || strlen($message) > 500) {

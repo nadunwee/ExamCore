@@ -20,9 +20,14 @@ $n1 = $rs1->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Student Notifications</title>
-    <link rel="stylesheet" href="ExaminerNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="./studentNotification.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -55,7 +60,7 @@ $n1 = $rs1->num_rows;
                 <?php
 
                 foreach ($rs1 as $data) {
-                    ?>
+                ?>
                     <tr>
                         <form action="notificationProcess.php" method="post">
                             <td><?php echo $data['name']; ?></td>
@@ -67,13 +72,21 @@ $n1 = $rs1->num_rows;
                             </td>
                         </form>
                     </tr>
-                    <?php
+                <?php
                 }
 
                 ?>
             </table>
 
             </div>
+            <footer style="margin-top: 380px;" class="page-footer">
+            <p>
+                Copyright ©️ 2024 ExamCore.
+                All rights reserved. |
+                <a href="../../../../terms&conditions.html">Terms & Conditions</a> |
+                <a href="../../../../privacyPolicy.html">Privacy Policy</a>
+            </p>
+        </footer>
         
     </div>
 </body>
