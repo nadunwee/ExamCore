@@ -125,6 +125,7 @@ $conn->close();
                                 <input type="password" name="password" value=<?php echo  $examiner['password'] ?> />
                                 <input hidden type="text" name="type" value="examiner" />
                                 <input hidden type="text" name="previus-email" value=<?php echo  $examiner['email'] ?> />
+                                <input hidden type="text" name="user-type" value="admin" />
                                 <button type="submit">Save Changes</button>
                             </form>
                         </div>
@@ -169,29 +170,6 @@ $conn->close();
                     </div>
                 </main>
             </div>
-
-
-            <!-- <div class="modal" id="assignExaminerModal">
-                <div class="modal-content">
-                    <span class="close" id="assignClose">&times;</span>
-                    <h2>Assign an Examiner</h2>
-                    <form method="POST">
-                        <div class="input-container" action="./assignExaminer.php">
-                            <label for="examinerSelect">Select Examiner:</label>
-                            <select id="examinerSelect" name="examinerSelect" class="input-field" onchange="toggleFields()" required>
-                            </select>
-                        </div>
-
-                        <div class="input-container">
-                            <label for="assignTo">Assign to Exam:</label>
-                            <select id="assignTo" name="assignTo" class="input-field" onchange="toggleFields()" required></select>
-                        </div>
-
-                        <input type="submit" value="Assign" class="assign-add" />
-                    </form>
-
-                </div>
-            </div> -->
 
 
             <footer class="page-footer">

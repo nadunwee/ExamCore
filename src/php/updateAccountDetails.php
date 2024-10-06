@@ -19,6 +19,7 @@
   $password = $_POST['password'];
   $address = $_POST['address'];
   $previus_email = $_POST['previus-email'];
+  $user_type = $_POST['user-type'];
 
   //check for use case where some values are not updated
 
@@ -43,6 +44,10 @@
 
 
     if ($query->execute()) {
+      if ($user_type == "admin") {
+        header('Location: ../components/AdminPages/AdminExaminers/AdminExaminer.php');
+        exit();
+      } 
       header('Location: ../components/ExaminerPages/ExaminerProfile/examinerProfile.php');
       session_destroy();
       exit();
