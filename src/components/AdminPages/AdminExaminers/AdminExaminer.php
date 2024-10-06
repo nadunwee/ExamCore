@@ -41,8 +41,8 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamCore</title>
-    <script src="./adminExaminer.js" defer></script>
-    <link rel="stylesheet" href="http://localhost/Group%20project/ExamCore/src/components/AdminPages/AdminExaminers/adminExaminer.css">
+    <script src="./adminExaminers.js" defer></script>
+    <link rel="stylesheet" href="./adminExaminer.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
@@ -68,7 +68,8 @@ $conn->close();
                         <thead>
                             <tr>
                                 <th>Examiner Name</th>
-                                <th>Assigned Exam</th>
+                                <th>Email</th>
+                                <th>Subject</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -78,15 +79,19 @@ $conn->close();
                                 foreach ($examiners as $examiner) {
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($examiner['name']) . "</td>";
-                                    echo "<td>" . (isset($examiner['assigned_exam']) ? htmlspecialchars($examiner['assigned_exam']) : 'Not Assigned') . "</td>";
+                                    echo "<td>" . htmlspecialchars($examiner['email']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($examiner['subject']) . "</td>";
                                     echo "<td>";
                                     // Form for deletion
                                     echo "<form method='POST' action='../../../php/deleteAccount.php'>";
                                     echo "<input type='hidden' name='type' value='examiner'>";
                                     echo "<input hidden type='text' name='is-admin' value='admin' />";
                                     echo "<input type='hidden' name='email' value='" . htmlspecialchars($examiner['email']) . "'>";
+                                    echo "<input type='hidden' name='id' value='" . htmlspecialchars($examiner['examiner_id']) . "'>";
                                     echo "<button type='submit' class='delete-btn'>Delete</button>";
                                     echo "</form>";
+                                    // Pass examiner data to the edit button function
+                                    echo "<button class='delete-btn edit-btn' onclick='onEditBtnClick(\"" . htmlspecialchars($examiner['name']) . "\", \"" . htmlspecialchars($examiner['subject']) . "\", \"" . htmlspecialchars($examiner['email']) . "\", \"" . htmlspecialchars($examiner['password']) . "\")'>Edit</button>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
@@ -100,10 +105,30 @@ $conn->close();
                     <br>
 
                     <div>
-                        <button class="assign-examiner-btn" id="assignExaminerAdmin">Assign Examiner</button>
                         <button class="add-examiner-btn" id="addExaminerAdmin">Add Examiner</button>
                     </div>
 
+                    <div id="editAdminModal" class="editAdminModel">
+                        <div class="edit-modal-content">
+                            <div class="edit-modal-heading">
+                                <h2>Edit Profile Details</h2>
+                                <span class="close-btn" onclick="onCloseBtnClick()">&times;</span>
+                            </div>
+                            <form action="../../../php/updateAccountDetails.php" method="POST">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" value=<?php echo  $examiner['name'] ?> />
+                                <label for="nic">Subject:</label>
+                                <input type="text" name="subject" value=<?php echo  $examiner['subject'] ?> />
+                                <label for="email">Email:</label>
+                                <input type="email" name="email" value=<?php echo  $examiner['email'] ?> />
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" value=<?php echo  $examiner['password'] ?> />
+                                <input hidden type="text" name="type" value="examiner" />
+                                <input hidden type="text" name="previus-email" value=<?php echo  $examiner['email'] ?> />
+                                <button type="submit">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="modal" id="addExaminerModal">
                         <div class="modal-content">
@@ -146,7 +171,7 @@ $conn->close();
             </div>
 
 
-            <div class="modal" id="assignExaminerModal">
+            <!-- <div class="modal" id="assignExaminerModal">
                 <div class="modal-content">
                     <span class="close" id="assignClose">&times;</span>
                     <h2>Assign an Examiner</h2>
@@ -166,7 +191,7 @@ $conn->close();
                     </form>
 
                 </div>
-            </div>
+            </div> -->
 
 
             <footer class="page-footer">

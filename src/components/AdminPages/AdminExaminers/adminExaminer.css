@@ -188,3 +188,73 @@ th {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.editAdminModel {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.show-modal {
+  display: block;
+}
+
+/* Modal Content */
+.edit-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px 50px 20px 20px;
+  border: 1px solid #888;
+  width: fit-content;
+}
+
+.edit-modal-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.edit-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edit-modal-content form input {
+  border-radius: 5px;
+  font-size: 10px;
+  color: #000;
+  background-color: #f3f3f3;
+  font-weight: 500;
+  padding: 5px 15px 5px 12px;
+  border: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.edit-modal-content form button {
+  font-size: 16px;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  background-color: #761c73;
+  color: whitesmoke;
+  border-radius: 10px;
+  margin-left: auto;
+  border: 2px solid #761c73;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.edit-modal-content form button:hover {
+  background-color: #61155e;
+}
+
+.edit-btn {
+  margin-top: 10px;
+}
