@@ -60,6 +60,10 @@
   transform: scale(1.3);
 }
 
+.student-personal-detail {
+  margin-bottom: 5%;
+}
+
 .student-personal-detail-items {
   display: flex;
   align-items: center;

@@ -175,10 +175,10 @@ $conn->close();
   </div>
 
   <footer style="margin-top: 0%;" class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
-            <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a>
-        </p>
-    </footer>
+    <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
+      <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a>
+    </p>
+  </footer>
 </body>
 
 </html>
