@@ -180,7 +180,7 @@ $conn->close();
 
 
       <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="http://localhost/Group%20project/ExamCore/terms&conditions.html">Terms & Conditions </a>| <a href="http://localhost/Group%20project/ExamCore/privacyPolicy.html">Privacy
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions </a>| <a href="../../../../privacyPolicy.html">Privacy
             Policy</a></p>
       </footer>
     </div>

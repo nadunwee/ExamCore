@@ -20,6 +20,11 @@ $n1 = $rs1->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Admin Notification</title>
     <link rel="stylesheet" href="AdminNotification.css">
     <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
@@ -52,10 +57,10 @@ $n1 = $rs1->num_rows;
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="../AdminHome/adminHome.html">Home</a></li>
+                    <li><a href="../AdminHome/adminHome.php">Home</a></li>
                     <li><a href="../AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
-                    <li><a href="AdminNotifications.php">Notifications</a></li>
+                    <li><a href="#">Notifications</a></li>
                 </ul>
             </aside>
         </div>
@@ -71,7 +76,7 @@ $n1 = $rs1->num_rows;
                 <label for="message">Message:</label>
                 <textarea name="message" rows="10" class="name-input" required></textarea><br>
                 <center>
-                    <input name="create" type="submit" class="btn" value="Add Notification">
+                    <input style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="create" type="submit" class="btn" value="Add Notification">
                 </center>
             </form>
         </div>
@@ -101,9 +106,9 @@ $n1 = $rs1->num_rows;
                                 <textarea class="name-input" name="message"><?php echo $data['message']; ?></textarea>
                             </td>
                             <td>
-                                <button name="update" type="submit" class="btn">Edit</button>
+                                <button style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="update" type="submit" class="btn">Edit</button>
                                 <br><br>
-                                <button name="delete" type="submit" class="btn">Delete</button>
+                                <button style="background-color: #a3239f; color: white; font-family: poppins, sans-serif; border: none; padding: 5px 10px; cursor: pointer; border-radius: 8px;" name="delete" type="submit" class="btn">Delete</button>
                             </td>
                         </form>
                     </tr>
@@ -119,8 +124,8 @@ $n1 = $rs1->num_rows;
             <p>
                 Copyright ©️ 2024 ExamCore.
                 All rights reserved. |
-                <a href="#">Terms & Conditions</a> |
-                <a href="#">Privacy Policy</a>
+                <a href="../../../../terms&conditions.html">Terms & Conditions</a> |
+                <a href="../../../../privacyPolicy.html">Privacy Policy</a>
             </p>
         </footer>
 

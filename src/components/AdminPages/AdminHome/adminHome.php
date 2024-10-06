@@ -95,7 +95,7 @@ $conn->close();
             <aside class="sidebar">
                 <h1>ExamCore</h1>
                 <ul>
-                    <li><a href="adminHome.html">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li><a href="../AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
@@ -127,8 +127,8 @@ $conn->close();
 
                 </div>
                 <footer style="margin-top: 13%;" class="page-footer">
-                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="http://localhost/Group%20project/ExamCore/terms&conditions.html">Terms & Conditions </a>| <a
-                            href="http://localhost/Group%20project/ExamCore/privacyPolicy.html">Privacy Policy</a></p>
+                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions </a>| <a
+                            href="../../../../privacyPolicy.html">Privacy Policy</a></p>
                 </footer>
             </div>
         </div>
