@@ -22,7 +22,28 @@ $n1 = $rs1->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Notification</title>
     <link rel="stylesheet" href="AdminNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
+    <script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var message = document.getElementsByName("message")[0].value;
+        // Name validation
+        if (name.length < 2 || name.length > 20) {
+            alert("Name must be between 2 and 20 characters");
+            return false;
+        }
+        // Message validation
+        if (message.length < 3 || message.length > 500) {
+            alert("Message must be between 3 and 500 characters");
+            return false;
+        }
+        return true; // Submit the form if everything is correct
+    }
+    // JavaScript for delete confirmation
+    function confirmDelete() {
+            return confirm("Are you sure you want to delete this notification?");
+        }
+</script>
 </head>
 
 <body>

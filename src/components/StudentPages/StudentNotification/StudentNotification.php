@@ -73,8 +73,16 @@ $n1 = $rs1->num_rows;
                 ?>
             </table>
 
-        </div>
-
+            </div>
+            <footer class="page-footer">
+            <p>
+                Copyright ©️ 2024 ExamCore.
+                All rights reserved. |
+                <a href="#">Terms & Conditions</a> |
+                <a href="#">Privacy Policy</a>
+            </p>
+        </footer>
+        
     </div>
 </body>
 
