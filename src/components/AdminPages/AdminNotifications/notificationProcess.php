@@ -17,13 +17,13 @@ if (isset($_POST["create"])) {
     } else {
 
         if (strlen($name) < 2 || strlen($name) > 20) {
-            header("location: AdminNotifications.php?status=Invalid Name !");
+            header("location: AdminNotifications.php");
             exit();
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("location: AdminNotifications.php?status=Invalid Email !");
+            header("location: AdminNotifications.php");
             exit();
         } elseif (strlen($message) < 3 || strlen($message) > 500) {
-            header("location: AdminrNotifications.php?status=Invalid Message Length !");
+            header("location: AdminrNotifications.php");
             exit();
         } else {
 

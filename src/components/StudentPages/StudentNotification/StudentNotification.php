@@ -22,7 +22,7 @@ $n1 = $rs1->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Notifications</title>
     <link rel="stylesheet" href="ExaminerNotification.css">
-    <link rel="stylesheet" href="commonNavbarAndFooterStyles.css">
+    <link rel="stylesheet" href="../../../styles/commonNavbarAndFooterStyles.css">
 </head>
 
 <body>
@@ -74,6 +74,14 @@ $n1 = $rs1->num_rows;
             </table>
 
             </div>
+            <footer class="page-footer">
+            <p>
+                Copyright ©️ 2024 ExamCore.
+                All rights reserved. |
+                <a href="#">Terms & Conditions</a> |
+                <a href="#">Privacy Policy</a>
+            </p>
+        </footer>
         
     </div>
 </body>
