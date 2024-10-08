@@ -5,10 +5,9 @@ if (!isset($_SESSION['user-email'])) {
   header('Location: ../../AccessPages/login.php');
   exit();
 }
-// Establish a connection to the database
+//connection to the database
 $conn = new mysqli('localhost', 'root', '', 'exam_core');
 
-// Check if the connection was successful
 if ($conn->connect_error) {
     die('Connection Error: ' . $conn->connect_error);
 }
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the query preparation was successful
     if ($query === false) {
-        die("SQL Error: " . $conn->error);  // Output detailed error if prepare fails
+        die("SQL Error: " . $conn->error);  // Output detailed error 
     }
 
     // Bind the parameters
