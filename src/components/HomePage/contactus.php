@@ -12,6 +12,8 @@
   <title>Contact Us</title>
   <link rel="stylesheet" href="contactUs.css">
 
+    
+
 </head>
 
 <body>
@@ -36,6 +38,7 @@
       </ul>
     </div>
   </div>
+
 
   <header>
     <h1>Contact Us</h1>
@@ -156,7 +159,7 @@
 
 
 
-  <script>
+  <!--<script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function(event) {
@@ -164,7 +167,49 @@
       alert('You have submitted your message successfully!');
       form.submit();
     });
-  </script>
+  </script>-->
+
+  <script>
+    function validateContactForm() {
+        var id = document.querySelector('input[name="ID"]').value;
+        var name = document.querySelector('input[name="name"]').value;
+        var phone = document.querySelector('input[name="phone"]').value;
+
+        // Regular expressions for validation
+        var idRegex = /^[0-9]+$/;
+        var nameRegex = /^[a-zA-Z\s]*$/;
+        var phoneRegex = /^\+\d{2} \d{9}$/;
+
+        // ID validation
+        if (!idRegex.test(id)) {
+            alert("ID can only contain numbers.");
+            return false;
+        }
+
+        // Name validation
+        if (!nameRegex.test(name)) {
+            alert("Name can only contain letters and spaces.");
+            return false;
+        }
+
+        // Phone Number validation
+        if (!phoneRegex.test(phone)) {
+            alert("Phone Number must be in the format '+xx xxxxxxxxx'.");
+            return false;
+        }
+
+        return true;
+    }
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        if (!validateContactForm()) {
+            event.preventDefault();
+        } else {
+            alert('You have submitted your message successfully!');
+        }
+    });
+</script>
+
 
 <script>
   
