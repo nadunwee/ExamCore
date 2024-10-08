@@ -30,7 +30,7 @@ CREATE TABLE `notifications` (
   `email` varchar(100) DEFAULT NULL,
   `message` text,
   PRIMARY KEY (`notificationId`)
-) 
+) ;
 
 CREATE TABLE `admin` (
   `admin_id` varchar(50) NOT NULL,
