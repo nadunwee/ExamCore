@@ -30,3 +30,11 @@ window.onload = function () {
   let display = document.querySelector(".remainingTime_num"); // Find the display element
   startCountdown(thirtyFiveMinutes, display); // Start countdown
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('studentExam-done-button').addEventListener('click', function(){
+    document.getElementById('AnswerRecorded').innerHTML = "Answer Recorded !";
+  });
+    
+
+});

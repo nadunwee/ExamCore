@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = $_POST["email"];
 
     // Prepare the SQL statement
-    $query = $conn->prepare("INSERT INTO paper (Question, answer_1, answer_2, answer_3, answer_4, correst_answer,email) VALUES (?, ?, ?, ?, ?, ?,?)");
+    $query = $conn->prepare("INSERT INTO paper (Question, answer_1, answer_2, answer_3, answer_4, correct_answer,email) VALUES (?, ?, ?, ?, ?, ?,?)");
 
     // Check if the query preparation was successful
     if ($query === false) {

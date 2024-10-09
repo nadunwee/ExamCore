@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $examinerID = $_POST["examinerID"];
         $deadline = $_POST["deadline"];
         $password = $_POST["password"];
-        $examID = $_POST["exam_id"]; // ID of the exam to be updated
+        $examID = $_POST["exam_id"];
 
         // Prepare update query
         $query = $conn->prepare("UPDATE exams SET exam_name = ?, examiner_id = ?, exam_deadline = ?, exam_password = ? WHERE exam_id = ?");

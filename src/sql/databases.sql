@@ -76,3 +76,11 @@ CREATE TABLE `message`(
   `m_message` varchar(255) NOT NULL,
   PRIMARY KEY (`m_ID`)
 );
+
+CREATE TABLE `answertable` (
+  `question_id` int(11) NOT NULL,
+  `correct_answer` varchar(255) NOT NULL,
+  `submitted_answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`question_id`),
+  CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `paper`(`question_id`)
+);
