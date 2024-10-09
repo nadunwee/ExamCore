@@ -21,5 +21,20 @@ if ($countCorrectAnswersQuery->execute()) {
     echo "Error counting correct answers: " . $countCorrectAnswersQuery->error; // Return error
 }
 
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     if (isset($_POST['user-email']) && isset($_POST[$correctCount])) {
+//         $userEmail = $_POST['user-email'];
+//         $answerCount = $_POST[$correctCount];
+
+//         // Insert the data into the answertable
+//         $countSave = $conn->prepare("INSERT INTO exammarks VALUES(?, ? ,?);");
+//         $countSave->bind_param("sii", $userEmail, $examID, $answerCount);
+        
+//         $countSave->close();
+//     } else {
+//         echo "answers are not counted.";
+//     }
+// }
 $conn->close();
 ?>

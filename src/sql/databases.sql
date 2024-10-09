@@ -84,3 +84,10 @@ CREATE TABLE `answertable` (
   PRIMARY KEY (`question_id`),
   CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `paper`(`question_id`)
 );
+
+CREATE TABLE `exammarks` (
+  `email` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `marks` int(11) NOT NULL,
+  PRIMARY KEY(`exam_id`),
+);
