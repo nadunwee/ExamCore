@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="input-container">
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
+            <input type="password" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
             <label style="display: none; color: red;" id="error-msg">*wrong username or password</label>
           </div>
 
