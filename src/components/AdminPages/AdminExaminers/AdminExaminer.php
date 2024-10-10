@@ -73,6 +73,7 @@ $conn->close();
                         <thead>
                             <tr>
                                 <th>Examiner Name</th>
+                                <th>Examiner ID</th>
                                 <th>Email</th>
                                 <th>Subject</th>
                                 <th>Actions</th>
@@ -84,6 +85,7 @@ $conn->close();
                                 foreach ($examiners as $examiner) {
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($examiner['name']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($examiner['examiner_id']) . "</td>";
                                     echo "<td>" . htmlspecialchars($examiner['email']) . "</td>";
                                     echo "<td>" . htmlspecialchars($examiner['subject']) . "</td>";
                                     echo "<td>";
@@ -177,7 +179,7 @@ $conn->close();
             </div>
 
 
-            <footer style="margin-top: 23%;" class="page-footer">
+            <footer style="margin-top: 20%;" class="page-footer">
                 <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
                     <a href="../../../../terms&conditions.html">Terms & Conditions</a> |
                     <a href="../../../../privacyPolicy.html">Privacy Policy</a>

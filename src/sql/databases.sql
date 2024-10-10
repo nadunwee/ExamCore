@@ -30,7 +30,7 @@ CREATE TABLE `notifications` (
   `email` varchar(100) DEFAULT NULL,
   `message` text,
   PRIMARY KEY (`notificationId`)
-) 
+) ;
 
 CREATE TABLE `admin` (
   `admin_id` varchar(50) NOT NULL,
@@ -75,4 +75,19 @@ CREATE TABLE `message`(
   `m_con_num` varchar(15) NOT NULL,
   `m_message` varchar(255) NOT NULL,
   PRIMARY KEY (`m_ID`)
+);
+
+CREATE TABLE `answertable` (
+  `question_id` int(11) NOT NULL,
+  `correct_answer` varchar(255) NOT NULL,
+  `submitted_answer` varchar(255) NOT NULL,
+  PRIMARY KEY (`question_id`),
+  CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `paper`(`question_id`)
+);
+
+CREATE TABLE `exammarks` (
+  `email` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `marks` int(11) NOT NULL,
+  PRIMARY KEY(`exam_id`),
 );

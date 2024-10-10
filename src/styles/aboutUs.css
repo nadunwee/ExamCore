@@ -2,8 +2,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: poppins, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
+
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px;
+}
+
+.main-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.navigation-bar ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.navigation-bar ul a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.navigation-bar ul a:hover {
+  color: #761c73;
+}
+
+.access-btns-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.access-btns-navbar .try-free-login-btn,
+.access-btns-navbar .navbar-login {
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #761c73;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.access-btns-navbar .try-free-login-btn:hover,
+.access-btns-navbar .navbar-login:hover {
+  background-color: #02bab1;
+}
+
+.access-btns-navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+
 .about-us-container {
   display: flex;
   justify-content: space-around;
@@ -11,10 +74,7 @@
   align-items: center;
   gap: 40px;
 }
-.about-us-features img {
-  width: 80px;
-  height: auto;
-}
+
 .about-us-description {
   max-width: 30%;
   margin-left: 50px;
@@ -22,39 +82,30 @@
 
 .about-us-description h1 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 40px;
-  color: #962b93;
   font-size: 50px;
+  color: #962b93;
   margin-bottom: 20px;
 }
 
 .about-us-details {
   font-size: 20px;
-  font-family: poppins, sans-serif;
   margin-bottom: 60px;
 }
 
 .about-us-main-learn-more {
-  font-family: poppins, sans-serif;
-  max-width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.2rem;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
   cursor: pointer;
   margin-top: 30px;
 }
 
 .about-us-features {
   display: grid;
-  font-family: poppins, sans-serif;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 30px; /* Space between items */
-  margin: 20px; /* Optional margin for the grid */
-  margin-right: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 20px;
 }
 
 .about-us-features div {
@@ -68,19 +119,17 @@
 }
 
 .about-us-features div:hover {
-  transform: translateY(-10px) scale(1.05); /* Slight lift and zoom on hover */
-  box-shadow: 0 8px 12px #c57ac2; /* Enhanced shadow on hover */
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 12px #c57ac2;
 }
 
 .feature-heading p {
-  font-family: poppins, sans-serif;
   font-weight: 700;
   font-size: 22px;
   color: #784777;
 }
 
 .feature-description {
-  font-family: poppins, sans-serif;
   font-size: 15px;
   margin-top: 10px;
   color: #666;
@@ -89,9 +138,8 @@
 .feature-learn-more-btn {
   margin-top: 15px;
   border: 2px solid black;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  max-width: fit-content;
   font-size: 1.1rem;
 }

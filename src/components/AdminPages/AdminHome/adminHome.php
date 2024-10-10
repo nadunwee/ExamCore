@@ -99,17 +99,19 @@ $conn->close();
                     <li><a href="../AdminExams/adminExam.php">Exams</a></li>
                     <li><a href="../AdminExaminers/AdminExaminer.php">Examiner</a></li>
                     <li><a href="../AdminNotifications/AdminNotifications.php">Notifications</a></li>
-                    <li><button id="logout-btn" class="delete-account-btn" type="button">Log Out</button></li>
+                    <li><button id="logout-btn" class="delete-account-btn" type="button"
+                            style="margin-top: 150px; padding:10px; width:120px; font-family:poppins">Log Out</button>
+                    </li>
                 </ul>
 
             </aside>
 
             <div class="admin-page-container">
                 <div class="admin-home-content">
-                    <div class="admin-home-header">
+                    <div class="admin-home-header" style="margin-bottom: 0px; padding-bottom:0%;">
                         <h1>Overview</h1>
                     </div>
-                    <div class="admin-home-components">
+                    <div class="admin-home-components" style="margin-bottom: 0px; padding-bottom:0%;">
                         <div class="admin-home-component">
                             <p id="admin-home-p">Total Students</p>
                             <?php echo "<span>" . htmlspecialchars($studentCount) . "</span>" ?>
@@ -123,11 +125,16 @@ $conn->close();
                             <p id="admin-home-p">Number of exams</p>
                             <?php echo "<span>" . htmlspecialchars($examsCount) . "</span>" ?>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-                <footer style="margin-top: 13%;" class="page-footer">
-                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions </a>| <a
+                <div class="adminHomeImage">
+                    <img src="../../../Images/adminHomeImg.jpg" alt="backgroundImg"
+                        style="width:75%; height:400px; margin-left:20%; margin-top:40px;">
+                </div>
+                <footer style="margin-top: 0%;" class="page-footer">
+                    <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a
+                            href="../../../../terms&conditions.html">Terms & Conditions </a>| <a
                             href="../../../../privacyPolicy.html">Privacy Policy</a></p>
                 </footer>
             </div>

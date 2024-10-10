@@ -14,7 +14,7 @@
     $userEmail = $_SESSION['user-email'];
 
     // Prepare the SQL query to update the question by question_ID
-    $query = $conn->prepare("UPDATE paper SET Question = ?, answer_1 = ?, answer_2 = ?, answer_3 = ?, answer_4 = ?, correst_answer = ? WHERE question_ID = ? AND email = ?");
+    $query = $conn->prepare("UPDATE paper SET Question = ?, answer_1 = ?, answer_2 = ?, answer_3 = ?, answer_4 = ?, correct_answer = ? WHERE question_ID = ? AND email = ?");
     
     // Bind the parameters to the SQL query
     $query->bind_param("ssssssis", $ques, $ans1, $ans2, $ans3, $ans4, $c_ans, $ques_ID, $userEmail);

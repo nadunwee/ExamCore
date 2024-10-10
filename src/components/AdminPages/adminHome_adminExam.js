@@ -16,17 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add exam when "Add" button is clicked
     document.getElementById('submit-exam').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent form from submitting the normal way
-        
+        event.preventDefault();
     });
 
     document.querySelectorAll('.admin-exam-delete form').forEach(function (form) {
         form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way
+            event.preventDefault();
 
             const examId = this.querySelector('input[name="exam_id"]').value;
             if (confirm("Are you sure you want to delete this exam?")) {
-                // Send an AJAX request to delete the exam
+
                 deleteExam(examId, this.closest('.admin-exam-information'));
             }
         });
@@ -36,14 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
 function openEditPopup(examId) {
     // Fetch exam details using examId (you may want to do this via AJAX or from the DOM)
     const examInfo = document.querySelector(`.admin-exam-information[data-exam-id='${examId}']`);
-    
+
     if (examInfo) {
         // Populate the edit form with existing exam data
         document.querySelector('#popup-exam-name').value = examInfo.querySelector('.admin-add-exam-name span').textContent;
         document.querySelector('#popup-examiner-id').value = examInfo.querySelector('.admin-assigned-examiner span').textContent;
         document.querySelector('#popup-exam-deadline').value = examInfo.querySelector('.admin-exam-deadline span').textContent;
         document.querySelector('#popup-exam-password').value = examInfo.querySelector('.admin-exam-password span').textContent;
-        
+
         // Set the hidden input for exam ID
         const examIdInput = document.createElement("input");
         examIdInput.type = "hidden";
@@ -66,7 +65,7 @@ function deleteExam(examId, examElement) {
             examElement.remove();
             alert('Exam deleted successfully.');
         } else if (xhr.readyState === 4) {
-            // Handle failure
+
             alert('Failed to delete the exam.');
         }
     };

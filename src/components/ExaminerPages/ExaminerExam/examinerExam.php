@@ -113,7 +113,7 @@ $conn->close();
                 echo '</ul>';
 
                 echo '<input type="hidden" name="question_ID" value="' . $row['question_ID'] . '">';
-                echo '<input type="hidden" name="correct_ans" value="' . $row['correst_answer'] . '">';
+                echo '<input type="hidden" name="correct_ans" value="' . $row['correct_answer'] . '">';
                 echo '<button class="delete-btn" type="submit">Delete</button>';
                 echo '<button class="edit-btn" type="button" onclick="editQuestion(' . htmlspecialchars(json_encode($row)) . ')">Edit</button>';
                 echo '</div>';
