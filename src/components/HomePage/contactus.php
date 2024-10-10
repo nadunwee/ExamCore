@@ -177,7 +177,7 @@
 
         // Regular expressions for validation
         var idRegex = /^[0-9]+$/;
-        var nameRegex = /^[a-zA-Z\s]*$/;
+        var nameRegex = /^[a-zA-Z]+\.\s?[a-zA-Z\s]+$/;
         var phoneRegex = /^\+\d{2} \d{9}$/;
 
         // ID validation
