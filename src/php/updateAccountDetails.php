@@ -8,18 +8,18 @@ if (!isset($_POST['type'])) {
 
 include('./config.php');
 
-  $type = $_POST['type'];
-  $name = $_POST['name'];
-  $nic = $_POST['nic'];
-  $subject = $_POST['subject'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $gender = $_POST['gender'];
-  $dob = $_POST['dob'];
-  $password = $_POST['password'];
-  $address = $_POST['address'];
-  $previus_email = $_POST['previus-email'];
-  $user_type = $_POST['user-type'];
+$type = $_POST['type'];
+$name = $_POST['name'];
+$nic = $_POST['nic'];
+$subject = $_POST['subject'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$gender = $_POST['gender'];
+$dob = $_POST['dob'];
+$password = $_POST['password'];
+$address = $_POST['address'];
+$previus_email = $_POST['previous-email'];
+$user_type = $_POST['user-type'];
 
 //check for use case where some values are not updated
 
@@ -43,16 +43,15 @@ if ($type == 'student') {
   $query->bind_param("sssss", $name, $subject, $email, $password, $previus_email);
 
 
-    if ($query->execute()) {
-      if ($user_type == "admin") {
-        header('Location: ../components/AdminPages/AdminExaminers/AdminExaminer.php');
-        exit();
-      } 
-      header('Location: ../components/ExaminerPages/ExaminerProfile/examinerProfile.php');
-      session_destroy();
+  if ($query->execute()) {
+    if ($user_type == "admin") {
+      header('Location: ../components/AdminPages/AdminExaminers/AdminExaminer.php');
       exit();
-    } else {
-      echo "Error Updating the record - " .$conn->error;
     }
+    header('Location: ../components/ExaminerPages/ExaminerProfile/examinerProfile.php');
+    session_destroy();
+    exit();
+  } else {
+    echo "Error Updating the record - " . $conn->error;
   }
-?>
+}
