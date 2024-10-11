@@ -165,7 +165,7 @@ $conn->close();
                     </div>
                 </div>
 
-                <footer class="page-footer" style="margin-top:17%">
+                <footer class="page-footer" style="margin-top:20%">
                     <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions | <a
                                 href="../../../../privacyPolicy.html">PrivacyPolicy</a></p>
                 </footer>
