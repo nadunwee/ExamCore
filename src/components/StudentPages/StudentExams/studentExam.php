@@ -156,7 +156,7 @@ $conn->close();
         <div id="error-message"></div>
     </div>
 
-    <footer class="page-footer" style="margin-top: 30%;">
+    <footer class="page-footer" style="margin-top: 32%;">
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a></p>
     </footer>
 
