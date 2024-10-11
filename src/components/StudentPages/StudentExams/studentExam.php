@@ -156,11 +156,11 @@ $conn->close();
         <div id="error-message"></div>
     </div>
 
-    <footer class="page-footer">
-        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+    <footer class="page-footer" style="margin-top: 30%;">
+        <p>Copyright ©️ 2024 ExamCore. All rights reserved. | <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a></p>
     </footer>
 
-    <script src="http://localhost/Group%20project/ExamCore/src/components/StudentPages/studentExamPageWithOTP.js"></script>
+    <script src="studentExamPageWithOTP.js"></script>
 </body>
 
 </html>

@@ -79,7 +79,7 @@ $n1 = $rs1->num_rows;
             </table>
 
             </div>
-            <footer style="margin-top: 380px;" class="page-footer">
+            <footer style="margin-top: 30%;" class="page-footer">
             <p>
                 Copyright ©️ 2024 ExamCore.
                 All rights reserved. |

@@ -108,7 +108,7 @@ $conn->close();
         <img style="width: 100%; height: 400px; margin-bottom:0%" src="../../../Images/studentHome_footer_img.jpg" alt="footerImg">
     </div>
 
-    <footer style="margin-top: 0%;" class="page-footer">
+    <footer style="margin-top: 1%;" class="page-footer">
         <p>Copyright ©️ 2024 ExamCore. All rights reserved. |
             <a href="../../../../terms&conditions.html">Terms & Conditions</a> | <a href="../../../../privacyPolicy.html">Privacy Policy</a>
         </p>
