@@ -161,9 +161,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="login-imgs">
       <section>
-        <img src="../../Images/password-forgot.png" alt="Team">
+        <img id="slideshow-image" src="../../Images/password-forgot.png" alt="Team" />
       </section>
     </div>
+
+    <script>
+      const images = [
+        "../../Images/password-forgot.png",
+        "../../Images/log-in.png",
+        "../../Images/login.png"
+      ];
+
+      let currentIndex = 0;
+
+      // Get the image element by ID
+      const imgElement = document.getElementById('slideshow-image');
+
+      // Function to change the image source
+      function changeImage() {
+        currentIndex = (currentIndex + 1) % images.length; // Cycle through images
+        imgElement.src = images[currentIndex]; // Set new image src
+      }
+
+      // Set the interval to change the image every 3 seconds (3000 ms)
+      setInterval(changeImage, 3000);
+    </script>
 
   </div>
 </body>
