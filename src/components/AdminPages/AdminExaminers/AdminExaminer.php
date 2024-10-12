@@ -131,7 +131,7 @@ $conn->close();
                                 <label for="password">Password:</label>
                                 <input type="password" name="password" value=<?php echo  $examiner['password'] ?> />
                                 <input hidden type="text" name="type" value="examiner" />
-                                <input hidden type="text" name="previus-email" value=<?php echo  $examiner['email'] ?> />
+                                <input hidden type="text" name="previous-email" value=<?php echo  $examiner['email'] ?> />
                                 <input hidden type="text" name="user-type" value="admin" />
                                 <button type="submit">Save Changes</button>
                             </form>
