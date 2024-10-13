@@ -41,3 +41,24 @@
   width: 300px;
   margin-left: 80px;
 }
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: red;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px; 
+  color: #888;
+}
