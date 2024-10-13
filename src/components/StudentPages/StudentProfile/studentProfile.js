@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutButton.addEventListener("click", function () {
       const confirmation = confirm("Are you sure you want to log out?");
       if (confirmation) {
-        window.location.href = "../../../../HomePage.html"; // Redirect to home page
+        window.location.href = "../../../../HomePage.html";
       }
     });
   } else {

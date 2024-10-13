@@ -33,19 +33,19 @@ $n1 = $rs1->num_rows;
     function validateForm() {
         var name = document.getElementById("name").value;
         var message = document.getElementsByName("message")[0].value;
-        // Name validation
+        
         if (name.length < 2 || name.length > 20) {
             alert("Name must be between 2 and 20 characters");
             return false;
         }
-        // Message validation
+        
         if (message.length < 3 || message.length > 500) {
             alert("Message must be between 3 and 500 characters");
             return false;
         }
-        return true; // Submit the form if everything is correct
+        return true; 
     }
-    // JavaScript for delete confirmation
+    
     function confirmDelete() {
             return confirm("Are you sure you want to delete this notification?");
         }
@@ -73,7 +73,7 @@ $n1 = $rs1->num_rows;
         <div class="examiner-notification-container">
             <h1 style="margin-bottom: 30px;">Examiner Notifications</h1>
 
-            <!-- Notification Form -->
+            
             <form method="post" class="examiner-notification-form" action="notificationProcess.php" onsubmit="return validateForm()">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="name-input" required><br>
@@ -86,7 +86,7 @@ $n1 = $rs1->num_rows;
             </form>
         </div>
 
-        <!-- Added notifications should be displayed here -->
+        <!-- Added notifications display -->
         <div class="examiner-notification-container">
 
             <table>
