@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.admin-exam-popup-background').style.display = 'none';
     });
 
+    //Cancel button
     document.querySelector('.admin-edit-exam-cancel-button').addEventListener('click', function () {
         document.querySelector('.admin-edit-exam-popup-background').style.display = 'none';
     });
@@ -32,18 +33,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Fetch exam details using examId
 function openEditPopup(examId) {
-    // Fetch exam details using examId (you may want to do this via AJAX or from the DOM)
+    
     const examInfo = document.querySelector(`.admin-exam-information[data-exam-id='${examId}']`);
 
     if (examInfo) {
-        // Populate the edit form with existing exam data
         document.querySelector('#popup-exam-name').value = examInfo.querySelector('.admin-add-exam-name span').textContent;
         document.querySelector('#popup-examiner-id').value = examInfo.querySelector('.admin-assigned-examiner span').textContent;
         document.querySelector('#popup-exam-deadline').value = examInfo.querySelector('.admin-exam-deadline span').textContent;
         document.querySelector('#popup-exam-password').value = examInfo.querySelector('.admin-exam-password span').textContent;
 
-        // Set the hidden input for exam ID
+        // Setted the hidden input for exam ID
         const examIdInput = document.createElement("input");
         examIdInput.type = "hidden";
         examIdInput.name = "exam_id";
@@ -54,6 +55,8 @@ function openEditPopup(examId) {
         document.querySelector('.admin-edit-exam-popup-background').style.display = 'flex';
     }
 }
+
+//Delete Exam
 function deleteExam(examId, examElement) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "adminDeleteExams.php", true);
@@ -61,7 +64,6 @@ function deleteExam(examId, examElement) {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            // Remove the exam element from the DOM if deletion is successful
             examElement.remove();
             alert('Exam deleted successfully.');
         } else if (xhr.readyState === 4) {
@@ -70,6 +72,5 @@ function deleteExam(examId, examElement) {
         }
     };
 
-    // Send the request with the exam_id
     xhr.send("exam_id=" + encodeURIComponent(examId));
 }

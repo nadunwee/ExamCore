@@ -15,10 +15,10 @@ include('../../../php/config.php');
 $countCorrectAnswersQuery = $conn->prepare("SELECT COUNT(*) FROM answertable WHERE correct_answer = submitted_answer");
 if ($countCorrectAnswersQuery->execute()) {
     $result = $countCorrectAnswersQuery->get_result();
-    $correctCount = $result->fetch_row()[0]; // Fetch the count of correct answers
-    echo $correctCount; // Return the count
+    $correctCount = $result->fetch_row()[0]; 
+    echo $correctCount; 
 } else {
-    echo "Error counting correct answers: " . $countCorrectAnswersQuery->error; // Return error
+    echo "Error counting correct answers: " . $countCorrectAnswersQuery->error; 
 }
 
 

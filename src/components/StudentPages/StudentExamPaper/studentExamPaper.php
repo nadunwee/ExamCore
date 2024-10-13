@@ -163,10 +163,8 @@ $conn->close();
 
     <script>
         function getRadioValue(radio, questionId) {
-            // Get the associated answer string using the data-answer attribute
             const selectedAnswer = radio.getAttribute('data-answer');
 
-            // Set the hidden input field value
             document.getElementById(`submitted_answer${questionId}`).value = selectedAnswer;
         }
 
@@ -175,12 +173,12 @@ $conn->close();
             const formData = new FormData(form);
 
             // Create an XMLHttpRequest to send the data to the server
+            // Update the answer recorded message without refreshing
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "", true); // The URL is empty to submit to the same page
+            xhr.open("POST", "", true);
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Update the answer recorded message without refreshing
                     document.getElementById(`AnswerRecorded${questionId}`).innerHTML = "Answer Recorded!";
                 }
             };
@@ -194,12 +192,12 @@ $conn->close();
         // }
         function getCorrectCount() {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "getCorrectAnswerCount.php", true); // Ensure this path is correct
+            xhr.open("POST", "getCorrectAnswerCount.php", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
-                    console.log(xhr.responseText); // Log the response for debugging
+                    console.log(xhr.responseText);
                     if (xhr.status === 200) {
                         document.getElementById("correctCountDisplay").innerText = "Total Correct Answers: " + xhr.responseText;
                     } else {
@@ -208,7 +206,7 @@ $conn->close();
                 }
             };
 
-            xhr.send(); // Send the request
+            xhr.send();
         }
     </script>
 
