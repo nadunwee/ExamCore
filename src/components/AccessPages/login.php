@@ -92,11 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link rel="stylesheet" href="../../styles/register.css" />
   <link rel="stylesheet" href="../../styles/login.css" />
   <script>
-    // Function to display the error message if the URL contains an error flag
+    // display the error message if the URL contains an error flag
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('error') && urlParams.get('error') === 'invalid') {
-        // Display the error message
         document.getElementById('error-msg').style.display = 'block';
       }
     };
@@ -174,7 +173,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       let currentIndex = 0;
 
-      // Get the image element by ID
       const imgElement = document.getElementById('slideshow-image');
 
       // Function to change the image source
@@ -183,7 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         imgElement.src = images[currentIndex]; // Set new image src
       }
 
-      // Set the interval to change the image every 3 seconds (3000 ms)
       setInterval(changeImage, 3000);
     </script>
 
