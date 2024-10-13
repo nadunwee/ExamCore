@@ -15,13 +15,13 @@ const toggleFields = () => {
 
   if (userType === "examiner") {
     nicField.style.display = "none";
-    subjectField.style.display = "block"; // Show Subject field
-    nicField.removeAttribute("required"); // Remove required from NIC
-    subjectField.setAttribute("required", "required"); // Make Subject required
+    subjectField.style.display = "block";
+    nicField.removeAttribute("required");
+    subjectField.setAttribute("required", "required");
     emailReminder.style.display = "block";
   } else {
-    nicField.style.display = "block"; // Show NIC field
-    subjectField.style.display = "none"; // Hide Subject field
+    nicField.style.display = "block";
+    subjectField.style.display = "none";
     nicField.setAttribute("required", "required");
     subjectField.removeAttribute("required");
     emailReminder.style.display = "none";
@@ -29,7 +29,7 @@ const toggleFields = () => {
 };
 
 function validateNIC(nic) {
-  // Regex for NIC: 10 or 12 digits followed optionally by 'V' or 'X'
+  // 10 or 12 digits followed optionally by 'V' or 'X'
   const nicPattern = /^(?:\d{9}[VX]|\d{12})$/;
   return nicPattern.test(nic);
 }
@@ -38,8 +38,8 @@ function validateNICOnChange() {
   const nic = document.getElementById("nic").value;
   if (!validateNIC(nic)) {
     alert("Please enter a valid NIC number.");
-    document.getElementById("nic").value = ""; // Clear the invalid input
-    document.getElementById("nic").focus(); // Focus back to NIC field
+    document.getElementById("nic").value = "";
+    document.getElementById("nic").focus();
   }
 }
 
@@ -48,8 +48,8 @@ function validatePasswordSize() {
   const notificationLabel = document.getElementById("password-notification");
 
   if (password.length < 8) {
-    notificationLabel.style.display = "block"; // Show notification
+    notificationLabel.style.display = "block";
   } else {
-    notificationLabel.style.display = "none"; // Hide notification
+    notificationLabel.style.display = "none";
   }
 }
