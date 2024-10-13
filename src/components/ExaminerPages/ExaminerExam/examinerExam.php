@@ -139,17 +139,16 @@ $conn->close();
           document.getElementById('answer4').value = question.answer_4;
           document.getElementById('correct_ans').value = question.correct_answer;
 
-          // Set the form action to "update_questions.php" for editing
+          // Set  "update_questions.php" for editing
           document.getElementById('question-form').action = './update_questions.php';
 
-          // Set edit_mode to "1" indicating this is an edit operation
+          // Set edit_mode to "1" so it knows whether its upto editing or not
           document.getElementById('edit_mode').value = "1";
 
-          // Alert for edit
           alert('You are editing the selected question.');
         }
 
-        // Alert box for submit
+        // alert box for submit
         const questionForm = document.getElementById('question-form');
         questionForm.addEventListener('submit', function(event) {
           event.preventDefault();
@@ -161,7 +160,7 @@ $conn->close();
           }
         });
 
-        // Attach alert box for delete button
+        // alert box for delete button
         const deleteButtons = document.querySelectorAll('.delete-btn');
 
         deleteButtons.forEach(function(button) {
