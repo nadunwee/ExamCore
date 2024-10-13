@@ -8,7 +8,6 @@ if ($conn->connect_error) {
     die('Connection Error : ' . $conn->connect_error);
 }
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["examName"], $_POST["examinerID"], $_POST["deadline"], $_POST["password"])) {
 
@@ -23,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = $conn->prepare("INSERT INTO exams (exam_name, examiner_id, exam_deadline, exam_password, admin_id) 
         VALUES (?, ?, ?, ?, ?)");
 
-        // Debugging: Check if the query preparation was successful
         if (!$query) {
             die("Error preparing query: " . $conn->error . "<br>");
         }
@@ -31,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query->bind_param("sisss", $examName, $examinerID, $deadline, $password, $adminID);
 
         if ($query->execute()) {
-            // After successful insertion, redirect to the same page to prevent resubmission
             header("Location: adminExam.php");
             exit();
         } else {

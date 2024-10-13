@@ -91,8 +91,8 @@
                           die('Connection Error : ' . $conn->connect_error);
                         }
 
-                        // Query to fetch the exam details
-                        $sql = "SELECT exam_id, exam_name, exam_deadline FROM exams"; // Replace 1 with dynamic examiner ID if needed
+                        // fetch the exam details
+                        $sql = "SELECT exam_id, exam_name, exam_deadline FROM exams"; 
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -149,8 +149,8 @@
   <script>
     let currentImageIndex = 0;
     const images = document.querySelectorAll('.quote-image');
-    //selects all elements in the document that have the same class
-    //return  like an array
+    //selecting all elements in the document that have the same class
+    //its like an array
 
     function showNextImage() {
       // Hide the current image and shows the next one
@@ -161,7 +161,7 @@
       //currentImageIndex = (1 + 1) % 3 = 2
       currentImageIndex = (currentImageIndex + 1) % images.length;
 
-      // Show the next image
+      // this Show the next image
       images[currentImageIndex].style.display = 'block';
     }
 
@@ -169,7 +169,7 @@
     setInterval(showNextImage, 3000);
 
     //setInterval is a built-in JavaScript function that  
-    //repeatedly calls a specified function at a given interval
+    //repeatedly calls a specified function at a given inter. like 3s,4s...
   </script>
 
 </body>

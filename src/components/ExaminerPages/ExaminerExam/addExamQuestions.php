@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the query preparation was successful
     if ($query === false) {
-        die("SQL Error: " . $conn->error);  // Output detailed error 
+        die("SQL Error: " . $conn->error);  
     }
 
     // Bind the parameters
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Execution Error: " . $query->error;
     }
 
-    // Close the query and connection
+    // Close the query 
     $query->close();
 }
 

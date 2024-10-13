@@ -8,7 +8,6 @@ if ($conn->connect_error) {
     die('Connection Error : ' . $conn->connect_error);
 }
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["examName"], $_POST["examinerID"], $_POST["deadline"], $_POST["password"], $_POST["exam_id"])) {
 
@@ -19,12 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
         $examID = $_POST["exam_id"];
 
-        // Prepare update query
         $query = $conn->prepare("UPDATE exams SET exam_name = ?, examiner_id = ?, exam_deadline = ?, exam_password = ? WHERE exam_id = ?");
         $query->bind_param("sissi", $examName, $examinerID, $deadline, $password, $examID);
 
         if ($query->execute()) {
-            // Redirect back to the admin exam page after updating
+            
             header("Location: adminExam.php");
             exit();
         } else {

@@ -1,3 +1,4 @@
+/*some styles from w3 schools*/
 * {
   margin: 0;
   padding: 0;
@@ -8,13 +9,9 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
-
 .container {
   flex: 1;
 }
-
-
 
 .examiner-notification-container {
   margin-top: 30px;
@@ -93,7 +90,7 @@ table {
   width: 100%;
   max-width: 1000px;
   background-color: white;
-  border-collapse: collapse;
+  border-collapse: collapse; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }

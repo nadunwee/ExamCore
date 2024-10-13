@@ -175,10 +175,12 @@
         var name = document.querySelector('input[name="name"]').value;
         var phone = document.querySelector('input[name="phone"]').value;
 
-        // Regular expressions for validation
         var idRegex = /^[0-9]+$/;
+        //+ means one or more digits ^ and $ for only digits
         var nameRegex = /^[a-zA-Z]+\.\s?[a-zA-Z\s]+$/;
+        // \. require a period /s? allows for optional space ..$ no alphabatic charac. after this
         var phoneRegex = /^\+\d{2} \d{9}$/;
+        // ^\+ ensure that start with + ..\d{2} require 2 digits after +..
 
         // ID validation
         if (!idRegex.test(id)) {
