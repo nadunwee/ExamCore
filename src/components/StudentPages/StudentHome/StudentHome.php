@@ -7,7 +7,6 @@ if (!isset($_SESSION['user-email'])) {
     exit();
 }
 
-// Retrieve the session variables
 $userEmail = $_SESSION['user-email'];
 $userPassword = $_SESSION['user-pswd'];
 

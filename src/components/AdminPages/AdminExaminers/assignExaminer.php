@@ -9,14 +9,12 @@ if (!isset($_SESSION['user-email'])) {
 
 include('../../../php/config.php');
 
-// Initialize variables
 $examiner = null;
 
 // Retrieve examiner ID from URL
 if (isset($_GET['id'])) {
     $examiner_id = $_GET['id'];
 
-    // Fetch examiner data from database
     $query = $conn->prepare("SELECT * FROM examiners WHERE examiner_id = ?");
     $query->bind_param('i', $examiner_id);
 

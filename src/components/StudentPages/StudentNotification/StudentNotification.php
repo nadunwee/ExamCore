@@ -12,7 +12,6 @@ if (isset($_GET["status"])) {
 $q1 = "SELECT * FROM `notifications`";
 $rs1 = $conn->query($q1);
 $n1 = $rs1->num_rows;
-// $d1 = $rs1->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +53,6 @@ $n1 = $rs1->num_rows;
             <table>
                 <tr>
                     <th>Student Name</th>
-                    <!-- <th>Examiner Email</th> -->
                     <th>Notification</th>
                 </tr>
                 <?php
@@ -64,9 +62,7 @@ $n1 = $rs1->num_rows;
                     <tr>
                         <form action="notificationProcess.php" method="post">
                             <td><?php echo $data['name']; ?></td>
-                            <!-- <td>
-                                fdl@gmail.com
-                            </td> -->
+                            
                             <td>
                                 <?php echo $data['message']; ?>
                             </td>
