@@ -89,6 +89,7 @@ $conn->close();
                                     <div class="admin-exam-edit" onclick="openEditPopup(<?php echo $row['exam_id']; ?>)">
                                         <img src="../../../Images/editIcon.png" alt="edit">
                                     </div>
+                                    <!-- Delete Exam  -->
                                     <div class="admin-exam-delete">
                                         <form method="POST" action="adminDeleteExams.php" onsubmit="return confirm('Are you sure you want to delete this exam?');">
                                             <input type="hidden" name="exam_id" value="<?php echo $row['exam_id']; ?>">
