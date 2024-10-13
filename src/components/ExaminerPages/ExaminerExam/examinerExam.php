@@ -129,7 +129,7 @@ $conn->close();
       </main>
 
       <script>
-        // JavaScript function to populate the form fields with the selected question for editing
+        // populate the form fields with  question 
         function editQuestion(question) {
           document.getElementById('question_ID').value = question.question_ID;
           document.getElementById('question').value = question.question;
@@ -137,7 +137,7 @@ $conn->close();
           document.getElementById('answer2').value = question.answer_2;
           document.getElementById('answer3').value = question.answer_3;
           document.getElementById('answer4').value = question.answer_4;
-          document.getElementById('correct_ans').value = question.correst_answer;
+          document.getElementById('correct_ans').value = question.correct_answer;
 
           // Set the form action to "update_questions.php" for editing
           document.getElementById('question-form').action = './update_questions.php';

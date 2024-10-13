@@ -15,7 +15,6 @@
 
 .main-logo {
   font-size: 2rem;
-  font-weight: bold;
   color: #000;
 }
 
@@ -27,9 +26,8 @@
 
 .navigation-bar ul a {
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #000;
-  font-weight: bold;
 }
 
 .navigation-bar ul a:hover {
@@ -99,6 +97,11 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 30px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .about-us-features {
