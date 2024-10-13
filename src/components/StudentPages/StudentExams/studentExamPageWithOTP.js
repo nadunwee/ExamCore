@@ -28,9 +28,9 @@ examCheckboxes.forEach(checkbox => {
     checkbox.addEventListener("change", (e) => {
         const examName = e.target.getAttribute("data-exam");
         if (e.target.checked) {
-            openOtpPopup(examName); // Open the popup when an exam is selected
+            openOtpPopup(examName); 
         } else {
-            closeOtpPopup(); // Close the popup when unchecking the checkbox
+            closeOtpPopup(); 
         }
     });
 });
@@ -44,12 +44,11 @@ submitButton.addEventListener("click", () => {
         errorMessage.textContent = "Please enter OTP.";
     } else {
         if (validateOtp(otp)) {
-            window.location.href = "student_exam_page.html"; // Replace with the actual URL of your student exam page
+            window.location.href = "student_exam_page.html";
         } else {
             errorMessage.textContent = "Invalid OTP.";
         }
     }
 });
 
-// Close popup when clicking outside
 otpOverlay.addEventListener("click", closeOtpPopup);

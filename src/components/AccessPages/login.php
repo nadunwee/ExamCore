@@ -89,6 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet" />
   <link rel="stylesheet" href="../../styles/register.css" />
   <link rel="stylesheet" href="../../styles/login.css" />
   <script>
@@ -143,7 +146,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="input-container">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
+            <div class="password-wrapper">
+              <input type="password" id="password" name="password" class="input-field" placeholder="Enter Your Password..." required />
+              <span id="togglePassword" class="eye-icon">
+                <i class='bx bx-low-vision' id="eyeIcon" ></i>
+              </span>
+            </div>
             <label style="display: none; color: red;" id="error-msg">*wrong username or password</label>
           </div>
 
@@ -182,6 +190,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
 
       setInterval(changeImage, 3000);
+
+      const togglePassword = document.querySelector('#togglePassword');
+      const passwordInput = document.querySelector('#password');
+      const eyeIcon = document.querySelector('#eyeIcon');
+
+      togglePassword.addEventListener('click', function() {
+        // Toggle the type attribute
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        // Toggle the eye icon
+        eyeIcon.src = type === 'password' ? '../../Images/eye-icon.png' : '../../Images/eye-slash-icon.png'; // Update this with the correct path for eye open/closed icons
+      });
     </script>
 
   </div>

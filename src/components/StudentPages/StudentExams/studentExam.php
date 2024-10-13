@@ -123,7 +123,6 @@ $conn->close();
                                 echo '<div class="exam-data">' . htmlspecialchars($row['exam_deadline']) . '</div>';
                                 echo '</div>';
 
-                                // Close the form
                                 echo '</form>';
                             }
                         } else {
@@ -134,11 +133,7 @@ $conn->close();
 
                 </div>
             </div>
-            <!-- <div class="student-exams-completed">
-                <h1>Completed Exams</h1>
-                <div>Exam name</div>
-                <div>Due date</div>
-            </div> -->
+        
         </div>
 
 

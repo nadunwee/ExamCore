@@ -1,5 +1,5 @@
 <?php
-include('config.php'); // Database connection
+include('config.php'); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $examiner_id = $_POST['examiner_id'];

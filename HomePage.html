@@ -58,7 +58,7 @@
 
     <script>
         let currentIndex = 0; // Current image index
-        const images = document.querySelectorAll('.hp_image img'); // Select all images
+        const images = document.querySelectorAll('.hp_image img'); // Select all images in the class 
   
         function showNextImage() {
           images[currentIndex].classList.remove('active'); // Remove active class from current image
@@ -67,10 +67,10 @@
           currentIndex = (currentIndex + 1) % images.length; // Move to the next index
   
           images[currentIndex].classList.remove('hidden'); // Show next image
-          images[currentIndex].classList.add('active'); // Add active class to next image
+          images[currentIndex].classList.add('active'); // active class to next image
         }
   
-        setInterval(showNextImage, 3000); // Change image every 3 seconds
+        setInterval(showNextImage, 3000); 
       </script>
       
   </body>
