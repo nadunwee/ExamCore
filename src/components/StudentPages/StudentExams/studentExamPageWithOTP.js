@@ -23,11 +23,6 @@ function closeOtpPopup() {
     otpOverlay.style.display = "none";
 }
 
-// Function to validate OTP
-function validateOtp(otp) {
-    return otp === "123456"; // Replace with actual validation logic
-}
-
 // Event listener to handle checkbox selection for exams
 examCheckboxes.forEach(checkbox => {
     checkbox.addEventListener("change", (e) => {
