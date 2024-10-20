@@ -44,13 +44,6 @@
 
 .password-wrapper {
   position: relative;
-  width: 100%;
-  background-color: red;
-}
-
-.password-wrapper input {
-  width: 100%;
-  padding-right: 40px;
 }
 
 .eye-icon {
@@ -61,4 +54,6 @@
   cursor: pointer;
   font-size: 20px; 
   color: #888;
+  padding-right: 10px;
+  padding-top: 6px;
 }
