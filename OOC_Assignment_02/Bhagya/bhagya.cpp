@@ -78,7 +78,78 @@ public:
     }
 };
 
+<<<<<<< HEAD
+#endif // PAPER_H
+//2. Student.h
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+#include <string>
+#include "Notification.h"
+
+using namespace std;
+
+class Student {
+private:
+    int Student_ID;
+    string Name;
+    int PhoneNo;
+    string Email;
+    vector<Notification*> notifications;  // Aggregation relationship
+
+public:
+    Student(int id, const string& name, int phone, const string& email)
+        : Student_ID(id), Name(name), PhoneNo(phone), Email(email) {}  // Constructor
+
+    void addNotification(Notification* notif) {
+        notifications.push_back(notif);
+    }
+
+    void viewNotification() {
+        // Basic function to view notifications
+    }
+};
+
+#endif // STUDENT_H
+//3. Examiner.h
+
+#ifndef EXAMINER_H
+#define EXAMINER_H
+
+#include <string>
+#include "Exam.h"
+
+using namespace std;
+
+class Examiner {
+private:
+    int Examiner_ID;
+    string Name;
+    Exam* exam;  // Composition relationship with Exam
+
+public:
+    Examiner(int id, const string& name, Exam* e)
+        : Examiner_ID(id), Name(name), exam(e) {}  // Constructor
+
+    void createQuestions() {
+        // Function to create questions
+    }
+};
+
+#endif // EXAMINER_H
+//4. Exam.h
+
+#ifndef EXAM_H
+#define EXAM_H
+
+#include <string>
+
+using namespace std;
+
+=======
 // ============================ Exam Class (Composition with Paper) ============================
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 class Exam {
 private:
     int examID;
@@ -97,6 +168,13 @@ public:
     }
 };
 
+<<<<<<< HEAD
+#endif // EXAM_H
+//5. Notification.h
+
+#ifndef NOTIFICATION_H
+#define NOTIFICATION_H
+=======
 // ============================ Student Class (Aggregation with Paper) ============================
 class Student {
 private:
@@ -105,6 +183,7 @@ private:
     string phone;
     string email;
     Paper* paper;  // Aggregation: Student has a pointer to Paper (paper can exist independently)
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 
 public:
     // Constructor (Aggregation)
@@ -153,7 +232,22 @@ public:
     }
 };
 
+<<<<<<< HEAD
+#endif // NOTIFICATION_H
+//Main Program Example (main.cpp)
+
+#include <iostream>
+#include "Student.h"
+#include "Examiner.h"
+#include "Paper.h"
+#include "Exam.h"
+#include "Notification.h"
+
+using namespace std;
+
+=======
 // ============================ Main Function ============================
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 int main() {
     // Composition Example: Exam contains a Paper object
     Paper paper1(101);
