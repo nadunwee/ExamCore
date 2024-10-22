@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
-#include './Student/Student.h' // fix file name
-#include './examPaper/paper.h'  // fix name
+#include "Student.h" //fix file name
+#include './paper/examPaper/examPaper/paper.h'  // fix name
 using namespace std;
 #define size 2
 

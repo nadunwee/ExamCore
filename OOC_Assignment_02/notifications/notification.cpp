@@ -1,6 +1,6 @@
 #include <iostream>
-#include "notification.h"
 using namespace std;
+#include "notification.h"
 
 void Notification::displayNotification() {
     cout<<"Notification ID: "<< Notification_ID<<endl;
