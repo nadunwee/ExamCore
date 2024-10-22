@@ -1,20 +1,21 @@
-Student.h********************
+//Student.h********************
 
 #ifndef STUDENT_H
 #define STUDENT_H
 
 #include <string>
+using namespace std;
 
 class Student {
 private:
     int studentID;
-    std::string name;
+    string name;
     int phone;
-    std::string email;
+    string email;
 
 public:
     // Constructor
-    Student(int id, const std::string& name, int phone, const std::string& email);
+    Student(int id, const string& name, int phone, const string& email);
 
     // Member functions
     void attemptExam();
@@ -27,7 +28,7 @@ public:
 
 #endif
 
-Exam.h**********************
+//Exam.h**********************
 
 #ifndef EXAM_H
 #define EXAM_H
@@ -37,11 +38,11 @@ Exam.h**********************
 class Exam {
 private:
     int examID;
-    std::string subject;
+    string subject;
 
 public:
     // Constructor
-    Exam(int id, const std::string& subject);
+    Exam(int id, const string& subject);
 
     // Member functions
     void displayExam();
@@ -49,7 +50,7 @@ public:
 
 #endif
 
-Paper.h***************************
+//Paper.h***************************
 
 #ifndef PAPER_H
 #define PAPER_H
@@ -69,7 +70,7 @@ public:
 
 #endif
 
-Examiner.h************************
+//Examiner.h************************
 
 #ifndef EXAMINER_H
 #define EXAMINER_H
@@ -79,18 +80,18 @@ Examiner.h************************
 class Examiner {
 private:
     int examinerID;
-    std::string name;
-    std::string question;
-    std::string answer1;
-    std::string answer2;
-    std::string answer3;
-    std::string correctAnswer;
+    string name;
+    string question;
+    string answer1;
+    string answer2;
+    string answer3;
+    string correctAnswer;
 
 public:
     // Constructor
-    Examiner(int id, const std::string& name, const std::string& question,
-             const std::string& answer1, const std::string& answer2,
-             const std::string& answer3, const std::string& correctAnswer);
+    Examiner(int id, const string& name, const string& question,
+             const string& answer1, const string& answer2,
+             const string& answer3, const string& correctAnswer);
 
     // Member functions
     void addQuestion();
@@ -101,7 +102,7 @@ public:
 
 #endif
 
-Notification.h******************************
+//Notification.h******************************
 
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
@@ -123,7 +124,7 @@ public:
 
 #endif
 
-Profile.h***************************
+//Profile.h***************************
 
 #ifndef PROFILE_H
 #define PROFILE_H
@@ -150,7 +151,7 @@ public:
 
 #endif
 
-Admin.h***********************
+//Admin.h***********************
 
 #ifndef ADMIN_H
 #define ADMIN_H
@@ -176,7 +177,7 @@ public:
 
 #endif
 
-UnregisteredUser.h********************
+//UnregisteredUser.h********************
 
 #ifndef UNREGISTERED_USER_H
 #define UNREGISTERED_USER_H
@@ -191,7 +192,7 @@ public:
 
 #endif
 
-RegisteredUser.h***********************
+//RegisteredUser.h***********************
 
 #ifndef REGISTERED_USER_H
 #define REGISTERED_USER_H
@@ -216,7 +217,7 @@ public:
 
 #endif
 
-Messages.h***********************
+//Messages.h***********************
 
 #ifndef MESSAGES_H
 #define MESSAGES_H
@@ -229,7 +230,7 @@ public:
 
 #endif
 
-Package.h*************************
+//Package.h*************************
 
 #ifndef PACKAGE_H
 #define PACKAGE_H
