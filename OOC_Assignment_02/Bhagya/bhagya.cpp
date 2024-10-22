@@ -18,14 +18,12 @@ public:
 };
 
 #endif // PAPER_H
-2. Student.h
-cpp
-Copy code
+//2. Student.h
+
 #ifndef STUDENT_H
 #define STUDENT_H
 
 #include <string>
-#include <vector>
 #include "Notification.h"
 
 using namespace std;
@@ -52,9 +50,8 @@ public:
 };
 
 #endif // STUDENT_H
-3. Examiner.h
-cpp
-Copy code
+//3. Examiner.h
+
 #ifndef EXAMINER_H
 #define EXAMINER_H
 
@@ -79,9 +76,8 @@ public:
 };
 
 #endif // EXAMINER_H
-4. Exam.h
-cpp
-Copy code
+//4. Exam.h
+
 #ifndef EXAM_H
 #define EXAM_H
 
@@ -104,9 +100,8 @@ public:
 };
 
 #endif // EXAM_H
-5. Notification.h
-cpp
-Copy code
+//5. Notification.h
+
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
@@ -128,9 +123,8 @@ public:
 };
 
 #endif // NOTIFICATION_H
-Main Program Example (main.cpp)
-cpp
-Copy code
+//Main Program Example (main.cpp)
+
 #include <iostream>
 #include "Student.h"
 #include "Examiner.h"
