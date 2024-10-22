@@ -1,20 +1,19 @@
-Student.h********************
+//Student.h
 
-#ifndef STUDENT_H
-#define STUDENT_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Student {
 private:
     int studentID;
-    std::string name;
+    string name;
     int phone;
-    std::string email;
+    string email;
 
 public:
     // Constructor
-    Student(int id, const std::string& name, int phone, const std::string& email);
+    Student(int id, const string& name, int phone, const string& email);
 
     // Member functions
     void attemptExam();
@@ -25,34 +24,28 @@ public:
     void displayNotification();
 };
 
-#endif
+//Exam.h
 
-Exam.h**********************
-
-#ifndef EXAM_H
-#define EXAM_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Exam {
 private:
     int examID;
-    std::string subject;
+    string subject;
 
 public:
     // Constructor
-    Exam(int id, const std::string& subject);
+    Exam(int id, const string& subject);
 
     // Member functions
     void displayExam();
 };
 
-#endif
+//Paper.h
 
-Paper.h***************************
-
-#ifndef PAPER_H
-#define PAPER_H
+#pragma once
 
 class Paper {
 private:
@@ -67,30 +60,27 @@ public:
     void displayPaper();
 };
 
-#endif
+//Examiner.h
 
-Examiner.h************************
-
-#ifndef EXAMINER_H
-#define EXAMINER_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Examiner {
 private:
     int examinerID;
-    std::string name;
-    std::string question;
-    std::string answer1;
-    std::string answer2;
-    std::string answer3;
-    std::string correctAnswer;
+    string name;
+    string question;
+    string answer1;
+    string answer2;
+    string answer3;
+    string correctAnswer;
 
 public:
     // Constructor
-    Examiner(int id, const std::string& name, const std::string& question,
-             const std::string& answer1, const std::string& answer2,
-             const std::string& answer3, const std::string& correctAnswer);
+    Examiner(int id, const string& name, const string& question,
+             const string& answer1, const string& answer2,
+             const string& answer3, const string& correctAnswer);
 
     // Member functions
     void addQuestion();
@@ -99,72 +89,63 @@ public:
     void sendNotification();
 };
 
-#endif
+//Notification.h
 
-Notification.h******************************
-
-#ifndef NOTIFICATION_H
-#define NOTIFICATION_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Notification {
 private:
     int notificationID;
-    std::string message;
+    string message;
 
 public:
     // Constructor
-    Notification(int id, const std::string& message);
+    Notification(int id, const string& message);
 
     // Member function
     void displayNotification();
 };
 
-#endif
+//Profile.h
 
-Profile.h***************************
-
-#ifndef PROFILE_H
-#define PROFILE_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Profile {
 private:
-    std::string name;
-    std::string address;
+    string name;
+    string address;
     int phone;
-    std::string email;
-    std::string password;
+    string email;
+    string password;
 
 public:
     // Constructor
-    Profile(const std::string& name, const std::string& address, int phone,
-            const std::string& email, const std::string& password);
+    Profile(const string& name, const string& address, int phone,
+            const string& email, const string& password);
 
     // Member functions
     void createAccount();
     void deleteAccount();
 };
 
-#endif
+//Admin.h
 
-Admin.h***********************
-
-#ifndef ADMIN_H
-#define ADMIN_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Admin {
 private:
     int adminID;
-    std::string password;
+    string password;
 
 public:
     // Constructor
-    Admin(int id, const std::string& password);
+    Admin(int id, const string& password);
 
     // Member functions
     void addExam();
@@ -174,12 +155,9 @@ public:
     void addNotification();
 };
 
-#endif
+//UnregisteredUser.h
 
-UnregisteredUser.h********************
-
-#ifndef UNREGISTERED_USER_H
-#define UNREGISTERED_USER_H
+#pragma once
 
 class UnregisteredUser {
 public:
@@ -189,24 +167,21 @@ public:
     void registerUser();
 };
 
-#endif
+//RegisteredUser.h
 
-RegisteredUser.h***********************
-
-#ifndef REGISTERED_USER_H
-#define REGISTERED_USER_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class RegisteredUser {
 private:
-    std::string name;
-    std::string phone;
-    std::string email;
+    string name;
+    string phone;
+    string email;
 
 public:
     // Constructor
-    RegisteredUser(const std::string& name, const std::string& phone, const std::string& email);
+    RegisteredUser(const string& name, const string& phone, const string& email);
 
     // Member functions
     void login();
@@ -214,12 +189,9 @@ public:
     void deleteAccount();
 };
 
-#endif
+//Messages.h
 
-Messages.h***********************
-
-#ifndef MESSAGES_H
-#define MESSAGES_H
+#pragma once
 
 class Messages {
 public:
@@ -227,12 +199,9 @@ public:
     void storeMessages();
 };
 
-#endif
+//Package.h
 
-Package.h*************************
-
-#ifndef PACKAGE_H
-#define PACKAGE_H
+#pragma once
 
 class Package {
 public:
@@ -240,5 +209,3 @@ public:
     void selectPackage();
     void stopPackage();
 };
-
-#endif
