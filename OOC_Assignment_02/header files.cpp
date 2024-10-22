@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-//Student.h
-=======
 //Student.h********************
 
 #ifndef STUDENT_H
 #define STUDENT_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
