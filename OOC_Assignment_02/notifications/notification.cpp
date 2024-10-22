@@ -1,5 +1,8 @@
 #include <iostream>
+#include "notification.h"
 using namespace std;
-int main(){
-    cout << "hiiiiii";
-}
+
+void Notification::displayNotification() {
+    cout<<"Notification ID: "<< Notification_ID<<endl;
+    cout<<"Notification : "<< Message <<endl;
+};
