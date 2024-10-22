@@ -3,10 +3,9 @@
 
 using namespace std;
 
-// Constants
-const int MAX_QUESTIONS = 10; // Maximum number of questions an Examiner can add
+const int MAX_QUESTIONS = 10;
 
-// ============================ RegisteredUser Class ============================
+//RegisteredUser Class
 class RegisteredUser {
 protected:
     string name;
@@ -14,7 +13,6 @@ protected:
     string email;
 
 public:
-    // Constructor
     RegisteredUser(const string& name, const string& phone, const string& email)
         : name(name), phone(phone), email(email) {}
 
@@ -30,21 +28,19 @@ public:
         cout << name << "'s account deleted." << endl;
     }
 
-    // Getter for name
     string getName() const {
         return name;
     }
 };
 
-// ============================ Examiner Class (Inheritance: RegisteredUser) ============================
+//Examiner Class (Inheritance: RegisteredUser)
 class Examiner : public RegisteredUser {
 private:
     int examinerID;
-    string questions[MAX_QUESTIONS]; // Fixed-size array for questions
-    int questionCount; // To keep track of the number of questions
+    string questions[MAX_QUESTIONS];
+    int questionCount;
 
 public:
-    // Constructor
     Examiner(int id, const string& name, const string& phone, const string& email)
         : RegisteredUser(name, phone, email), examinerID(id), questionCount(0) {}
 
@@ -69,19 +65,17 @@ public:
         cout << "Notification sent to students." << endl;
     }
 
-    // Getter for name
     string getName() const {
         return name;
     }
 };
 
-// ============================ Paper Class ============================
+//Paper Class
 class Paper {
 private:
     int paperID;
 
 public:
-    // Constructor
     Paper(int id) : paperID(id) {}
 
     void setPaperDetails() {
@@ -93,15 +87,14 @@ public:
     }
 };
 
-// ============================ Exam Class (Composition with Paper) ============================
+//Exam Class
 class Exam {
 private:
     int examID;
     string subject;
-    Paper paper;  // Composition: Exam contains a Paper object
+    Paper paper;
 
 public:
-    // Constructor (Composition)
     Exam(int id, const string& subject, const Paper& paperObj)
         : examID(id), subject(subject), paper(paperObj) {}
 
@@ -111,14 +104,13 @@ public:
     }
 };
 
-// ============================ Student Class (Aggregation with Paper) ============================
+//Student Class (Aggregation with Paper)
 class Student : public RegisteredUser {
 private:
     int studentID;
-    Paper* paper;  // Aggregation: Student has a pointer to Paper
+    Paper* paper;
 
 public:
-    // Constructor (Aggregation)
     Student(int id, const string& name, const string& phone, const string& email, Paper* paperObj = nullptr)
         : RegisteredUser(name, phone, email), studentID(id), paper(paperObj) {}
 
@@ -133,14 +125,13 @@ public:
     }
 };
 
-// ============================ Notification Class (Association with Student) ============================
+//Notification Class (Association with Student)
 class Notification {
 private:
     int notificationID;
     string message;
 
 public:
-    // Constructor
     Notification(int id, const string& message) : notificationID(id), message(message) {}
 
     void displayNotification() const {
@@ -148,22 +139,20 @@ public:
     }
 };
 
-// ============================ Profile Class (Composition with RegisteredUser) ============================
+//Profile Class
 class Profile {
 private:
-    RegisteredUser& user; // Composition: Profile is associated with a RegisteredUser
+    RegisteredUser& user;
     string address;
     int phone;
     string email;
     string password;
 
 public:
-    // Constructor
     Profile(RegisteredUser& user, const string& address, int phone, const string& email, const string& password)
         : user(user), address(address), phone(phone), email(email), password(password) {}
 
     void createAccount() {
-        // Use the getter to access 'name'
         cout << "Account created for " << user.getName() << endl;
     }
 
@@ -172,28 +161,25 @@ public:
     }
 };
 
-// ============================ Admin Class ============================
+//Admin Class
 class Admin : public RegisteredUser {
 private:
     int adminID;
 
 public:
-    // Constructor
     Admin(int id, const string& name, const string& phone, const string& email)
         : RegisteredUser(name, phone, email), adminID(id) {}
 
     void addExam() {
-        // Use the getter to access 'name'
         cout << "Exam added by admin " << getName() << endl;
     }
 
     void assignExaminer(Examiner& examiner) {
-        // Use the getter to access 'name'
         cout << "Examiner " << examiner.getName() << " assigned." << endl;
     }
 };
 
-// ============================ UnregisteredUser Class ============================
+//UnregisteredUser Class
 class UnregisteredUser {
 public:
     void registerUser() {
@@ -205,7 +191,7 @@ public:
     }
 };
 
-// ============================ Messages Class ============================
+//Messages Class
 class Messages {
 public:
     void storeMessages() {
@@ -213,7 +199,7 @@ public:
     }
 };
 
-// ============================ Package Class ============================
+//Package Class
 class Package {
 public:
     void selectPackage() {
@@ -225,37 +211,29 @@ public:
     }
 };
 
-// ============================ Main Function ============================
+//Main Function
 int main() {
-    // Create a Paper
     Paper paper1(101);
 
-    // Create an Exam that contains the Paper
     Exam exam1(1, "Math", paper1);
 
-    // Create an Examiner
     Examiner examiner1(1, "Dr. Smith", "1234567890", "smith@example.com");
     examiner1.addQuestion("What is 2+2?");
     examiner1.addQuestion("What is the capital of France?");
     examiner1.displayQuestions();
 
-    // Create a Student and associate with Paper
     Student student1(1, "John Doe", "0987654321", "john@example.com", &paper1);
     student1.attemptExam();
 
-    // Create a Notification
     Notification notification1(1, "Your exam is due tomorrow");
     notification1.displayNotification();
 
-    // Create an Admin
     Admin admin1(1, "Admin", "1112223333", "admin@example.com");
     admin1.addExam();
 
-    // Create a Profile for the Student
     Profile studentProfile(student1, "123 Main St", 1234567890, "john@example.com", "password123");
     studentProfile.createAccount();
 
-    // Unregistered user actions
     UnregisteredUser unregUser;
     unregUser.registerUser();
 
