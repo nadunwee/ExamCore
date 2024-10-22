@@ -1,100 +1,139 @@
-//Student.h
-
-#pragma once
+#include <iostream>
 #include <string>
+
 using namespace std;
 
-class Student {
-private:
-    int studentID;
+// Constants
+const int MAX_QUESTIONS = 10; // Maximum number of questions an Examiner can add
+
+// ============================ RegisteredUser Class ============================
+class RegisteredUser {
+protected:
     string name;
-    int phone;
+    string phone;
     string email;
 
 public:
     // Constructor
-    Student(int id, const string& name, int phone, const string& email);
+    RegisteredUser(const string& name, const string& phone, const string& email)
+        : name(name), phone(phone), email(email) {}
 
-    // Member functions
-    void attemptExam();
-    void viewQuestions();
-    void sendPaper();
-    void submitPaper();
-    void viewSupport();
-    void displayNotification();
+    virtual void login() {
+        cout << name << " logged in." << endl;
+    }
+
+    virtual void logout() {
+        cout << name << " logged out." << endl;
+    }
+
+    void deleteAccount() {
+        cout << name << "'s account deleted." << endl;
+    }
+
+    // Getter for name
+    string getName() const {
+        return name;
+    }
 };
 
-//Exam.h
-
-#pragma once
-#include <string>
-using namespace std;
-
-class Exam {
+// ============================ Examiner Class (Inheritance: RegisteredUser) ============================
+class Examiner : public RegisteredUser {
 private:
-    int examID;
-    string subject;
+    int examinerID;
+    string questions[MAX_QUESTIONS]; // Fixed-size array for questions
+    int questionCount; // To keep track of the number of questions
 
 public:
     // Constructor
-    Exam(int id, const string& subject);
+    Examiner(int id, const string& name, const string& phone, const string& email)
+        : RegisteredUser(name, phone, email), examinerID(id), questionCount(0) {}
 
-    // Member functions
-    void displayExam();
+    void addQuestion(const string& question) {
+        if (questionCount < MAX_QUESTIONS) {
+            questions[questionCount] = question;
+            questionCount++;
+            cout << "Question added: " << question << endl;
+        } else {
+            cout << "Cannot add more questions, maximum limit reached." << endl;
+        }
+    }
+
+    void displayQuestions() const {
+        cout << "Questions by " << name << ":" << endl;
+        for (int i = 0; i < questionCount; i++) {
+            cout << "- " << questions[i] << endl;
+        }
+    }
+
+    void sendNotification() {
+        cout << "Notification sent to students." << endl;
+    }
+
+    // Getter for name
+    string getName() const {
+        return name;
+    }
 };
 
-//Paper.h
-
-#pragma once
-
+// ============================ Paper Class ============================
 class Paper {
 private:
     int paperID;
 
 public:
     // Constructor
-    Paper(int id);
+    Paper(int id) : paperID(id) {}
 
-    // Member functions
-    void setPaperDetails();
-    void displayPaper();
+    void setPaperDetails() {
+        cout << "Details set for paper ID: " << paperID << endl;
+    }
+
+    void displayPaper() const {
+        cout << "Displaying paper ID: " << paperID << endl;
+    }
 };
 
-//Examiner.h
-
-#pragma once
-#include <string>
-using namespace std;
-
-class Examiner {
+// ============================ Exam Class (Composition with Paper) ============================
+class Exam {
 private:
-    int examinerID;
-    string name;
-    string question;
-    string answer1;
-    string answer2;
-    string answer3;
-    string correctAnswer;
+    int examID;
+    string subject;
+    Paper paper;  // Composition: Exam contains a Paper object
 
 public:
-    // Constructor
-    Examiner(int id, const string& name, const string& question,
-             const string& answer1, const string& answer2,
-             const string& answer3, const string& correctAnswer);
+    // Constructor (Composition)
+    Exam(int id, const string& subject, const Paper& paperObj)
+        : examID(id), subject(subject), paper(paperObj) {}
 
-    // Member functions
-    void addQuestion();
-    void editQuestion();
-    void deleteQuestion();
-    void sendNotification();
+    void displayExam() const {
+        cout << "Exam ID: " << examID << ", Subject: " << subject << endl;
+        paper.displayPaper();
+    }
 };
 
-//Notification.h
+// ============================ Student Class (Aggregation with Paper) ============================
+class Student : public RegisteredUser {
+private:
+    int studentID;
+    Paper* paper;  // Aggregation: Student has a pointer to Paper
 
-#pragma once
-#include <string>
-using namespace std;
+public:
+    // Constructor (Aggregation)
+    Student(int id, const string& name, const string& phone, const string& email, Paper* paperObj = nullptr)
+        : RegisteredUser(name, phone, email), studentID(id), paper(paperObj) {}
 
+    void attemptExam() const {
+        if (paper) {
+            cout << name << " is attempting the exam." << endl;
+            paper->displayPaper();
+        }
+        else {
+            cout << "No paper assigned." << endl;
+        }
+    }
+};
+
+// ============================ Notification Class (Association with Student) ============================
 class Notification {
 private:
     int notificationID;
@@ -102,21 +141,17 @@ private:
 
 public:
     // Constructor
-    Notification(int id, const string& message);
+    Notification(int id, const string& message) : notificationID(id), message(message) {}
 
-    // Member function
-    void displayNotification();
+    void displayNotification() const {
+        cout << "Notification: " << message << endl;
+    }
 };
 
-//Profile.h
-
-#pragma once
-#include <string>
-using namespace std;
-
+// ============================ Profile Class (Composition with RegisteredUser) ============================
 class Profile {
 private:
-    string name;
+    RegisteredUser& user; // Composition: Profile is associated with a RegisteredUser
     string address;
     int phone;
     string email;
@@ -124,88 +159,105 @@ private:
 
 public:
     // Constructor
-    Profile(const string& name, const string& address, int phone,
-            const string& email, const string& password);
+    Profile(RegisteredUser& user, const string& address, int phone, const string& email, const string& password)
+        : user(user), address(address), phone(phone), email(email), password(password) {}
 
-    // Member functions
-    void createAccount();
-    void deleteAccount();
+    void createAccount() {
+        // Use the getter to access 'name'
+        cout << "Account created for " << user.getName() << endl;
+    }
+
+    void deleteAccount() {
+        user.deleteAccount();
+    }
 };
 
-//Admin.h
-
-#pragma once
-#include <string>
-using namespace std;
-
-class Admin {
+// ============================ Admin Class ============================
+class Admin : public RegisteredUser {
 private:
     int adminID;
-    string password;
 
 public:
     // Constructor
-    Admin(int id, const string& password);
+    Admin(int id, const string& name, const string& phone, const string& email)
+        : RegisteredUser(name, phone, email), adminID(id) {}
 
-    // Member functions
-    void addExam();
-    void editExam();
-    void deleteExam();
-    void assignExaminer();
-    void addNotification();
+    void addExam() {
+        // Use the getter to access 'name'
+        cout << "Exam added by admin " << getName() << endl;
+    }
+
+    void assignExaminer(Examiner& examiner) {
+        // Use the getter to access 'name'
+        cout << "Examiner " << examiner.getName() << " assigned." << endl;
+    }
 };
 
-//UnregisteredUser.h
-
-#pragma once
-
+// ============================ UnregisteredUser Class ============================
 class UnregisteredUser {
 public:
-    // Member functions
-    void viewSupport();
-    void viewPackage();
-    void registerUser();
+    void registerUser() {
+        cout << "User registered." << endl;
+    }
+
+    void viewPackage() {
+        cout << "Viewing package." << endl;
+    }
 };
 
-//RegisteredUser.h
-
-#pragma once
-#include <string>
-using namespace std;
-
-class RegisteredUser {
-private:
-    string name;
-    string phone;
-    string email;
-
-public:
-    // Constructor
-    RegisteredUser(const string& name, const string& phone, const string& email);
-
-    // Member functions
-    void login();
-    void logout();
-    void deleteAccount();
-};
-
-//Messages.h
-
-#pragma once
-
+// ============================ Messages Class ============================
 class Messages {
 public:
-    // Member function
-    void storeMessages();
+    void storeMessages() {
+        cout << "Messages stored." << endl;
+    }
 };
 
-//Package.h
-
-#pragma once
-
+// ============================ Package Class ============================
 class Package {
 public:
-    // Member functions
-    void selectPackage();
-    void stopPackage();
+    void selectPackage() {
+        cout << "Package selected." << endl;
+    }
+
+    void stopPackage() {
+        cout << "Package stopped." << endl;
+    }
 };
+
+// ============================ Main Function ============================
+int main() {
+    // Create a Paper
+    Paper paper1(101);
+
+    // Create an Exam that contains the Paper
+    Exam exam1(1, "Math", paper1);
+
+    // Create an Examiner
+    Examiner examiner1(1, "Dr. Smith", "1234567890", "smith@example.com");
+    examiner1.addQuestion("What is 2+2?");
+    examiner1.addQuestion("What is the capital of France?");
+    examiner1.displayQuestions();
+
+    // Create a Student and associate with Paper
+    Student student1(1, "John Doe", "0987654321", "john@example.com", &paper1);
+    student1.attemptExam();
+
+    // Create a Notification
+    Notification notification1(1, "Your exam is due tomorrow");
+    notification1.displayNotification();
+
+    // Create an Admin
+    Admin admin1(1, "Admin", "1112223333", "admin@example.com");
+    admin1.addExam();
+
+    // Create a Profile for the Student
+    Profile studentProfile(student1, "123 Main St", 1234567890, "john@example.com", "password123");
+    studentProfile.createAccount();
+
+    // Unregistered user actions
+    UnregisteredUser unregUser;
+    unregUser.registerUser();
+
+    return 0;
+}
