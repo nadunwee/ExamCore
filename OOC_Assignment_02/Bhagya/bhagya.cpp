@@ -1,22 +1,84 @@
-Paper.h
-#ifndef PAPER_H
-#define PAPER_H
+#include <iostream>
+#include <string>
 
-class Exam;  // Forward declaration
+using namespace std;
 
-class Paper {
-private:
-    int Paper_ID;
-    Exam* exam;  // Composition relationship with Exam
+// ============================ RegisteredUser Class ============================
+class RegisteredUser {
+protected:
+    string name;
+    string phone;
+    string email;
 
 public:
-    Paper(int id, Exam* e) : Paper_ID(id), exam(e) {}  // Constructor
+    // Constructor
+    RegisteredUser(const string& name, const string& phone, const string& email)
+        : name(name), phone(phone), email(email) {}
 
-    void displayPaper() {
-        // Basic function to display paper details
+    // Member functions
+    void login() {
+        cout << name << " logged in successfully." << endl;
+    }
+    void logout() {
+        cout << name << " logged out." << endl;
+    }
+    void deleteAccount() {
+        cout << name << "'s account deleted." << endl;
     }
 };
 
+// ============================ Examiner Class (Inheritance: RegisteredUser) ============================
+class Examiner : public RegisteredUser {
+private:
+    int examinerID;
+    string question;
+    string answer1;
+    string answer2;
+    string answer3;
+    string correctAnswer;
+
+public:
+    // Constructor
+    Examiner(int id, const string& name, const string& phone, const string& email,
+             const string& question, const string& answer1, const string& answer2,
+             const string& answer3, const string& correctAnswer)
+        : RegisteredUser(name, phone, email), examinerID(id), question(question), 
+          answer1(answer1), answer2(answer2), answer3(answer3), correctAnswer(correctAnswer) {}
+
+    // Member functions
+    void addQuestion() {
+        cout << "Question added by " << name << endl;
+    }
+    void editQuestion() {
+        cout << "Question edited by " << name << endl;
+    }
+    void deleteQuestion() {
+        cout << "Question deleted by " << name << endl;
+    }
+    void sendNotification() {
+        cout << name << " sent a notification." << endl;
+    }
+};
+
+// ============================ Paper Class ============================
+class Paper {
+private:
+    int paperID;
+
+public:
+    // Constructor
+    Paper(int id) : paperID(id) {}
+
+    // Member functions
+    void setPaperDetails() {
+        cout << "Setting paper details for Paper ID: " << paperID << endl;
+    }
+    void displayPaper() {
+        cout << "Displaying Paper ID: " << paperID << endl;
+    }
+};
+
+<<<<<<< HEAD
 #endif // PAPER_H
 //2. Student.h
 
@@ -85,43 +147,92 @@ public:
 
 using namespace std;
 
+=======
+// ============================ Exam Class (Composition with Paper) ============================
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 class Exam {
 private:
-    int Exam_ID;
-    string Subject;
+    int examID;
+    string subject;
+    Paper paper;  // Composition: Exam contains a Paper object
 
 public:
-    Exam(int id, const string& subject)
-        : Exam_ID(id), Subject(subject) {}  // Constructor
+    // Constructor (Composition)
+    Exam(int id, const string& subject, const Paper& paperObj) 
+        : examID(id), subject(subject), paper(paperObj) {}
 
+    // Member functions
     void displayExam() {
-        // Basic function to display exam details
+        cout << "Exam ID: " << examID << " - Subject: " << subject << endl;
+        paper.displayPaper();
     }
 };
 
+<<<<<<< HEAD
 #endif // EXAM_H
 //5. Notification.h
 
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
-
-#include <string>
-
-using namespace std;
-
-class Notification {
+=======
+// ============================ Student Class (Aggregation with Paper) ============================
+class Student {
 private:
-    int Notification_ID;
-    string Message;
+    int studentID;
+    string name;
+    string phone;
+    string email;
+    Paper* paper;  // Aggregation: Student has a pointer to Paper (paper can exist independently)
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 
 public:
-    Notification(int id, const string& msg) : Notification_ID(id), Message(msg) {}  // Constructor
+    // Constructor (Aggregation)
+    Student(int id, const string& name, const string& phone, const string& email, Paper* paperObj = nullptr)
+        : studentID(id), name(name), phone(phone), email(email), paper(paperObj) {}
 
+    // Member functions
+    void attemptExam() {
+        if (paper) {
+            cout << name << " is attempting the exam." << endl;
+            paper->displayPaper();
+        } else {
+            cout << name << " has no assigned paper to attempt." << endl;
+        }
+    }
+    void viewQuestions() {
+        cout << name << " is viewing the exam questions." << endl;
+    }
+    void sendPaper() {
+        cout << name << " has submitted the paper." << endl;
+    }
+    void submitPaper() {
+        cout << name << " has completed and submitted the paper." << endl;
+    }
+    void viewSupport() {
+        cout << name << " is viewing the support page." << endl;
+    }
     void displayNotification() {
-        // Basic function to display notification
+        cout << name << " is viewing notifications." << endl;
     }
 };
 
+// ============================ Notification Class (Association with Student) ============================
+class Notification {
+private:
+    int notificationID;
+    string message;
+
+public:
+    // Constructor
+    Notification(int id, const string& message) : notificationID(id), message(message) {}
+
+    // Member function
+    void displayNotification() {
+        cout << "Notification: " << message << endl;
+    }
+};
+
+<<<<<<< HEAD
 #endif // NOTIFICATION_H
 //Main Program Example (main.cpp)
 
@@ -134,27 +245,26 @@ public:
 
 using namespace std;
 
+=======
+// ============================ Main Function ============================
+>>>>>>> 8af91799579d48e82db796e9dac66bc19721f1f0
 int main() {
-    // Create an exam
-    Exam exam1(1, "Math");
+    // Composition Example: Exam contains a Paper object
+    Paper paper1(101);
+    Exam exam1(1, "Math", paper1);
 
-    // Create an examiner with the exam (Composition)
-    Examiner examiner1(1001, "Dr. Smith", &exam1);
+    // Aggregation Example: Student has a pointer to a Paper
+    Student student1(1, "John", "123456", "john@example.com", &paper1);
 
-    // Create a paper associated with the exam
-    Paper paper1(2001, &exam1);
+    // Student attempting an exam
+    student1.attemptExam();
 
-    // Create a student
-    Student student1(3001, "John Doe", 123456789, "johndoe@email.com");
-
-    // Create a notification and add it to the student (Aggregation)
-    Notification notif1(4001, "Exam Schedule Updated");
-    student1.addNotification(&notif1);
-
-    // Displaying exam, paper, and notification details
+    // Display Exam Details
     exam1.displayExam();
-    paper1.displayPaper();
-    student1.viewNotification();
-    
+
+    // Association Example: Notification is associated with Student
+    Notification notification1(1, "Your exam is due tomorrow");
+    notification1.displayNotification();
+
     return 0;
 }
