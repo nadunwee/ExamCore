@@ -112,11 +112,11 @@ public:
 class Notification {
 private:
     int notificationID;
-    std::string message;
+    string message;
 
 public:
     // Constructor
-    Notification(int id, const std::string& message);
+    Notification(int id, const string& message);
 
     // Member function
     void displayNotification();
@@ -133,16 +133,16 @@ public:
 
 class Profile {
 private:
-    std::string name;
-    std::string address;
+    string name;
+    string address;
     int phone;
-    std::string email;
-    std::string password;
+    string email;
+    string password;
 
 public:
     // Constructor
-    Profile(const std::string& name, const std::string& address, int phone,
-            const std::string& email, const std::string& password);
+    Profile(const string& name, const string& address, int phone,
+            const string& email, const string& password);
 
     // Member functions
     void createAccount();
@@ -161,11 +161,11 @@ public:
 class Admin {
 private:
     int adminID;
-    std::string password;
+    string password;
 
 public:
     // Constructor
-    Admin(int id, const std::string& password);
+    Admin(int id, const string& password);
 
     // Member functions
     void addExam();
@@ -201,13 +201,13 @@ public:
 
 class RegisteredUser {
 private:
-    std::string name;
-    std::string phone;
-    std::string email;
+    string name;
+    string phone;
+    string email;
 
 public:
     // Constructor
-    RegisteredUser(const std::string& name, const std::string& phone, const std::string& email);
+    RegisteredUser(const string& name, const string& phone, const string& email);
 
     // Member functions
     void login();
