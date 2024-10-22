@@ -1,6 +1,4 @@
- Paper.h
-cpp
-Copy code
+Paper.h
 #ifndef PAPER_H
 #define PAPER_H
 
@@ -30,16 +28,18 @@ Copy code
 #include <vector>
 #include "Notification.h"
 
+using namespace std;
+
 class Student {
 private:
     int Student_ID;
-    std::string Name;
+    string Name;
     int PhoneNo;
-    std::string Email;
-    std::vector<Notification*> notifications;  // Aggregation relationship
+    string Email;
+    vector<Notification*> notifications;  // Aggregation relationship
 
 public:
-    Student(int id, const std::string& name, int phone, const std::string& email)
+    Student(int id, const string& name, int phone, const string& email)
         : Student_ID(id), Name(name), PhoneNo(phone), Email(email) {}  // Constructor
 
     void addNotification(Notification* notif) {
@@ -61,14 +61,16 @@ Copy code
 #include <string>
 #include "Exam.h"
 
+using namespace std;
+
 class Examiner {
 private:
     int Examiner_ID;
-    std::string Name;
+    string Name;
     Exam* exam;  // Composition relationship with Exam
 
 public:
-    Examiner(int id, const std::string& name, Exam* e)
+    Examiner(int id, const string& name, Exam* e)
         : Examiner_ID(id), Name(name), exam(e) {}  // Constructor
 
     void createQuestions() {
@@ -85,13 +87,15 @@ Copy code
 
 #include <string>
 
+using namespace std;
+
 class Exam {
 private:
     int Exam_ID;
-    std::string Subject;
+    string Subject;
 
 public:
-    Exam(int id, const std::string& subject)
+    Exam(int id, const string& subject)
         : Exam_ID(id), Subject(subject) {}  // Constructor
 
     void displayExam() {
@@ -108,13 +112,15 @@ Copy code
 
 #include <string>
 
+using namespace std;
+
 class Notification {
 private:
     int Notification_ID;
-    std::string Message;
+    string Message;
 
 public:
-    Notification(int id, const std::string& msg) : Notification_ID(id), Message(msg) {}  // Constructor
+    Notification(int id, const string& msg) : Notification_ID(id), Message(msg) {}  // Constructor
 
     void displayNotification() {
         // Basic function to display notification
@@ -131,6 +137,8 @@ Copy code
 #include "Paper.h"
 #include "Exam.h"
 #include "Notification.h"
+
+using namespace std;
 
 int main() {
     // Create an exam
