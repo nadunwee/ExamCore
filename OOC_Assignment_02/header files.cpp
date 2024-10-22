@@ -1,7 +1,4 @@
-//Student.h********************
-
-#ifndef STUDENT_H
-#define STUDENT_H
+//Student.h
 
 #pragma once
 #include <string>
@@ -27,16 +24,7 @@ public:
     void displayNotification();
 };
 
-<<<<<<< HEAD
 //Exam.h
-=======
-#endif
-
-//Exam.h**********************
-
-#ifndef EXAM_H
-#define EXAM_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -57,14 +45,7 @@ public:
 
 //Paper.h
 
-<<<<<<< HEAD
 #pragma once
-=======
-//Paper.h***************************
-
-#ifndef PAPER_H
-#define PAPER_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 class Paper {
 private:
@@ -79,16 +60,7 @@ public:
     void displayPaper();
 };
 
-<<<<<<< HEAD
 //Examiner.h
-=======
-#endif
-
-//Examiner.h************************
-
-#ifndef EXAMINER_H
-#define EXAMINER_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -117,16 +89,7 @@ public:
     void sendNotification();
 };
 
-<<<<<<< HEAD
 //Notification.h
-=======
-#endif
-
-//Notification.h******************************
-
-#ifndef NOTIFICATION_H
-#define NOTIFICATION_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -145,16 +108,7 @@ public:
     void displayNotification();
 };
 
-<<<<<<< HEAD
 //Profile.h
-=======
-#endif
-
-//Profile.h***************************
-
-#ifndef PROFILE_H
-#define PROFILE_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -178,16 +132,7 @@ public:
     void deleteAccount();
 };
 
-<<<<<<< HEAD
 //Admin.h
-=======
-#endif
-
-//Admin.h***********************
-
-#ifndef ADMIN_H
-#define ADMIN_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -212,14 +157,7 @@ public:
 
 //UnregisteredUser.h
 
-<<<<<<< HEAD
 #pragma once
-=======
-//UnregisteredUser.h********************
-
-#ifndef UNREGISTERED_USER_H
-#define UNREGISTERED_USER_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 class UnregisteredUser {
 public:
@@ -229,16 +167,7 @@ public:
     void registerUser();
 };
 
-<<<<<<< HEAD
 //RegisteredUser.h
-=======
-#endif
-
-//RegisteredUser.h***********************
-
-#ifndef REGISTERED_USER_H
-#define REGISTERED_USER_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 #pragma once
 #include <string>
@@ -262,14 +191,7 @@ public:
 
 //Messages.h
 
-<<<<<<< HEAD
 #pragma once
-=======
-//Messages.h***********************
-
-#ifndef MESSAGES_H
-#define MESSAGES_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 class Messages {
 public:
@@ -279,14 +201,7 @@ public:
 
 //Package.h
 
-<<<<<<< HEAD
 #pragma once
-=======
-//Package.h*************************
-
-#ifndef PACKAGE_H
-#define PACKAGE_H
->>>>>>> 2484bb52b5cc79f01f522c4c79f2200c362b6416
 
 class Package {
 public:
